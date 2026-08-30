@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -11,7 +10,7 @@
 
     <meta
         name="description"
-        content="Tamilanda Gaming Free Fire ID Details">
+        content="Tamilanda Gaming ID Details">
 
     <title>ID Details | Tamilanda Gaming</title>
 
@@ -19,101 +18,213 @@
 
     <style>
 
+        /* =====================================================
+           ID DETAILS PAGE
+           ===================================================== */
+
         .details-page {
-            width: min(1200px, 92%);
-            margin: 0 auto;
-            padding: 55px 0 100px;
+            min-height: 100vh;
+            padding: 55px 6% 100px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,176,0,0.10),
+                    transparent 35%
+                ),
+                #080808;
         }
 
-        .back-link {
+
+        /* =====================================================
+           BACK BUTTON
+           ===================================================== */
+
+        .back-button {
             display: inline-flex;
             align-items: center;
             gap: 8px;
 
+            margin-bottom: 30px;
+
             color: #888;
+
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
 
-            margin-bottom: 25px;
-
-            transition: color .2s ease;
+            transition: 0.2s ease;
         }
 
-        .back-link:hover {
+        .back-button:hover {
             color: #ffb000;
         }
 
-        .details-layout {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
-            gap: 35px;
-            align-items: start;
+
+        /* =====================================================
+           DETAILS HERO
+           ===================================================== */
+
+        .details-header {
+            max-width: 1250px;
+            margin: 0 auto 35px;
         }
 
-        /* =========================
-           IMAGE GALLERY
-           ========================= */
+        .details-label {
+            color: #ffb000;
 
-        .gallery-main {
-            width: 100%;
-            aspect-ratio: 4 / 5;
+            font-size: 11px;
+            font-weight: 900;
 
-            position: relative;
+            letter-spacing: 3px;
 
-            overflow: hidden;
-
-            border-radius: 20px;
-
-            background: #101010;
-
-            border: 1px solid rgba(255,176,0,.16);
+            margin-bottom: 12px;
         }
 
-        .gallery-main img {
-            width: 100%;
-            height: 100%;
+        .details-header h1 {
+            font-size: clamp(38px, 6vw, 68px);
 
-            object-fit: contain;
+            line-height: 0.95;
 
-            background: #090909;
+            letter-spacing: -2px;
+
+            font-weight: 900;
         }
 
-        .gallery-thumbs {
+        .details-header h1 span {
+            color: #ffb000;
+        }
+
+        .details-subtitle {
+            margin-top: 15px;
+
+            color: #777;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           MAIN DETAILS GRID
+           ===================================================== */
+
+        .details-container {
+            max-width: 1250px;
+            margin: 0 auto;
+
             display: grid;
 
             grid-template-columns:
-                repeat(6, minmax(0, 1fr));
+                1.15fr
+                0.85fr;
 
-            gap: 8px;
+            gap: 25px;
+        }
 
-            margin-top: 10px;
+
+        /* =====================================================
+           IMAGE GALLERY
+           ===================================================== */
+
+        .gallery-box {
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            border-radius: 20px;
+
+            padding: 18px;
+
+            overflow: hidden;
+        }
+
+        .main-gallery-image {
+            width: 100%;
+
+            aspect-ratio: 16 / 10;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #191919,
+                    #0b0b0b
+                );
+
+            position: relative;
+        }
+
+        .main-gallery-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #333;
+
+            font-size: 14px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+        }
+
+
+        /* Gallery thumbnails */
+
+        .gallery-thumbnails {
+            margin-top: 14px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 9px;
         }
 
         .gallery-thumb {
             aspect-ratio: 1 / 1;
 
-            padding: 0;
+            border-radius: 9px;
 
             overflow: hidden;
 
-            border-radius: 9px;
+            border: 1px solid
+                rgba(255,255,255,0.08);
 
-            border: 1px solid rgba(255,255,255,.08);
-
-            background: #101010;
+            background: #151515;
 
             cursor: pointer;
 
-            opacity: .65;
-
             transition:
-                opacity .18s ease,
-                border-color .18s ease;
+                border-color 0.2s ease,
+                transform 0.2s ease;
         }
 
-        .gallery-thumb:hover,
+        .gallery-thumb:hover {
+            transform: translateY(-2px);
+
+            border-color:
+                rgba(255,176,0,0.5);
+        }
+
         .gallery-thumb.active {
-            opacity: 1;
             border-color: #ffb000;
         }
 
@@ -122,150 +233,153 @@
             height: 100%;
 
             object-fit: cover;
+
+            display: block;
         }
 
-        /* =========================
-           DETAILS
-           ========================= */
+
+        /* =====================================================
+           INFO CARD
+           ===================================================== */
 
         .details-info {
-            min-width: 0;
-        }
-
-        .details-category {
-            color: #ffb000;
-
-            font-size: 10px;
-            font-weight: 900;
-
-            letter-spacing: 2px;
-        }
-
-        .details-info h1 {
-            margin-top: 9px;
-
-            font-size:
-                clamp(32px, 5vw, 52px);
-
-            line-height: 1;
-
-            letter-spacing: -2px;
-
-            font-weight: 900;
-        }
-
-        .details-info h1 span {
-            color: #ffb000;
-        }
-
-        .details-description {
-            margin-top: 18px;
-
-            color: #777;
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        /* =========================
-           INFO BOX
-           ========================= */
-
-        .info-box {
-            margin-top: 25px;
-
-            padding: 5px 18px;
-
-            border-radius: 15px;
-
             background: #101010;
 
-            border: 1px solid rgba(255,255,255,.07);
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            height: fit-content;
         }
 
-        .info-row {
+
+        .info-top {
             display: flex;
 
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
 
             gap: 15px;
-
-            padding: 15px 0;
-
-            border-bottom: 1px solid rgba(255,255,255,.06);
-
-            font-size: 12px;
         }
 
-        .info-row:last-child {
-            border-bottom: 0;
-        }
-
-        .info-row span:first-child {
-            color: #666;
-        }
-
-        .info-row span:last-child {
-            color: #fff;
-            font-weight: 800;
-            text-align: right;
-        }
-
-        .gold {
-            color: #ffb000 !important;
-        }
-
-        /* =========================
-           PRICE
-           ========================= */
-
-        .price-box {
-            margin-top: 20px;
-
-            padding: 20px;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,176,0,.10),
-                    rgba(255,176,0,.025)
-                );
-
-            border: 1px solid rgba(255,176,0,.16);
-        }
-
-        .price-label {
-            color: #777;
-
-            font-size: 10px;
-            font-weight: 800;
-
-            letter-spacing: 1px;
-        }
-
-        .price {
-            margin-top: 5px;
-
+        .info-category {
             color: #ffb000;
 
-            font-size: 34px;
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 1.5px;
+        }
+
+        .info-title {
+            margin-top: 7px;
+
+            font-size: 25px;
             font-weight: 900;
         }
 
-        /* =========================
-           BUTTONS
-           ========================= */
+        .info-price {
+            color: #ffb000;
 
-        .buy-button {
+            font-size: 27px;
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           STATS
+           ===================================================== */
+
+        .details-stats {
+            margin-top: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 8px;
+        }
+
+        .detail-stat {
+            padding: 14px 8px;
+
+            text-align: center;
+
+            border-radius: 10px;
+
+            background: #171717;
+
+            border: 1px solid
+                rgba(255,255,255,0.04);
+        }
+
+        .detail-stat small {
+            display: block;
+
+            color: #666;
+
+            font-size: 8px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+        .detail-stat strong {
+            display: block;
+
+            margin-top: 5px;
+
+            color: #eee;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           TAGS
+           ===================================================== */
+
+        .detail-tags {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin-top: 20px;
+        }
+
+        .detail-tag {
+            padding: 7px 10px;
+
+            border-radius: 7px;
+
+            background:
+                rgba(255,176,0,0.08);
+
+            color: #c89425;
+
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           BUY BUTTON
+           ===================================================== */
+
+        .buy-now-button {
             width: 100%;
 
             min-height: 55px;
 
-            margin-top: 15px;
+            margin-top: 25px;
 
             display: flex;
 
@@ -287,144 +401,240 @@
 
             cursor: pointer;
 
+            box-shadow:
+                0 12px 35px
+                rgba(255,176,0,0.18);
+
             transition:
-                transform .18s ease,
-                box-shadow .18s ease;
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
-        .buy-button:hover {
-            transform: translateY(-2px);
+        .buy-now-button:hover {
+            transform: translateY(-3px);
 
             box-shadow:
-                0 10px 25px
-                rgba(255,176,0,.18);
+                0 18px 45px
+                rgba(255,176,0,0.30);
         }
 
-        /* =========================
-           SOCIAL
-           ========================= */
 
-        .social-box {
-            margin-top: 15px;
+        /* =====================================================
+           SOCIAL LINKS
+           ===================================================== */
+
+        .social-links {
+            margin-top: 12px;
 
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                1fr 1fr;
 
             gap: 10px;
         }
 
         .social-button {
-            min-height: 45px;
+            min-height: 46px;
 
             display: flex;
 
             align-items: center;
             justify-content: center;
 
-            gap: 8px;
-
             border-radius: 9px;
 
-            border: 1px solid rgba(255,255,255,.08);
+            border: 1px solid
+                rgba(255,255,255,0.09);
 
-            background: #111;
+            background: #151515;
 
-            color: #aaa;
+            color: #ddd;
 
             font-size: 10px;
-            font-weight: 800;
+            font-weight: 900;
 
-            transition:
-                color .18s ease,
-                border-color .18s ease;
+            transition: 0.2s ease;
         }
 
         .social-button:hover {
-            color: #ffb000;
             border-color: #ffb000;
+
+            color: #ffb000;
         }
 
-        /* =========================
+
+        /* =====================================================
            DESCRIPTION
-           ========================= */
+           ===================================================== */
 
-        .full-description {
-            margin-top: 45px;
+        .description-section {
+            max-width: 1250px;
 
-            padding: 28px;
+            margin: 35px auto 0;
 
-            border-radius: 17px;
+            padding: 30px;
 
             background: #101010;
 
-            border: 1px solid rgba(255,255,255,.07);
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            border-radius: 20px;
         }
 
-        .full-description h2 {
-            font-size: 20px;
-        }
-
-        .full-description h2 span {
+        .description-heading {
             color: #ffb000;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
         }
 
-        .full-description p {
-            margin-top: 13px;
+        .description-title {
+            font-size: 27px;
 
-            color: #777;
+            font-weight: 900;
+
+            margin-bottom: 18px;
+        }
+
+        .feature-list {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px 25px;
+        }
+
+        .feature-item {
+            color: #d0d0d0;
 
             font-size: 13px;
 
-            line-height: 1.8;
+            line-height: 1.6;
+
+            padding: 10px 0;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.05);
         }
 
-        /* =========================
+        .feature-item::before {
+            content: "💥";
+
+            margin-right: 9px;
+        }
+
+
+        /* =====================================================
+           NOTICE
+           ===================================================== */
+
+        .details-notice {
+            max-width: 1250px;
+
+            margin: 20px auto 0;
+
+            padding: 18px 20px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,176,0,0.05);
+
+            border: 1px solid
+                rgba(255,176,0,0.12);
+
+            color: #999;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+        .details-notice strong {
+            color: #ffb000;
+        }
+
+
+        /* =====================================================
            MOBILE
-           ========================= */
+           ===================================================== */
 
-        @media (max-width: 800px) {
+        @media (max-width: 850px) {
 
-            .details-page {
-                padding-top: 35px;
-            }
-
-            .details-layout {
+            .details-container {
                 grid-template-columns: 1fr;
-
-                gap: 30px;
             }
 
-            .gallery-main {
-                aspect-ratio: 4 / 5;
+            .gallery-box {
+                padding: 12px;
             }
 
-            .details-info h1 {
-                font-size: 39px;
+            .details-info {
+                padding: 22px;
             }
 
         }
 
-        @media (max-width: 480px) {
+
+        @media (max-width: 600px) {
 
             .details-page {
-                width: 92%;
+                padding: 40px 5% 80px;
             }
 
-            .gallery-thumbs {
+            .details-header h1 {
+                font-size: 43px;
+            }
+
+            .main-gallery-image {
+                aspect-ratio: 4 / 3;
+            }
+
+            .gallery-thumbnails {
                 grid-template-columns:
-                    repeat(3, 1fr);
+                    repeat(5, 1fr);
+
+                gap: 6px;
             }
 
-            .social-box {
+            .info-title {
+                font-size: 20px;
+            }
+
+            .info-price {
+                font-size: 22px;
+            }
+
+            .details-stats {
+                gap: 6px;
+            }
+
+            .detail-stat {
+                padding: 12px 5px;
+            }
+
+            .detail-stat strong {
+                font-size: 13px;
+            }
+
+            .description-section {
+                padding: 22px;
+            }
+
+            .feature-list {
                 grid-template-columns: 1fr;
             }
 
-            .full-description {
-                padding: 20px;
-            }
-
         }
+
 
     </style>
 
@@ -434,431 +644,85 @@
 <body>
 
 
-<!-- HEADER -->
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-<header class="top-header">
+    <header class="top-header">
 
-    <a
-        href="index.html"
-        class="brand">
+        <a
+            href="index.html"
+            class="brand">
 
-        <img
-            src="assets/ic_launcher.png"
-            alt="Tamilanda Gaming"
-            class="brand-logo">
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming"
+                class="brand-logo">
 
-        <div class="brand-text">
+            <div class="brand-text">
 
-            <strong>
-                TAMILANDA
-            </strong>
+                <strong>
+                    TAMILANDA
+                </strong>
 
-            <span>
-                GAMING
-            </span>
+                <span>
+                    GAMING
+                </span>
 
-        </div>
+            </div>
 
-    </a>
-
-
-    <nav class="main-nav">
-
-        <a href="index.html">
-            HOME
         </a>
 
-        <a href="sell.html">
-            SELL YOUR ID
-        </a>
 
-        <a href="buy.html">
-            BUY YOUR ID
-        </a>
+        <nav class="main-nav">
 
-    </nav>
+            <a href="index.html">
+                HOME
+            </a>
 
-
-    <button
-        class="menu-button"
-        aria-label="Open Menu">
-
-        ☰
-
-    </button>
-
-</header>
-
-
-<!-- SIDE MENU -->
-
-<aside class="side-menu">
-
-    <button
-        class="close-menu"
-        aria-label="Close Menu">
-
-        ×
-
-    </button>
-
-    <a href="index.html">
-        Home
-    </a>
-
-    <a href="about.html">
-        About
-    </a>
-
-    <a href="contact.html">
-        Contact Us
-    </a>
-
-    <a href="terms.html">
-        Terms & Conditions
-    </a>
-
-</aside>
-
-
-<!-- DETAILS -->
-
-<main class="details-page">
-
-
-    <a
-        href="buy.html"
-        class="back-link">
-
-        ← BACK TO IDS
-
-    </a>
-
-
-    <section class="details-layout">
-
-
-        <!-- =========================
-             GALLERY
-             ========================= -->
-
-        <div class="gallery">
-
-
-            <div class="gallery-main">
-
-                <img
-                    id="main-id-image"
-                    src="assets/id-1.jpg"
-                    alt="Free Fire ID">
-
-            </div>
-
-
-            <div class="gallery-thumbs">
-
-
-                <button
-                    class="gallery-thumb active"
-                    onclick="changeImage('assets/id-1.jpg', this)">
-
-                    <img
-                        src="assets/id-1.jpg"
-                        alt="Profile">
-
-                </button>
-
-
-                <button
-                    class="gallery-thumb"
-                    onclick="changeImage('assets/id-2.jpg', this)">
-
-                    <img
-                        src="assets/id-2.jpg"
-                        alt="Gun Gallery">
-
-                </button>
-
-
-                <button
-                    class="gallery-thumb"
-                    onclick="changeImage('assets/id-3.jpg', this)">
-
-                    <img
-                        src="assets/id-3.jpg"
-                        alt="Hair Collection">
-
-                </button>
-
-
-                <button
-                    class="gallery-thumb"
-                    onclick="changeImage('assets/id-4.jpg', this)">
-
-                    <img
-                        src="assets/id-4.jpg"
-                        alt="Mask Collection">
-
-                </button>
-
-
-                <button
-                    class="gallery-thumb"
-                    onclick="changeImage('assets/id-5.jpg', this)">
-
-                    <img
-                        src="assets/id-5.jpg"
-                        alt="Vault">
-
-                </button>
-
-
-                <button
-                    class="gallery-thumb"
-                    onclick="changeImage('assets/id-6.jpg', this)">
-
-                    <img
-                        src="assets/id-6.jpg"
-                        alt="Rare Item">
-
-                </button>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =========================
-             INFORMATION
-             ========================= -->
-
-        <div class="details-info">
-
-
-            <div class="details-category">
-                GOLDEN ELITES
-            </div>
-
-
-            <h1>
-                DREAM
-                <span>ID</span>
-            </h1>
-
-
-            <p class="details-description">
-
-                Premium Free Fire account with a strong
-                collection of items and rare cosmetics.
-                Check the complete account information
-                and screenshots below.
-
-            </p>
-
-
-
-            <div class="info-box">
-
-
-                <div class="info-row">
-
-                    <span>
-                        Account Level
-                    </span>
-
-                    <span>
-                        90
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span>
-                        Prime Level
-                    </span>
-
-                    <span class="gold">
-                        8
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span>
-                        Total Vault Collection
-                    </span>
-
-                    <span>
-                        500+
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span>
-                        Golden Elite
-                    </span>
-
-                    <span class="gold">
-                        YES 👑
-                    </span>
-
-                </div>
-
-
-                <div class="info-row">
-
-                    <span>
-                        Category
-                    </span>
-
-                    <span>
-                        Golden Elites
-                    </span>
-
-                </div>
-
-
-            </div>
-
-
-
-            <!-- PRICE -->
-
-            <div class="price-box">
-
-                <div class="price-label">
-                    EXPECTED PRICE
-                </div>
-
-                <div class="price">
-                    ₹50,000
-                </div>
-
-            </div>
-
-
-            <!-- BUY -->
+            <a href="sell.html">
+                SELL YOUR ID
+            </a>
 
             <a
-                href="https://wa.me/919786267475?text=Hi%20Tamilanda%20Gaming,%20I%20am%20interested%20in%20this%20Free%20Fire%20ID."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="buy-button">
+                href="buy.html"
+                class="active">
 
-                🛒 BUY NOW
+                BUY YOUR ID
 
             </a>
 
-
-            <!-- SOCIAL -->
-
-            <div class="social-box">
-
-                <a
-                    href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social-button">
-
-                    📢 WHATSAPP
-
-                </a>
+        </nav>
 
 
-                <a
-                    href="https://youtube.com/@tamilanda_gaming_15?si=Y9UmkrcBoWe0_R4r"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="social-button">
+        <button
+            class="menu-button"
+            aria-label="Open Menu">
 
-                    ▶️ YOUTUBE
+            ☰
 
-                </a>
+        </button>
 
-            </div>
-
-
-        </div>
-
-
-    </section>
+    </header>
 
 
 
-    <!-- =========================
-         FULL DESCRIPTION
-         ========================= -->
+    <!-- =====================================================
+         SIDE MENU
+         ===================================================== -->
 
-    <section class="full-description">
+    <aside class="side-menu">
 
-        <h2>
-            ID <span>DESCRIPTION</span>
-        </h2>
+        <button
+            class="close-menu"
+            aria-label="Close Menu">
 
+            ×
 
-        <p>
-
-            This is a sample Tamilanda Gaming listing.
-            Complete account information, collection
-            details and screenshots are displayed above.
-
-            Actual listing information will be managed
-            through the Tamilanda Gaming Admin Panel.
-
-        </p>
-
-    </section>
-
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-brand">
-
-        <img
-            src="assets/ic_launcher.png"
-            alt="Tamilanda Gaming">
-
-        <div>
-
-            <strong>
-                TAMILANDA GAMING
-            </strong>
-
-            <p>
-                Free Fire ID Marketplace
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-links">
+        </button>
 
         <a href="index.html">
             Home
-        </a>
-
-        <a href="sell.html">
-            Sell Your ID
-        </a>
-
-        <a href="buy.html">
-            Buy Your ID
         </a>
 
         <a href="about.html">
@@ -866,53 +730,597 @@
         </a>
 
         <a href="contact.html">
-            Contact
+            Contact Us
         </a>
 
         <a href="terms.html">
-            Terms
+            Terms & Conditions
         </a>
 
-    </div>
+    </aside>
 
 
-    <p class="copyright">
 
-        © <span id="current-year"></span>
-        Tamilanda Gaming. All rights reserved.
+    <!-- =====================================================
+         PAGE
+         ===================================================== -->
 
-    </p>
-
-</footer>
+    <main class="details-page">
 
 
-<script src="app.js"></script>
+        <a
+            href="buy.html"
+            class="back-button">
+
+            ← BACK TO BUY IDS
+
+        </a>
 
 
-<script>
+        <!-- =================================================
+             HEADER
+             ================================================= -->
 
-function changeImage(image, button) {
+        <section class="details-header">
 
-    const mainImage =
-        document.getElementById("main-id-image");
+            <div class="details-label">
+                TAMILANDA GAMING • ID DETAILS
+            </div>
 
-    mainImage.src = image;
+            <h1>
+                <span>PREMIUM</span>
+                FREE FIRE ID
+            </h1>
+
+            <p class="details-subtitle">
+                Explore the complete account details,
+                rare collections and exclusive items.
+            </p>
+
+        </section>
 
 
-    document
-        .querySelectorAll(".gallery-thumb")
-        .forEach(function(item) {
 
-            item.classList.remove("active");
+        <!-- =================================================
+             MAIN DETAILS
+             ================================================= -->
 
-        });
+        <section class="details-container">
 
 
-    button.classList.add("active");
+            <!-- =================================================
+                 IMAGE GALLERY
+                 ================================================= -->
 
-}
+            <div class="gallery-box">
 
-</script>
+                <div
+                    class="main-gallery-image"
+                    id="mainImage">
+
+                    <div class="gallery-placeholder">
+                        ID IMAGE
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="gallery-thumbnails"
+                    id="thumbnails">
+
+                    <button
+                        class="gallery-thumb active"
+                        data-image="assets/ids/id001/image1.jpg">
+
+                        <img
+                            src="assets/ids/id001/image1.jpg"
+                            alt="ID Image 1">
+
+                    </button>
+
+
+                    <button
+                        class="gallery-thumb"
+                        data-image="assets/ids/id001/image2.jpg">
+
+                        <img
+                            src="assets/ids/id001/image2.jpg"
+                            alt="ID Image 2">
+
+                    </button>
+
+
+                    <button
+                        class="gallery-thumb"
+                        data-image="assets/ids/id001/image3.jpg">
+
+                        <img
+                            src="assets/ids/id001/image3.jpg"
+                            alt="ID Image 3">
+
+                    </button>
+
+
+                    <button
+                        class="gallery-thumb"
+                        data-image="assets/ids/id001/image4.jpg">
+
+                        <img
+                            src="assets/ids/id001/image4.jpg"
+                            alt="ID Image 4">
+
+                    </button>
+
+
+                    <button
+                        class="gallery-thumb"
+                        data-image="assets/ids/id001/image5.jpg">
+
+                        <img
+                            src="assets/ids/id001/image5.jpg"
+                            alt="ID Image 5">
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ACCOUNT INFORMATION
+                 ================================================= -->
+
+            <div class="details-info">
+
+
+                <div class="info-top">
+
+                    <div>
+
+                        <div class="info-category">
+                            GOLDEN ELITE
+                        </div>
+
+                        <div class="info-title">
+                            Golden Elite #001
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-price">
+                        ₹50K
+                    </div>
+
+                </div>
+
+
+
+                <!-- Stats -->
+
+                <div class="details-stats">
+
+
+                    <div class="detail-stat">
+
+                        <small>
+                            Account Level
+                        </small>
+
+                        <strong>
+                            90
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-stat">
+
+                        <small>
+                            Prime Level
+                        </small>
+
+                        <strong>
+                            8
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-stat">
+
+                        <small>
+                            Vault
+                        </small>
+
+                        <strong>
+                            600+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Tags -->
+
+                <div class="detail-tags">
+
+                    <span class="detail-tag">
+                        GOLDEN ELITE
+                    </span>
+
+                    <span class="detail-tag">
+                        RARE ITEMS
+                    </span>
+
+                    <span class="detail-tag">
+                        PREMIUM
+                    </span>
+
+                    <span class="detail-tag">
+                        POPULAR 🔥
+                    </span>
+
+                </div>
+
+
+
+                <!-- Buy -->
+
+                <a
+                    href="https://wa.me/919786267475?text=Hi%20Tamilanda%20Gaming%2C%20I%20am%20interested%20in%20Golden%20Elite%20%23001%20-%20%E2%82%B950%2C000."
+                    class="buy-now-button"
+                    target="_blank">
+
+                    BUY THIS ID
+                    →
+                    
+                </a>
+
+
+
+                <!-- Social -->
+
+                <div class="social-links">
+
+                    <a
+                        href="https://whatsapp.com/channel/0029Vad2AB4NViiWPfEcm2e"
+                        target="_blank"
+                        class="social-button">
+
+                        📱 WHATSAPP CHANNEL
+
+                    </a>
+
+
+                    <a
+                        href="https://youtube.com/@tamilanda_gaming_15"
+                        target="_blank"
+                        class="social-button">
+
+                        ▶️ YOUTUBE
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DESCRIPTION
+             ================================================= -->
+
+        <section class="description-section">
+
+            <div class="description-heading">
+                ACCOUNT DESCRIPTION
+            </div>
+
+            <h2 class="description-title">
+                🔥 Account Features
+            </h2>
+
+
+            <div class="feature-list">
+
+
+                <div class="feature-item">
+                    7TH TO ALL x OP COMBO
+                </div>
+
+
+                <div class="feature-item">
+                    600+ OP VAULT COLLECTIONS
+                </div>
+
+
+                <div class="feature-item">
+                    7TH ELITE PASS BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    8TH ELITE PASS BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    9TH ELITE PASS BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    10TH TO ALL ELITE PASSES
+                </div>
+
+
+                <div class="feature-item">
+                    PURPLE SHADE BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    WHITE SHADOW BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    DR. SANTY DOCTOR BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    WHITE SOUL BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    INC TOP BUNNY BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    INC TOP ARTIC BLUE BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    INC TOP 2 BLUE SHADE BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    INC TOP 2 BUNNY BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    INC TOP JOKER BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    BLUE LOCK BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    MORE OLD ELITE PASS BUNDLE
+                </div>
+
+
+                <div class="feature-item">
+                    MORE OP VAULT COLLECTIONS
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOTICE
+             ================================================= -->
+
+        <div class="details-notice">
+
+            <strong>
+                ⚡ Interested in this ID?
+            </strong>
+
+            Click <strong>BUY THIS ID</strong>
+            to contact Tamilanda Gaming on WhatsApp.
+            Availability and final price will be confirmed
+            before purchase.
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming">
+
+            <div>
+
+                <strong>
+                    TAMILANDA GAMING
+                </strong>
+
+                <p>
+                    Free Fire ID Marketplace
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="sell.html">
+                Sell Your ID
+            </a>
+
+            <a href="buy.html">
+                Buy Your ID
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="terms.html">
+                Terms
+            </a>
+
+        </div>
+
+
+        <p class="copyright">
+
+            © <span id="current-year"></span>
+            Tamilanda Gaming.
+            All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="app.js"></script>
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const mainImage =
+                    document.getElementById(
+                        "mainImage"
+                    );
+
+                const thumbnails =
+                    document.querySelectorAll(
+                        ".gallery-thumb"
+                    );
+
+
+                /*
+                 * Set first image
+                 */
+
+                const firstImage =
+                    thumbnails[0]?.dataset.image;
+
+
+                if (firstImage) {
+
+                    mainImage.innerHTML =
+                        `<img
+                            src="${firstImage}"
+                            alt="Free Fire ID">`;
+
+                }
+
+
+                /*
+                 * Thumbnail click
+                 */
+
+                thumbnails.forEach(
+                    function (thumbnail) {
+
+                        thumbnail.addEventListener(
+                            "click",
+                            function () {
+
+                                const image =
+                                    thumbnail.dataset.image;
+
+
+                                mainImage.innerHTML =
+                                    `<img
+                                        src="${image}"
+                                        alt="Free Fire ID">`;
+
+
+                                thumbnails.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                                thumbnail.classList.add(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * Current year
+                 */
+
+                const year =
+                    document.getElementById(
+                        "current-year"
+                    );
+
+                if (year) {
+
+                    year.textContent =
+                        new Date().getFullYear();
+
+                }
+
+            }
+        );
+
+    </script>
 
 
 </body>
