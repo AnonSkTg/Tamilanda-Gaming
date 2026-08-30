@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="robots"
+        content="noindex, nofollow">
+
+    <title>Admin Panel | Tamilanda Gaming</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css">
+
+    <style>
+
+        /* =====================================================
+           ADMIN PANEL
+           ===================================================== */
+
+        .admin-page {
+            min-height: 100vh;
+            background: #080808;
+            padding: 30px 4%;
+        }
+
+
+        /* =====================================================
+           ADMIN HEADER
+           ===================================================== */
+
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 18px 22px;
+
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+
+            border-radius: 15px;
+        }
+
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .admin-brand img {
+            width: 48px;
+            height: 48px;
+
+            object-fit: contain;
+        }
+
+
+        .admin-brand strong {
+            display: block;
+
+            font-size: 15px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .admin-brand span {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #ffb000;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+
+        .admin-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: #59d98b;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #59d98b;
+
+            box-shadow:
+                0 0 10px
+                rgba(89,217,139,0.6);
+        }
+
+
+        /* =====================================================
+           PAGE TITLE
+           ===================================================== */
+
+        .admin-title {
+            margin-top: 45px;
+        }
+
+
+        .admin-title h1 {
+            margin-top: 10px;
+
+            font-size:
+                clamp(35px, 5vw, 55px);
+
+            line-height: 1;
+
+            font-weight: 900;
+        }
+
+
+        .admin-title h1 span {
+            color: #ffb000;
+        }
+
+
+        .admin-title p {
+            max-width: 650px;
+
+            margin-top: 13px;
+
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           STAT CARDS
+           ===================================================== */
+
+        .admin-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        .admin-stat {
+
+            min-height: 135px;
+
+            padding: 22px;
+
+            border-radius: 14px;
+
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            transition: 0.25s ease;
+        }
+
+
+        .admin-stat:hover {
+
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(255,176,0,0.25);
+        }
+
+
+        .stat-icon {
+
+            font-size: 24px;
+        }
+
+
+        .admin-stat strong {
+
+            display: block;
+
+            margin-top: 13px;
+
+            font-size: 28px;
+        }
+
+
+        .admin-stat span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color: #666;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =====================================================
+           DASHBOARD GRID
+           ===================================================== */
+
+        .dashboard-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.4fr 1fr;
+
+            gap: 18px;
+
+            margin-top: 22px;
+        }
+
+
+        .admin-card {
+
+            padding: 22px;
+
+            border-radius: 15px;
+
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+        }
+
+
+        .admin-card-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .admin-card-header h2 {
+
+            font-size: 16px;
+
+            font-weight: 900;
+        }
+
+
+        .admin-card-header a {
+
+            color: #ffb000;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           TABLE
+           ===================================================== */
+
+        .admin-table {
+
+            width: 100%;
+
+            overflow-x: auto;
+        }
+
+
+        .table-row {
+
+            min-width: 500px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr
+                0.7fr
+                1fr
+                1fr
+                0.8fr;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 5px;
+
+            border-top: 1px solid
+                rgba(255,255,255,0.05);
+
+            font-size: 11px;
+        }
+
+
+        .table-head {
+
+            color: #555;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .status-available {
+
+            color: #55db8b;
+
+            font-weight: 800;
+        }
+
+
+        .status-sold {
+
+            color: #ff6666;
+
+            font-weight: 800;
+        }
+
+
+        .status-pending {
+
+            color: #ffb000;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           ACTION BUTTONS
+           ===================================================== */
+
+        .action-buttons {
+
+            display: flex;
+
+            gap: 5px;
+        }
+
+
+        .action-button {
+
+            padding: 6px 8px;
+
+            border-radius: 6px;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+
+            background: #171717;
+
+            color: #aaa;
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        .action-button:hover {
+
+            color: #ffb000;
+
+            border-color: #ffb000;
+        }
+
+
+        /* =====================================================
+           PENDING REQUEST
+           ===================================================== */
+
+        .pending-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        .pending-item {
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: #171717;
+
+            border: 1px solid
+                rgba(255,255,255,0.05);
+        }
+
+
+        .pending-item strong {
+
+            display: block;
+
+            font-size: 12px;
+        }
+
+
+        .pending-item span {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color: #777;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        .pending-actions {
+
+            display: flex;
+
+            gap: 7px;
+
+            margin-top: 12px;
+        }
+
+
+        .approve-button,
+        .reject-button {
+
+            padding: 8px 11px;
+
+            border-radius: 7px;
+
+            border: 0;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+        }
+
+
+        .approve-button {
+
+            background: #183b29;
+
+            color: #62df95;
+        }
+
+
+        .reject-button {
+
+            background: #3b1919;
+
+            color: #ff7777;
+        }
+
+
+        /* =====================================================
+           QUICK ACTIONS
+           ===================================================== */
+
+        .quick-actions {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 18px;
+        }
+
+
+        .quick-action {
+
+            padding: 18px;
+
+            border-radius: 11px;
+
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+
+        .quick-action:hover {
+
+            border-color:
+                rgba(255,176,0,0.3);
+
+            transform: translateY(-3px);
+        }
+
+
+        .quick-action div {
+
+            font-size: 23px;
+        }
+
+
+        .quick-action strong {
+
+            display: block;
+
+            margin-top: 9px;
+
+            font-size: 10px;
+        }
+
+
+        .quick-action span {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: #555;
+
+            font-size: 8px;
+        }
+
+
+        /* =====================================================
+           REVIEWS
+           ===================================================== */
+
+        .review-admin-box {
+
+            min-height: 160px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            text-align: center;
+
+            border: 1px dashed
+                rgba(255,255,255,0.12);
+
+            border-radius: 12px;
+
+            background: #0c0c0c;
+        }
+
+
+        .review-admin-box div {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .review-admin-box p {
+
+            color: #666;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           SECURITY NOTICE
+           ===================================================== */
+
+        .security-notice {
+
+            margin-top: 18px;
+
+            padding: 16px 18px;
+
+            display: flex;
+
+            gap: 12px;
+
+            align-items: flex-start;
+
+            border-radius: 11px;
+
+            background:
+                rgba(255,176,0,0.05);
+
+            border: 1px solid
+                rgba(255,176,0,0.12);
+
+            color: #927b3c;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        .security-notice strong {
+
+            color: #ffb000;
+        }
+
+
+        /* =====================================================
+           FOOTER
+           ===================================================== */
+
+        .admin-footer {
+
+            margin-top: 45px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid
+                rgba(255,255,255,0.06);
+
+            color: #444;
+
+            font-size: 9px;
+        }
+
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .admin-stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .dashboard-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .quick-actions {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .admin-page {
+
+                padding: 18px 4%;
+            }
+
+
+            .admin-header {
+
+                padding: 14px;
+            }
+
+
+            .admin-brand img {
+
+                width: 40px;
+                height: 40px;
+            }
+
+
+            .admin-brand strong {
+
+                font-size: 12px;
+            }
+
+
+            .admin-status {
+
+                font-size: 9px;
+            }
+
+
+            .admin-title {
+
+                margin-top: 32px;
+            }
+
+
+            .admin-title h1 {
+
+                font-size: 39px;
+            }
+
+
+            .admin-stats {
+
+                gap: 10px;
+            }
+
+
+            .admin-stat {
+
+                min-height: 115px;
+
+                padding: 17px;
+            }
+
+
+            .admin-stat strong {
+
+                font-size: 24px;
+            }
+
+
+            .admin-card {
+
+                padding: 16px;
+            }
+
+
+            .quick-actions {
+
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="admin-page">
+
+
+    <!-- =================================================
+         ADMIN HEADER
+         ================================================= -->
+
+    <header class="admin-header">
+
+
+        <a
+            href="index.html"
+            class="admin-brand">
+
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming">
+
+            <div>
+
+                <strong>
+                    TAMILANDA GAMING
+                </strong>
+
+                <span>
+                    ADMIN PANEL
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="admin-status">
+
+            <span class="online-dot"></span>
+
+            ADMIN MODE
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         TITLE
+         ================================================= -->
+
+    <section class="admin-title">
+
+        <p class="eyebrow">
+            CONTROL CENTER
+        </p>
+
+
+        <h1>
+            Dashboard
+            <span>Overview</span>
+        </h1>
+
+
+        <p>
+            Manage account listings, seller requests,
+            reviews and website content from one place.
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
+
+    <section class="admin-stats">
+
+
+        <div class="admin-stat">
+
+            <div class="stat-icon">
+                🎮
+            </div>
+
+            <strong>
+                124
+            </strong>
+
+            <span>
+                TOTAL IDS
+            </span>
+
+        </div>
+
+
+        <div class="admin-stat">
+
+            <div class="stat-icon">
+                🟢
+            </div>
+
+            <strong>
+                98
+            </strong>
+
+            <span>
+                AVAILABLE IDS
+            </span>
+
+        </div>
+
+
+        <div class="admin-stat">
+
+            <div class="stat-icon">
+                🛒
+            </div>
+
+            <strong>
+                26
+            </strong>
+
+            <span>
+                SOLD IDS
+            </span>
+
+        </div>
+
+
+        <div class="admin-stat">
+
+            <div class="stat-icon">
+                📥
+            </div>
+
+            <strong>
+                7
+            </strong>
+
+            <span>
+                PENDING REQUESTS
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         DASHBOARD COLUMNS
+         ================================================= -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- =============================================
+             RECENT IDS
+             ============================================= -->
+
+        <div class="admin-card">
+
+            <div class="admin-card-header">
+
+                <h2>
+                    Recent IDs
+                </h2>
+
+                <a href="buy.html">
+                    VIEW WEBSITE →
+                </a>
+
+            </div>
+
+
+            <div class="admin-table">
+
+
+                <div class="table-row table-head">
+
+                    <span>
+                        ID
+                    </span>
+
+                    <span>
+                        LEVEL
+                    </span>
+
+                    <span>
+                        PRICE
+                    </span>
+
+                    <span>
+                        STATUS
+                    </span>
+
+                    <span>
+                        ACTION
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        TG1001
+                    </span>
+
+                    <span>
+                        90
+                    </span>
+
+                    <span>
+                        ₹50,000
+                    </span>
+
+                    <span class="status-available">
+                        Available
+                    </span>
+
+                    <span class="action-buttons">
+
+                        <button class="action-button">
+                            EDIT
+                        </button>
+
+                        <button class="action-button">
+                            DELETE
+                        </button>
+
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        TG1002
+                    </span>
+
+                    <span>
+                        85
+                    </span>
+
+                    <span>
+                        ₹30,000
+                    </span>
+
+                    <span class="status-available">
+                        Available
+                    </span>
+
+                    <span class="action-buttons">
+
+                        <button class="action-button">
+                            EDIT
+                        </button>
+
+                        <button class="action-button">
+                            DELETE
+                        </button>
+
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        TG1003
+                    </span>
+
+                    <span>
+                        78
+                    </span>
+
+                    <span>
+                        ₹20,000
+                    </span>
+
+                    <span class="status-sold">
+                        Sold
+                    </span>
+
+                    <span class="action-buttons">
+
+                        <button class="action-button">
+                            EDIT
+                        </button>
+
+                    </span>
+
+                </div>
+
+
+                <div class="table-row">
+
+                    <span>
+                        TG1004
+                    </span>
+
+                    <span>
+                        72
+                    </span>
+
+                    <span>
+                        ₹15,000
+                    </span>
+
+                    <span class="status-available">
+                        Available
+                    </span>
+
+                    <span class="action-buttons">
+
+                        <button class="action-button">
+                            EDIT
+                        </button>
+
+                        <button class="action-button">
+                            DELETE
+                        </button>
+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             SELL REQUESTS
+             ============================================= -->
+
+        <div class="admin-card">
+
+            <div class="admin-card-header">
+
+                <h2>
+                    Pending Sell Requests
+                </h2>
+
+                <span class="status-pending">
+                    7 NEW
+                </span>
+
+            </div>
+
+
+            <div class="pending-list">
+
+
+                <div class="pending-item">
+
+                    <strong>
+                        New Seller Request #001
+                    </strong>
+
+                    <span>
+                        Level 80 · Prime 7 ·
+                        Vault 450 · Expected ₹50,000
+                    </span>
+
+
+                    <div class="pending-actions">
+
+                        <button
+                            class="approve-button">
+
+                            REVIEW
+
+                        </button>
+
+
+                        <button
+                            class="reject-button">
+
+                            REJECT
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pending-item">
+
+                    <strong>
+                        New Seller Request #002
+                    </strong>
+
+                    <span>
+                        Level 68 · Prime 6 ·
+                        Vault 380 · Expected ₹25,000
+                    </span>
+
+
+                    <div class="pending-actions">
+
+                        <button
+                            class="approve-button">
+
+                            REVIEW
+
+                        </button>
+
+
+                        <button
+                            class="reject-button">
+
+                            REJECT
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="pending-item">
+
+                    <strong>
+                        New Seller Request #003
+                    </strong>
+
+                    <span>
+                        Level 92 · Prime 8 ·
+                        Vault 520 · Expected ₹75,000
+                    </span>
+
+
+                    <div class="pending-actions">
+
+                        <button
+                            class="approve-button">
+
+                            REVIEW
+
+                        </button>
+
+
+                        <button
+                            class="reject-button">
+
+                            REJECT
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUICK ACTIONS
+         ================================================= -->
+
+    <section class="quick-actions">
+
+
+        <div class="quick-action">
+
+            <div>
+                ➕
+            </div>
+
+            <strong>
+                ADD NEW ID
+            </strong>
+
+            <span>
+                Create listing
+            </span>
+
+        </div>
+
+
+        <div class="quick-action">
+
+            <div>
+                📥
+            </div>
+
+            <strong>
+                SELL REQUESTS
+            </strong>
+
+            <span>
+                Review submissions
+            </span>
+
+        </div>
+
+
+        <div class="quick-action">
+
+            <div>
+                ⭐
+            </div>
+
+            <strong>
+                REVIEWS
+            </strong>
+
+            <span>
+                Manage screenshots
+            </span>
+
+        </div>
+
+
+        <div class="quick-action">
+
+            <div>
+                ⚙️
+            </div>
+
+            <strong>
+                SETTINGS
+            </strong>
+
+            <span>
+                Website settings
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CUSTOMER REVIEWS
+         ================================================= -->
+
+    <section
+        class="admin-card"
+        style="margin-top:18px;">
+
+        <div class="admin-card-header">
+
+            <h2>
+                Customer Review Screenshots
+            </h2>
+
+            <span>
+                ADMIN
+            </span>
+
+        </div>
+
+
+        <div class="review-admin-box">
+
+            <div>
+                📸
+            </div>
+
+            <p>
+                Upload and manage genuine
+                customer review screenshots here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SECURITY NOTICE
+         ================================================= -->
+
+    <div class="security-notice">
+
+        <div>
+            🔐
+        </div>
+
+        <div>
+
+            <strong>
+                SECURITY:
+            </strong>
+
+            This page is currently only the
+            dashboard interface. Before the website
+            goes live, we will add proper admin
+            authentication so only you can access
+            the admin panel.
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer class="admin-footer">
+
+        Tamilanda Gaming Admin Panel ·
+        Private Administration Area
+
+    </footer>
+
+
+</main>
+
+
+</body>
+
+</html>
