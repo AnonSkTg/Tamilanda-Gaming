@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Tamilanda Gaming - Browse and buy Free Fire IDs.">
+
+    <title>Buy Your ID | Tamilanda Gaming</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        /* =================================================
+           BUY PAGE
+           ================================================= */
+
+        .buy-page {
+            min-height: 100vh;
+            padding: 55px 6% 100px;
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255, 176, 0, 0.10),
+                    transparent 35%
+                ),
+                #080808;
+        }
+
+
+        /* Page Heading */
+
+        .buy-heading {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .buy-heading .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .buy-heading h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 0.95;
+            letter-spacing: -2px;
+            font-weight: 900;
+        }
+
+        .buy-heading h1 span {
+            color: #ffb000;
+        }
+
+        .buy-heading p {
+            max-width: 600px;
+            margin: 18px auto 0;
+            color: #777;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =================================================
+           FILTER + SORT BAR
+           ================================================= */
+
+        .catalog-toolbar {
+            max-width: 1250px;
+            margin: 50px auto 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 15px;
+
+            background: #101010;
+
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+        }
+
+
+        .filter-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .filter-title span {
+            color: #ffb000;
+            font-size: 20px;
+        }
+
+
+        .sort-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sort-box label {
+            color: #666;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .sort-box select {
+            min-width: 190px;
+
+            padding: 11px 14px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 9px;
+
+            background: #171717;
+            color: #fff;
+
+            outline: none;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .sort-box select:focus {
+            border-color: #ffb000;
+        }
+
+
+        /* =================================================
+           CATEGORY FILTERS
+           ================================================= */
+
+        .category-filters {
+            max-width: 1250px;
+            margin: 0 auto 45px;
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            padding: 11px 17px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 10px;
+
+            background: #101010;
+            color: #999;
+
+            cursor: pointer;
+
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+
+            transition: 0.2s ease;
+        }
+
+        .category-btn:hover {
+            color: #fff;
+            border-color: rgba(255,176,0,0.4);
+        }
+
+        .category-btn.active {
+            color: #080808;
+            background: #ffb000;
+            border-color: #ffb000;
+        }
+
+
+        /* =================================================
+           ID GRID
+           ================================================= */
+
+        .id-grid {
+            max-width: 1250px;
+            margin: 0 auto;
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+
+        /* =================================================
+           ID CARD
+           ================================================= */
+
+        .id-card {
+            overflow: hidden;
+
+            border-radius: 18px;
+
+            background: #101010;
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .id-card:hover {
+            transform: translateY(-6px);
+
+            border-color:
+                rgba(255,176,0,0.35);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.35);
+        }
+
+
+        /* Image */
+
+        .id-image {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 4 / 5;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #191919,
+                    #0c0c0c
+                );
+        }
+
+        .id-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform 0.4s ease;
+        }
+
+        .id-card:hover .id-image img {
+            transform: scale(1.04);
+        }
+
+
+        /* Placeholder */
+
+        .id-image-placeholder {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #333;
+
+            font-size: 12px;
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* Badges */
+
+        .id-badge {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            padding: 7px 10px;
+
+            border-radius: 7px;
+
+            background: #ffb000;
+            color: #080808;
+
+            font-size: 9px;
+            font-weight: 900;
+        }
+
+        .popular-badge {
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            padding: 7px 10px;
+
+            border-radius: 7px;
+
+            background: rgba(0,0,0,0.75);
+            color: #fff;
+
+            font-size: 9px;
+            font-weight: 900;
+
+            backdrop-filter: blur(8px);
+        }
+
+
+        /* Card Content */
+
+        .id-content {
+            padding: 18px;
+        }
+
+        .id-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .id-title {
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+        .id-price {
+            color: #ffb000;
+
+            font-size: 18px;
+            font-weight: 900;
+
+            white-space: nowrap;
+        }
+
+
+        /* Stats */
+
+        .id-stats {
+            margin-top: 16px;
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 7px;
+        }
+
+        .stat {
+            padding: 10px 7px;
+
+            border-radius: 8px;
+
+            background: #171717;
+
+            text-align: center;
+        }
+
+        .stat small {
+            display: block;
+
+            color: #666;
+
+            font-size: 8px;
+            font-weight: 800;
+
+            text-transform: uppercase;
+        }
+
+        .stat strong {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #ddd;
+
+            font-size: 11px;
+        }
+
+
+        /* Tags */
+
+        .id-tags {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 6px;
+
+            margin-top: 13px;
+        }
+
+        .tag {
+            padding: 5px 8px;
+
+            border-radius: 6px;
+
+            background: rgba(255,176,0,0.07);
+
+            color: #b88922;
+
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+
+        /* View Button */
+
+        .view-id-btn {
+            width: 100%;
+
+            margin-top: 16px;
+
+            min-height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #181818;
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            color: #fff;
+
+            font-size: 11px;
+            font-weight: 900;
+
+            transition: 0.2s ease;
+        }
+
+        .view-id-btn:hover {
+            background: #ffb000;
+            color: #080808;
+            border-color: #ffb000;
+        }
+
+
+        /* =================================================
+           EMPTY STATE
+           ================================================= */
+
+        .empty-state {
+            max-width: 600px;
+
+            margin: 70px auto;
+
+            padding: 55px 25px;
+
+            text-align: center;
+
+            border: 1px dashed
+                rgba(255,255,255,0.12);
+
+            border-radius: 18px;
+
+            background: #0d0d0d;
+        }
+
+        .empty-state div {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h2 {
+            font-size: 20px;
+        }
+
+        .empty-state p {
+            margin-top: 8px;
+            color: #666;
+            font-size: 12px;
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 850px) {
+
+            .id-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .buy-page {
+                padding: 45px 5% 80px;
+            }
+
+            .buy-heading h1 {
+                font-size: 43px;
+            }
+
+            .catalog-toolbar {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .sort-box {
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .sort-box select {
+                width: 100%;
+            }
+
+            .category-filters {
+                gap: 7px;
+            }
+
+            .category-btn {
+                padding: 10px 12px;
+                font-size: 9px;
+            }
+
+            .id-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .id-content {
+                padding: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <header class="top-header">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming Logo"
+                class="brand-logo">
+
+            <div class="brand-text">
+
+                <strong>
+                    TAMILANDA
+                </strong>
+
+                <span>
+                    GAMING
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="sell.html">
+                SELL YOUR ID
+            </a>
+
+            <a
+                href="buy.html"
+                class="active">
+
+                BUY YOUR ID
+
+            </a>
+
+        </nav>
+
+
+        <button
+            class="menu-button"
+            aria-label="Open Menu">
+
+            ☰
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =================================================
+         SIDE MENU
+         ================================================= -->
+
+    <aside class="side-menu">
+
+        <button
+            class="close-menu"
+            aria-label="Close Menu">
+
+            ×
+
+        </button>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="terms.html">
+            Terms & Conditions
+        </a>
+
+    </aside>
+
+
+
+    <!-- =================================================
+         BUY PAGE
+         ================================================= -->
+
+    <main class="buy-page">
+
+
+        <!-- Heading -->
+
+        <section class="buy-heading">
+
+            <p class="eyebrow">
+                TAMILANDA GAMING
+            </p>
+
+            <h1>
+                BUY YOUR
+                <span>DREAM IDS</span>
+                NOW
+            </h1>
+
+            <p>
+                Explore premium Free Fire accounts,
+                rare collections, high-level IDs
+                and exclusive accounts.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FILTER TOOLBAR
+             ================================================= -->
+
+        <section class="catalog-toolbar">
+
+            <div class="filter-title">
+
+                <span>
+                    ⚡
+                </span>
+
+                FILTER IDS
+
+            </div>
+
+
+            <div class="sort-box">
+
+                <label for="sort">
+                    SORT BY
+                </label>
+
+                <select id="sort">
+
+                    <option value="default">
+                        Featured
+                    </option>
+
+                    <option value="high-price">
+                        Price High to Low
+                    </option>
+
+                    <option value="low-price">
+                        Price Low to High
+                    </option>
+
+                    <option value="popular">
+                        Popular IDs 🔥
+                    </option>
+
+                    <option value="high-level">
+                        Level High to Low
+                    </option>
+
+                    <option value="low-level">
+                        Level Low to High
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATEGORY FILTERS
+             ================================================= -->
+
+        <section class="category-filters">
+
+            <button
+                class="category-btn active"
+                data-filter="all">
+
+                ALL IDS
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-filter="golden">
+
+                GOLDEN ELITES
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-filter="high">
+
+                HIGH LEVEL
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-filter="starter">
+
+                STARTER IDS
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-filter="mid">
+
+                MID RANGE IDS
+
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-filter="hot">
+
+                HOT IDS 🔥
+
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ID GRID
+             ================================================= -->
+
+        <section
+            class="id-grid"
+            id="idGrid">
+
+
+            <!-- =================================================
+                 SAMPLE ID 1
+                 ================================================= -->
+
+            <article
+                class="id-card"
+                data-category="golden"
+                data-price="50000"
+                data-level="90"
+                data-popular="100">
+
+                <div class="id-image">
+
+                    <div class="id-image-placeholder">
+                        ID IMAGE
+                    </div>
+
+                    <span class="id-badge">
+                        GOLDEN ELITE
+                    </span>
+
+                    <span class="popular-badge">
+                        🔥 POPULAR
+                    </span>
+
+                </div>
+
+
+                <div class="id-content">
+
+                    <div class="id-title-row">
+
+                        <h2 class="id-title">
+                            Golden Elite #001
+                        </h2>
+
+                        <div class="id-price">
+                            ₹50K
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-stats">
+
+                        <div class="stat">
+
+                            <small>
+                                Level
+                            </small>
+
+                            <strong>
+                                90
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Prime
+                            </small>
+
+                            <strong>
+                                8
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong>
+                                500+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-tags">
+
+                        <span class="tag">
+                            GOLDEN ELITE
+                        </span>
+
+                        <span class="tag">
+                            RARE ITEMS
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="view-id-btn">
+
+                        VIEW ID →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SAMPLE ID 2
+                 ================================================= -->
+
+            <article
+                class="id-card"
+                data-category="high"
+                data-price="30000"
+                data-level="85"
+                data-popular="80">
+
+                <div class="id-image">
+
+                    <div class="id-image-placeholder">
+                        ID IMAGE
+                    </div>
+
+                    <span class="id-badge">
+                        HIGH LEVEL
+                    </span>
+
+                </div>
+
+
+                <div class="id-content">
+
+                    <div class="id-title-row">
+
+                        <h2 class="id-title">
+                            High Level #002
+                        </h2>
+
+                        <div class="id-price">
+                            ₹30K
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-stats">
+
+                        <div class="stat">
+
+                            <small>
+                                Level
+                            </small>
+
+                            <strong>
+                                85
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Prime
+                            </small>
+
+                            <strong>
+                                7
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong>
+                                450+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-tags">
+
+                        <span class="tag">
+                            HIGH LEVEL
+                        </span>
+
+                        <span class="tag">
+                            RARE ITEMS
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="view-id-btn">
+
+                        VIEW ID →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SAMPLE ID 3
+                 ================================================= -->
+
+            <article
+                class="id-card"
+                data-category="starter"
+                data-price="10000"
+                data-level="70"
+                data-popular="50">
+
+                <div class="id-image">
+
+                    <div class="id-image-placeholder">
+                        ID IMAGE
+                    </div>
+
+                    <span class="id-badge">
+                        STARTER
+                    </span>
+
+                </div>
+
+
+                <div class="id-content">
+
+                    <div class="id-title-row">
+
+                        <h2 class="id-title">
+                            Starter ID #003
+                        </h2>
+
+                        <div class="id-price">
+                            ₹10K
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-stats">
+
+                        <div class="stat">
+
+                            <small>
+                                Level
+                            </small>
+
+                            <strong>
+                                70
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Prime
+                            </small>
+
+                            <strong>
+                                6
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong>
+                                300+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-tags">
+
+                        <span class="tag">
+                            STARTER
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="view-id-btn">
+
+                        VIEW ID →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SAMPLE ID 4
+                 ================================================= -->
+
+            <article
+                class="id-card"
+                data-category="mid"
+                data-price="20000"
+                data-level="78"
+                data-popular="70">
+
+                <div class="id-image">
+
+                    <div class="id-image-placeholder">
+                        ID IMAGE
+                    </div>
+
+                    <span class="id-badge">
+                        MID RANGE
+                    </span>
+
+                </div>
+
+
+                <div class="id-content">
+
+                    <div class="id-title-row">
+
+                        <h2 class="id-title">
+                            Mid Range #004
+                        </h2>
+
+                        <div class="id-price">
+                            ₹20K
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-stats">
+
+                        <div class="stat">
+
+                            <small>
+                                Level
+                            </small>
+
+                            <strong>
+                                78
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Prime
+                            </small>
+
+                            <strong>
+                                6
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong>
+                                400+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-tags">
+
+                        <span class="tag">
+                            MID RANGE
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="view-id-btn">
+
+                        VIEW ID →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SAMPLE ID 5
+                 ================================================= -->
+
+            <article
+                class="id-card"
+                data-category="hot"
+                data-price="25000"
+                data-level="82"
+                data-popular="95">
+
+                <div class="id-image">
+
+                    <div class="id-image-placeholder">
+                        ID IMAGE
+                    </div>
+
+                    <span class="id-badge">
+                        HOT ID 🔥
+                    </span>
+
+                    <span class="popular-badge">
+                        🔥 TRENDING
+                    </span>
+
+                </div>
+
+
+                <div class="id-content">
+
+                    <div class="id-title-row">
+
+                        <h2 class="id-title">
+                            Hot ID #005
+                        </h2>
+
+                        <div class="id-price">
+                            ₹25K
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-stats">
+
+                        <div class="stat">
+
+                            <small>
+                                Level
+                            </small>
+
+                            <strong>
+                                82
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Prime
+                            </small>
+
+                            <strong>
+                                7
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong>
+                                430+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-tags">
+
+                        <span class="tag">
+                            HOT
+                        </span>
+
+                        <span class="tag">
+                            POPULAR
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="view-id-btn">
+
+                        VIEW ID →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- =================================================
+                 SAMPLE ID 6
+                 ================================================= -->
+
+            <article
+                class="id-card"
+                data-category="golden"
+                data-price="75000"
+                data-level="95"
+                data-popular="98">
+
+                <div class="id-image">
+
+                    <div class="id-image-placeholder">
+                        ID IMAGE
+                    </div>
+
+                    <span class="id-badge">
+                        GOLDEN ELITE
+                    </span>
+
+                    <span class="popular-badge">
+                        🔥 PREMIUM
+                    </span>
+
+                </div>
+
+
+                <div class="id-content">
+
+                    <div class="id-title-row">
+
+                        <h2 class="id-title">
+                            Premium #006
+                        </h2>
+
+                        <div class="id-price">
+                            ₹75K
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-stats">
+
+                        <div class="stat">
+
+                            <small>
+                                Level
+                            </small>
+
+                            <strong>
+                                95
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Prime
+                            </small>
+
+                            <strong>
+                                8
+                            </strong>
+
+                        </div>
+
+                        <div class="stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong>
+                                550+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="id-tags">
+
+                        <span class="tag">
+                            GOLDEN ELITE
+                        </span>
+
+                        <span class="tag">
+                            PREMIUM
+                        </span>
+
+                        <span class="tag">
+                            RARE
+                        </span>
+
+                    </div>
+
+
+                    <a
+                        href="contact.html"
+                        class="view-id-btn">
+
+                        VIEW ID →
+
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- Empty State -->
+
+        <div
+            class="empty-state"
+            id="emptyState"
+            style="display:none;">
+
+            <div>
+                🔍
+            </div>
+
+            <h2>
+                No IDs Found
+            </h2>
+
+            <p>
+                Try another category or sorting option.
+            </p>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming">
+
+            <div>
+
+                <strong>
+                    TAMILANDA GAMING
+                </strong>
+
+                <p>
+                    Free Fire ID Marketplace
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="sell.html">
+                Sell Your ID
+            </a>
+
+            <a href="buy.html">
+                Buy Your ID
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="terms.html">
+                Terms
+            </a>
+
+        </div>
+
+
+        <p class="copyright">
+
+            © <span id="current-year"></span>
+            Tamilanda Gaming. All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- Main JS -->
+
+    <script src="app.js"></script>
+
+
+    <!-- =================================================
+         BUY PAGE FILTER / SORT
+         ================================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const buttons =
+                    document.querySelectorAll(
+                        ".category-btn"
+                    );
+
+                const cards =
+                    Array.from(
+                        document.querySelectorAll(
+                            ".id-card"
+                        )
+                    );
+
+                const grid =
+                    document.getElementById(
+                        "idGrid"
+                    );
+
+                const sort =
+                    document.getElementById(
+                        "sort"
+                    );
+
+                const emptyState =
+                    document.getElementById(
+                        "emptyState"
+                    );
+
+
+                let currentFilter = "all";
+
+
+                /* =========================================
+                   FILTER
+                   ========================================= */
+
+                function applyFilter() {
+
+                    let visibleCount = 0;
+
+                    cards.forEach(
+                        function (card) {
+
+                            const category =
+                                card.dataset.category;
+
+                            const show =
+                                currentFilter === "all" ||
+                                category === currentFilter;
+
+                            if (show) {
+
+                                card.style.display =
+                                    "";
+
+                                visibleCount++;
+
+                            } else {
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+
+                    if (emptyState) {
+
+                        emptyState.style.display =
+                            visibleCount === 0
+                                ? "block"
+                                : "none";
+
+                    }
+
+                }
+
+
+                buttons.forEach(
+                    function (button) {
+
+                        button.addEventListener(
+                            "click",
+                            function () {
+
+                                buttons.forEach(
+                                    function (btn) {
+                                        btn.classList.remove(
+                                            "active"
+                                        );
+                                    }
+                                );
+
+                                button.classList.add(
+                                    "active"
+                                );
+
+                                currentFilter =
+                                    button.dataset.filter;
+
+                                applyFilter();
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* =========================================
+                   SORT
+                   ========================================= */
+
+                sort.addEventListener(
+                    "change",
+                    function () {
+
+                        const value =
+                            sort.value;
+
+
+                        const sortedCards =
+                            [...cards];
+
+
+                        if (value === "high-price") {
+
+                            sortedCards.sort(
+                                (a, b) =>
+                                    Number(
+                                        b.dataset.price
+                                    ) -
+                                    Number(
+                                        a.dataset.price
+                                    )
+                            );
+
+                        }
+
+
+                        else if (
+                            value === "low-price"
+                        ) {
+
+                            sortedCards.sort(
+                                (a, b) =>
+                                    Number(
+                                        a.dataset.price
+                                    ) -
+                                    Number(
+                                        b.dataset.price
+                                    )
+                            );
+
+                        }
+
+
+                        else if (
+                            value === "popular"
+                        ) {
+
+                            sortedCards.sort(
+                                (a, b) =>
+                                    Number(
+                                        b.dataset.popular
+                                    ) -
+                                    Number(
+                                        a.dataset.popular
+                                    )
+                            );
+
+                        }
+
+
+                        else if (
+                            value === "high-level"
+                        ) {
+
+                            sortedCards.sort(
+                                (a, b) =>
+                                    Number(
+                                        b.dataset.level
+                                    ) -
+                                    Number(
+                                        a.dataset.level
+                                    )
+                            );
+
+                        }
+
+
+                        else if (
+                            value === "low-level"
+                        ) {
+
+                            sortedCards.sort(
+                                (a, b) =>
+                                    Number(
+                                        a.dataset.level
+                                    ) -
+                                    Number(
+                                        b.dataset.level
+                                    )
+                            );
+
+                        }
+
+
+                        sortedCards.forEach(
+                            function (card) {
+
+                                grid.appendChild(
+                                    card
+                                );
+
+                            }
+                        );
+
+
+                        applyFilter();
+
+                    }
+                );
+
+
+                applyFilter();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
