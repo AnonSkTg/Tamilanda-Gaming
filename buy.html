@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
@@ -24,7 +22,9 @@
 
         .buy-page {
             min-height: 100vh;
+
             padding: 55px 6% 100px;
+
             background:
                 radial-gradient(
                     circle at 50% 0%,
@@ -35,11 +35,15 @@
         }
 
 
-        /* Page Heading */
+        /* =================================================
+           PAGE HEADING
+           ================================================= */
 
         .buy-heading {
             max-width: 800px;
+
             margin: 0 auto;
+
             text-align: center;
         }
 
@@ -49,8 +53,11 @@
 
         .buy-heading h1 {
             font-size: clamp(38px, 6vw, 68px);
+
             line-height: 0.95;
+
             letter-spacing: -2px;
+
             font-weight: 900;
         }
 
@@ -60,9 +67,13 @@
 
         .buy-heading p {
             max-width: 600px;
+
             margin: 18px auto 0;
+
             color: #777;
+
             font-size: 14px;
+
             line-height: 1.7;
         }
 
@@ -73,11 +84,15 @@
 
         .catalog-toolbar {
             max-width: 1250px;
+
             margin: 50px auto 35px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             gap: 20px;
 
             padding: 15px;
@@ -85,34 +100,43 @@
             background: #101010;
 
             border: 1px solid rgba(255,255,255,0.07);
+
             border-radius: 16px;
         }
 
 
         .filter-title {
             display: flex;
+
             align-items: center;
+
             gap: 10px;
 
             font-size: 13px;
+
             font-weight: 800;
         }
 
         .filter-title span {
             color: #ffb000;
+
             font-size: 20px;
         }
 
 
         .sort-box {
             display: flex;
+
             align-items: center;
+
             gap: 10px;
         }
 
         .sort-box label {
             color: #666;
+
             font-size: 11px;
+
             font-weight: 700;
         }
 
@@ -122,14 +146,17 @@
             padding: 11px 14px;
 
             border: 1px solid rgba(255,255,255,0.10);
+
             border-radius: 9px;
 
             background: #171717;
+
             color: #fff;
 
             outline: none;
 
             font-size: 12px;
+
             font-weight: 700;
         }
 
@@ -144,10 +171,13 @@
 
         .category-filters {
             max-width: 1250px;
+
             margin: 0 auto 45px;
 
             display: flex;
+
             flex-wrap: wrap;
+
             gap: 10px;
         }
 
@@ -155,15 +185,19 @@
             padding: 11px 17px;
 
             border: 1px solid rgba(255,255,255,0.10);
+
             border-radius: 10px;
 
             background: #101010;
+
             color: #999;
 
             cursor: pointer;
 
             font-size: 11px;
+
             font-weight: 800;
+
             letter-spacing: 0.3px;
 
             transition: 0.2s ease;
@@ -171,12 +205,16 @@
 
         .category-btn:hover {
             color: #fff;
-            border-color: rgba(255,176,0,0.4);
+
+            border-color:
+                rgba(255,176,0,0.4);
         }
 
         .category-btn.active {
             color: #080808;
+
             background: #ffb000;
+
             border-color: #ffb000;
         }
 
@@ -187,9 +225,11 @@
 
         .id-grid {
             max-width: 1250px;
+
             margin: 0 auto;
 
             display: grid;
+
             grid-template-columns:
                 repeat(3, minmax(0, 1fr));
 
@@ -223,11 +263,14 @@
                 rgba(255,176,0,0.35);
 
             box-shadow:
-                0 20px 50px rgba(0,0,0,0.35);
+                0 20px 50px
+                rgba(0,0,0,0.35);
         }
 
 
-        /* Image */
+        /* =================================================
+           IMAGE
+           ================================================= */
 
         .id-image {
             position: relative;
@@ -248,6 +291,7 @@
 
         .id-image img {
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -263,31 +307,36 @@
         }
 
 
-        /* Placeholder */
-
         .id-image-placeholder {
             width: 100%;
+
             height: 100%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             color: #333;
 
             font-size: 12px;
+
             font-weight: 900;
 
             letter-spacing: 2px;
         }
 
 
-        /* Badges */
+        /* =================================================
+           BADGES
+           ================================================= */
 
         .id-badge {
             position: absolute;
 
             top: 12px;
+
             left: 12px;
 
             padding: 7px 10px;
@@ -295,71 +344,92 @@
             border-radius: 7px;
 
             background: #ffb000;
+
             color: #080808;
 
             font-size: 9px;
+
             font-weight: 900;
         }
+
 
         .popular-badge {
             position: absolute;
 
             top: 12px;
+
             right: 12px;
 
             padding: 7px 10px;
 
             border-radius: 7px;
 
-            background: rgba(0,0,0,0.75);
+            background:
+                rgba(0,0,0,0.75);
+
             color: #fff;
 
             font-size: 9px;
+
             font-weight: 900;
 
             backdrop-filter: blur(8px);
         }
 
 
-        /* Card Content */
+        /* =================================================
+           CARD CONTENT
+           ================================================= */
 
         .id-content {
             padding: 18px;
         }
 
+
         .id-title-row {
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
+
             gap: 10px;
         }
 
+
         .id-title {
             font-size: 17px;
+
             font-weight: 900;
         }
+
 
         .id-price {
             color: #ffb000;
 
             font-size: 18px;
+
             font-weight: 900;
 
             white-space: nowrap;
         }
 
 
-        /* Stats */
+        /* =================================================
+           STATS
+           ================================================= */
 
         .id-stats {
             margin-top: 16px;
 
             display: grid;
+
             grid-template-columns:
                 repeat(3, 1fr);
 
             gap: 7px;
         }
+
 
         .stat {
             padding: 10px 7px;
@@ -371,16 +441,19 @@
             text-align: center;
         }
 
+
         .stat small {
             display: block;
 
             color: #666;
 
             font-size: 8px;
+
             font-weight: 800;
 
             text-transform: uppercase;
         }
+
 
         .stat strong {
             display: block;
@@ -393,10 +466,13 @@
         }
 
 
-        /* Tags */
+        /* =================================================
+           TAGS
+           ================================================= */
 
         .id-tags {
             display: flex;
+
             flex-wrap: wrap;
 
             gap: 6px;
@@ -404,21 +480,26 @@
             margin-top: 13px;
         }
 
+
         .tag {
             padding: 5px 8px;
 
             border-radius: 6px;
 
-            background: rgba(255,176,0,0.07);
+            background:
+                rgba(255,176,0,0.07);
 
             color: #b88922;
 
             font-size: 8px;
+
             font-weight: 800;
         }
 
 
-        /* View Button */
+        /* =================================================
+           VIEW ID BUTTON
+           ================================================= */
 
         .view-id-btn {
             width: 100%;
@@ -428,26 +509,34 @@
             min-height: 43px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             border-radius: 9px;
 
             background: #181818;
 
-            border: 1px solid rgba(255,255,255,0.09);
+            border:
+                1px solid
+                rgba(255,255,255,0.09);
 
             color: #fff;
 
             font-size: 11px;
+
             font-weight: 900;
 
             transition: 0.2s ease;
         }
 
+
         .view-id-btn:hover {
             background: #ffb000;
+
             color: #080808;
+
             border-color: #ffb000;
         }
 
@@ -465,7 +554,8 @@
 
             text-align: center;
 
-            border: 1px dashed
+            border:
+                1px dashed
                 rgba(255,255,255,0.12);
 
             border-radius: 18px;
@@ -473,18 +563,24 @@
             background: #0d0d0d;
         }
 
+
         .empty-state div {
             font-size: 35px;
+
             margin-bottom: 15px;
         }
+
 
         .empty-state h2 {
             font-size: 20px;
         }
 
+
         .empty-state p {
             margin-top: 8px;
+
             color: #666;
+
             font-size: 12px;
         }
 
@@ -506,41 +602,55 @@
         @media (max-width: 600px) {
 
             .buy-page {
-                padding: 45px 5% 80px;
+                padding:
+                    45px 5% 80px;
             }
+
 
             .buy-heading h1 {
                 font-size: 43px;
             }
 
+
             .catalog-toolbar {
                 align-items: stretch;
+
                 flex-direction: column;
             }
 
+
             .sort-box {
                 width: 100%;
+
                 flex-direction: column;
+
                 align-items: stretch;
             }
+
 
             .sort-box select {
                 width: 100%;
             }
 
+
             .category-filters {
                 gap: 7px;
             }
 
+
             .category-btn {
                 padding: 10px 12px;
+
                 font-size: 9px;
             }
 
+
             .id-grid {
                 grid-template-columns: 1fr;
+
                 gap: 16px;
             }
+
 
             .id-content {
                 padding: 16px;
@@ -562,7 +672,9 @@
 
     <header class="top-header">
 
-        <a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="brand">
 
             <img
                 src="assets/ic_launcher.png"
@@ -590,9 +702,11 @@
                 HOME
             </a>
 
+
             <a href="sell.html">
                 SELL YOUR ID
             </a>
+
 
             <a
                 href="buy.html"
@@ -631,17 +745,21 @@
 
         </button>
 
+
         <a href="index.html">
             Home
         </a>
+
 
         <a href="about.html">
             About
         </a>
 
+
         <a href="contact.html">
             Contact Us
         </a>
+
 
         <a href="terms.html">
             Terms & Conditions
@@ -658,7 +776,7 @@
     <main class="buy-page">
 
 
-        <!-- Heading -->
+        <!-- PAGE HEADING -->
 
         <section class="buy-heading">
 
@@ -666,16 +784,26 @@
                 TAMILANDA GAMING
             </p>
 
+
             <h1>
+
                 BUY YOUR
-                <span>DREAM IDS</span>
+
+                <span>
+                    DREAM IDS
+                </span>
+
                 NOW
+
             </h1>
 
+
             <p>
+
                 Explore premium Free Fire accounts,
                 rare collections, high-level IDs
                 and exclusive accounts.
+
             </p>
 
         </section>
@@ -687,6 +815,7 @@
              ================================================= -->
 
         <section class="catalog-toolbar">
+
 
             <div class="filter-title">
 
@@ -705,27 +834,33 @@
                     SORT BY
                 </label>
 
+
                 <select id="sort">
 
                     <option value="default">
                         Featured
                     </option>
 
+
                     <option value="high-price">
                         Price High to Low
                     </option>
+
 
                     <option value="low-price">
                         Price Low to High
                     </option>
 
+
                     <option value="popular">
                         Popular IDs 🔥
                     </option>
 
+
                     <option value="high-level">
                         Level High to Low
                     </option>
+
 
                     <option value="low-level">
                         Level Low to High
@@ -744,6 +879,7 @@
              ================================================= -->
 
         <section class="category-filters">
+
 
             <button
                 class="category-btn active"
@@ -812,7 +948,7 @@
 
 
             <!-- =================================================
-                 SAMPLE ID 1
+                 ID 001
                  ================================================= -->
 
             <article
@@ -822,15 +958,18 @@
                 data-level="90"
                 data-popular="100">
 
+
                 <div class="id-image">
 
                     <div class="id-image-placeholder">
                         ID IMAGE
                     </div>
 
+
                     <span class="id-badge">
                         GOLDEN ELITE
                     </span>
+
 
                     <span class="popular-badge">
                         🔥 POPULAR
@@ -841,11 +980,13 @@
 
                 <div class="id-content">
 
+
                     <div class="id-title-row">
 
                         <h2 class="id-title">
                             Golden Elite #001
                         </h2>
+
 
                         <div class="id-price">
                             ₹50K
@@ -855,6 +996,7 @@
 
 
                     <div class="id-stats">
+
 
                         <div class="stat">
 
@@ -868,6 +1010,7 @@
 
                         </div>
 
+
                         <div class="stat">
 
                             <small>
@@ -879,6 +1022,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="stat">
 
@@ -901,6 +1045,7 @@
                             GOLDEN ELITE
                         </span>
 
+
                         <span class="tag">
                             RARE ITEMS
                         </span>
@@ -909,7 +1054,7 @@
 
 
                     <a
-                        href="contact.html"
+                        href="id-details.html"
                         class="view-id-btn">
 
                         VIEW ID →
@@ -923,7 +1068,7 @@
 
 
             <!-- =================================================
-                 SAMPLE ID 2
+                 ID 002
                  ================================================= -->
 
             <article
@@ -933,11 +1078,13 @@
                 data-level="85"
                 data-popular="80">
 
+
                 <div class="id-image">
 
                     <div class="id-image-placeholder">
                         ID IMAGE
                     </div>
+
 
                     <span class="id-badge">
                         HIGH LEVEL
@@ -948,11 +1095,13 @@
 
                 <div class="id-content">
 
+
                     <div class="id-title-row">
 
                         <h2 class="id-title">
                             High Level #002
                         </h2>
+
 
                         <div class="id-price">
                             ₹30K
@@ -962,6 +1111,7 @@
 
 
                     <div class="id-stats">
+
 
                         <div class="stat">
 
@@ -975,6 +1125,7 @@
 
                         </div>
 
+
                         <div class="stat">
 
                             <small>
@@ -986,6 +1137,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="stat">
 
@@ -1008,6 +1160,7 @@
                             HIGH LEVEL
                         </span>
 
+
                         <span class="tag">
                             RARE ITEMS
                         </span>
@@ -1016,7 +1169,7 @@
 
 
                     <a
-                        href="contact.html"
+                        href="id-details.html"
                         class="view-id-btn">
 
                         VIEW ID →
@@ -1030,7 +1183,7 @@
 
 
             <!-- =================================================
-                 SAMPLE ID 3
+                 ID 003
                  ================================================= -->
 
             <article
@@ -1040,11 +1193,13 @@
                 data-level="70"
                 data-popular="50">
 
+
                 <div class="id-image">
 
                     <div class="id-image-placeholder">
                         ID IMAGE
                     </div>
+
 
                     <span class="id-badge">
                         STARTER
@@ -1055,11 +1210,13 @@
 
                 <div class="id-content">
 
+
                     <div class="id-title-row">
 
                         <h2 class="id-title">
                             Starter ID #003
                         </h2>
+
 
                         <div class="id-price">
                             ₹10K
@@ -1069,6 +1226,7 @@
 
 
                     <div class="id-stats">
+
 
                         <div class="stat">
 
@@ -1082,6 +1240,7 @@
 
                         </div>
 
+
                         <div class="stat">
 
                             <small>
@@ -1093,6 +1252,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="stat">
 
@@ -1119,7 +1279,7 @@
 
 
                     <a
-                        href="contact.html"
+                        href="id-details.html"
                         class="view-id-btn">
 
                         VIEW ID →
@@ -1133,7 +1293,7 @@
 
 
             <!-- =================================================
-                 SAMPLE ID 4
+                 ID 004
                  ================================================= -->
 
             <article
@@ -1143,11 +1303,13 @@
                 data-level="78"
                 data-popular="70">
 
+
                 <div class="id-image">
 
                     <div class="id-image-placeholder">
                         ID IMAGE
                     </div>
+
 
                     <span class="id-badge">
                         MID RANGE
@@ -1158,11 +1320,13 @@
 
                 <div class="id-content">
 
+
                     <div class="id-title-row">
 
                         <h2 class="id-title">
                             Mid Range #004
                         </h2>
+
 
                         <div class="id-price">
                             ₹20K
@@ -1172,6 +1336,7 @@
 
 
                     <div class="id-stats">
+
 
                         <div class="stat">
 
@@ -1185,6 +1350,7 @@
 
                         </div>
 
+
                         <div class="stat">
 
                             <small>
@@ -1196,6 +1362,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="stat">
 
@@ -1222,7 +1389,7 @@
 
 
                     <a
-                        href="contact.html"
+                        href="id-details.html"
                         class="view-id-btn">
 
                         VIEW ID →
@@ -1236,7 +1403,7 @@
 
 
             <!-- =================================================
-                 SAMPLE ID 5
+                 ID 005
                  ================================================= -->
 
             <article
@@ -1246,15 +1413,18 @@
                 data-level="82"
                 data-popular="95">
 
+
                 <div class="id-image">
 
                     <div class="id-image-placeholder">
                         ID IMAGE
                     </div>
 
+
                     <span class="id-badge">
                         HOT ID 🔥
                     </span>
+
 
                     <span class="popular-badge">
                         🔥 TRENDING
@@ -1265,11 +1435,13 @@
 
                 <div class="id-content">
 
+
                     <div class="id-title-row">
 
                         <h2 class="id-title">
                             Hot ID #005
                         </h2>
+
 
                         <div class="id-price">
                             ₹25K
@@ -1279,6 +1451,7 @@
 
 
                     <div class="id-stats">
+
 
                         <div class="stat">
 
@@ -1292,6 +1465,7 @@
 
                         </div>
 
+
                         <div class="stat">
 
                             <small>
@@ -1303,6 +1477,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="stat">
 
@@ -1325,6 +1500,7 @@
                             HOT
                         </span>
 
+
                         <span class="tag">
                             POPULAR
                         </span>
@@ -1333,7 +1509,7 @@
 
 
                     <a
-                        href="contact.html"
+                        href="id-details.html"
                         class="view-id-btn">
 
                         VIEW ID →
@@ -1347,7 +1523,7 @@
 
 
             <!-- =================================================
-                 SAMPLE ID 6
+                 ID 006
                  ================================================= -->
 
             <article
@@ -1357,15 +1533,18 @@
                 data-level="95"
                 data-popular="98">
 
+
                 <div class="id-image">
 
                     <div class="id-image-placeholder">
                         ID IMAGE
                     </div>
 
+
                     <span class="id-badge">
                         GOLDEN ELITE
                     </span>
+
 
                     <span class="popular-badge">
                         🔥 PREMIUM
@@ -1376,11 +1555,13 @@
 
                 <div class="id-content">
 
+
                     <div class="id-title-row">
 
                         <h2 class="id-title">
                             Premium #006
                         </h2>
+
 
                         <div class="id-price">
                             ₹75K
@@ -1390,6 +1571,7 @@
 
 
                     <div class="id-stats">
+
 
                         <div class="stat">
 
@@ -1403,6 +1585,7 @@
 
                         </div>
 
+
                         <div class="stat">
 
                             <small>
@@ -1414,6 +1597,7 @@
                             </strong>
 
                         </div>
+
 
                         <div class="stat">
 
@@ -1436,9 +1620,11 @@
                             GOLDEN ELITE
                         </span>
 
+
                         <span class="tag">
                             PREMIUM
                         </span>
+
 
                         <span class="tag">
                             RARE
@@ -1448,7 +1634,7 @@
 
 
                     <a
-                        href="contact.html"
+                        href="id-details.html"
                         class="view-id-btn">
 
                         VIEW ID →
@@ -1463,7 +1649,9 @@
 
 
 
-        <!-- Empty State -->
+        <!-- =================================================
+             EMPTY STATE
+             ================================================= -->
 
         <div
             class="empty-state"
@@ -1474,9 +1662,11 @@
                 🔍
             </div>
 
+
             <h2>
                 No IDs Found
             </h2>
+
 
             <p>
                 Try another category or sorting option.
@@ -1494,17 +1684,20 @@
 
     <footer>
 
+
         <div class="footer-brand">
 
             <img
                 src="assets/ic_launcher.png"
                 alt="Tamilanda Gaming">
 
+
             <div>
 
                 <strong>
                     TAMILANDA GAMING
                 </strong>
+
 
                 <p>
                     Free Fire ID Marketplace
@@ -1515,23 +1708,28 @@
         </div>
 
 
+
         <div class="footer-links">
 
             <a href="index.html">
                 Home
             </a>
 
+
             <a href="sell.html">
                 Sell Your ID
             </a>
+
 
             <a href="buy.html">
                 Buy Your ID
             </a>
 
+
             <a href="contact.html">
                 Contact
             </a>
+
 
             <a href="terms.html">
                 Terms
@@ -1540,10 +1738,14 @@
         </div>
 
 
+
         <p class="copyright">
 
-            © <span id="current-year"></span>
-            Tamilanda Gaming. All rights reserved.
+            ©
+            <span id="current-year"></span>
+
+            Tamilanda Gaming.
+            All rights reserved.
 
         </p>
 
@@ -1551,9 +1753,12 @@
 
 
 
-    <!-- Main JS -->
+    <!-- =================================================
+         MAIN JS
+         ================================================= -->
 
     <script src="app.js"></script>
+
 
 
     <!-- =================================================
@@ -1566,10 +1771,12 @@
             "DOMContentLoaded",
             function () {
 
+
                 const buttons =
                     document.querySelectorAll(
                         ".category-btn"
                     );
+
 
                 const cards =
                     Array.from(
@@ -1578,15 +1785,18 @@
                         )
                     );
 
+
                 const grid =
                     document.getElementById(
                         "idGrid"
                     );
 
+
                 const sort =
                     document.getElementById(
                         "sort"
                     );
+
 
                 const emptyState =
                     document.getElementById(
@@ -1597,23 +1807,29 @@
                 let currentFilter = "all";
 
 
+
                 /* =========================================
                    FILTER
                    ========================================= */
 
                 function applyFilter() {
 
+
                     let visibleCount = 0;
+
 
                     cards.forEach(
                         function (card) {
 
+
                             const category =
                                 card.dataset.category;
+
 
                             const show =
                                 currentFilter === "all" ||
                                 category === currentFilter;
+
 
                             if (show) {
 
@@ -1622,7 +1838,9 @@
 
                                 visibleCount++;
 
-                            } else {
+                            }
+
+                            else {
 
                                 card.style.display =
                                     "none";
@@ -1645,27 +1863,35 @@
                 }
 
 
+
                 buttons.forEach(
                     function (button) {
+
 
                         button.addEventListener(
                             "click",
                             function () {
 
+
                                 buttons.forEach(
                                     function (btn) {
+
                                         btn.classList.remove(
                                             "active"
                                         );
+
                                     }
                                 );
+
 
                                 button.classList.add(
                                     "active"
                                 );
 
+
                                 currentFilter =
                                     button.dataset.filter;
+
 
                                 applyFilter();
 
@@ -1676,6 +1902,7 @@
                 );
 
 
+
                 /* =========================================
                    SORT
                    ========================================= */
@@ -1683,6 +1910,7 @@
                 sort.addEventListener(
                     "change",
                     function () {
+
 
                         const value =
                             sort.value;
@@ -1692,19 +1920,25 @@
                             [...cards];
 
 
-                        if (value === "high-price") {
+
+                        if (
+                            value === "high-price"
+                        ) {
 
                             sortedCards.sort(
                                 (a, b) =>
+
                                     Number(
                                         b.dataset.price
                                     ) -
+
                                     Number(
                                         a.dataset.price
                                     )
                             );
 
                         }
+
 
 
                         else if (
@@ -1713,9 +1947,11 @@
 
                             sortedCards.sort(
                                 (a, b) =>
+
                                     Number(
                                         a.dataset.price
                                     ) -
+
                                     Number(
                                         b.dataset.price
                                     )
@@ -1724,15 +1960,18 @@
                         }
 
 
+
                         else if (
                             value === "popular"
                         ) {
 
                             sortedCards.sort(
                                 (a, b) =>
+
                                     Number(
                                         b.dataset.popular
                                     ) -
+
                                     Number(
                                         a.dataset.popular
                                     )
@@ -1741,21 +1980,25 @@
                         }
 
 
+
                         else if (
                             value === "high-level"
                         ) {
 
                             sortedCards.sort(
                                 (a, b) =>
+
                                     Number(
                                         b.dataset.level
                                     ) -
+
                                     Number(
                                         a.dataset.level
                                     )
                             );
 
                         }
+
 
 
                         else if (
@@ -1764,15 +2007,18 @@
 
                             sortedCards.sort(
                                 (a, b) =>
+
                                     Number(
                                         a.dataset.level
                                     ) -
+
                                     Number(
                                         b.dataset.level
                                     )
                             );
 
                         }
+
 
 
                         sortedCards.forEach(
@@ -1792,12 +2038,18 @@
                 );
 
 
+
+                /* =========================================
+                   INITIAL FILTER
+                   ========================================= */
+
                 applyFilter();
 
             }
         );
 
     </script>
+
 
 </body>
 
