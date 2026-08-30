@@ -2,262 +2,360 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="Tamilanda Gaming - Browse and buy Free Fire IDs.">
+        content="Tamilanda Gaming - Browse premium Free Fire IDs, rare collections and high-level accounts.">
 
     <title>Buy Your ID | Tamilanda Gaming</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="styles.css">
+
 
     <style>
 
-        /* =================================================
+        /* =====================================================
            BUY PAGE
-           ================================================= */
+           ===================================================== */
 
         .buy-page {
             min-height: 100vh;
 
-            padding: 55px 6% 100px;
+            padding:
+                55px 6% 100px;
 
             background:
                 radial-gradient(
                     circle at 50% 0%,
-                    rgba(255, 176, 0, 0.10),
+                    rgba(255,176,0,0.10),
                     transparent 35%
                 ),
                 #080808;
         }
 
 
-        /* =================================================
-           PAGE HEADING
-           ================================================= */
+        /* =====================================================
+           HEADING
+           ===================================================== */
 
         .buy-heading {
             max-width: 800px;
 
-            margin: 0 auto;
+            margin:
+                0 auto;
 
             text-align: center;
         }
+
 
         .buy-heading .eyebrow {
             margin-bottom: 12px;
         }
 
+
         .buy-heading h1 {
-            font-size: clamp(38px, 6vw, 68px);
+            font-size:
+                clamp(38px, 6vw, 68px);
 
-            line-height: 0.95;
+            line-height:
+                0.95;
 
-            letter-spacing: -2px;
+            letter-spacing:
+                -2px;
 
-            font-weight: 900;
+            font-weight:
+                900;
         }
+
 
         .buy-heading h1 span {
-            color: #ffb000;
+            color:
+                #ffb000;
         }
+
 
         .buy-heading p {
-            max-width: 600px;
+            max-width:
+                600px;
 
-            margin: 18px auto 0;
+            margin:
+                18px auto 0;
 
-            color: #777;
+            color:
+                #777;
 
-            font-size: 14px;
+            font-size:
+                14px;
 
-            line-height: 1.7;
+            line-height:
+                1.7;
         }
 
 
-        /* =================================================
-           FILTER + SORT BAR
-           ================================================= */
+        /* =====================================================
+           TOOLBAR
+           ===================================================== */
 
         .catalog-toolbar {
-            max-width: 1250px;
+            max-width:
+                1250px;
 
-            margin: 50px auto 35px;
+            margin:
+                50px auto 28px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            gap: 20px;
+            gap:
+                20px;
 
-            padding: 15px;
+            padding:
+                15px;
 
-            background: #101010;
+            background:
+                #101010;
 
-            border: 1px solid rgba(255,255,255,0.07);
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
 
-            border-radius: 16px;
+            border-radius:
+                16px;
         }
 
 
         .filter-title {
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 10px;
+            gap:
+                10px;
 
-            font-size: 13px;
+            font-size:
+                13px;
 
-            font-weight: 800;
+            font-weight:
+                800;
         }
 
-        .filter-title span {
-            color: #ffb000;
 
-            font-size: 20px;
+        .filter-title span {
+            color:
+                #ffb000;
+
+            font-size:
+                20px;
         }
 
 
         .sort-box {
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            gap: 10px;
+            gap:
+                10px;
         }
+
 
         .sort-box label {
-            color: #666;
+            color:
+                #666;
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 700;
+            font-weight:
+                700;
         }
+
 
         .sort-box select {
-            min-width: 190px;
+            min-width:
+                220px;
 
-            padding: 11px 14px;
+            padding:
+                11px 14px;
 
-            border: 1px solid rgba(255,255,255,0.10);
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
 
-            border-radius: 9px;
+            border-radius:
+                9px;
 
-            background: #171717;
+            background:
+                #171717;
 
-            color: #fff;
+            color:
+                #fff;
 
-            outline: none;
+            outline:
+                none;
 
-            font-size: 12px;
+            font-size:
+                12px;
 
-            font-weight: 700;
+            font-weight:
+                700;
         }
+
 
         .sort-box select:focus {
-            border-color: #ffb000;
+            border-color:
+                #ffb000;
         }
 
 
-        /* =================================================
+        /* =====================================================
            CATEGORY FILTERS
-           ================================================= */
+           ===================================================== */
 
         .category-filters {
-            max-width: 1250px;
+            max-width:
+                1250px;
 
-            margin: 0 auto 45px;
+            margin:
+                0 auto 45px;
 
-            display: flex;
+            display:
+                flex;
 
-            flex-wrap: wrap;
+            flex-wrap:
+                wrap;
 
-            gap: 10px;
+            gap:
+                10px;
         }
+
 
         .category-btn {
-            padding: 11px 17px;
+            padding:
+                11px 17px;
 
-            border: 1px solid rgba(255,255,255,0.10);
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
 
-            border-radius: 10px;
+            border-radius:
+                10px;
 
-            background: #101010;
+            background:
+                #101010;
 
-            color: #999;
+            color:
+                #999;
 
-            cursor: pointer;
+            cursor:
+                pointer;
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            letter-spacing: 0.3px;
+            letter-spacing:
+                0.3px;
 
-            transition: 0.2s ease;
+            transition:
+                0.2s ease;
         }
 
+
         .category-btn:hover {
-            color: #fff;
+            color:
+                #fff;
 
             border-color:
                 rgba(255,176,0,0.4);
         }
 
+
         .category-btn.active {
-            color: #080808;
+            color:
+                #080808;
 
-            background: #ffb000;
+            background:
+                #ffb000;
 
-            border-color: #ffb000;
+            border-color:
+                #ffb000;
         }
 
 
-        /* =================================================
+        /* =====================================================
            ID GRID
-           ================================================= */
+           ===================================================== */
 
         .id-grid {
-            max-width: 1250px;
+            max-width:
+                1250px;
 
-            margin: 0 auto;
+            margin:
+                0 auto;
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(3, minmax(0, 1fr));
+                repeat(
+                    3,
+                    minmax(0,1fr)
+                );
 
-            gap: 20px;
+            gap:
+                20px;
         }
 
 
-        /* =================================================
+        /* =====================================================
            ID CARD
-           ================================================= */
+           ===================================================== */
 
         .id-card {
-            overflow: hidden;
+            overflow:
+                hidden;
 
-            border-radius: 18px;
+            border-radius:
+                18px;
 
-            background: #101010;
+            background:
+                #101010;
 
-            border: 1px solid rgba(255,255,255,0.07);
+            border:
+                1px solid
+                rgba(255,255,255,0.07);
 
             transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
+                transform 0.22s ease,
+                border-color 0.22s ease,
+                box-shadow 0.22s ease;
         }
 
+
         .id-card:hover {
-            transform: translateY(-6px);
+            transform:
+                translateY(-5px);
 
             border-color:
                 rgba(255,176,0,0.35);
@@ -268,18 +366,22 @@
         }
 
 
-        /* =================================================
+        /* =====================================================
            IMAGE
-           ================================================= */
+           ===================================================== */
 
         .id-image {
-            position: relative;
+            position:
+                relative;
 
-            width: 100%;
+            width:
+                100%;
 
-            aspect-ratio: 4 / 5;
+            aspect-ratio:
+                4 / 5;
 
-            overflow: hidden;
+            overflow:
+                hidden;
 
             background:
                 linear-gradient(
@@ -289,371 +391,535 @@
                 );
         }
 
+
         .id-image img {
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            object-fit: cover;
+            object-fit:
+                cover;
 
-            display: block;
+            display:
+                block;
 
             transition:
-                transform 0.4s ease;
+                transform 0.35s ease;
         }
 
-        .id-card:hover .id-image img {
-            transform: scale(1.04);
+
+        .id-card:hover
+        .id-image img {
+            transform:
+                scale(1.035);
         }
 
 
         .id-image-placeholder {
-            width: 100%;
+            width:
+                100%;
 
-            height: 100%;
+            height:
+                100%;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            color: #333;
+            color:
+                #333;
 
-            font-size: 12px;
+            font-size:
+                12px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            letter-spacing: 2px;
+            letter-spacing:
+                2px;
         }
 
 
-        /* =================================================
+        /* =====================================================
            BADGES
-           ================================================= */
+           ===================================================== */
 
         .id-badge {
-            position: absolute;
+            position:
+                absolute;
 
-            top: 12px;
+            top:
+                12px;
 
-            left: 12px;
+            left:
+                12px;
 
-            padding: 7px 10px;
+            padding:
+                7px 10px;
 
-            border-radius: 7px;
+            border-radius:
+                7px;
 
-            background: #ffb000;
+            background:
+                #ffb000;
 
-            color: #080808;
+            color:
+                #080808;
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 900;
+            font-weight:
+                900;
+
+            z-index:
+                2;
         }
 
 
         .popular-badge {
-            position: absolute;
+            position:
+                absolute;
 
-            top: 12px;
+            top:
+                12px;
 
-            right: 12px;
+            right:
+                12px;
 
-            padding: 7px 10px;
+            padding:
+                7px 10px;
 
-            border-radius: 7px;
+            border-radius:
+                7px;
 
             background:
                 rgba(0,0,0,0.75);
 
-            color: #fff;
+            color:
+                #fff;
 
-            font-size: 9px;
+            font-size:
+                9px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            backdrop-filter: blur(8px);
+            backdrop-filter:
+                blur(8px);
+
+            z-index:
+                2;
         }
 
 
-        /* =================================================
+        /* =====================================================
            CARD CONTENT
-           ================================================= */
+           ===================================================== */
 
         .id-content {
-            padding: 18px;
+            padding:
+                18px;
         }
 
 
         .id-title-row {
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            gap: 10px;
+            gap:
+                10px;
         }
 
 
         .id-title {
-            font-size: 17px;
+            font-size:
+                17px;
 
-            font-weight: 900;
+            font-weight:
+                900;
         }
 
 
         .id-price {
-            color: #ffb000;
+            color:
+                #ffb000;
 
-            font-size: 18px;
+            font-size:
+                18px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            white-space: nowrap;
+            white-space:
+                nowrap;
         }
 
 
-        /* =================================================
+        /* =====================================================
            STATS
-           ================================================= */
+           ===================================================== */
 
         .id-stats {
-            margin-top: 16px;
+            margin-top:
+                16px;
 
-            display: grid;
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(3,1fr);
 
-            gap: 7px;
+            gap:
+                7px;
         }
 
 
         .stat {
-            padding: 10px 7px;
+            padding:
+                10px 7px;
 
-            border-radius: 8px;
+            border-radius:
+                8px;
 
-            background: #171717;
+            background:
+                #171717;
 
-            text-align: center;
+            text-align:
+                center;
         }
 
 
         .stat small {
-            display: block;
+            display:
+                block;
 
-            color: #666;
+            color:
+                #666;
 
-            font-size: 8px;
+            font-size:
+                8px;
 
-            font-weight: 800;
+            font-weight:
+                800;
 
-            text-transform: uppercase;
+            text-transform:
+                uppercase;
         }
 
 
         .stat strong {
-            display: block;
+            display:
+                block;
 
-            margin-top: 4px;
+            margin-top:
+                4px;
 
-            color: #ddd;
+            color:
+                #ddd;
 
-            font-size: 11px;
+            font-size:
+                11px;
         }
 
 
-        /* =================================================
+        /* =====================================================
            TAGS
-           ================================================= */
+           ===================================================== */
 
         .id-tags {
-            display: flex;
+            display:
+                flex;
 
-            flex-wrap: wrap;
+            flex-wrap:
+                wrap;
 
-            gap: 6px;
+            gap:
+                6px;
 
-            margin-top: 13px;
+            margin-top:
+                13px;
         }
 
 
         .tag {
-            padding: 5px 8px;
+            padding:
+                5px 8px;
 
-            border-radius: 6px;
+            border-radius:
+                6px;
 
             background:
                 rgba(255,176,0,0.07);
 
-            color: #b88922;
+            color:
+                #b88922;
 
-            font-size: 8px;
+            font-size:
+                8px;
 
-            font-weight: 800;
+            font-weight:
+                800;
         }
 
 
-        /* =================================================
-           VIEW ID BUTTON
-           ================================================= */
+        /* =====================================================
+           VIEW BUTTON
+           ===================================================== */
 
         .view-id-btn {
-            width: 100%;
+            width:
+                100%;
 
-            margin-top: 16px;
+            margin-top:
+                16px;
 
-            min-height: 43px;
+            min-height:
+                43px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            align-items:
+                center;
 
-            justify-content: center;
+            justify-content:
+                center;
 
-            border-radius: 9px;
+            border-radius:
+                9px;
 
-            background: #181818;
+            background:
+                #181818;
 
             border:
                 1px solid
                 rgba(255,255,255,0.09);
 
-            color: #fff;
+            color:
+                #fff;
 
-            font-size: 11px;
+            font-size:
+                11px;
 
-            font-weight: 900;
+            font-weight:
+                900;
 
-            transition: 0.2s ease;
+            transition:
+                0.2s ease;
         }
 
 
         .view-id-btn:hover {
-            background: #ffb000;
+            background:
+                #ffb000;
 
-            color: #080808;
+            color:
+                #080808;
 
-            border-color: #ffb000;
+            border-color:
+                #ffb000;
         }
 
 
-        /* =================================================
+        /* =====================================================
            EMPTY STATE
-           ================================================= */
+           ===================================================== */
 
         .empty-state {
-            max-width: 600px;
+            max-width:
+                600px;
 
-            margin: 70px auto;
+            margin:
+                70px auto;
 
-            padding: 55px 25px;
+            padding:
+                55px 25px;
 
-            text-align: center;
+            text-align:
+                center;
 
             border:
                 1px dashed
                 rgba(255,255,255,0.12);
 
-            border-radius: 18px;
+            border-radius:
+                18px;
 
-            background: #0d0d0d;
+            background:
+                #0d0d0d;
         }
 
 
         .empty-state div {
-            font-size: 35px;
+            font-size:
+                35px;
 
-            margin-bottom: 15px;
+            margin-bottom:
+                15px;
         }
 
 
         .empty-state h2 {
-            font-size: 20px;
+            font-size:
+                20px;
         }
 
 
         .empty-state p {
-            margin-top: 8px;
+            margin-top:
+                8px;
 
-            color: #666;
+            color:
+                #666;
 
-            font-size: 12px;
+            font-size:
+                12px;
         }
 
 
-        /* =================================================
-           MOBILE
-           ================================================= */
+        /* =====================================================
+           TABLET
+           ===================================================== */
 
-        @media (max-width: 850px) {
+        @media (max-width: 1000px) {
 
             .id-grid {
                 grid-template-columns:
-                    repeat(2, minmax(0, 1fr));
+                    repeat(
+                        2,
+                        minmax(0,1fr)
+                    );
             }
 
         }
 
+
+        /* =====================================================
+           MOBILE
+           ===================================================== */
 
         @media (max-width: 600px) {
 
             .buy-page {
                 padding:
-                    45px 5% 80px;
+                    42px 5% 80px;
             }
 
 
             .buy-heading h1 {
-                font-size: 43px;
+                font-size:
+                    43px;
+            }
+
+
+            .buy-heading p {
+                font-size:
+                    13px;
             }
 
 
             .catalog-toolbar {
-                align-items: stretch;
+                align-items:
+                    stretch;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
+
+                margin-top:
+                    38px;
             }
 
 
             .sort-box {
-                width: 100%;
+                width:
+                    100%;
 
-                flex-direction: column;
+                flex-direction:
+                    column;
 
-                align-items: stretch;
+                align-items:
+                    stretch;
             }
 
 
             .sort-box select {
-                width: 100%;
+                width:
+                    100%;
+
+                min-width:
+                    0;
             }
 
 
             .category-filters {
-                gap: 7px;
+                gap:
+                    7px;
+
+                margin-bottom:
+                    30px;
             }
 
 
             .category-btn {
-                padding: 10px 12px;
+                padding:
+                    10px 12px;
 
-                font-size: 9px;
+                font-size:
+                    9px;
             }
 
 
             .id-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns:
+                    1fr;
 
-                gap: 16px;
+                gap:
+                    16px;
             }
 
 
             .id-content {
-                padding: 16px;
+                padding:
+                    16px;
+            }
+
+
+            .id-title {
+                font-size:
+                    16px;
+            }
+
+
+            .id-price {
+                font-size:
+                    17px;
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .category-btn {
+                padding:
+                    9px 10px;
+
+                font-size:
+                    8px;
             }
 
         }
@@ -666,20 +932,23 @@
 <body>
 
 
-    <!-- =================================================
+    <!-- =====================================================
          HEADER
-         ================================================= -->
+         ===================================================== -->
 
     <header class="top-header">
+
 
         <a
             href="index.html"
             class="brand">
 
+
             <img
                 src="assets/ic_launcher.png"
                 alt="Tamilanda Gaming Logo"
                 class="brand-logo">
+
 
             <div class="brand-text">
 
@@ -693,10 +962,13 @@
 
             </div>
 
+
         </a>
 
 
+
         <nav class="main-nav">
+
 
             <a href="index.html">
                 HOME
@@ -716,7 +988,9 @@
 
             </a>
 
+
         </nav>
+
 
 
         <button
@@ -727,15 +1001,17 @@
 
         </button>
 
+
     </header>
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          SIDE MENU
-         ================================================= -->
+         ===================================================== -->
 
     <aside class="side-menu">
+
 
         <button
             class="close-menu"
@@ -765,20 +1041,22 @@
             Terms & Conditions
         </a>
 
+
     </aside>
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          BUY PAGE
-         ================================================= -->
+         ===================================================== -->
 
     <main class="buy-page">
 
 
-        <!-- PAGE HEADING -->
+        <!-- HEADING -->
 
         <section class="buy-heading">
+
 
             <p class="eyebrow">
                 TAMILANDA GAMING
@@ -788,11 +1066,9 @@
             <h1>
 
                 BUY YOUR
-
                 <span>
                     DREAM IDS
                 </span>
-
                 NOW
 
             </h1>
@@ -806,12 +1082,13 @@
 
             </p>
 
+
         </section>
 
 
 
         <!-- =================================================
-             FILTER TOOLBAR
+             FILTER / SORT
              ================================================= -->
 
         <section class="catalog-toolbar">
@@ -826,6 +1103,7 @@
                 FILTER IDS
 
             </div>
+
 
 
             <div class="sort-box">
@@ -866,9 +1144,11 @@
                         Level Low to High
                     </option>
 
+
                 </select>
 
             </div>
+
 
         </section>
 
@@ -934,6 +1214,7 @@
 
             </button>
 
+
         </section>
 
 
@@ -947,12 +1228,14 @@
             id="idGrid">
 
 
+
             <!-- =================================================
                  ID 001
                  ================================================= -->
 
             <article
                 class="id-card"
+                data-id="001"
                 data-category="golden"
                 data-price="50000"
                 data-level="90"
@@ -978,6 +1261,7 @@
                 </div>
 
 
+
                 <div class="id-content">
 
 
@@ -993,6 +1277,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="id-stats">
@@ -1031,12 +1316,14 @@
                             </small>
 
                             <strong>
-                                500+
+                                600+
                             </strong>
 
                         </div>
 
+
                     </div>
+
 
 
                     <div class="id-tags">
@@ -1045,23 +1332,29 @@
                             GOLDEN ELITE
                         </span>
 
-
                         <span class="tag">
                             RARE ITEMS
+                        </span>
+
+                        <span class="tag">
+                            PREMIUM
                         </span>
 
                     </div>
 
 
+
                     <a
-                        href="id-details.html"
+                        href="id-details.html?id=001"
                         class="view-id-btn">
 
                         VIEW ID →
 
                     </a>
 
+
                 </div>
+
 
             </article>
 
@@ -1073,6 +1366,7 @@
 
             <article
                 class="id-card"
+                data-id="002"
                 data-category="high"
                 data-price="30000"
                 data-level="85"
@@ -1093,6 +1387,7 @@
                 </div>
 
 
+
                 <div class="id-content">
 
 
@@ -1108,6 +1403,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="id-stats">
@@ -1151,7 +1447,9 @@
 
                         </div>
 
+
                     </div>
+
 
 
                     <div class="id-tags">
@@ -1160,7 +1458,6 @@
                             HIGH LEVEL
                         </span>
 
-
                         <span class="tag">
                             RARE ITEMS
                         </span>
@@ -1168,15 +1465,18 @@
                     </div>
 
 
+
                     <a
-                        href="id-details.html"
+                        href="id-details.html?id=002"
                         class="view-id-btn">
 
                         VIEW ID →
 
                     </a>
 
+
                 </div>
+
 
             </article>
 
@@ -1188,6 +1488,7 @@
 
             <article
                 class="id-card"
+                data-id="003"
                 data-category="starter"
                 data-price="10000"
                 data-level="70"
@@ -1208,6 +1509,7 @@
                 </div>
 
 
+
                 <div class="id-content">
 
 
@@ -1223,6 +1525,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="id-stats">
@@ -1266,7 +1569,9 @@
 
                         </div>
 
+
                     </div>
+
 
 
                     <div class="id-tags">
@@ -1278,15 +1583,18 @@
                     </div>
 
 
+
                     <a
-                        href="id-details.html"
+                        href="id-details.html?id=003"
                         class="view-id-btn">
 
                         VIEW ID →
 
                     </a>
 
+
                 </div>
+
 
             </article>
 
@@ -1298,6 +1606,7 @@
 
             <article
                 class="id-card"
+                data-id="004"
                 data-category="mid"
                 data-price="20000"
                 data-level="78"
@@ -1318,6 +1627,7 @@
                 </div>
 
 
+
                 <div class="id-content">
 
 
@@ -1333,6 +1643,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="id-stats">
@@ -1376,7 +1687,9 @@
 
                         </div>
 
+
                     </div>
+
 
 
                     <div class="id-tags">
@@ -1388,15 +1701,18 @@
                     </div>
 
 
+
                     <a
-                        href="id-details.html"
+                        href="id-details.html?id=004"
                         class="view-id-btn">
 
                         VIEW ID →
 
                     </a>
 
+
                 </div>
+
 
             </article>
 
@@ -1408,6 +1724,7 @@
 
             <article
                 class="id-card"
+                data-id="005"
                 data-category="hot"
                 data-price="25000"
                 data-level="82"
@@ -1433,6 +1750,7 @@
                 </div>
 
 
+
                 <div class="id-content">
 
 
@@ -1448,6 +1766,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="id-stats">
@@ -1491,7 +1810,9 @@
 
                         </div>
 
+
                     </div>
+
 
 
                     <div class="id-tags">
@@ -1500,7 +1821,6 @@
                             HOT
                         </span>
 
-
                         <span class="tag">
                             POPULAR
                         </span>
@@ -1508,15 +1828,18 @@
                     </div>
 
 
+
                     <a
-                        href="id-details.html"
+                        href="id-details.html?id=005"
                         class="view-id-btn">
 
                         VIEW ID →
 
                     </a>
 
+
                 </div>
+
 
             </article>
 
@@ -1528,6 +1851,7 @@
 
             <article
                 class="id-card"
+                data-id="006"
                 data-category="golden"
                 data-price="75000"
                 data-level="95"
@@ -1553,6 +1877,7 @@
                 </div>
 
 
+
                 <div class="id-content">
 
 
@@ -1568,6 +1893,7 @@
                         </div>
 
                     </div>
+
 
 
                     <div class="id-stats">
@@ -1611,7 +1937,9 @@
 
                         </div>
 
+
                     </div>
+
 
 
                     <div class="id-tags">
@@ -1620,11 +1948,9 @@
                             GOLDEN ELITE
                         </span>
 
-
                         <span class="tag">
                             PREMIUM
                         </span>
-
 
                         <span class="tag">
                             RARE
@@ -1633,17 +1959,21 @@
                     </div>
 
 
+
                     <a
-                        href="id-details.html"
+                        href="id-details.html?id=006"
                         class="view-id-btn">
 
                         VIEW ID →
 
                     </a>
 
+
                 </div>
 
+
             </article>
+
 
         </section>
 
@@ -1662,11 +1992,9 @@
                 🔍
             </div>
 
-
             <h2>
                 No IDs Found
             </h2>
-
 
             <p>
                 Try another category or sorting option.
@@ -1674,18 +2002,20 @@
 
         </div>
 
+
     </main>
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          FOOTER
-         ================================================= -->
+         ===================================================== -->
 
     <footer>
 
 
         <div class="footer-brand">
+
 
             <img
                 src="assets/ic_launcher.png"
@@ -1698,18 +2028,19 @@
                     TAMILANDA GAMING
                 </strong>
 
-
                 <p>
                     Free Fire ID Marketplace
                 </p>
 
             </div>
 
+
         </div>
 
 
 
         <div class="footer-links">
+
 
             <a href="index.html">
                 Home
@@ -1735,6 +2066,7 @@
                 Terms
             </a>
 
+
         </div>
 
 
@@ -1749,21 +2081,22 @@
 
         </p>
 
+
     </footer>
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          MAIN JS
-         ================================================= -->
+         ===================================================== -->
 
     <script src="app.js"></script>
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          BUY PAGE FILTER / SORT
-         ================================================= -->
+         ===================================================== -->
 
     <script>
 
@@ -1804,7 +2137,8 @@
                     );
 
 
-                let currentFilter = "all";
+                let currentFilter =
+                    "all";
 
 
 
@@ -1815,7 +2149,8 @@
                 function applyFilter() {
 
 
-                    let visibleCount = 0;
+                    let visibleCount =
+                        0;
 
 
                     cards.forEach(
@@ -1847,8 +2182,10 @@
 
                             }
 
+
                         }
                     );
+
 
 
                     if (emptyState) {
@@ -1860,9 +2197,14 @@
 
                     }
 
+
                 }
 
 
+
+                /* =========================================
+                   CATEGORY BUTTONS
+                   ========================================= */
 
                 buttons.forEach(
                     function (button) {
@@ -1895,8 +2237,10 @@
 
                                 applyFilter();
 
+
                             }
                         );
+
 
                     }
                 );
@@ -1922,16 +2266,18 @@
 
 
                         if (
-                            value === "high-price"
+                            value ===
+                            "high-price"
                         ) {
 
+
                             sortedCards.sort(
-                                (a, b) =>
+                                (a,b) =>
 
                                     Number(
                                         b.dataset.price
-                                    ) -
-
+                                    )
+                                    -
                                     Number(
                                         a.dataset.price
                                     )
@@ -1942,16 +2288,18 @@
 
 
                         else if (
-                            value === "low-price"
+                            value ===
+                            "low-price"
                         ) {
 
+
                             sortedCards.sort(
-                                (a, b) =>
+                                (a,b) =>
 
                                     Number(
                                         a.dataset.price
-                                    ) -
-
+                                    )
+                                    -
                                     Number(
                                         b.dataset.price
                                     )
@@ -1962,16 +2310,18 @@
 
 
                         else if (
-                            value === "popular"
+                            value ===
+                            "popular"
                         ) {
 
+
                             sortedCards.sort(
-                                (a, b) =>
+                                (a,b) =>
 
                                     Number(
                                         b.dataset.popular
-                                    ) -
-
+                                    )
+                                    -
                                     Number(
                                         a.dataset.popular
                                     )
@@ -1982,16 +2332,18 @@
 
 
                         else if (
-                            value === "high-level"
+                            value ===
+                            "high-level"
                         ) {
 
+
                             sortedCards.sort(
-                                (a, b) =>
+                                (a,b) =>
 
                                     Number(
                                         b.dataset.level
-                                    ) -
-
+                                    )
+                                    -
                                     Number(
                                         a.dataset.level
                                     )
@@ -2002,16 +2354,18 @@
 
 
                         else if (
-                            value === "low-level"
+                            value ===
+                            "low-level"
                         ) {
 
+
                             sortedCards.sort(
-                                (a, b) =>
+                                (a,b) =>
 
                                     Number(
                                         a.dataset.level
-                                    ) -
-
+                                    )
+                                    -
                                     Number(
                                         b.dataset.level
                                     )
@@ -2034,8 +2388,29 @@
 
                         applyFilter();
 
+
                     }
                 );
+
+
+
+                /* =========================================
+                   YEAR
+                   ========================================= */
+
+                const year =
+                    document.getElementById(
+                        "current-year"
+                    );
+
+
+                if (year) {
+
+                    year.textContent =
+                        new Date()
+                            .getFullYear();
+
+                }
 
 
 
@@ -2044,6 +2419,7 @@
                    ========================================= */
 
                 applyFilter();
+
 
             }
         );
