@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Sell your Free Fire ID through Tamilanda Gaming.">
+
+    <title>Sell Your ID | Tamilanda Gaming</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        /* ==========================================
+           SELL PAGE
+           ========================================== */
+
+        .sell-page {
+            min-height: 100vh;
+
+            padding: 55px 6% 100px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255, 176, 0, 0.10),
+                    transparent 35%
+                ),
+                #080808;
+        }
+
+
+        .sell-heading {
+            max-width: 800px;
+
+            margin: 0 auto 45px;
+
+            text-align: center;
+        }
+
+
+        .sell-heading h1 {
+            font-size: clamp(40px, 6vw, 68px);
+
+            line-height: 0.95;
+
+            letter-spacing: -2px;
+
+            font-weight: 900;
+        }
+
+
+        .sell-heading h1 span {
+            color: #ffb000;
+        }
+
+
+        .sell-heading p {
+            max-width: 600px;
+
+            margin: 18px auto 0;
+
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* ==========================================
+           FORM
+           ========================================== */
+
+        .sell-form {
+            width: 100%;
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+        }
+
+
+        .form-section-title {
+            margin-bottom: 20px;
+
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+
+        .form-section-title span {
+            color: #ffb000;
+        }
+
+
+        /* ==========================================
+           ACCOUNT DETAILS
+           ========================================== */
+
+        .account-details-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 16px;
+        }
+
+
+        .form-field {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .form-field.full {
+            grid-column: 1 / -1;
+        }
+
+
+        .form-field label {
+            color: #b0b0b0;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+        }
+
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border-radius: 9px;
+
+            border: 1px solid
+                rgba(255,255,255,0.10);
+
+            background: #171717;
+
+            color: #ffffff;
+
+            outline: none;
+
+            font-size: 13px;
+
+            transition: 0.2s ease;
+        }
+
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+
+            border-color: #ffb000;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255,176,0,0.05);
+        }
+
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: #555;
+        }
+
+
+        /* ==========================================
+           IMAGE UPLOADS
+           ========================================== */
+
+        .upload-section {
+            margin-top: 38px;
+        }
+
+
+        .upload-description {
+            margin-bottom: 18px;
+
+            color: #666;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        .upload-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 14px;
+        }
+
+
+        .upload-box {
+
+            min-height: 135px;
+
+            padding: 20px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+            border: 1px dashed
+                rgba(255,255,255,0.16);
+
+            border-radius: 13px;
+
+            background: #0c0c0c;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+
+        .upload-box:hover {
+
+            border-color: #ffb000;
+
+            background:
+                rgba(255,176,0,0.035);
+        }
+
+
+        .upload-icon {
+
+            font-size: 27px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .upload-box strong {
+
+            font-size: 12px;
+        }
+
+
+        .upload-box small {
+
+            margin-top: 6px;
+
+            color: #666;
+
+            font-size: 9px;
+        }
+
+
+        .upload-box input {
+
+            width: 100%;
+
+            margin-top: 12px;
+
+            color: #777;
+
+            font-size: 10px;
+        }
+
+
+        /* ==========================================
+           NOTE
+           ========================================== */
+
+        .note-section {
+
+            margin-top: 35px;
+        }
+
+
+        .note-section textarea {
+
+            min-height: 120px;
+
+            resize: vertical;
+        }
+
+
+        /* ==========================================
+           IMPORTANT NOTICE
+           ========================================== */
+
+        .important-notice {
+
+            margin-top: 25px;
+
+            padding: 18px;
+
+            display: flex;
+
+            gap: 12px;
+
+            border-radius: 11px;
+
+            background:
+                rgba(255,176,0,0.06);
+
+            border: 1px solid
+                rgba(255,176,0,0.18);
+
+            color: #c7a64e;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        .important-notice-icon {
+
+            font-size: 20px;
+
+            flex-shrink: 0;
+        }
+
+
+        .important-notice strong {
+
+            color: #ffb000;
+        }
+
+
+        /* ==========================================
+           CHECKBOX
+           ========================================== */
+
+        .agreement {
+
+            margin-top: 20px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            color: #777;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        .agreement input {
+
+            margin-top: 2px;
+
+            accent-color: #ffb000;
+        }
+
+
+        /* ==========================================
+           SUBMIT
+           ========================================== */
+
+        .submit-area {
+
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid
+                rgba(255,255,255,0.07);
+
+            text-align: center;
+        }
+
+
+        .submit-button {
+
+            min-width: 240px;
+
+            min-height: 52px;
+
+            padding: 0 25px;
+
+            border: 0;
+
+            border-radius: 10px;
+
+            background: #ffb000;
+
+            color: #080808;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+
+        .submit-button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(255,176,0,0.22);
+        }
+
+
+        .submit-status {
+
+            min-height: 18px;
+
+            margin-top: 15px;
+
+            color: #777;
+
+            font-size: 11px;
+        }
+
+
+        .submit-status.success {
+            color: #57d88a;
+        }
+
+
+        .submit-status.error {
+            color: #ff6c6c;
+        }
+
+
+        /* ==========================================
+           MOBILE
+           ========================================== */
+
+        @media (max-width: 700px) {
+
+            .sell-page {
+                padding:
+                    45px 5% 80px;
+            }
+
+
+            .sell-heading h1 {
+                font-size: 43px;
+            }
+
+
+            .sell-form {
+                padding: 20px;
+            }
+
+
+            .account-details-grid,
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-field.full {
+                grid-column: auto;
+            }
+
+
+            .submit-button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+
+    <header class="top-header">
+
+        <a
+            href="index.html"
+            class="brand">
+
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming Logo"
+                class="brand-logo">
+
+            <div class="brand-text">
+
+                <strong>
+                    TAMILANDA
+                </strong>
+
+                <span>
+                    GAMING
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="main-nav">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a
+                href="sell.html"
+                class="active">
+
+                SELL YOUR ID
+
+            </a>
+
+            <a href="buy.html">
+                BUY YOUR ID
+            </a>
+
+        </nav>
+
+
+        <button
+            class="menu-button"
+            aria-label="Open Menu">
+
+            ☰
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         SIDE MENU
+         ========================================== -->
+
+    <aside class="side-menu">
+
+        <button
+            class="close-menu"
+            aria-label="Close Menu">
+
+            ×
+
+        </button>
+
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="about.html">
+            About
+        </a>
+
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+
+        <a href="terms.html">
+            Terms & Conditions
+        </a>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         SELL PAGE
+         ========================================== -->
+
+    <main class="sell-page">
+
+
+        <!-- Heading -->
+
+        <section class="sell-heading">
+
+            <p class="eyebrow">
+                TAMILANDA GAMING
+            </p>
+
+
+            <h1>
+                SELL YOUR
+                <span>BORING IDS</span>
+                NOW
+            </h1>
+
+
+            <p>
+
+                Have a Free Fire account you no longer
+                need? Submit the account details and
+                screenshots below for review.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             FORM
+             ========================================== -->
+
+        <form
+            class="sell-form"
+            id="sellForm">
+
+
+            <!-- ======================================
+                 ACCOUNT DETAILS
+                 ====================================== -->
+
+            <h2 class="form-section-title">
+                ACCOUNT <span>DETAILS</span>
+            </h2>
+
+
+            <div class="account-details-grid">
+
+
+                <!-- Account Level -->
+
+                <div class="form-field">
+
+                    <label for="accountLevel">
+                        ACCOUNT LEVEL
+                    </label>
+
+                    <input
+                        id="accountLevel"
+                        name="accountLevel"
+                        type="number"
+                        min="1"
+                        max="100"
+                        placeholder="Example: 80"
+                        required>
+
+                </div>
+
+
+                <!-- Prime Level -->
+
+                <div class="form-field">
+
+                    <label for="primeLevel">
+                        PRIME LEVEL
+                    </label>
+
+                    <input
+                        id="primeLevel"
+                        name="primeLevel"
+                        type="number"
+                        min="0"
+                        max="10"
+                        placeholder="Example: 7"
+                        required>
+
+                </div>
+
+
+                <!-- Vault -->
+
+                <div class="form-field">
+
+                    <label for="vaultCollection">
+                        TOTAL VAULT COLLECTION
+                    </label>
+
+                    <input
+                        id="vaultCollection"
+                        name="vaultCollection"
+                        type="number"
+                        min="0"
+                        placeholder="Example: 450"
+                        required>
+
+                </div>
+
+
+                <!-- Golden Elite -->
+
+                <div class="form-field">
+
+                    <label for="goldenElite">
+                        GOLDEN ELITE
+                    </label>
+
+                    <select
+                        id="goldenElite"
+                        name="goldenElite"
+                        required>
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="yes">
+                            Yes
+                        </option>
+
+                        <option value="no">
+                            No
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Expected Price -->
+
+                <div class="form-field">
+
+                    <label for="expectedPrice">
+                        EXPECTED PRICE (₹)
+                    </label>
+
+                    <input
+                        id="expectedPrice"
+                        name="expectedPrice"
+                        type="number"
+                        min="1"
+                        placeholder="Example: 50000"
+                        required>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ======================================
+                 IMAGE UPLOADS
+                 ====================================== -->
+
+            <section class="upload-section">
+
+                <h2 class="form-section-title">
+                    ACCOUNT <span>SCREENSHOTS</span>
+                </h2>
+
+
+                <p class="upload-description">
+
+                    Upload clear screenshots of your account.
+                    Images can be any size or aspect ratio.
+                    No 4:5 restriction for seller uploads.
+
+                </p>
+
+
+                <div class="upload-grid">
+
+
+                    <!-- Image 1 -->
+
+                    <label class="upload-box">
+
+                        <div class="upload-icon">
+                            👤
+                        </div>
+
+                        <strong>
+                            IMAGE 1 — PROFILE
+                        </strong>
+
+                        <small>
+                            Profile / main account screenshot
+                        </small>
+
+                        <input
+                            type="file"
+                            name="profileImage"
+                            accept="image/*">
+
+                    </label>
+
+
+
+                    <!-- Image 2 -->
+
+                    <label class="upload-box">
+
+                        <div class="upload-icon">
+                            🔫
+                        </div>
+
+                        <strong>
+                            IMAGE 2 — GUN GALLERY
+                        </strong>
+
+                        <small>
+                            Gun skin / weapon collection
+                        </small>
+
+                        <input
+                            type="file"
+                            name="gunImage"
+                            accept="image/*">
+
+                    </label>
+
+
+
+                    <!-- Image 3 -->
+
+                    <label class="upload-box">
+
+                        <div class="upload-icon">
+                            💇
+                        </div>
+
+                        <strong>
+                            IMAGE 3 — HAIR COLLECTION
+                        </strong>
+
+                        <small>
+                            Hair / bundle collection
+                        </small>
+
+                        <input
+                            type="file"
+                            name="hairImage"
+                            accept="image/*">
+
+                    </label>
+
+
+
+                    <!-- Image 4 -->
+
+                    <label class="upload-box">
+
+                        <div class="upload-icon">
+                            🎭
+                        </div>
+
+                        <strong>
+                            IMAGE 4 — MASK COLLECTION
+                        </strong>
+
+                        <small>
+                            Mask / face item collection
+                        </small>
+
+                        <input
+                            type="file"
+                            name="maskImage"
+                            accept="image/*">
+
+                    </label>
+
+
+
+                    <!-- Image 5 -->
+
+                    <label class="upload-box">
+
+                        <div class="upload-icon">
+                            💎
+                        </div>
+
+                        <strong>
+                            IMAGE 5 — TOTAL VAULT
+                        </strong>
+
+                        <small>
+                            Total vault / collection screenshot
+                        </small>
+
+                        <input
+                            type="file"
+                            name="vaultImage"
+                            accept="image/*">
+
+                    </label>
+
+
+
+                    <!-- Image 6 -->
+
+                    <label class="upload-box">
+
+                        <div class="upload-icon">
+                            🔥
+                        </div>
+
+                        <strong>
+                            IMAGE 6 — RARE ITEM
+                        </strong>
+
+                        <small>
+                            Pre-order wall, old Heroic T-shirt,
+                            rare item etc.
+                        </small>
+
+                        <input
+                            type="file"
+                            name="rareImage"
+                            accept="image/*">
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 NOTE
+                 ====================================== -->
+
+            <section class="note-section">
+
+                <h2 class="form-section-title">
+                    ADDITIONAL <span>NOTE</span>
+                </h2>
+
+
+                <div class="form-field">
+
+                    <label for="sellerNote">
+                        NOTE
+
+                    </label>
+
+                    <textarea
+                        id="sellerNote"
+                        name="sellerNote"
+                        placeholder="Mention rare items, special collections or anything else about your account..."></textarea>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ======================================
+                 IMPORTANT NOTICE
+                 ====================================== -->
+
+            <div class="important-notice">
+
+                <div class="important-notice-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <strong>
+                        IMPORTANT:
+                    </strong>
+
+                    Your account must have a complete
+                    bind setup to be eligible for sale.
+                    We do not accept accounts without
+                    a bound email.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 AGREEMENT
+                 ====================================== -->
+
+            <label class="agreement">
+
+                <input
+                    type="checkbox"
+                    id="sellerAgreement"
+                    required>
+
+                <span>
+
+                    I confirm that the information and
+                    screenshots submitted are accurate and
+                    that I am authorized to sell this account.
+
+                </span>
+
+            </label>
+
+
+
+            <!-- ======================================
+                 SUBMIT
+                 ====================================== -->
+
+            <div class="submit-area">
+
+                <button
+                    type="submit"
+                    class="submit-button">
+
+                    SUBMIT SELL REQUEST
+                    →
+
+                </button>
+
+
+                <p
+                    id="submitStatus"
+                    class="submit-status">
+
+                </p>
+
+            </div>
+
+
+        </form>
+
+    </main>
+
+
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming">
+
+            <div>
+
+                <strong>
+                    TAMILANDA GAMING
+                </strong>
+
+                <p>
+                    Free Fire ID Marketplace
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="sell.html">
+                Sell Your ID
+            </a>
+
+            <a href="buy.html">
+                Buy Your ID
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="terms.html">
+                Terms
+            </a>
+
+        </div>
+
+
+        <p class="copyright">
+
+            © <span id="current-year"></span>
+            Tamilanda Gaming. All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- Main JavaScript -->
+
+    <script src="app.js"></script>
+
+
+    <!-- ==========================================
+         SELL FORM DEMO HANDLER
+         ========================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const form =
+                    document.getElementById(
+                        "sellForm"
+                    );
+
+                const status =
+                    document.getElementById(
+                        "submitStatus"
+                    );
+
+
+                if (!form) {
+                    return;
+                }
+
+
+                form.addEventListener(
+                    "submit",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        status.className =
+                            "submit-status success";
+
+
+                        status.textContent =
+                            "Request captured successfully. Production version will securely upload your screenshots and send the request to admin.";
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
