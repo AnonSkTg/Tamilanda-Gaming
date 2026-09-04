@@ -4,7 +4,9 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Admin Panel | Tamilanda Gaming</title>
 
@@ -33,15 +35,19 @@ body{
 
 .admin-header{
     padding:18px 5%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 
     background:#101010;
-    border-bottom:1px solid rgba(255,176,0,.18);
+
+    border-bottom:
+        1px solid rgba(255,176,0,.18);
 
     position:sticky;
     top:0;
+
     z-index:100;
 }
 
@@ -54,31 +60,40 @@ body{
 .admin-brand img{
     width:45px;
     height:45px;
+
     border-radius:50%;
+
     object-fit:contain;
 }
 
 .admin-brand strong{
     font-size:17px;
+
     letter-spacing:1px;
 }
 
 .admin-brand span{
     display:block;
+
     margin-top:4px;
 
     color:#ffb000;
 
     font-size:10px;
+
     font-weight:800;
+
     letter-spacing:2px;
 }
 
 .admin-title{
     color:#aaa;
+
     font-size:12px;
+
     font-weight:700;
 }
+
 
 /* =========================
    CONTAINER
@@ -86,7 +101,9 @@ body{
 
 .admin-container{
     width:92%;
+
     max-width:900px;
+
     margin:40px auto 80px;
 }
 
@@ -96,23 +113,32 @@ body{
 
 .eyebrow{
     color:#ffb000;
+
     font-size:11px;
+
     font-weight:800;
+
     letter-spacing:3px;
+
     margin-bottom:10px;
 }
 
 h1{
     font-size:clamp(32px,6vw,55px);
+
     line-height:1;
 }
 
 .page-heading p{
     margin-top:12px;
+
     color:#777;
+
     font-size:13px;
+
     line-height:1.6;
 }
+
 
 /* =========================
    CARDS
@@ -121,7 +147,8 @@ h1{
 .admin-card{
     background:#101010;
 
-    border:1px solid rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     border-radius:18px;
 
@@ -134,12 +161,14 @@ h1{
     color:#ffb000;
 
     font-size:12px;
+
     font-weight:900;
 
     letter-spacing:2px;
 
     margin-bottom:20px;
 }
+
 
 /* =========================
    FORM
@@ -148,7 +177,8 @@ h1{
 .form-grid{
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+        repeat(2,1fr);
 
     gap:16px;
 }
@@ -179,7 +209,8 @@ textarea{
 
     width:100%;
 
-    border:1px solid rgba(255,255,255,.10);
+    border:
+        1px solid rgba(255,255,255,.10);
 
     border-radius:10px;
 
@@ -220,15 +251,17 @@ textarea:focus{
     border-color:#ffb000;
 }
 
+
 /* =========================
-   IMAGES
+   IMAGE UPLOAD
 ========================= */
 
 .image-grid{
 
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap:12px;
 }
@@ -237,7 +270,8 @@ textarea:focus{
 
     padding:15px;
 
-    border:1px dashed rgba(255,255,255,.12);
+    border:
+        1px dashed rgba(255,255,255,.12);
 
     border-radius:12px;
 
@@ -254,24 +288,63 @@ textarea:focus{
 
     font-weight:800;
 
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
-.image-box input{
+.image-box input[type="file"]{
+
+    width:100%;
+
+    min-height:auto;
+
+    padding:8px;
 
     font-size:10px;
+
+    background:#171717;
+
+    border:1px solid
+        rgba(255,255,255,.08);
+}
+
+.image-status{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:9px;
+
+    line-height:1.5;
+
+    word-break:break-all;
+}
+
+.image-status.selected{
+    color:#ffb000;
+}
+
+.image-status.uploaded{
+    color:#65d98a;
+}
+
+.image-status.error{
+    color:#ff7777;
 }
 
 .help-text{
 
-    margin-top:10px;
+    margin-top:12px;
 
     color:#555;
 
     font-size:10px;
 
-    line-height:1.6;
+    line-height:1.7;
 }
+
 
 /* =========================
    BUTTONS
@@ -325,7 +398,8 @@ button:disabled{
 
     background:#1b1b1b;
 
-    border:1px solid rgba(255,255,255,.10);
+    border:
+        1px solid rgba(255,255,255,.10);
 
     color:#fff;
 }
@@ -334,10 +408,12 @@ button:disabled{
 
     background:#241414;
 
-    border:1px solid rgba(255,60,60,.2);
+    border:
+        1px solid rgba(255,60,60,.2);
 
     color:#ff7777;
 }
+
 
 /* =========================
    STATUS
@@ -351,7 +427,8 @@ button:disabled{
 
     border-radius:9px;
 
-    background:rgba(255,176,0,.06);
+    background:
+        rgba(255,176,0,.06);
 
     color:#ffb000;
 
@@ -361,6 +438,21 @@ button:disabled{
 
     display:none;
 }
+
+.status.success{
+    color:#65d98a;
+
+    background:
+        rgba(50,200,100,.07);
+}
+
+.status.error{
+    color:#ff7777;
+
+    background:
+        rgba(255,50,50,.07);
+}
+
 
 /* =========================
    SAVED IDS
@@ -387,7 +479,8 @@ button:disabled{
 
     background:#151515;
 
-    border:1px solid rgba(255,255,255,.07);
+    border:
+        1px solid rgba(255,255,255,.07);
 
     border-radius:12px;
 }
@@ -428,32 +521,26 @@ button:disabled{
 
 .edit-btn{
 
-    background:rgba(255,176,0,.10);
+    background:
+        rgba(255,176,0,.10);
 
     color:#ffb000;
 
-    border:1px solid rgba(255,176,0,.2);
+    border:
+        1px solid rgba(255,176,0,.2);
 }
 
 .delete-btn{
 
-    background:rgba(255,50,50,.08);
+    background:
+        rgba(255,50,50,.08);
 
     color:#ff7777;
 
-    border:1px solid rgba(255,50,50,.15);
+    border:
+        1px solid rgba(255,50,50,.15);
 }
 
-.empty{
-
-    padding:30px;
-
-    text-align:center;
-
-    color:#555;
-
-    font-size:12px;
-}
 
 /* =========================
    LOGIN
@@ -494,7 +581,8 @@ button:disabled{
 
     background:#101010;
 
-    border:1px solid rgba(255,176,0,.18);
+    border:
+        1px solid rgba(255,176,0,.18);
 
     border-radius:20px;
 
@@ -541,6 +629,7 @@ button:disabled{
     line-height:1.5;
 }
 
+
 /* =========================
    MOBILE
 ========================= */
@@ -548,51 +637,42 @@ button:disabled{
 @media(max-width:650px){
 
     .admin-header{
-
         padding:13px 4%;
     }
 
     .admin-title{
-
         display:none;
     }
 
     .admin-container{
-
         width:92%;
 
         margin-top:30px;
     }
 
     .admin-card{
-
         padding:18px;
     }
 
     .form-grid{
-
         grid-template-columns:1fr;
     }
 
     .image-grid{
-
         grid-template-columns:1fr;
     }
 
     .saved-item{
-
         align-items:flex-start;
 
         flex-direction:column;
     }
 
     .saved-actions{
-
         width:100%;
     }
 
     .small-btn{
-
         flex:1;
     }
 
@@ -755,7 +835,6 @@ button:disabled{
 </div>
 
 
-
 <div class="field">
 
 <label>
@@ -768,7 +847,6 @@ button:disabled{
     placeholder="Golden Elite #001">
 
 </div>
-
 
 
 <div class="field">
@@ -785,7 +863,6 @@ button:disabled{
 </div>
 
 
-
 <div class="field">
 
 <label>
@@ -798,7 +875,6 @@ button:disabled{
     placeholder="90">
 
 </div>
-
 
 
 <div class="field">
@@ -815,7 +891,6 @@ button:disabled{
 </div>
 
 
-
 <div class="field">
 
 <label>
@@ -828,7 +903,6 @@ button:disabled{
     placeholder="600+">
 
 </div>
-
 
 
 <div class="field">
@@ -864,7 +938,6 @@ button:disabled{
 </div>
 
 
-
 <div class="field">
 
 <label>
@@ -879,7 +952,6 @@ button:disabled{
 </div>
 
 
-
 <div class="field">
 
 <label>
@@ -892,7 +964,6 @@ button:disabled{
     placeholder="95">
 
 </div>
-
 
 
 <div class="field">
@@ -916,7 +987,7 @@ button:disabled{
 
 
 <!-- =====================================================
-     02 IMAGES
+     02 ID IMAGES
 ===================================================== -->
 
 <section class="admin-card">
@@ -924,6 +995,7 @@ button:disabled{
 <div class="card-title">
     02 — ID IMAGES
 </div>
+
 
 <div class="image-grid">
 
@@ -935,9 +1007,17 @@ IMAGE 1 — MAIN / CARD
 </span>
 
 <input
-    type="text"
-    id="image1"
-    placeholder="assets/ids/001/01.jpg">
+    type="file"
+    id="imageFile1"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="imageStatus1">
+
+    No image selected
+
+</small>
 
 </div>
 
@@ -950,9 +1030,17 @@ IMAGE 2
 </span>
 
 <input
-    type="text"
-    id="image2"
-    placeholder="assets/ids/001/02.jpg">
+    type="file"
+    id="imageFile2"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="imageStatus2">
+
+    No image selected
+
+</small>
 
 </div>
 
@@ -965,9 +1053,17 @@ IMAGE 3
 </span>
 
 <input
-    type="text"
-    id="image3"
-    placeholder="assets/ids/001/03.jpg">
+    type="file"
+    id="imageFile3"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="imageStatus3">
+
+    No image selected
+
+</small>
 
 </div>
 
@@ -980,9 +1076,17 @@ IMAGE 4
 </span>
 
 <input
-    type="text"
-    id="image4"
-    placeholder="assets/ids/001/04.jpg">
+    type="file"
+    id="imageFile4"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="imageStatus4">
+
+    No image selected
+
+</small>
 
 </div>
 
@@ -995,9 +1099,17 @@ IMAGE 5
 </span>
 
 <input
-    type="text"
-    id="image5"
-    placeholder="assets/ids/001/05.jpg">
+    type="file"
+    id="imageFile5"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="imageStatus5">
+
+    No image selected
+
+</small>
 
 </div>
 
@@ -1010,9 +1122,17 @@ IMAGE 6
 </span>
 
 <input
-    type="text"
-    id="image6"
-    placeholder="assets/ids/001/06.jpg">
+    type="file"
+    id="imageFile6"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="imageStatus6">
+
+    No image selected
+
+</small>
 
 </div>
 
@@ -1022,13 +1142,11 @@ IMAGE 6
 
 <p class="help-text">
 
-<strong>IMAGE 1</strong> = Card/Main image.<br>
+    📷 Image 1 = Main / Card image.<br>
 
-<strong>IMAGE 2 onwards</strong> =
-View ID gallery images.<br>
+    📷 Image 2–6 = View ID gallery images.<br>
 
-Example:
-<code>assets/ids/001/01.jpg</code>
+    🚀 File name, folder and GitHub path are created automatically.
 
 </p>
 
@@ -1054,23 +1172,13 @@ Example:
 
 <textarea
     id="idDescription"
-    placeholder="Type this particular ID's description here...
-
-🔥 7TH TO ALL x OP COMBO
-
-💥 600+ OP VAULT COLLECTIONS
-
-🔥 7TH ELITE PASS BUNDLE
-
-🔥 Rare old bundles
-
-🔥 More details..."></textarea>
+    placeholder="Type this particular ID's description here..."></textarea>
 
 </div>
 
 <p class="help-text">
 
-This description belongs only to this ID.
+    This description belongs only to this ID.
 
 </p>
 
@@ -1100,7 +1208,6 @@ This description belongs only to this ID.
 </button>
 
 
-
 <button
     class="clear-btn"
     id="clearBtn">
@@ -1108,7 +1215,6 @@ This description belongs only to this ID.
     CLEAR FORM
 
 </button>
-
 
 
 <button
@@ -1147,7 +1253,7 @@ This description belongs only to this ID.
     id="savedList">
 
     <div class="empty">
-        Login to load IDs...
+        Loading IDs...
     </div>
 
 </div>
@@ -1222,10 +1328,7 @@ async function apiRequest(
 
     }catch(error){
 
-        data = {
-            error:
-                "Invalid server response"
-        };
+        data = {};
 
     }
 
@@ -1290,12 +1393,6 @@ async function(){
 
     try{
 
-        /*
-         * IMPORTANT:
-         * Login uses the Worker
-         * /api/admin/login endpoint.
-         */
-
         const response =
             await fetch(
                 WORKER_URL +
@@ -1343,8 +1440,6 @@ async function(){
         }
 
 
-        /* LOGIN SUCCESS */
-
         ADMIN_KEY =
             key;
 
@@ -1376,7 +1471,6 @@ async function(){
     }catch(error){
 
         ADMIN_KEY = "";
-
 
         status.textContent =
             error.message ||
@@ -1471,20 +1565,11 @@ async function loadIDs(){
 
 function getFormData(){
 
-    let id =
+    const id =
         document
         .getElementById("idNumber")
         .value
         .trim();
-
-
-    if(!id){
-
-        id =
-            "id_" +
-            Date.now();
-
-    }
 
 
     return {
@@ -1544,37 +1629,7 @@ function getFormData(){
                 0
             ),
 
-        images:[
-            document
-            .getElementById("image1")
-            .value
-            .trim(),
-
-            document
-            .getElementById("image2")
-            .value
-            .trim(),
-
-            document
-            .getElementById("image3")
-            .value
-            .trim(),
-
-            document
-            .getElementById("image4")
-            .value
-            .trim(),
-
-            document
-            .getElementById("image5")
-            .value
-            .trim(),
-
-            document
-            .getElementById("image6")
-            .value
-            .trim()
-        ].filter(Boolean),
+        images:[],
 
         description:
             document
@@ -1598,6 +1653,302 @@ function getFormData(){
 
 
 /* =====================================================
+   IMAGE FILE GET
+===================================================== */
+
+function getImageFile(number){
+
+    return document
+        .getElementById(
+            "imageFile" + number
+        )
+        .files[0] || null;
+
+}
+
+
+/* =====================================================
+   COMPRESS IMAGE
+===================================================== */
+
+function compressImage(
+    file
+){
+
+    return new Promise(
+    function(resolve,reject){
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event){
+
+                const image =
+                    new Image();
+
+
+                image.onload =
+                    function(){
+
+                        const maxWidth =
+                            1600;
+
+                        const maxHeight =
+                            1600;
+
+
+                        let width =
+                            image.width;
+
+                        let height =
+                            image.height;
+
+
+                        if(
+                            width >
+                            maxWidth
+                        ){
+
+                            height =
+                                height *
+                                maxWidth /
+                                width;
+
+                            width =
+                                maxWidth;
+
+                        }
+
+
+                        if(
+                            height >
+                            maxHeight
+                        ){
+
+                            width =
+                                width *
+                                maxHeight /
+                                height;
+
+                            height =
+                                maxHeight;
+
+                        }
+
+
+                        const canvas =
+                            document
+                            .createElement(
+                                "canvas"
+                            );
+
+
+                        canvas.width =
+                            Math.round(
+                                width
+                            );
+
+                        canvas.height =
+                            Math.round(
+                                height
+                            );
+
+
+                        const ctx =
+                            canvas
+                            .getContext(
+                                "2d"
+                            );
+
+
+                        ctx.drawImage(
+                            image,
+                            0,
+                            0,
+                            canvas.width,
+                            canvas.height
+                        );
+
+
+                        const base64 =
+                            canvas.toDataURL(
+                                "image/jpeg",
+                                0.82
+                            );
+
+
+                        resolve(base64);
+
+                    };
+
+
+                image.onerror =
+                    function(){
+
+                        reject(
+                            new Error(
+                                "Could not read image."
+                            )
+                        );
+
+                    };
+
+
+                image.src =
+                    event.target.result;
+
+            };
+
+
+        reader.onerror =
+            function(){
+
+                reject(
+                    new Error(
+                        "Could not read file."
+                    )
+                );
+
+            };
+
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =====================================================
+   UPLOAD ONE IMAGE
+===================================================== */
+
+async function uploadOneImage(
+    id,
+    imageNumber,
+    file
+){
+
+    const status =
+        document
+        .getElementById(
+            "imageStatus" +
+            imageNumber
+        );
+
+
+    status.textContent =
+        "Compressing image...";
+
+    status.className =
+        "image-status selected";
+
+
+    const base64 =
+        await compressImage(
+            file
+        );
+
+
+    status.textContent =
+        "Uploading to GitHub...";
+
+
+    const result =
+        await apiRequest(
+            "/api/images",
+            {
+                method:"POST",
+
+                body:
+                    JSON.stringify({
+
+                        id:id,
+
+                        imageNumber:
+                            imageNumber,
+
+                        imageData:
+                            base64
+
+                    })
+            }
+        );
+
+
+    status.textContent =
+        "✓ Uploaded: " +
+        result.path;
+
+    status.className =
+        "image-status uploaded";
+
+
+    return result.path;
+
+}
+
+
+/* =====================================================
+   UPLOAD SELECTED IMAGES
+===================================================== */
+
+async function uploadSelectedImages(
+    id,
+    existingImages
+){
+
+    const images =
+        Array.isArray(
+            existingImages
+        )
+            ? [...existingImages]
+            : [];
+
+
+    for(
+        let number = 1;
+        number <= 6;
+        number++
+    ){
+
+        const file =
+            getImageFile(
+                number
+            );
+
+
+        if(!file){
+
+            continue;
+
+        }
+
+
+        const path =
+            await uploadOneImage(
+                id,
+                number,
+                file
+            );
+
+
+        images[number - 1] =
+            path;
+
+    }
+
+
+    return images.filter(
+        Boolean
+    );
+
+}
+
+
+/* =====================================================
    SAVE / UPDATE
 ===================================================== */
 
@@ -1611,10 +1962,23 @@ async function(){
         getFormData();
 
 
+    if(!data.id){
+
+        showStatus(
+            "Please enter ID Number.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
     if(!data.name){
 
         showStatus(
-            "Please enter ID Name."
+            "Please enter ID Name.",
+            "error"
         );
 
         return;
@@ -1629,13 +1993,45 @@ async function(){
 
     button.disabled = true;
 
-    button.textContent =
-        editingId
-            ? "UPDATING..."
-            : "SAVING...";
-
 
     try{
+
+        /*
+         * First get existing ID
+         * when editing.
+         */
+
+        let existingImages = [];
+
+
+        if(editingId){
+
+            const oldData =
+                await apiRequest(
+                    "/api/ids/" +
+                    encodeURIComponent(
+                        editingId
+                    )
+                );
+
+
+            existingImages =
+                Array.isArray(
+                    oldData.images
+                )
+                    ? oldData.images
+                    : [];
+
+        }
+
+
+        button.textContent =
+            "SAVING DATA...";
+
+
+        /*
+         * Save ID data first.
+         */
 
         if(editingId){
 
@@ -1650,16 +2046,12 @@ async function(){
                     method:"PUT",
 
                     body:
-                        JSON.stringify(data)
+                        JSON.stringify(
+                            data
+                        )
                 }
 
             );
-
-
-            showStatus(
-                "ID updated successfully."
-            );
-
 
         }else{
 
@@ -1671,17 +2063,85 @@ async function(){
                     method:"POST",
 
                     body:
-                        JSON.stringify(data)
+                        JSON.stringify(
+                            data
+                        )
                 }
 
             );
 
+        }
 
-            showStatus(
-                "ID saved successfully."
+
+        /*
+         * Upload selected images.
+         */
+
+        const selectedImage =
+            [1,2,3,4,5,6]
+            .some(
+                number =>
+                    getImageFile(
+                        number
+                    )
+            );
+
+
+        if(selectedImage){
+
+            button.textContent =
+                "UPLOADING IMAGES...";
+
+
+            const uploadedImages =
+                await uploadSelectedImages(
+                    data.id,
+                    existingImages
+                );
+
+
+            /*
+             * Save image paths
+             * into ID database.
+             */
+
+            const finalData = {
+
+                ...data,
+
+                images:
+                    uploadedImages
+
+            };
+
+
+            await apiRequest(
+
+                "/api/ids/" +
+                encodeURIComponent(
+                    data.id
+                ),
+
+                {
+                    method:"PUT",
+
+                    body:
+                        JSON.stringify(
+                            finalData
+                        )
+                }
+
             );
 
         }
+
+
+        showStatus(
+            editingId
+                ? "✓ ID updated successfully!"
+                : "✓ ID saved successfully!",
+            "success"
+        );
 
 
         clearForm();
@@ -1691,9 +2151,15 @@ async function(){
 
     }catch(error){
 
+        console.error(
+            error
+        );
+
+
         showStatus(
             error.message ||
-            "Failed to save ID."
+            "Save failed.",
+            "error"
         );
 
     }
@@ -1720,7 +2186,9 @@ async function editID(id){
         const data =
             await apiRequest(
                 "/api/ids/" +
-                encodeURIComponent(id)
+                encodeURIComponent(
+                    id
+                )
             );
 
 
@@ -1784,42 +2252,6 @@ async function editID(id){
 
 
         document
-        .getElementById("image1")
-        .value =
-            data.images?.[0] || "";
-
-
-        document
-        .getElementById("image2")
-        .value =
-            data.images?.[1] || "";
-
-
-        document
-        .getElementById("image3")
-        .value =
-            data.images?.[2] || "";
-
-
-        document
-        .getElementById("image4")
-        .value =
-            data.images?.[3] || "";
-
-
-        document
-        .getElementById("image5")
-        .value =
-            data.images?.[4] || "";
-
-
-        document
-        .getElementById("image6")
-        .value =
-            data.images?.[5] || "";
-
-
-        document
         .getElementById("idDescription")
         .value =
             data.description || "";
@@ -1828,9 +2260,60 @@ async function editID(id){
         document
         .getElementById("idTags")
         .value =
-            Array.isArray(data.tags)
+            Array.isArray(
+                data.tags
+            )
                 ? data.tags.join(", ")
                 : "";
+
+
+        /*
+         * File inputs cannot be
+         * filled automatically.
+         *
+         * Show existing paths instead.
+         */
+
+        for(
+            let number = 1;
+            number <= 6;
+            number++
+        ){
+
+            const status =
+                document
+                .getElementById(
+                    "imageStatus" +
+                    number
+                );
+
+
+            const path =
+                data.images?.[
+                    number - 1
+                ];
+
+
+            if(path){
+
+                status.textContent =
+                    "Current: " +
+                    path;
+
+                status.className =
+                    "image-status uploaded";
+
+            }else{
+
+                status.textContent =
+                    "No image uploaded";
+
+                status.className =
+                    "image-status";
+
+            }
+
+        }
 
 
         document
@@ -1840,8 +2323,11 @@ async function editID(id){
 
 
         window.scrollTo({
+
             top:0,
+
             behavior:"smooth"
+
         });
 
 
@@ -1849,7 +2335,8 @@ async function editID(id){
 
         showStatus(
             error.message ||
-            "Failed to load ID."
+            "Failed to load ID.",
+            "error"
         );
 
     }
@@ -1883,7 +2370,9 @@ async function deleteID(id){
         await apiRequest(
 
             "/api/ids/" +
-            encodeURIComponent(id),
+            encodeURIComponent(
+                id
+            ),
 
             {
                 method:"DELETE"
@@ -1893,7 +2382,8 @@ async function deleteID(id){
 
 
         showStatus(
-            "ID deleted successfully."
+            "✓ ID deleted successfully.",
+            "success"
         );
 
 
@@ -1904,7 +2394,8 @@ async function deleteID(id){
 
         showStatus(
             error.message ||
-            "Failed to delete ID."
+            "Failed to delete ID.",
+            "error"
         );
 
     }
@@ -1916,11 +2407,15 @@ async function deleteID(id){
    RENDER IDS
 ===================================================== */
 
-function renderIDs(ids){
+function renderIDs(
+    ids
+){
 
     const list =
         document
-        .getElementById("savedList");
+        .getElementById(
+            "savedList"
+        );
 
 
     if(!ids.length){
@@ -1943,7 +2438,9 @@ function renderIDs(ids){
 
         const item =
             document
-            .createElement("div");
+            .createElement(
+                "div"
+            );
 
 
         item.className =
@@ -1952,7 +2449,9 @@ function renderIDs(ids){
 
         const info =
             document
-            .createElement("div");
+            .createElement(
+                "div"
+            );
 
 
         info.className =
@@ -1961,7 +2460,9 @@ function renderIDs(ids){
 
         const strong =
             document
-            .createElement("strong");
+            .createElement(
+                "strong"
+            );
 
 
         strong.textContent =
@@ -1971,7 +2472,9 @@ function renderIDs(ids){
 
         const span =
             document
-            .createElement("span");
+            .createElement(
+                "span"
+            );
 
 
         span.textContent =
@@ -1998,7 +2501,9 @@ function renderIDs(ids){
 
         const actions =
             document
-            .createElement("div");
+            .createElement(
+                "div"
+            );
 
 
         actions.className =
@@ -2007,12 +2512,13 @@ function renderIDs(ids){
 
         const edit =
             document
-            .createElement("button");
+            .createElement(
+                "button"
+            );
 
 
         edit.className =
             "small-btn edit-btn";
-
 
         edit.textContent =
             "EDIT";
@@ -2030,12 +2536,13 @@ function renderIDs(ids){
 
         const del =
             document
-            .createElement("button");
+            .createElement(
+                "button"
+            );
 
 
         del.className =
             "small-btn delete-btn";
-
 
         del.textContent =
             "DELETE";
@@ -2102,12 +2609,6 @@ function clearForm(){
         "idVault",
         "idBadge",
         "idPopular",
-        "image1",
-        "image2",
-        "image3",
-        "image4",
-        "image5",
-        "image6",
         "idDescription",
         "idTags"
 
@@ -2129,6 +2630,40 @@ function clearForm(){
     .getElementById("idCategory")
     .value =
         "golden";
+
+
+    for(
+        let number = 1;
+        number <= 6;
+        number++
+    ){
+
+        const input =
+            document
+            .getElementById(
+                "imageFile" +
+                number
+            );
+
+
+        input.value = "";
+
+
+        const status =
+            document
+            .getElementById(
+                "imageStatus" +
+                number
+            );
+
+
+        status.textContent =
+            "No image selected";
+
+        status.className =
+            "image-status";
+
+    }
 
 
     editingId =
@@ -2153,8 +2688,7 @@ document
 "click",
 function(){
 
-    ADMIN_KEY =
-        "";
+    ADMIN_KEY = "";
 
     sessionStorage.removeItem(
         "tamilanda_admin_key"
@@ -2169,15 +2703,25 @@ function(){
    STATUS MESSAGE
 ===================================================== */
 
-function showStatus(message){
+function showStatus(
+    message,
+    type = ""
+){
 
     const status =
         document
-        .getElementById("status");
+        .getElementById(
+            "status"
+        );
 
 
     status.textContent =
         message;
+
+
+    status.className =
+        "status " +
+        type;
 
 
     status.style.display =
@@ -2191,7 +2735,7 @@ function showStatus(message){
                 "none";
 
         },
-        4000
+        5000
     );
 
 }
@@ -2201,7 +2745,9 @@ function showStatus(message){
    ESCAPE HTML
 ===================================================== */
 
-function escapeHTML(value){
+function escapeHTML(
+    value
+){
 
     return String(value)
 
