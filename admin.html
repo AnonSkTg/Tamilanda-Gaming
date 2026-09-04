@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Panel | Tamilanda Gaming</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -24,13 +27,19 @@ body{
     display:none!important;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 .admin-header{
     padding:18px 5%;
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:#101010;
     border-bottom:1px solid rgba(255,176,0,.18);
+
     position:sticky;
     top:0;
     z-index:100;
@@ -57,7 +66,9 @@ body{
 .admin-brand span{
     display:block;
     margin-top:4px;
+
     color:#ffb000;
+
     font-size:10px;
     font-weight:800;
     letter-spacing:2px;
@@ -68,6 +79,10 @@ body{
     font-size:12px;
     font-weight:700;
 }
+
+/* =========================
+   CONTAINER
+========================= */
 
 .admin-container{
     width:92%;
@@ -99,326 +114,505 @@ h1{
     line-height:1.6;
 }
 
+/* =========================
+   CARDS
+========================= */
+
 .admin-card{
     background:#101010;
+
     border:1px solid rgba(255,255,255,.08);
+
     border-radius:18px;
+
     padding:25px;
+
     margin-bottom:20px;
 }
 
 .card-title{
     color:#ffb000;
+
     font-size:12px;
     font-weight:900;
+
     letter-spacing:2px;
+
     margin-bottom:20px;
 }
 
+/* =========================
+   FORM
+========================= */
+
 .form-grid{
     display:grid;
+
     grid-template-columns:repeat(2,1fr);
+
     gap:16px;
 }
 
 .field{
     display:flex;
-    flex-direction:column;
-    gap:7px;
-}
 
-.full{
-    grid-column:1/-1;
+    flex-direction:column;
+
+    gap:7px;
 }
 
 label{
     color:#aaa;
+
     font-size:10px;
+
     font-weight:800;
+
     letter-spacing:.8px;
+
     text-transform:uppercase;
 }
 
 input,
 select,
 textarea{
+
     width:100%;
+
     border:1px solid rgba(255,255,255,.10);
+
     border-radius:10px;
+
     background:#171717;
+
     color:#fff;
+
     outline:none;
+
     font-family:inherit;
+
     font-size:13px;
 }
 
 input,
 select{
+
     min-height:45px;
+
     padding:0 13px;
 }
 
 textarea{
+
     min-height:190px;
+
     padding:13px;
+
     resize:vertical;
+
     line-height:1.6;
 }
 
 input:focus,
 select:focus,
 textarea:focus{
+
     border-color:#ffb000;
 }
 
+/* =========================
+   IMAGES
+========================= */
+
 .image-grid{
+
     display:grid;
+
     grid-template-columns:repeat(3,1fr);
+
     gap:12px;
 }
 
 .image-box{
+
     padding:15px;
+
     border:1px dashed rgba(255,255,255,.12);
+
     border-radius:12px;
+
     background:#0d0d0d;
 }
 
 .image-box span{
+
     display:block;
+
     color:#777;
+
     font-size:9px;
+
     font-weight:800;
+
     margin-bottom:8px;
 }
 
 .image-box input{
+
     font-size:10px;
 }
 
 .help-text{
-    margin-top:8px;
+
+    margin-top:10px;
+
     color:#555;
+
     font-size:10px;
-    line-height:1.5;
+
+    line-height:1.6;
 }
 
+/* =========================
+   BUTTONS
+========================= */
+
 .button-row{
+
     display:flex;
+
     gap:12px;
+
     flex-wrap:wrap;
 }
 
 button{
+
     min-height:46px;
+
     padding:0 22px;
+
     border-radius:10px;
+
     border:0;
+
     cursor:pointer;
+
     font-family:inherit;
+
     font-size:11px;
+
     font-weight:900;
+
     letter-spacing:.5px;
 }
 
-.save-btn{
-    background:#ffb000;
-    color:#080808;
-}
+button:disabled{
 
-.save-btn:disabled{
     opacity:.5;
+
     cursor:not-allowed;
 }
 
+.save-btn{
+
+    background:#ffb000;
+
+    color:#080808;
+}
+
 .clear-btn{
+
     background:#1b1b1b;
+
     border:1px solid rgba(255,255,255,.10);
+
     color:#fff;
 }
 
 .logout-btn{
+
     background:#241414;
+
     border:1px solid rgba(255,60,60,.2);
+
     color:#ff7777;
 }
 
+/* =========================
+   STATUS
+========================= */
+
 .status{
+
     margin-top:15px;
+
     padding:12px;
+
     border-radius:9px;
+
     background:rgba(255,176,0,.06);
+
     color:#ffb000;
+
     font-size:11px;
+
     line-height:1.5;
+
     display:none;
 }
 
+/* =========================
+   SAVED IDS
+========================= */
+
 .saved-list{
+
     display:grid;
+
     gap:10px;
 }
 
 .saved-item{
+
     padding:15px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:15px;
+
     background:#151515;
+
     border:1px solid rgba(255,255,255,.07);
+
     border-radius:12px;
 }
 
 .saved-info strong{
+
     display:block;
+
     font-size:13px;
 }
 
 .saved-info span{
+
     display:block;
+
     margin-top:5px;
+
     color:#777;
+
     font-size:10px;
 }
 
 .saved-actions{
+
     display:flex;
+
     gap:7px;
 }
 
 .small-btn{
+
     min-height:36px;
+
     padding:0 13px;
+
     font-size:9px;
 }
 
 .edit-btn{
+
     background:rgba(255,176,0,.10);
+
     color:#ffb000;
+
     border:1px solid rgba(255,176,0,.2);
 }
 
 .delete-btn{
+
     background:rgba(255,50,50,.08);
+
     color:#ff7777;
+
     border:1px solid rgba(255,50,50,.15);
 }
 
 .empty{
+
     padding:30px;
+
     text-align:center;
+
     color:#555;
+
     font-size:12px;
 }
 
-/* LOGIN */
+/* =========================
+   LOGIN
+========================= */
 
 .login-screen{
+
     min-height:100vh;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     padding:20px;
+
     background:
+
         radial-gradient(
+
             circle at 50% 0%,
+
             rgba(255,176,0,.08),
+
             transparent 40%
+
         ),
+
         #080808;
 }
 
 .login-box{
+
     width:100%;
+
     max-width:430px;
+
     background:#101010;
+
     border:1px solid rgba(255,176,0,.18);
+
     border-radius:20px;
+
     padding:30px;
 }
 
 .login-box h1{
+
     font-size:32px;
+
     margin-bottom:10px;
 }
 
 .login-box p{
+
     color:#777;
+
     font-size:12px;
+
     line-height:1.6;
+
     margin-bottom:22px;
 }
 
 .login-btn{
+
     width:100%;
+
     background:#ffb000;
+
     color:#080808;
 }
 
 .login-status{
+
     margin-top:12px;
+
     color:#ff7777;
+
     font-size:11px;
+
     text-align:center;
+
     line-height:1.5;
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:650px){
 
     .admin-header{
+
         padding:13px 4%;
     }
 
     .admin-title{
+
         display:none;
     }
 
     .admin-container{
+
         width:92%;
+
         margin-top:30px;
     }
 
     .admin-card{
+
         padding:18px;
     }
 
     .form-grid{
+
         grid-template-columns:1fr;
     }
 
-    .full{
-        grid-column:auto;
-    }
-
     .image-grid{
+
         grid-template-columns:1fr;
     }
 
     .saved-item{
+
         align-items:flex-start;
+
         flex-direction:column;
     }
 
     .saved-actions{
+
         width:100%;
     }
 
     .small-btn{
+
         flex:1;
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
 
 <!-- =====================================================
      LOGIN SCREEN
-     ===================================================== -->
+===================================================== -->
 
-<section id="loginScreen" class="login-screen">
+<section
+    id="loginScreen"
+    class="login-screen">
 
     <div class="login-box">
 
@@ -431,12 +625,15 @@ button{
         </h1>
 
         <p>
-            Enter your Admin Key to access the ID management panel.
+            Enter your Admin Key to access
+            the ID management panel.
         </p>
 
         <div class="field">
 
-            <label>ADMIN KEY</label>
+            <label>
+                ADMIN KEY
+            </label>
 
             <input
                 type="password"
@@ -466,9 +663,10 @@ button{
 </section>
 
 
+
 <!-- =====================================================
      ADMIN PANEL
-     ===================================================== -->
+===================================================== -->
 
 <div
     id="adminPanel"
@@ -497,12 +695,12 @@ button{
 
     </div>
 
-
     <div class="admin-title">
         ID MANAGEMENT PANEL
     </div>
 
 </header>
+
 
 
 <main class="admin-container">
@@ -515,21 +713,24 @@ button{
     </div>
 
     <h1>
-        ID <span style="color:#ffb000;">
+        ID
+        <span style="color:#ffb000;">
             MANAGEMENT
         </span>
     </h1>
 
     <p>
-        Create, edit and manage your Free Fire ID listings.
+        Create, edit and manage your
+        Free Fire ID listings.
     </p>
 
 </section>
 
 
+
 <!-- =====================================================
      01 ID INFORMATION
-     ===================================================== -->
+===================================================== -->
 
 <section class="admin-card">
 
@@ -542,7 +743,9 @@ button{
 
 <div class="field">
 
-<label>ID Number</label>
+<label>
+    ID NUMBER
+</label>
 
 <input
     type="text"
@@ -552,9 +755,12 @@ button{
 </div>
 
 
+
 <div class="field">
 
-<label>ID Name</label>
+<label>
+    ID NAME
+</label>
 
 <input
     type="text"
@@ -564,9 +770,12 @@ button{
 </div>
 
 
+
 <div class="field">
 
-<label>Price</label>
+<label>
+    PRICE
+</label>
 
 <input
     type="number"
@@ -576,9 +785,12 @@ button{
 </div>
 
 
+
 <div class="field">
 
-<label>Level</label>
+<label>
+    LEVEL
+</label>
 
 <input
     type="number"
@@ -588,9 +800,12 @@ button{
 </div>
 
 
+
 <div class="field">
 
-<label>Prime</label>
+<label>
+    PRIME
+</label>
 
 <input
     type="text"
@@ -600,9 +815,12 @@ button{
 </div>
 
 
+
 <div class="field">
 
-<label>Vault</label>
+<label>
+    VAULT
+</label>
 
 <input
     type="text"
@@ -612,40 +830,46 @@ button{
 </div>
 
 
+
 <div class="field">
 
-<label>Category</label>
+<label>
+    CATEGORY
+</label>
 
 <select id="idCategory">
 
-<option value="golden">
-Golden Elites
-</option>
+    <option value="golden">
+        Golden Elites
+    </option>
 
-<option value="high">
-High Level
-</option>
+    <option value="high">
+        High Level
+    </option>
 
-<option value="starter">
-Starter IDs
-</option>
+    <option value="starter">
+        Starter IDs
+    </option>
 
-<option value="mid">
-Mid Range IDs
-</option>
+    <option value="mid">
+        Mid Range IDs
+    </option>
 
-<option value="hot">
-Hot IDs
-</option>
+    <option value="hot">
+        Hot IDs
+    </option>
 
 </select>
 
 </div>
 
 
+
 <div class="field">
 
-<label>Badge</label>
+<label>
+    BADGE
+</label>
 
 <input
     type="text"
@@ -655,9 +879,12 @@ Hot IDs
 </div>
 
 
+
 <div class="field">
 
-<label>Popular Score</label>
+<label>
+    POPULAR SCORE
+</label>
 
 <input
     type="number"
@@ -667,9 +894,12 @@ Hot IDs
 </div>
 
 
+
 <div class="field">
 
-<label>Tags</label>
+<label>
+    TAGS
+</label>
 
 <input
     type="text"
@@ -684,9 +914,10 @@ Hot IDs
 </section>
 
 
+
 <!-- =====================================================
      02 IMAGES
-     ===================================================== -->
+===================================================== -->
 
 <section class="admin-card">
 
@@ -700,7 +931,7 @@ Hot IDs
 <div class="image-box">
 
 <span>
-IMAGE 1 — MAIN
+IMAGE 1 — MAIN / CARD
 </span>
 
 <input
@@ -709,6 +940,7 @@ IMAGE 1 — MAIN
     placeholder="assets/ids/001/01.jpg">
 
 </div>
+
 
 
 <div class="image-box">
@@ -725,6 +957,7 @@ IMAGE 2
 </div>
 
 
+
 <div class="image-box">
 
 <span>
@@ -737,6 +970,7 @@ IMAGE 3
     placeholder="assets/ids/001/03.jpg">
 
 </div>
+
 
 
 <div class="image-box">
@@ -753,6 +987,7 @@ IMAGE 4
 </div>
 
 
+
 <div class="image-box">
 
 <span>
@@ -765,6 +1000,7 @@ IMAGE 5
     placeholder="assets/ids/001/05.jpg">
 
 </div>
+
 
 
 <div class="image-box">
@@ -786,20 +1022,23 @@ IMAGE 6
 
 <p class="help-text">
 
-IMAGE 1 = Card/Main image.<br>
-IMAGE 2 onwards = View ID gallery images.
+<strong>IMAGE 1</strong> = Card/Main image.<br>
 
-Upload the images to the corresponding GitHub ID folder,
-then enter their paths here.
+<strong>IMAGE 2 onwards</strong> =
+View ID gallery images.<br>
+
+Example:
+<code>assets/ids/001/01.jpg</code>
 
 </p>
 
 </section>
 
 
+
 <!-- =====================================================
      03 DESCRIPTION
-     ===================================================== -->
+===================================================== -->
 
 <section class="admin-card">
 
@@ -810,39 +1049,38 @@ then enter their paths here.
 <div class="field">
 
 <label>
-This ID's own description
+    THIS ID'S DESCRIPTION
 </label>
 
 <textarea
     id="idDescription"
     placeholder="Type this particular ID's description here...
 
-Example:
-
 🔥 7TH TO ALL x OP COMBO
 
 💥 600+ OP VAULT COLLECTIONS
 
+🔥 7TH ELITE PASS BUNDLE
+
 🔥 Rare old bundles
 
-🔥 More details...
-
-Each ID can have completely different typing."></textarea>
+🔥 More details..."></textarea>
 
 </div>
 
 <p class="help-text">
 
-This description belongs ONLY to this ID.
+This description belongs only to this ID.
 
 </p>
 
 </section>
 
 
+
 <!-- =====================================================
      04 SAVE
-     ===================================================== -->
+===================================================== -->
 
 <section class="admin-card">
 
@@ -850,8 +1088,8 @@ This description belongs ONLY to this ID.
     04 — SAVE ID
 </div>
 
-
 <div class="button-row">
+
 
 <button
     class="save-btn"
@@ -860,6 +1098,7 @@ This description belongs ONLY to this ID.
     SAVE ID
 
 </button>
+
 
 
 <button
@@ -871,6 +1110,7 @@ This description belongs ONLY to this ID.
 </button>
 
 
+
 <button
     class="logout-btn"
     id="logoutBtn">
@@ -878,6 +1118,7 @@ This description belongs ONLY to this ID.
     LOGOUT
 
 </button>
+
 
 </div>
 
@@ -890,9 +1131,10 @@ This description belongs ONLY to this ID.
 </section>
 
 
+
 <!-- =====================================================
      05 SAVED IDS
-     ===================================================== -->
+===================================================== -->
 
 <section class="admin-card">
 
@@ -900,13 +1142,12 @@ This description belongs ONLY to this ID.
     05 — SAVED IDS
 </div>
 
-
 <div
     class="saved-list"
     id="savedList">
 
     <div class="empty">
-        Loading IDs...
+        Login to load IDs...
     </div>
 
 </div>
@@ -919,14 +1160,15 @@ This description belongs ONLY to this ID.
 </div>
 
 
+
 <script>
 
 /* =====================================================
-   WORKER CONFIG
-   ===================================================== */
+   WORKER CONFIGURATION
+===================================================== */
 
 const WORKER_URL =
-"https://long-glade-ef77.tamilandaoffcyt.workers.dev";
+    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
 
 
 let ADMIN_KEY = "";
@@ -936,7 +1178,7 @@ let editingId = null;
 
 /* =====================================================
    API REQUEST
-   ===================================================== */
+===================================================== */
 
 async function apiRequest(
     path,
@@ -948,12 +1190,17 @@ async function apiRequest(
         "Content-Type":
             "application/json",
 
-        "X-Admin-Key":
-            ADMIN_KEY,
-
         ...(options.headers || {})
 
     };
+
+
+    if(ADMIN_KEY){
+
+        headers["X-Admin-Key"] =
+            ADMIN_KEY;
+
+    }
 
 
     const response =
@@ -961,19 +1208,19 @@ async function apiRequest(
             WORKER_URL + path,
             {
                 ...options,
-                headers
+                headers:headers
             }
         );
 
 
-    let data;
+    let data = {};
 
     try{
 
         data =
             await response.json();
 
-    }catch{
+    }catch(error){
 
         data = {
             error:
@@ -1000,7 +1247,7 @@ async function apiRequest(
 
 /* =====================================================
    LOGIN
-   ===================================================== */
+===================================================== */
 
 document
 .getElementById("loginBtn")
@@ -1015,27 +1262,91 @@ async function(){
         .trim();
 
 
+    const status =
+        document
+        .getElementById("loginStatus");
+
+
     if(!key){
 
-        document
-        .getElementById("loginStatus")
-        .textContent =
-        "Please enter Admin Key.";
+        status.textContent =
+            "Please enter Admin Key.";
 
         return;
 
     }
 
 
-    ADMIN_KEY =
-        key;
+    const button =
+        document
+        .getElementById("loginBtn");
+
+
+    button.disabled = true;
+
+    button.textContent =
+        "CHECKING...";
 
 
     try{
 
-        await apiRequest(
-            "/api/ids"
-        );
+        /*
+         * IMPORTANT:
+         * Login uses the Worker
+         * /api/admin/login endpoint.
+         */
+
+        const response =
+            await fetch(
+                WORKER_URL +
+                "/api/admin/login",
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            key:key
+                        })
+                }
+            );
+
+
+        let data = {};
+
+        try{
+
+            data =
+                await response.json();
+
+        }catch(error){
+
+            data = {};
+
+        }
+
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+                data.error ||
+                "Invalid Admin Key"
+            );
+
+        }
+
+
+        /* LOGIN SUCCESS */
+
+        ADMIN_KEY =
+            key;
 
 
         sessionStorage.setItem(
@@ -1056,7 +1367,10 @@ async function(){
         .remove("hidden");
 
 
-        loadIDs();
+        status.textContent = "";
+
+
+        await loadIDs();
 
 
     }catch(error){
@@ -1064,17 +1378,24 @@ async function(){
         ADMIN_KEY = "";
 
 
-        document
-        .getElementById("loginStatus")
-        .textContent =
-        "Login failed. Check Admin Key.";
+        status.textContent =
+            error.message ||
+            "Login failed.";
 
     }
+
+
+    button.disabled = false;
+
+    button.textContent =
+        "LOGIN";
 
 });
 
 
-/* ENTER KEY */
+/* =====================================================
+   ENTER KEY LOGIN
+===================================================== */
 
 document
 .getElementById("adminKey")
@@ -1082,9 +1403,7 @@ document
 "keydown",
 function(event){
 
-    if(
-        event.key === "Enter"
-    ){
+    if(event.key === "Enter"){
 
         document
         .getElementById("loginBtn")
@@ -1097,7 +1416,7 @@ function(event){
 
 /* =====================================================
    LOAD IDS
-   ===================================================== */
+===================================================== */
 
 async function loadIDs(){
 
@@ -1107,7 +1426,7 @@ async function loadIDs(){
 
 
     list.innerHTML =
-    '<div class="empty">Loading...</div>';
+        '<div class="empty">Loading IDs...</div>';
 
 
     try{
@@ -1120,8 +1439,12 @@ async function loadIDs(){
 
         const ids =
             Array.isArray(result)
-            ? result
-            : [];
+                ? result
+                : (
+                    result.ids ||
+                    result.data ||
+                    []
+                );
 
 
         renderIDs(ids);
@@ -1130,7 +1453,12 @@ async function loadIDs(){
     }catch(error){
 
         list.innerHTML =
-        '<div class="empty">Failed to load IDs.</div>';
+            '<div class="empty">' +
+            'Failed to load IDs.<br><br>' +
+            escapeHTML(
+                error.message
+            ) +
+            '</div>';
 
     }
 
@@ -1139,20 +1467,29 @@ async function loadIDs(){
 
 /* =====================================================
    GET FORM DATA
-   ===================================================== */
+===================================================== */
 
 function getFormData(){
 
+    let id =
+        document
+        .getElementById("idNumber")
+        .value
+        .trim();
+
+
+    if(!id){
+
+        id =
+            "id_" +
+            Date.now();
+
+    }
+
+
     return {
 
-        id:
-            editingId ||
-            document
-            .getElementById("idNumber")
-            .value
-            .trim() ||
-            "id_" + Date.now(),
-
+        id:id,
 
         name:
             document
@@ -1160,22 +1497,21 @@ function getFormData(){
             .value
             .trim(),
 
-
         price:
             Number(
                 document
                 .getElementById("idPrice")
-                .value || 0
+                .value ||
+                0
             ),
-
 
         level:
             Number(
                 document
                 .getElementById("idLevel")
-                .value || 0
+                .value ||
+                0
             ),
-
 
         prime:
             document
@@ -1183,19 +1519,16 @@ function getFormData(){
             .value
             .trim(),
 
-
         vault:
             document
             .getElementById("idVault")
             .value
             .trim(),
 
-
         category:
             document
             .getElementById("idCategory")
             .value,
-
 
         badge:
             document
@@ -1203,17 +1536,15 @@ function getFormData(){
             .value
             .trim(),
 
-
         popular:
             Number(
                 document
                 .getElementById("idPopular")
-                .value || 0
+                .value ||
+                0
             ),
 
-
-        images: [
-
+        images:[
             document
             .getElementById("image1")
             .value
@@ -1243,15 +1574,12 @@ function getFormData(){
             .getElementById("image6")
             .value
             .trim()
-
         ].filter(Boolean),
-
 
         description:
             document
             .getElementById("idDescription")
             .value,
-
 
         tags:
             document
@@ -1271,7 +1599,7 @@ function getFormData(){
 
 /* =====================================================
    SAVE / UPDATE
-   ===================================================== */
+===================================================== */
 
 document
 .getElementById("saveBtn")
@@ -1281,17 +1609,6 @@ async function(){
 
     const data =
         getFormData();
-
-
-    if(!data.id){
-
-        showStatus(
-            "Please enter ID Number."
-        );
-
-        return;
-
-    }
 
 
     if(!data.name){
@@ -1312,21 +1629,30 @@ async function(){
 
     button.disabled = true;
 
+    button.textContent =
+        editingId
+            ? "UPDATING..."
+            : "SAVING...";
+
 
     try{
 
         if(editingId){
 
             await apiRequest(
+
                 "/api/ids/" +
                 encodeURIComponent(
                     editingId
                 ),
+
                 {
                     method:"PUT",
+
                     body:
                         JSON.stringify(data)
                 }
+
             );
 
 
@@ -1334,15 +1660,20 @@ async function(){
                 "ID updated successfully."
             );
 
+
         }else{
 
             await apiRequest(
+
                 "/api/ids",
+
                 {
                     method:"POST",
+
                     body:
                         JSON.stringify(data)
                 }
+
             );
 
 
@@ -1370,12 +1701,17 @@ async function(){
 
     button.disabled = false;
 
+    button.textContent =
+        editingId
+            ? "UPDATE ID"
+            : "SAVE ID";
+
 });
 
 
 /* =====================================================
-   EDIT
-   ===================================================== */
+   EDIT ID
+===================================================== */
 
 async function editID(id){
 
@@ -1395,7 +1731,7 @@ async function editID(id){
         document
         .getElementById("idNumber")
         .value =
-            data.id || "";
+            data.id || id;
 
 
         document
@@ -1431,7 +1767,8 @@ async function editID(id){
         document
         .getElementById("idCategory")
         .value =
-            data.category || "golden";
+            data.category ||
+            "golden";
 
 
         document
@@ -1491,8 +1828,9 @@ async function editID(id){
         document
         .getElementById("idTags")
         .value =
-            (data.tags || [])
-            .join(", ");
+            Array.isArray(data.tags)
+                ? data.tags.join(", ")
+                : "";
 
 
         document
@@ -1510,6 +1848,7 @@ async function editID(id){
     }catch(error){
 
         showStatus(
+            error.message ||
             "Failed to load ID."
         );
 
@@ -1519,30 +1858,37 @@ async function editID(id){
 
 
 /* =====================================================
-   DELETE
-   ===================================================== */
+   DELETE ID
+===================================================== */
 
 async function deleteID(id){
 
     const confirmed =
         confirm(
-            "Delete ID " + id + "?"
+            "Delete ID " +
+            id +
+            "?"
         );
 
 
     if(!confirmed){
+
         return;
+
     }
 
 
     try{
 
         await apiRequest(
+
             "/api/ids/" +
             encodeURIComponent(id),
+
             {
                 method:"DELETE"
             }
+
         );
 
 
@@ -1568,7 +1914,7 @@ async function deleteID(id){
 
 /* =====================================================
    RENDER IDS
-   ===================================================== */
+===================================================== */
 
 function renderIDs(ids){
 
@@ -1580,7 +1926,9 @@ function renderIDs(ids){
     if(!ids.length){
 
         list.innerHTML =
-        '<div class="empty">No IDs added yet.</div>';
+            '<div class="empty">' +
+            'No IDs added yet.' +
+            '</div>';
 
         return;
 
@@ -1618,7 +1966,7 @@ function renderIDs(ids){
 
         strong.textContent =
             data.name ||
-            data.id;
+            "Unnamed ID";
 
 
         const span =
@@ -1642,7 +1990,6 @@ function renderIDs(ids){
         info.appendChild(
             strong
         );
-
 
         info.appendChild(
             span
@@ -1708,7 +2055,6 @@ function renderIDs(ids){
             edit
         );
 
-
         actions.appendChild(
             del
         );
@@ -1717,7 +2063,6 @@ function renderIDs(ids){
         item.appendChild(
             info
         );
-
 
         item.appendChild(
             actions
@@ -1734,8 +2079,8 @@ function renderIDs(ids){
 
 
 /* =====================================================
-   CLEAR
-   ===================================================== */
+   CLEAR FORM
+===================================================== */
 
 document
 .getElementById("clearBtn")
@@ -1786,7 +2131,8 @@ function clearForm(){
         "golden";
 
 
-    editingId = null;
+    editingId =
+        null;
 
 
     document
@@ -1799,7 +2145,7 @@ function clearForm(){
 
 /* =====================================================
    LOGOUT
-   ===================================================== */
+===================================================== */
 
 document
 .getElementById("logoutBtn")
@@ -1807,7 +2153,8 @@ document
 "click",
 function(){
 
-    ADMIN_KEY = "";
+    ADMIN_KEY =
+        "";
 
     sessionStorage.removeItem(
         "tamilanda_admin_key"
@@ -1819,8 +2166,8 @@ function(){
 
 
 /* =====================================================
-   STATUS
-   ===================================================== */
+   STATUS MESSAGE
+===================================================== */
 
 function showStatus(message){
 
@@ -1851,8 +2198,44 @@ function showStatus(message){
 
 
 /* =====================================================
-   RESTORE SESSION
-   ===================================================== */
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   RESTORE LOGIN SESSION
+===================================================== */
 
 const savedKey =
     sessionStorage.getItem(
@@ -1885,4 +2268,5 @@ if(savedKey){
 </script>
 
 </body>
+
 </html>
