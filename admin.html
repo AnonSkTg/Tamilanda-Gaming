@@ -1,366 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Panel | Tamilanda Gaming</title>
+<title>Admin Panel | Tamilanda Gaming</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #080808;
-            color: #fff;
-            min-height: 100vh;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080808;
+    color:#fff;
+    min-height:100vh;
+}
 
-        .admin-header {
-            padding: 18px 5%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+header{
+    padding:16px 5%;
+    background:#101010;
+    border-bottom:1px solid rgba(255,176,0,.2);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
 
-            background: #101010;
-            border-bottom: 1px solid rgba(255,176,0,.18);
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+.brand img{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    object-fit:contain;
+}
 
-        .admin-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.brand strong{
+    display:block;
+    font-size:17px;
+    letter-spacing:1px;
+}
 
-        .admin-brand img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            object-fit: contain;
-        }
+.brand span{
+    display:block;
+    color:#ffb000;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-top:4px;
+}
 
-        .admin-brand strong {
-            font-size: 17px;
-            letter-spacing: 1px;
-        }
+.container{
+    width:92%;
+    max-width:900px;
+    margin:35px auto 80px;
+}
 
-        .admin-brand span {
-            display: block;
-            margin-top: 4px;
-            color: #ffb000;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: 2px;
-        }
+.heading{
+    margin-bottom:25px;
+}
 
-        .admin-title {
-            color: #aaa;
-            font-size: 12px;
-            font-weight: 700;
-        }
+.eyebrow{
+    color:#ffb000;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:3px;
+    margin-bottom:8px;
+}
 
-        .admin-container {
-            width: 92%;
-            max-width: 900px;
-            margin: 40px auto 80px;
-        }
+h1{
+    font-size:clamp(32px,7vw,55px);
+}
 
-        .page-heading {
-            margin-bottom: 30px;
-        }
+.heading p{
+    color:#777;
+    font-size:12px;
+    line-height:1.6;
+    margin-top:10px;
+}
 
-        .eyebrow {
-            color: #ffb000;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-        }
+.card{
+    background:#101010;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:22px;
+    margin-bottom:18px;
+}
 
-        h1 {
-            font-size: clamp(32px, 6vw, 55px);
-            line-height: 1;
-        }
+.card-title{
+    color:#ffb000;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:2px;
+    margin-bottom:18px;
+}
 
-        .page-heading p {
-            margin-top: 12px;
-            color: #777;
-            font-size: 13px;
-            line-height: 1.6;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
 
-        .admin-card {
-            background: #101010;
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 18px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
 
-        .card-title {
-            color: #ffb000;
-            font-size: 12px;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
+.full{
+    grid-column:1/-1;
+}
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
+label{
+    color:#aaa;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
 
-        .field {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
+input,
+select,
+textarea{
+    width:100%;
+    background:#171717;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:9px;
+    outline:none;
+    font-family:inherit;
+}
 
-        .field.full {
-            grid-column: 1 / -1;
-        }
+input,
+select{
+    height:44px;
+    padding:0 12px;
+    font-size:12px;
+}
 
-        label {
-            color: #aaa;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: .8px;
-            text-transform: uppercase;
-        }
+textarea{
+    min-height:160px;
+    padding:12px;
+    font-size:12px;
+    line-height:1.6;
+    resize:vertical;
+}
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            border: 1px solid rgba(255,255,255,.10);
-            border-radius: 10px;
-            background: #171717;
-            color: #fff;
-            outline: none;
-            font-family: inherit;
-            font-size: 13px;
-        }
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#ffb000;
+}
 
-        input,
-        select {
-            min-height: 45px;
-            padding: 0 13px;
-        }
+.image-upload{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
 
-        textarea {
-            min-height: 180px;
-            padding: 13px;
-            resize: vertical;
-            line-height: 1.6;
-        }
+.upload-box{
+    background:#0d0d0d;
+    border:1px dashed rgba(255,255,255,.14);
+    border-radius:11px;
+    padding:13px;
+}
 
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: #ffb000;
-        }
+.upload-box small{
+    display:block;
+    color:#777;
+    font-size:9px;
+    font-weight:800;
+    margin-bottom:8px;
+}
 
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
+.upload-box input{
+    height:auto;
+    padding:8px;
+    font-size:10px;
+}
 
-        .image-box {
-            padding: 15px;
-            border: 1px dashed rgba(255,255,255,.12);
-            border-radius: 12px;
-            background: #0d0d0d;
-        }
+.preview{
+    width:100%;
+    max-height:150px;
+    object-fit:contain;
+    border-radius:8px;
+    margin-top:8px;
+    display:none;
+}
 
-        .image-box span {
-            display: block;
-            color: #777;
-            font-size: 9px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
+.buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
 
-        .image-box input {
-            font-size: 10px;
-        }
+button{
+    min-height:45px;
+    padding:0 20px;
+    border-radius:9px;
+    border:0;
+    font-size:10px;
+    font-weight:900;
+    cursor:pointer;
+}
 
-        .help-text {
-            margin-top: 8px;
-            color: #555;
-            font-size: 10px;
-            line-height: 1.5;
-        }
+.save{
+    background:#ffb000;
+    color:#080808;
+}
 
-        .button-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+.clear{
+    background:#1b1b1b;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.1);
+}
 
-        button {
-            min-height: 46px;
-            padding: 0 22px;
-            border-radius: 10px;
-            border: 0;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 11px;
-            font-weight: 900;
-            letter-spacing: .5px;
-        }
+.logout{
+    background:#241414;
+    color:#ff7777;
+    border:1px solid rgba(255,70,70,.2);
+}
 
-        .save-btn {
-            background: #ffb000;
-            color: #080808;
-        }
+.status{
+    display:none;
+    margin-top:14px;
+    padding:12px;
+    border-radius:8px;
+    background:rgba(255,176,0,.07);
+    color:#ffb000;
+    font-size:11px;
+    line-height:1.5;
+}
 
-        .save-btn:hover {
-            background: #ffc13a;
-        }
+.saved-list{
+    display:grid;
+    gap:10px;
+}
 
-        .clear-btn {
-            background: #1b1b1b;
-            border: 1px solid rgba(255,255,255,.10);
-            color: #fff;
-        }
+.saved-item{
+    background:#151515;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:11px;
+    padding:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+}
 
-        .danger-btn {
-            background: rgba(255,60,60,.08);
-            border: 1px solid rgba(255,60,60,.2);
-            color: #ff7070;
-        }
+.saved-info strong{
+    display:block;
+    font-size:13px;
+}
 
-        .status {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 9px;
-            background: rgba(255,176,0,.06);
-            color: #ffb000;
-            font-size: 11px;
-            display: none;
-        }
+.saved-info span{
+    display:block;
+    color:#777;
+    font-size:10px;
+    margin-top:5px;
+}
 
-        .saved-list {
-            display: grid;
-            gap: 10px;
-        }
+.actions{
+    display:flex;
+    gap:7px;
+}
 
-        .saved-item {
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
+.small{
+    min-height:35px;
+    padding:0 12px;
+    font-size:9px;
+}
 
-            background: #151515;
-            border: 1px solid rgba(255,255,255,.07);
-            border-radius: 12px;
-        }
+.edit{
+    background:rgba(255,176,0,.1);
+    color:#ffb000;
+    border:1px solid rgba(255,176,0,.2);
+}
 
-        .saved-info strong {
-            display: block;
-            font-size: 13px;
-        }
+.delete{
+    background:rgba(255,50,50,.08);
+    color:#ff7777;
+    border:1px solid rgba(255,50,50,.15);
+}
 
-        .saved-info span {
-            display: block;
-            margin-top: 5px;
-            color: #777;
-            font-size: 10px;
-        }
+.empty{
+    text-align:center;
+    color:#555;
+    padding:25px;
+    font-size:11px;
+}
 
-        .saved-actions {
-            display: flex;
-            gap: 7px;
-        }
+.hidden{
+    display:none;
+}
 
-        .small-btn {
-            min-height: 36px;
-            padding: 0 13px;
-            font-size: 9px;
-        }
+.login-box{
+    max-width:500px;
+    margin:70px auto;
+}
 
-        .edit-btn {
-            background: rgba(255,176,0,.10);
-            color: #ffb000;
-            border: 1px solid rgba(255,176,0,.2);
-        }
+.login-box h2{
+    margin-bottom:10px;
+}
 
-        .delete-btn {
-            background: rgba(255,50,50,.08);
-            color: #ff7777;
-            border: 1px solid rgba(255,50,50,.15);
-        }
+.login-box p{
+    color:#777;
+    font-size:11px;
+    line-height:1.6;
+    margin-bottom:18px;
+}
 
-        .empty {
-            padding: 30px;
-            text-align: center;
-            color: #555;
-            font-size: 12px;
-        }
+@media(max-width:650px){
 
-        @media (max-width: 650px) {
+    header{
+        padding:13px 4%;
+    }
 
-            .admin-header {
-                padding: 13px 4%;
-            }
+    .container{
+        width:92%;
+        margin-top:25px;
+    }
 
-            .admin-title {
-                display: none;
-            }
+    .grid{
+        grid-template-columns:1fr;
+    }
 
-            .admin-container {
-                width: 92%;
-                margin-top: 30px;
-            }
+    .full{
+        grid-column:auto;
+    }
 
-            .admin-card {
-                padding: 18px;
-            }
+    .image-upload{
+        grid-template-columns:1fr;
+    }
 
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
+    .card{
+        padding:17px;
+    }
 
-            .field.full {
-                grid-column: auto;
-            }
+    .saved-item{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
-            .image-grid {
-                grid-template-columns: 1fr;
-            }
+    .actions{
+        width:100%;
+    }
 
-            .saved-item {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .saved-actions {
-                width: 100%;
-            }
-
-            .small-btn {
-                flex: 1;
-            }
-        }
-    </style>
+    .small{
+        flex:1;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<header class="admin-header">
+<header>
 
-    <div class="admin-brand">
+    <div class="brand">
 
         <img
             src="assets/ic_launcher.png"
@@ -373,16 +380,71 @@
 
     </div>
 
-    <div class="admin-title">
-        ID MANAGEMENT PANEL
-    </div>
+    <button
+        class="logout hidden"
+        id="logoutBtn">
+        LOGOUT
+    </button>
 
 </header>
 
 
-<main class="admin-container">
+<!-- LOGIN -->
 
-    <section class="page-heading">
+<div
+    class="container"
+    id="loginSection">
+
+    <div class="card login-box">
+
+        <div class="eyebrow">
+            TAMILANDA GAMING
+        </div>
+
+        <h2>
+            Admin Login
+        </h2>
+
+        <p>
+            Enter your Admin Key to access the ID management panel.
+        </p>
+
+        <div class="field">
+
+            <label>ADMIN KEY</label>
+
+            <input
+                type="password"
+                id="adminKey"
+                placeholder="Enter Admin Key">
+
+        </div>
+
+        <br>
+
+        <button
+            class="save"
+            id="loginBtn">
+            LOGIN
+        </button>
+
+        <div
+            class="status"
+            id="loginStatus">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<main
+    class="container hidden"
+    id="adminSection">
+
+    <section class="heading">
 
         <div class="eyebrow">
             TAMILANDA GAMING
@@ -393,8 +455,7 @@
         </h1>
 
         <p>
-            Create, edit and manage your Free Fire ID listings.
-            Every ID can have its own images, information and description.
+            Create, edit, delete and manage your Free Fire ID listings.
         </p>
 
     </section>
@@ -402,65 +463,88 @@
 
     <!-- BASIC INFORMATION -->
 
-    <section class="admin-card">
+    <section class="card">
 
         <div class="card-title">
             01 — ID INFORMATION
         </div>
 
-        <div class="form-grid">
+        <div class="grid">
 
             <div class="field">
+
+                <label>ID Number</label>
+
+                <input
+                    type="text"
+                    id="idNumber"
+                    placeholder="001">
+
+            </div>
+
+
+            <div class="field">
+
                 <label>ID Name</label>
 
                 <input
                     type="text"
                     id="idName"
-                    placeholder="Example: Golden Elite #001">
+                    placeholder="Golden Elite 001">
+
             </div>
 
 
             <div class="field">
+
                 <label>Price</label>
 
                 <input
                     type="number"
                     id="idPrice"
                     placeholder="50000">
+
             </div>
 
 
             <div class="field">
+
                 <label>Level</label>
 
                 <input
                     type="number"
                     id="idLevel"
                     placeholder="90">
+
             </div>
 
 
             <div class="field">
+
                 <label>Prime</label>
 
                 <input
                     type="text"
                     id="idPrime"
                     placeholder="8">
+
             </div>
 
 
             <div class="field">
+
                 <label>Vault</label>
 
                 <input
                     type="text"
                     id="idVault"
                     placeholder="600+">
+
             </div>
 
 
             <div class="field">
+
                 <label>Category</label>
 
                 <select id="idCategory">
@@ -491,22 +575,38 @@
 
 
             <div class="field">
+
                 <label>Badge</label>
 
                 <input
                     type="text"
                     id="idBadge"
                     placeholder="GOLDEN ELITE">
+
             </div>
 
 
             <div class="field">
+
                 <label>Popular Score</label>
 
                 <input
                     type="number"
                     id="idPopular"
                     placeholder="95">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>Tags</label>
+
+                <input
+                    type="text"
+                    id="idTags"
+                    placeholder="RARE, OLD ACCOUNT, PREMIUM">
+
             </div>
 
         </div>
@@ -516,67 +616,113 @@
 
     <!-- IMAGES -->
 
-    <section class="admin-card">
+    <section class="card">
 
         <div class="card-title">
             02 — ID IMAGES
         </div>
 
-        <div class="image-grid">
+        <div class="image-upload">
 
-            <div class="image-box">
-                <span>IMAGE 1 — MAIN</span>
+            <div class="upload-box">
+
+                <small>IMAGE 1 — MAIN</small>
+
                 <input
-                    type="text"
-                    id="image1"
-                    placeholder="assets/id001-1.jpg">
+                    type="file"
+                    accept="image/*"
+                    data-image="1">
+
+                <img
+                    class="preview"
+                    id="preview1">
+
             </div>
 
-            <div class="image-box">
-                <span>IMAGE 2</span>
+
+            <div class="upload-box">
+
+                <small>IMAGE 2</small>
+
                 <input
-                    type="text"
-                    id="image2"
-                    placeholder="assets/id001-2.jpg">
+                    type="file"
+                    accept="image/*"
+                    data-image="2">
+
+                <img
+                    class="preview"
+                    id="preview2">
+
             </div>
 
-            <div class="image-box">
-                <span>IMAGE 3</span>
+
+            <div class="upload-box">
+
+                <small>IMAGE 3</small>
+
                 <input
-                    type="text"
-                    id="image3"
-                    placeholder="assets/id001-3.jpg">
+                    type="file"
+                    accept="image/*"
+                    data-image="3">
+
+                <img
+                    class="preview"
+                    id="preview3">
+
             </div>
 
-            <div class="image-box">
-                <span>IMAGE 4</span>
+
+            <div class="upload-box">
+
+                <small>IMAGE 4</small>
+
                 <input
-                    type="text"
-                    id="image4"
-                    placeholder="assets/id001-4.jpg">
+                    type="file"
+                    accept="image/*"
+                    data-image="4">
+
+                <img
+                    class="preview"
+                    id="preview4">
+
             </div>
 
-            <div class="image-box">
-                <span>IMAGE 5</span>
+
+            <div class="upload-box">
+
+                <small>IMAGE 5</small>
+
                 <input
-                    type="text"
-                    id="image5"
-                    placeholder="assets/id001-5.jpg">
+                    type="file"
+                    accept="image/*"
+                    data-image="5">
+
+                <img
+                    class="preview"
+                    id="preview5">
+
             </div>
 
-            <div class="image-box">
-                <span>IMAGE 6</span>
+
+            <div class="upload-box">
+
+                <small>IMAGE 6</small>
+
                 <input
-                    type="text"
-                    id="image6"
-                    placeholder="assets/id001-6.jpg">
+                    type="file"
+                    accept="image/*"
+                    data-image="6">
+
+                <img
+                    class="preview"
+                    id="preview6">
+
             </div>
 
         </div>
 
-        <p class="help-text">
-            Upload your images to the GitHub repository's
-            assets folder first, then enter their paths here.
+        <p style="color:#555;font-size:10px;margin-top:10px;">
+            Maximum image size: 10 MB each.
         </p>
 
     </section>
@@ -584,7 +730,7 @@
 
     <!-- DESCRIPTION -->
 
-    <section class="admin-card">
+    <section class="card">
 
         <div class="card-title">
             03 — DESCRIPTION / TYPING / ABOUT
@@ -592,17 +738,11 @@
 
         <div class="field">
 
-            <label>
-                This ID's own description
-            </label>
+            <label>ID Description</label>
 
             <textarea
                 id="idDescription"
-                placeholder="Type this particular ID's description here...
-
-Example:
-
-🔥 7TH TO ALL x OP COMBO
+                placeholder="🔥 7TH TO ALL x OP COMBO
 
 💥 600+ OP VAULT COLLECTIONS
 
@@ -610,38 +750,7 @@ Example:
 
 🔥 Rare old bundles
 
-🔥 More details...
-
-Each ID can have completely different typing."></textarea>
-
-        </div>
-
-        <p class="help-text">
-            This description belongs ONLY to the selected ID.
-            You can manually type or paste your WhatsApp post here.
-        </p>
-
-    </section>
-
-
-    <!-- TAGS -->
-
-    <section class="admin-card">
-
-        <div class="card-title">
-            04 — TAGS
-        </div>
-
-        <div class="field">
-
-            <label>
-                Tags — comma separated
-            </label>
-
-            <input
-                type="text"
-                id="idTags"
-                placeholder="RARE ITEMS, OLD ACCOUNT, PREMIUM">
+🔥 More details..."></textarea>
 
         </div>
 
@@ -650,28 +759,24 @@ Each ID can have completely different typing."></textarea>
 
     <!-- SAVE -->
 
-    <section class="admin-card">
+    <section class="card">
 
         <div class="card-title">
-            05 — SAVE ID
+            04 — SAVE ID
         </div>
 
-        <div class="button-row">
+        <div class="buttons">
 
             <button
-                class="save-btn"
+                class="save"
                 id="saveBtn">
-
                 SAVE ID
-
             </button>
 
             <button
-                class="clear-btn"
+                class="clear"
                 id="clearBtn">
-
                 CLEAR FORM
-
             </button>
 
         </div>
@@ -686,10 +791,10 @@ Each ID can have completely different typing."></textarea>
 
     <!-- SAVED IDS -->
 
-    <section class="admin-card">
+    <section class="card">
 
         <div class="card-title">
-            06 — SAVED IDS
+            05 — SAVED IDS
         </div>
 
         <div
@@ -697,7 +802,7 @@ Each ID can have completely different typing."></textarea>
             id="savedList">
 
             <div class="empty">
-                No IDs added yet.
+                Loading IDs...
             </div>
 
         </div>
@@ -709,474 +814,952 @@ Each ID can have completely different typing."></textarea>
 
 <script>
 
+/* =====================================================
+   TAMILANDA GAMING ADMIN
+   ===================================================== */
+
+
+/*
+    YOUR CLOUDFLARE WORKER URL
+
+    This is the Worker shown in your screenshot.
+*/
+
+const API_URL =
+    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
+
+
+let adminKey = "";
+let editingId = null;
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+document
+.getElementById("loginBtn")
+.addEventListener("click", async function(){
+
+    const key =
+        document
+        .getElementById("adminKey")
+        .value
+        .trim();
+
+    if(!key){
+
+        showLoginStatus(
+            "Please enter Admin Key."
+        );
+
+        return;
+    }
+
+
+    adminKey = key;
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL + "/api/ids"
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Connection failed"
+            );
+
+        }
+
+
+        document
+        .getElementById("loginSection")
+        .classList.add("hidden");
+
+
+        document
+        .getElementById("adminSection")
+        .classList.remove("hidden");
+
+
+        document
+        .getElementById("logoutBtn")
+        .classList.remove("hidden");
+
+
+        loadIDs();
+
+
+    }catch(error){
+
+        showLoginStatus(
+            "Worker connection failed. Check Worker URL."
+        );
+
+    }
+
+});
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+document
+.getElementById("logoutBtn")
+.addEventListener("click", function(){
+
+    adminKey = "";
+    editingId = null;
+
+    document
+    .getElementById("adminSection")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("logoutBtn")
+    .classList.add("hidden");
+
+
+    document
+    .getElementById("loginSection")
+    .classList.remove("hidden");
+
+
+    document
+    .getElementById("adminKey")
+    .value = "";
+
+});
+
+
+/* =====================================================
+   GET ALL IDS
+   ===================================================== */
+
+async function loadIDs(){
+
+    const list =
+        document.getElementById("savedList");
+
+
+    list.innerHTML =
+        '<div class="empty">Loading...</div>';
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL + "/api/ids"
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Failed"
+            );
+
+        }
+
+
+        const ids =
+            await response.json();
+
+
+        renderIDs(ids);
+
+
+    }catch(error){
+
+        list.innerHTML =
+            '<div class="empty">Unable to load IDs.</div>';
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE ID
+   ===================================================== */
+
+document
+.getElementById("saveBtn")
+.addEventListener("click", async function(){
+
+    const idNumber =
+        document
+        .getElementById("idNumber")
+        .value
+        .trim();
+
+
+    const name =
+        document
+        .getElementById("idName")
+        .value
+        .trim();
+
+
+    if(!idNumber){
+
+        showStatus(
+            "Please enter ID Number."
+        );
+
+        return;
+    }
+
+
+    if(!name){
+
+        showStatus(
+            "Please enter ID Name."
+        );
+
+        return;
+    }
+
+
+    const data = {
+
+        id:
+            idNumber,
+
+        name:
+            name,
+
+        price:
+            Number(
+                document
+                .getElementById("idPrice")
+                .value || 0
+            ),
+
+        level:
+            Number(
+                document
+                .getElementById("idLevel")
+                .value || 0
+            ),
+
+        prime:
+            document
+            .getElementById("idPrime")
+            .value
+            .trim(),
+
+        vault:
+            document
+            .getElementById("idVault")
+            .value
+            .trim(),
+
+        category:
+            document
+            .getElementById("idCategory")
+            .value,
+
+        badge:
+            document
+            .getElementById("idBadge")
+            .value
+            .trim(),
+
+        popular:
+            Number(
+                document
+                .getElementById("idPopular")
+                .value || 0
+            ),
+
+        images: [],
+
+        description:
+            document
+            .getElementById("idDescription")
+            .value,
+
+        tags:
+            document
+            .getElementById("idTags")
+            .value
+            .split(",")
+            .map(function(tag){
+                return tag.trim();
+            })
+            .filter(Boolean)
+
+    };
+
+
     /*
-     =====================================================
-     TAMILANDA GAMING
-     ADMIN ID DATABASE
-     =====================================================
+        IMAGE PATHS
+    */
 
-     IMPORTANT:
+    for(let i = 1; i <= 6; i++){
 
-     This first version stores ID data in the browser's
-     localStorage.
-
-     The next step will connect these IDs to your Buy page
-     and ID Details page.
-     */
+        const fileInput =
+            document.querySelector(
+                '[data-image="' + i + '"]'
+            );
 
 
-    const fields = [
+        if(
+            fileInput &&
+            fileInput.files.length
+        ){
+
+            const file =
+                fileInput.files[0];
+
+
+            const extension =
+                file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+            const filename =
+                String(i)
+                .padStart(2,"0")
+                + "."
+                + extension;
+
+
+            data.images.push(
+                "assets/ids/"
+                + idNumber
+                + "/"
+                + filename
+            );
+
+        }
+
+    }
+
+
+    try{
+
+        /*
+            First save ID information
+        */
+
+        const saveResponse =
+            await fetch(
+                API_URL + "/api/save",
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json",
+
+                        "X-Admin-Key":
+                            adminKey
+                    },
+
+                    body:
+                        JSON.stringify(data)
+                }
+            );
+
+
+        const saveResult =
+            await saveResponse.json();
+
+
+        if(!saveResponse.ok){
+
+            throw new Error(
+                saveResult.error ||
+                "Save failed"
+            );
+
+        }
+
+
+        /*
+            Upload images
+        */
+
+        for(let i = 1; i <= 6; i++){
+
+            const input =
+                document.querySelector(
+                    '[data-image="' + i + '"]'
+                );
+
+
+            if(
+                !input ||
+                !input.files.length
+            ){
+                continue;
+            }
+
+
+            const file =
+                input.files[0];
+
+
+            const extension =
+                file.name
+                .split(".")
+                .pop()
+                .toLowerCase();
+
+
+            const filename =
+                String(i)
+                .padStart(2,"0")
+                + "."
+                + extension;
+
+
+            const formData =
+                new FormData();
+
+
+            formData.append(
+                "id",
+                idNumber
+            );
+
+
+            formData.append(
+                "file",
+                file
+            );
+
+
+            formData.append(
+                "filename",
+                filename
+            );
+
+
+            const uploadResponse =
+                await fetch(
+                    API_URL + "/api/upload",
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "X-Admin-Key":
+                                adminKey
+                        },
+
+                        body:
+                            formData
+                    }
+                );
+
+
+            const uploadResult =
+                await uploadResponse.json();
+
+
+            if(!uploadResponse.ok){
+
+                throw new Error(
+                    uploadResult.error ||
+                    "Image upload failed"
+                );
+
+            }
+
+        }
+
+
+        showStatus(
+            editingId
+                ? "ID updated successfully."
+                : "ID saved successfully."
+        );
+
+
+        clearForm();
+
+        await loadIDs();
+
+
+    }catch(error){
+
+        showStatus(
+            error.message ||
+            "Something went wrong."
+        );
+
+    }
+
+});
+
+
+/* =====================================================
+   DELETE ID
+   ===================================================== */
+
+async function deleteID(id){
+
+    const yes =
+        confirm(
+            "Delete ID " + id + "?"
+        );
+
+
+    if(!yes){
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL
+                + "/api/delete?id="
+                + encodeURIComponent(id),
+                {
+                    method:"DELETE",
+
+                    headers:{
+                        "X-Admin-Key":
+                            adminKey
+                    }
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                result.error ||
+                "Delete failed"
+            );
+
+        }
+
+
+        showStatus(
+            "ID deleted successfully."
+        );
+
+
+        loadIDs();
+
+
+    }catch(error){
+
+        showStatus(
+            error.message ||
+            "Delete failed."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   EDIT ID
+   ===================================================== */
+
+function editID(data){
+
+    editingId =
+        data.id;
+
+
+    document
+    .getElementById("idNumber")
+    .value =
+        data.id || "";
+
+
+    document
+    .getElementById("idName")
+    .value =
+        data.name || "";
+
+
+    document
+    .getElementById("idPrice")
+    .value =
+        data.price || "";
+
+
+    document
+    .getElementById("idLevel")
+    .value =
+        data.level || "";
+
+
+    document
+    .getElementById("idPrime")
+    .value =
+        data.prime || "";
+
+
+    document
+    .getElementById("idVault")
+    .value =
+        data.vault || "";
+
+
+    document
+    .getElementById("idCategory")
+    .value =
+        data.category || "golden";
+
+
+    document
+    .getElementById("idBadge")
+    .value =
+        data.badge || "";
+
+
+    document
+    .getElementById("idPopular")
+    .value =
+        data.popular || "";
+
+
+    document
+    .getElementById("idDescription")
+    .value =
+        data.description || "";
+
+
+    document
+    .getElementById("idTags")
+    .value =
+        (data.tags || []).join(", ");
+
+
+    document
+    .getElementById("saveBtn")
+    .textContent =
+        "UPDATE ID";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   RENDER IDS
+   ===================================================== */
+
+function renderIDs(ids){
+
+    const list =
+        document
+        .getElementById("savedList");
+
+
+    if(!ids.length){
+
+        list.innerHTML =
+            '<div class="empty">No IDs added yet.</div>';
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    ids.forEach(function(data){
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "saved-item";
+
+
+        const info =
+            document.createElement("div");
+
+
+        info.className =
+            "saved-info";
+
+
+        const strong =
+            document.createElement("strong");
+
+
+        strong.textContent =
+            data.name || data.id;
+
+
+        const span =
+            document.createElement("span");
+
+
+        span.textContent =
+            "ID "
+            + data.id
+            + " • ₹"
+            + Number(
+                data.price || 0
+            ).toLocaleString("en-IN")
+            + " • Level "
+            + (data.level || "-");
+
+
+        info.appendChild(strong);
+        info.appendChild(span);
+
+
+        const actions =
+            document.createElement("div");
+
+
+        actions.className =
+            "actions";
+
+
+        const editButton =
+            document.createElement("button");
+
+
+        editButton.className =
+            "small edit";
+
+
+        editButton.textContent =
+            "EDIT";
+
+
+        editButton.onclick =
+            function(){
+                editID(data);
+            };
+
+
+        const deleteButton =
+            document.createElement("button");
+
+
+        deleteButton.className =
+            "small delete";
+
+
+        deleteButton.textContent =
+            "DELETE";
+
+
+        deleteButton.onclick =
+            function(){
+                deleteID(data.id);
+            };
+
+
+        actions.appendChild(editButton);
+        actions.appendChild(deleteButton);
+
+
+        item.appendChild(info);
+        item.appendChild(actions);
+
+
+        list.appendChild(item);
+
+    });
+
+}
+
+
+/* =====================================================
+   CLEAR FORM
+   ===================================================== */
+
+document
+.getElementById("clearBtn")
+.addEventListener("click", clearForm);
+
+
+function clearForm(){
+
+    const ids = [
+        "idNumber",
         "idName",
         "idPrice",
         "idLevel",
         "idPrime",
         "idVault",
-        "idCategory",
         "idBadge",
         "idPopular",
-        "image1",
-        "image2",
-        "image3",
-        "image4",
-        "image5",
-        "image6",
         "idDescription",
         "idTags"
     ];
 
 
-    let editingId = null;
+    ids.forEach(function(id){
 
+        document
+        .getElementById(id)
+        .value = "";
 
-    function getIDs() {
-
-        return JSON.parse(
-            localStorage.getItem("tamilanda_ids") || "[]"
-        );
-
-    }
-
-
-    function saveIDs(ids) {
-
-        localStorage.setItem(
-            "tamilanda_ids",
-            JSON.stringify(ids)
-        );
-
-    }
-
-
-    function getFormData() {
-
-        return {
-
-            id:
-                editingId ||
-                "id_" +
-                Date.now(),
-
-            name:
-                document.getElementById("idName").value.trim(),
-
-            price:
-                Number(
-                    document.getElementById("idPrice").value
-                ),
-
-            level:
-                Number(
-                    document.getElementById("idLevel").value
-                ),
-
-            prime:
-                document.getElementById("idPrime").value.trim(),
-
-            vault:
-                document.getElementById("idVault").value.trim(),
-
-            category:
-                document.getElementById("idCategory").value,
-
-            badge:
-                document.getElementById("idBadge").value.trim(),
-
-            popular:
-                Number(
-                    document.getElementById("idPopular").value
-                ),
-
-            images: [
-
-                document.getElementById("image1").value.trim(),
-
-                document.getElementById("image2").value.trim(),
-
-                document.getElementById("image3").value.trim(),
-
-                document.getElementById("image4").value.trim(),
-
-                document.getElementById("image5").value.trim(),
-
-                document.getElementById("image6").value.trim()
-
-            ],
-
-            description:
-                document.getElementById("idDescription").value,
-
-            tags:
-                document
-                    .getElementById("idTags")
-                    .value
-                    .split(",")
-                    .map(tag => tag.trim())
-                    .filter(Boolean)
-
-        };
-
-    }
-
-
-    function fillForm(data) {
-
-        document.getElementById("idName").value =
-            data.name || "";
-
-        document.getElementById("idPrice").value =
-            data.price || "";
-
-        document.getElementById("idLevel").value =
-            data.level || "";
-
-        document.getElementById("idPrime").value =
-            data.prime || "";
-
-        document.getElementById("idVault").value =
-            data.vault || "";
-
-        document.getElementById("idCategory").value =
-            data.category || "golden";
-
-        document.getElementById("idBadge").value =
-            data.badge || "";
-
-        document.getElementById("idPopular").value =
-            data.popular || "";
-
-        for (
-            let i = 0;
-            i < 6;
-            i++
-        ) {
-
-            document.getElementById(
-                "image" + (i + 1)
-            ).value =
-                data.images?.[i] || "";
-
-        }
-
-        document.getElementById("idDescription").value =
-            data.description || "";
-
-        document.getElementById("idTags").value =
-            (data.tags || []).join(", ");
-
-    }
-
-
-    function clearForm() {
-
-        fields.forEach(function(id) {
-
-            const element =
-                document.getElementById(id);
-
-            if (
-                element.tagName === "SELECT"
-            ) {
-
-                element.value = "golden";
-
-            } else {
-
-                element.value = "";
-
-            }
-
-        });
-
-        editingId = null;
-
-        document.getElementById("saveBtn").textContent =
-            "SAVE ID";
-
-    }
-
-
-    function showStatus(message) {
-
-        const status =
-            document.getElementById("status");
-
-        status.textContent =
-            message;
-
-        status.style.display =
-            "block";
-
-        setTimeout(function() {
-
-            status.style.display =
-                "none";
-
-        }, 3000);
-
-    }
-
-
-    function renderIDs() {
-
-        const list =
-            document.getElementById("savedList");
-
-        const ids =
-            getIDs();
-
-        if (!ids.length) {
-
-            list.innerHTML =
-                '<div class="empty">No IDs added yet.</div>';
-
-            return;
-
-        }
-
-
-        list.innerHTML = "";
-
-
-        ids.forEach(function(data) {
-
-            const item =
-                document.createElement("div");
-
-            item.className =
-                "saved-item";
-
-
-            item.innerHTML = `
-
-                <div class="saved-info">
-
-                    <strong>
-                        ${escapeHTML(data.name)}
-                    </strong>
-
-                    <span>
-                        ₹${Number(data.price || 0).toLocaleString("en-IN")}
-                        • Level ${escapeHTML(String(data.level || "-"))}
-                    </span>
-
-                </div>
-
-                <div class="saved-actions">
-
-                    <button
-                        class="small-btn edit-btn"
-                        data-edit="${data.id}">
-
-                        EDIT
-
-                    </button>
-
-                    <button
-                        class="small-btn delete-btn"
-                        data-delete="${data.id}">
-
-                        DELETE
-
-                    </button>
-
-                </div>
-            `;
-
-
-            list.appendChild(item);
-
-        });
-
-    }
-
-
-    function escapeHTML(value) {
-
-        return String(value)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-
-    }
+    });
 
 
     document
-        .getElementById("saveBtn")
-        .addEventListener(
-            "click",
-            function() {
-
-                const data =
-                    getFormData();
+    .getElementById("idCategory")
+    .value =
+        "golden";
 
 
-                if (!data.name) {
+    document
+    .querySelectorAll(
+        'input[type="file"]'
+    )
+    .forEach(function(input){
 
-                    showStatus(
-                        "Please enter ID name."
-                    );
+        input.value = "";
 
-                    return;
-
-                }
-
-
-                const ids =
-                    getIDs();
+    });
 
 
-                if (editingId) {
+    document
+    .querySelectorAll(".preview")
+    .forEach(function(img){
 
-                    const index =
-                        ids.findIndex(
-                            item =>
-                                item.id === editingId
-                        );
+        img.src = "";
+        img.style.display = "none";
 
-
-                    if (index !== -1) {
-
-                        ids[index] =
-                            data;
-
-                    }
-
-                } else {
-
-                    ids.push(data);
-
-                }
+    });
 
 
-                saveIDs(ids);
+    editingId = null;
 
-                renderIDs();
 
-                showStatus(
-                    editingId
-                        ? "ID updated successfully."
-                        : "ID saved successfully."
+    document
+    .getElementById("saveBtn")
+    .textContent =
+        "SAVE ID";
+
+}
+
+
+/* =====================================================
+   IMAGE PREVIEW
+   ===================================================== */
+
+document
+.querySelectorAll(
+    'input[type="file"]'
+)
+.forEach(function(input){
+
+    input.addEventListener(
+        "change",
+        function(){
+
+            const number =
+                input.dataset.image;
+
+
+            const preview =
+                document.getElementById(
+                    "preview" + number
                 );
 
 
-                clearForm();
+            if(
+                input.files &&
+                input.files[0]
+            ){
 
-            }
-        );
-
-
-    document
-        .getElementById("clearBtn")
-        .addEventListener(
-            "click",
-            clearForm
-        );
-
-
-    document
-        .getElementById("savedList")
-        .addEventListener(
-            "click",
-            function(event) {
-
-                const editId =
-                    event.target.dataset.edit;
-
-                const deleteId =
-                    event.target.dataset.delete;
-
-
-                if (editId) {
-
-                    const ids =
-                        getIDs();
-
-                    const data =
-                        ids.find(
-                            item =>
-                                item.id === editId
-                        );
-
-
-                    if (data) {
-
-                        editingId =
-                            editId;
-
-                        fillForm(data);
-
-                        document.getElementById(
-                            "saveBtn"
-                        ).textContent =
-                            "UPDATE ID";
-
-                        window.scrollTo({
-                            top: 0,
-                            behavior: "smooth"
-                        });
-
-                    }
-
-                }
-
-
-                if (deleteId) {
-
-                    const confirmDelete =
-                        confirm(
-                            "Delete this ID?"
-                        );
-
-
-                    if (!confirmDelete) {
-                        return;
-                    }
-
-
-                    const ids =
-                        getIDs().filter(
-                            item =>
-                                item.id !== deleteId
-                        );
-
-
-                    saveIDs(ids);
-
-                    renderIDs();
-
-                    showStatus(
-                        "ID deleted."
+                preview.src =
+                    URL.createObjectURL(
+                        input.files[0]
                     );
 
-                }
+                preview.style.display =
+                    "block";
 
             }
-        );
+
+        }
+    );
+
+});
 
 
-    renderIDs();
+/* =====================================================
+   STATUS
+   ===================================================== */
+
+function showStatus(message){
+
+    const status =
+        document
+        .getElementById("status");
+
+
+    status.textContent =
+        message;
+
+
+    status.style.display =
+        "block";
+
+
+    setTimeout(function(){
+
+        status.style.display =
+            "none";
+
+    },4000);
+
+}
+
+
+function showLoginStatus(message){
+
+    const status =
+        document
+        .getElementById("loginStatus");
+
+
+    status.textContent =
+        message;
+
+
+    status.style.display =
+        "block";
+
+
+    setTimeout(function(){
+
+        status.style.display =
+            "none";
+
+    },4000);
+
+}
 
 </script>
 
