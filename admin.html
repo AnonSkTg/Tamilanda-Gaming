@@ -20,6 +20,10 @@ body{
     min-height:100vh;
 }
 
+.hidden{
+    display:none!important;
+}
+
 .admin-header{
     padding:18px 5%;
     display:flex;
@@ -123,7 +127,7 @@ h1{
     gap:7px;
 }
 
-.field.full{
+.full{
     grid-column:1/-1;
 }
 
@@ -155,7 +159,7 @@ select{
 }
 
 textarea{
-    min-height:180px;
+    min-height:190px;
     padding:13px;
     resize:vertical;
     line-height:1.6;
@@ -222,10 +226,21 @@ button{
     color:#080808;
 }
 
+.save-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
 .clear-btn{
     background:#1b1b1b;
     border:1px solid rgba(255,255,255,.10);
     color:#fff;
+}
+
+.logout-btn{
+    background:#241414;
+    border:1px solid rgba(255,60,60,.2);
+    color:#ff7777;
 }
 
 .status{
@@ -235,6 +250,7 @@ button{
     background:rgba(255,176,0,.06);
     color:#ffb000;
     font-size:11px;
+    line-height:1.5;
     display:none;
 }
 
@@ -289,12 +305,6 @@ button{
     border:1px solid rgba(255,50,50,.15);
 }
 
-.logout-btn{
-    background:#222;
-    color:#fff;
-    border:1px solid rgba(255,255,255,.1);
-}
-
 .empty{
     padding:30px;
     text-align:center;
@@ -302,17 +312,26 @@ button{
     font-size:12px;
 }
 
+/* LOGIN */
+
 .login-screen{
     min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:20px;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,176,0,.08),
+            transparent 40%
+        ),
+        #080808;
 }
 
 .login-box{
     width:100%;
-    max-width:420px;
+    max-width:430px;
     background:#101010;
     border:1px solid rgba(255,176,0,.18);
     border-radius:20px;
@@ -331,10 +350,6 @@ button{
     margin-bottom:22px;
 }
 
-.login-box input{
-    margin-bottom:12px;
-}
-
 .login-btn{
     width:100%;
     background:#ffb000;
@@ -346,10 +361,7 @@ button{
     color:#ff7777;
     font-size:11px;
     text-align:center;
-}
-
-.hidden{
-    display:none!important;
+    line-height:1.5;
 }
 
 @media(max-width:650px){
@@ -375,7 +387,7 @@ button{
         grid-template-columns:1fr;
     }
 
-    .field.full{
+    .full{
         grid-column:auto;
     }
 
@@ -401,9 +413,12 @@ button{
 
 <body>
 
-<!-- LOGIN -->
 
-<div id="loginScreen" class="login-screen">
+<!-- =====================================================
+     LOGIN SCREEN
+     ===================================================== -->
+
+<section id="loginScreen" class="login-screen">
 
     <div class="login-box">
 
@@ -411,22 +426,34 @@ button{
             TAMILANDA GAMING
         </div>
 
-        <h1>Admin Login</h1>
+        <h1>
+            ADMIN LOGIN
+        </h1>
 
         <p>
             Enter your Admin Key to access the ID management panel.
         </p>
 
-        <input
-            type="password"
-            id="adminKey"
-            placeholder="ADMIN KEY"
-            autocomplete="off">
+        <div class="field">
+
+            <label>ADMIN KEY</label>
+
+            <input
+                type="password"
+                id="adminKey"
+                placeholder="Enter Admin Key"
+                autocomplete="off">
+
+        </div>
+
+        <br>
 
         <button
             class="login-btn"
             id="loginBtn">
+
             LOGIN
+
         </button>
 
         <div
@@ -436,12 +463,17 @@ button{
 
     </div>
 
-</div>
+</section>
 
 
-<!-- ADMIN PANEL -->
+<!-- =====================================================
+     ADMIN PANEL
+     ===================================================== -->
 
-<div id="adminPanel" class="hidden">
+<div
+    id="adminPanel"
+    class="hidden">
+
 
 <header class="admin-header">
 
@@ -452,11 +484,19 @@ button{
             alt="Tamilanda Gaming">
 
         <div>
-            <strong>TAMILANDA</strong>
-            <span>GAMING ADMIN</span>
+
+            <strong>
+                TAMILANDA
+            </strong>
+
+            <span>
+                GAMING ADMIN
+            </span>
+
         </div>
 
     </div>
+
 
     <div class="admin-title">
         ID MANAGEMENT PANEL
@@ -467,6 +507,7 @@ button{
 
 <main class="admin-container">
 
+
 <section class="page-heading">
 
     <div class="eyebrow">
@@ -474,7 +515,9 @@ button{
     </div>
 
     <h1>
-        ID <span style="color:#ffb000;">MANAGEMENT</span>
+        ID <span style="color:#ffb000;">
+            MANAGEMENT
+        </span>
     </h1>
 
     <p>
@@ -484,7 +527,9 @@ button{
 </section>
 
 
-<!-- ID INFORMATION -->
+<!-- =====================================================
+     01 ID INFORMATION
+     ===================================================== -->
 
 <section class="admin-card">
 
@@ -494,62 +539,154 @@ button{
 
 <div class="form-grid">
 
+
 <div class="field">
+
+<label>ID Number</label>
+
+<input
+    type="text"
+    id="idNumber"
+    placeholder="001">
+
+</div>
+
+
+<div class="field">
+
 <label>ID Name</label>
-<input id="idName" type="text" placeholder="Example: Golden Elite #001">
+
+<input
+    type="text"
+    id="idName"
+    placeholder="Golden Elite #001">
+
 </div>
 
+
 <div class="field">
+
 <label>Price</label>
-<input id="idPrice" type="number" placeholder="50000">
+
+<input
+    type="number"
+    id="idPrice"
+    placeholder="50000">
+
 </div>
 
+
 <div class="field">
+
 <label>Level</label>
-<input id="idLevel" type="number" placeholder="90">
+
+<input
+    type="number"
+    id="idLevel"
+    placeholder="90">
+
 </div>
 
+
 <div class="field">
+
 <label>Prime</label>
-<input id="idPrime" type="text" placeholder="8">
+
+<input
+    type="text"
+    id="idPrime"
+    placeholder="8">
+
 </div>
 
+
 <div class="field">
+
 <label>Vault</label>
-<input id="idVault" type="text" placeholder="600+">
+
+<input
+    type="text"
+    id="idVault"
+    placeholder="600+">
+
 </div>
 
+
 <div class="field">
+
 <label>Category</label>
 
 <select id="idCategory">
 
-<option value="golden">Golden Elites</option>
-<option value="high">High Level</option>
-<option value="starter">Starter IDs</option>
-<option value="mid">Mid Range IDs</option>
-<option value="hot">Hot IDs</option>
+<option value="golden">
+Golden Elites
+</option>
+
+<option value="high">
+High Level
+</option>
+
+<option value="starter">
+Starter IDs
+</option>
+
+<option value="mid">
+Mid Range IDs
+</option>
+
+<option value="hot">
+Hot IDs
+</option>
 
 </select>
 
 </div>
 
-<div class="field">
-<label>Badge</label>
-<input id="idBadge" type="text" placeholder="GOLDEN ELITE">
-</div>
 
 <div class="field">
-<label>Popular Score</label>
-<input id="idPopular" type="number" placeholder="95">
+
+<label>Badge</label>
+
+<input
+    type="text"
+    id="idBadge"
+    placeholder="GOLDEN ELITE">
+
 </div>
+
+
+<div class="field">
+
+<label>Popular Score</label>
+
+<input
+    type="number"
+    id="idPopular"
+    placeholder="95">
+
+</div>
+
+
+<div class="field">
+
+<label>Tags</label>
+
+<input
+    type="text"
+    id="idTags"
+    placeholder="RARE ITEMS, OLD ACCOUNT, PREMIUM">
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- IMAGES -->
+<!-- =====================================================
+     02 IMAGES
+     ===================================================== -->
 
 <section class="admin-card">
 
@@ -559,47 +696,110 @@ button{
 
 <div class="image-grid">
 
-<div class="image-box">
-<span>IMAGE 1 — MAIN</span>
-<input id="image1" type="text" placeholder="assets/id001-1.jpg">
-</div>
 
 <div class="image-box">
-<span>IMAGE 2</span>
-<input id="image2" type="text" placeholder="assets/id001-2.jpg">
+
+<span>
+IMAGE 1 — MAIN
+</span>
+
+<input
+    type="text"
+    id="image1"
+    placeholder="assets/ids/001/01.jpg">
+
 </div>
+
 
 <div class="image-box">
-<span>IMAGE 3</span>
-<input id="image3" type="text" placeholder="assets/id001-3.jpg">
+
+<span>
+IMAGE 2
+</span>
+
+<input
+    type="text"
+    id="image2"
+    placeholder="assets/ids/001/02.jpg">
+
 </div>
+
 
 <div class="image-box">
-<span>IMAGE 4</span>
-<input id="image4" type="text" placeholder="assets/id001-4.jpg">
+
+<span>
+IMAGE 3
+</span>
+
+<input
+    type="text"
+    id="image3"
+    placeholder="assets/ids/001/03.jpg">
+
 </div>
+
 
 <div class="image-box">
-<span>IMAGE 5</span>
-<input id="image5" type="text" placeholder="assets/id001-5.jpg">
+
+<span>
+IMAGE 4
+</span>
+
+<input
+    type="text"
+    id="image4"
+    placeholder="assets/ids/001/04.jpg">
+
 </div>
+
 
 <div class="image-box">
-<span>IMAGE 6</span>
-<input id="image6" type="text" placeholder="assets/id001-6.jpg">
-</div>
+
+<span>
+IMAGE 5
+</span>
+
+<input
+    type="text"
+    id="image5"
+    placeholder="assets/ids/001/05.jpg">
 
 </div>
+
+
+<div class="image-box">
+
+<span>
+IMAGE 6
+</span>
+
+<input
+    type="text"
+    id="image6"
+    placeholder="assets/ids/001/06.jpg">
+
+</div>
+
+
+</div>
+
 
 <p class="help-text">
-Upload images to the GitHub repository assets folder first,
+
+IMAGE 1 = Card/Main image.<br>
+IMAGE 2 onwards = View ID gallery images.
+
+Upload the images to the corresponding GitHub ID folder,
 then enter their paths here.
+
 </p>
 
 </section>
 
 
-<!-- DESCRIPTION -->
+<!-- =====================================================
+     03 DESCRIPTION
+     ===================================================== -->
 
 <section class="admin-card">
 
@@ -609,96 +809,110 @@ then enter their paths here.
 
 <div class="field">
 
-<label>This ID's own description</label>
+<label>
+This ID's own description
+</label>
 
 <textarea
-id="idDescription"
-placeholder="Type this particular ID's description here..."></textarea>
+    id="idDescription"
+    placeholder="Type this particular ID's description here...
+
+Example:
+
+🔥 7TH TO ALL x OP COMBO
+
+💥 600+ OP VAULT COLLECTIONS
+
+🔥 Rare old bundles
+
+🔥 More details...
+
+Each ID can have completely different typing."></textarea>
 
 </div>
+
+<p class="help-text">
+
+This description belongs ONLY to this ID.
+
+</p>
 
 </section>
 
 
-<!-- TAGS -->
+<!-- =====================================================
+     04 SAVE
+     ===================================================== -->
 
 <section class="admin-card">
 
 <div class="card-title">
-    04 — TAGS
+    04 — SAVE ID
 </div>
 
-<div class="field">
-
-<label>Tags — comma separated</label>
-
-<input
-id="idTags"
-type="text"
-placeholder="RARE ITEMS, OLD ACCOUNT, PREMIUM">
-
-</div>
-
-</section>
-
-
-<!-- SAVE -->
-
-<section class="admin-card">
-
-<div class="card-title">
-    05 — SAVE ID
-</div>
 
 <div class="button-row">
 
 <button
-class="save-btn"
-id="saveBtn">
-SAVE ID
+    class="save-btn"
+    id="saveBtn">
+
+    SAVE ID
+
 </button>
 
-<button
-class="clear-btn"
-id="clearBtn">
-CLEAR FORM
-</button>
 
 <button
-class="logout-btn"
-id="logoutBtn">
-LOGOUT
+    class="clear-btn"
+    id="clearBtn">
+
+    CLEAR FORM
+
+</button>
+
+
+<button
+    class="logout-btn"
+    id="logoutBtn">
+
+    LOGOUT
+
 </button>
 
 </div>
 
+
 <div
-class="status"
-id="status">
+    class="status"
+    id="status">
 </div>
 
 </section>
 
 
-<!-- SAVED IDS -->
+<!-- =====================================================
+     05 SAVED IDS
+     ===================================================== -->
 
 <section class="admin-card">
 
 <div class="card-title">
-    06 — SAVED IDS
+    05 — SAVED IDS
 </div>
+
 
 <div
-class="saved-list"
-id="savedList">
+    class="saved-list"
+    id="savedList">
 
-<div class="empty">
-Loading...
-</div>
+    <div class="empty">
+        Loading IDs...
+    </div>
 
 </div>
 
 </section>
+
 
 </main>
 
@@ -708,19 +922,11 @@ Loading...
 <script>
 
 /* =====================================================
-   TAMILANDA GAMING
-   ADMIN CONFIGURATION
+   WORKER CONFIG
    ===================================================== */
 
-/*
-   IMPORTANT:
-   This is your Cloudflare Worker URL.
-
-   DO NOT add /admin.html here.
-*/
-
 const WORKER_URL =
-    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
+"https://long-glade-ef77.tamilandaoffcyt.workers.dev";
 
 
 let ADMIN_KEY = "";
@@ -738,28 +944,44 @@ async function apiRequest(
 ){
 
     const headers = {
-        "Content-Type": "application/json",
-        "X-Admin-Key": ADMIN_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        "X-Admin-Key":
+            ADMIN_KEY,
+
         ...(options.headers || {})
+
     };
 
-    const response = await fetch(
-        WORKER_URL + path,
-        {
-            ...options,
-            headers
-        }
-    );
+
+    const response =
+        await fetch(
+            WORKER_URL + path,
+            {
+                ...options,
+                headers
+            }
+        );
+
 
     let data;
 
     try{
-        data = await response.json();
+
+        data =
+            await response.json();
+
     }catch{
+
         data = {
-            error: "Invalid server response"
+            error:
+                "Invalid server response"
         };
+
     }
+
 
     if(!response.ok){
 
@@ -769,6 +991,7 @@ async function apiRequest(
         );
 
     }
+
 
     return data;
 
@@ -791,6 +1014,7 @@ async function(){
         .value
         .trim();
 
+
     if(!key){
 
         document
@@ -803,7 +1027,8 @@ async function(){
     }
 
 
-    ADMIN_KEY = key;
+    ADMIN_KEY =
+        key;
 
 
     try{
@@ -838,17 +1063,18 @@ async function(){
 
         ADMIN_KEY = "";
 
+
         document
         .getElementById("loginStatus")
         .textContent =
-        "Login failed. Check your Admin Key.";
+        "Login failed. Check Admin Key.";
 
     }
 
 });
 
 
-/* ENTER KEY LOGIN */
+/* ENTER KEY */
 
 document
 .getElementById("adminKey")
@@ -856,7 +1082,9 @@ document
 "keydown",
 function(event){
 
-    if(event.key === "Enter"){
+    if(
+        event.key === "Enter"
+    ){
 
         document
         .getElementById("loginBtn")
@@ -865,226 +1093,6 @@ function(event){
     }
 
 });
-
-
-/* =====================================================
-   FORM DATA
-   ===================================================== */
-
-function getFormData(){
-
-    return {
-
-        id:
-            editingId ||
-            "id_" + Date.now(),
-
-        name:
-            document
-            .getElementById("idName")
-            .value
-            .trim(),
-
-        price:
-            Number(
-                document
-                .getElementById("idPrice")
-                .value
-            ),
-
-        level:
-            Number(
-                document
-                .getElementById("idLevel")
-                .value
-            ),
-
-        prime:
-            document
-            .getElementById("idPrime")
-            .value
-            .trim(),
-
-        vault:
-            document
-            .getElementById("idVault")
-            .value
-            .trim(),
-
-        category:
-            document
-            .getElementById("idCategory")
-            .value,
-
-        badge:
-            document
-            .getElementById("idBadge")
-            .value
-            .trim(),
-
-        popular:
-            Number(
-                document
-                .getElementById("idPopular")
-                .value
-            ),
-
-        images: [
-
-            document.getElementById("image1").value.trim(),
-            document.getElementById("image2").value.trim(),
-            document.getElementById("image3").value.trim(),
-            document.getElementById("image4").value.trim(),
-            document.getElementById("image5").value.trim(),
-            document.getElementById("image6").value.trim()
-
-        ],
-
-        description:
-            document
-            .getElementById("idDescription")
-            .value,
-
-        tags:
-            document
-            .getElementById("idTags")
-            .value
-            .split(",")
-            .map(
-                tag => tag.trim()
-            )
-            .filter(Boolean)
-
-    };
-
-}
-
-
-/* =====================================================
-   FILL FORM
-   ===================================================== */
-
-function fillForm(data){
-
-    document.getElementById("idName").value =
-        data.name || "";
-
-    document.getElementById("idPrice").value =
-        data.price || "";
-
-    document.getElementById("idLevel").value =
-        data.level || "";
-
-    document.getElementById("idPrime").value =
-        data.prime || "";
-
-    document.getElementById("idVault").value =
-        data.vault || "";
-
-    document.getElementById("idCategory").value =
-        data.category || "golden";
-
-    document.getElementById("idBadge").value =
-        data.badge || "";
-
-    document.getElementById("idPopular").value =
-        data.popular || "";
-
-    for(let i=0;i<6;i++){
-
-        document.getElementById(
-            "image" + (i+1)
-        ).value =
-            data.images?.[i] || "";
-
-    }
-
-    document.getElementById(
-        "idDescription"
-    ).value =
-        data.description || "";
-
-    document.getElementById(
-        "idTags"
-    ).value =
-        (data.tags || []).join(", ");
-
-}
-
-
-/* =====================================================
-   CLEAR
-   ===================================================== */
-
-function clearForm(){
-
-    const ids = [
-        "idName",
-        "idPrice",
-        "idLevel",
-        "idPrime",
-        "idVault",
-        "idBadge",
-        "idPopular",
-        "image1",
-        "image2",
-        "image3",
-        "image4",
-        "image5",
-        "image6",
-        "idDescription",
-        "idTags"
-    ];
-
-    ids.forEach(
-        id =>
-        document
-        .getElementById(id)
-        .value = ""
-    );
-
-
-    document
-    .getElementById("idCategory")
-    .value =
-    "golden";
-
-
-    editingId = null;
-
-
-    document
-    .getElementById("saveBtn")
-    .textContent =
-    "SAVE ID";
-
-}
-
-
-/* =====================================================
-   STATUS
-   ===================================================== */
-
-function showStatus(message){
-
-    const status =
-        document
-        .getElementById("status");
-
-    status.textContent =
-        message;
-
-    status.style.display =
-        "block";
-
-    setTimeout(
-        () =>
-        status.style.display =
-        "none",
-        3000
-    );
-
-}
 
 
 /* =====================================================
@@ -1099,7 +1107,7 @@ async function loadIDs(){
 
 
     list.innerHTML =
-        '<div class="empty">Loading...</div>';
+    '<div class="empty">Loading...</div>';
 
 
     try{
@@ -1112,12 +1120,8 @@ async function loadIDs(){
 
         const ids =
             Array.isArray(result)
-                ? result
-                : (
-                    result.ids ||
-                    result.data ||
-                    []
-                );
+            ? result
+            : [];
 
 
         renderIDs(ids);
@@ -1134,83 +1138,139 @@ async function loadIDs(){
 
 
 /* =====================================================
-   RENDER
+   GET FORM DATA
    ===================================================== */
 
-function renderIDs(ids){
+function getFormData(){
 
-    const list =
-        document
-        .getElementById("savedList");
+    return {
 
-
-    if(!ids.length){
-
-        list.innerHTML =
-        '<div class="empty">No IDs added yet.</div>';
-
-        return;
-
-    }
-
-
-    list.innerHTML = "";
-
-
-    ids.forEach(
-    function(data){
-
-        const item =
+        id:
+            editingId ||
             document
-            .createElement("div");
-
-        item.className =
-            "saved-item";
-
-
-        item.innerHTML = `
-
-            <div class="saved-info">
-
-                <strong>
-                    ${escapeHTML(data.name || "Unnamed ID")}
-                </strong>
-
-                <span>
-                    ₹${Number(data.price || 0).toLocaleString("en-IN")}
-                    • Level ${escapeHTML(String(data.level || "-"))}
-                </span>
-
-            </div>
-
-            <div class="saved-actions">
-
-                <button
-                    class="small-btn edit-btn"
-                    data-edit="${escapeHTML(data.id)}">
-                    EDIT
-                </button>
-
-                <button
-                    class="small-btn delete-btn"
-                    data-delete="${escapeHTML(data.id)}">
-                    DELETE
-                </button>
-
-            </div>
-
-        `;
+            .getElementById("idNumber")
+            .value
+            .trim() ||
+            "id_" + Date.now(),
 
 
-        list.appendChild(item);
+        name:
+            document
+            .getElementById("idName")
+            .value
+            .trim(),
 
-    });
+
+        price:
+            Number(
+                document
+                .getElementById("idPrice")
+                .value || 0
+            ),
+
+
+        level:
+            Number(
+                document
+                .getElementById("idLevel")
+                .value || 0
+            ),
+
+
+        prime:
+            document
+            .getElementById("idPrime")
+            .value
+            .trim(),
+
+
+        vault:
+            document
+            .getElementById("idVault")
+            .value
+            .trim(),
+
+
+        category:
+            document
+            .getElementById("idCategory")
+            .value,
+
+
+        badge:
+            document
+            .getElementById("idBadge")
+            .value
+            .trim(),
+
+
+        popular:
+            Number(
+                document
+                .getElementById("idPopular")
+                .value || 0
+            ),
+
+
+        images: [
+
+            document
+            .getElementById("image1")
+            .value
+            .trim(),
+
+            document
+            .getElementById("image2")
+            .value
+            .trim(),
+
+            document
+            .getElementById("image3")
+            .value
+            .trim(),
+
+            document
+            .getElementById("image4")
+            .value
+            .trim(),
+
+            document
+            .getElementById("image5")
+            .value
+            .trim(),
+
+            document
+            .getElementById("image6")
+            .value
+            .trim()
+
+        ].filter(Boolean),
+
+
+        description:
+            document
+            .getElementById("idDescription")
+            .value,
+
+
+        tags:
+            document
+            .getElementById("idTags")
+            .value
+            .split(",")
+            .map(
+                tag =>
+                    tag.trim()
+            )
+            .filter(Boolean)
+
+    };
 
 }
 
 
 /* =====================================================
-   SAVE ID
+   SAVE / UPDATE
    ===================================================== */
 
 document
@@ -1223,10 +1283,21 @@ async function(){
         getFormData();
 
 
+    if(!data.id){
+
+        showStatus(
+            "Please enter ID Number."
+        );
+
+        return;
+
+    }
+
+
     if(!data.name){
 
         showStatus(
-            "Please enter ID name."
+            "Please enter ID Name."
         );
 
         return;
@@ -1248,12 +1319,16 @@ async function(){
 
             await apiRequest(
                 "/api/ids/" +
-                encodeURIComponent(editingId),
+                encodeURIComponent(
+                    editingId
+                ),
                 {
                     method:"PUT",
-                    body:JSON.stringify(data)
+                    body:
+                        JSON.stringify(data)
                 }
             );
+
 
             showStatus(
                 "ID updated successfully."
@@ -1265,9 +1340,11 @@ async function(){
                 "/api/ids",
                 {
                     method:"POST",
-                    body:JSON.stringify(data)
+                    body:
+                        JSON.stringify(data)
                 }
             );
+
 
             showStatus(
                 "ID saved successfully."
@@ -1297,124 +1374,367 @@ async function(){
 
 
 /* =====================================================
-   EDIT / DELETE
+   EDIT
    ===================================================== */
 
-document
-.getElementById("savedList")
-.addEventListener(
-"click",
-async function(event){
+async function editID(id){
 
-    const editId =
-        event
-        .target
-        .dataset
-        .edit;
+    try{
+
+        const data =
+            await apiRequest(
+                "/api/ids/" +
+                encodeURIComponent(id)
+            );
 
 
-    const deleteId =
-        event
-        .target
-        .dataset
-        .delete;
+        editingId =
+            id;
 
 
-    if(editId){
-
-        try{
-
-            const result =
-                await apiRequest(
-                    "/api/ids/" +
-                    encodeURIComponent(editId)
-                );
+        document
+        .getElementById("idNumber")
+        .value =
+            data.id || "";
 
 
-            const data =
-                result.id ||
-                result.data ||
-                result;
+        document
+        .getElementById("idName")
+        .value =
+            data.name || "";
 
 
-            editingId =
-                editId;
+        document
+        .getElementById("idPrice")
+        .value =
+            data.price || "";
 
 
-            fillForm(data);
+        document
+        .getElementById("idLevel")
+        .value =
+            data.level || "";
 
 
-            document
-            .getElementById("saveBtn")
-            .textContent =
+        document
+        .getElementById("idPrime")
+        .value =
+            data.prime || "";
+
+
+        document
+        .getElementById("idVault")
+        .value =
+            data.vault || "";
+
+
+        document
+        .getElementById("idCategory")
+        .value =
+            data.category || "golden";
+
+
+        document
+        .getElementById("idBadge")
+        .value =
+            data.badge || "";
+
+
+        document
+        .getElementById("idPopular")
+        .value =
+            data.popular || "";
+
+
+        document
+        .getElementById("image1")
+        .value =
+            data.images?.[0] || "";
+
+
+        document
+        .getElementById("image2")
+        .value =
+            data.images?.[1] || "";
+
+
+        document
+        .getElementById("image3")
+        .value =
+            data.images?.[2] || "";
+
+
+        document
+        .getElementById("image4")
+        .value =
+            data.images?.[3] || "";
+
+
+        document
+        .getElementById("image5")
+        .value =
+            data.images?.[4] || "";
+
+
+        document
+        .getElementById("image6")
+        .value =
+            data.images?.[5] || "";
+
+
+        document
+        .getElementById("idDescription")
+        .value =
+            data.description || "";
+
+
+        document
+        .getElementById("idTags")
+        .value =
+            (data.tags || [])
+            .join(", ");
+
+
+        document
+        .getElementById("saveBtn")
+        .textContent =
             "UPDATE ID";
 
 
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            });
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
 
 
-        }catch(error){
+    }catch(error){
 
-            showStatus(
-                "Failed to load ID."
-            );
-
-        }
+        showStatus(
+            "Failed to load ID."
+        );
 
     }
 
-
-    if(deleteId){
-
-        if(
-            !confirm(
-                "Delete this ID?"
-            )
-        ){
-
-            return;
-
-        }
-
-
-        try{
-
-            await apiRequest(
-                "/api/ids/" +
-                encodeURIComponent(deleteId),
-                {
-                    method:"DELETE"
-                }
-            );
-
-
-            showStatus(
-                "ID deleted."
-            );
-
-
-            await loadIDs();
-
-
-        }catch(error){
-
-            showStatus(
-                error.message ||
-                "Failed to delete ID."
-            );
-
-        }
-
-    }
-
-});
+}
 
 
 /* =====================================================
-   CLEAR BUTTON
+   DELETE
+   ===================================================== */
+
+async function deleteID(id){
+
+    const confirmed =
+        confirm(
+            "Delete ID " + id + "?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        await apiRequest(
+            "/api/ids/" +
+            encodeURIComponent(id),
+            {
+                method:"DELETE"
+            }
+        );
+
+
+        showStatus(
+            "ID deleted successfully."
+        );
+
+
+        await loadIDs();
+
+
+    }catch(error){
+
+        showStatus(
+            error.message ||
+            "Failed to delete ID."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   RENDER IDS
+   ===================================================== */
+
+function renderIDs(ids){
+
+    const list =
+        document
+        .getElementById("savedList");
+
+
+    if(!ids.length){
+
+        list.innerHTML =
+        '<div class="empty">No IDs added yet.</div>';
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    ids.forEach(
+    function(data){
+
+        const item =
+            document
+            .createElement("div");
+
+
+        item.className =
+            "saved-item";
+
+
+        const info =
+            document
+            .createElement("div");
+
+
+        info.className =
+            "saved-info";
+
+
+        const strong =
+            document
+            .createElement("strong");
+
+
+        strong.textContent =
+            data.name ||
+            data.id;
+
+
+        const span =
+            document
+            .createElement("span");
+
+
+        span.textContent =
+            "ID " +
+            (data.id || "-") +
+            " • ₹" +
+            Number(
+                data.price || 0
+            ).toLocaleString(
+                "en-IN"
+            ) +
+            " • Level " +
+            (data.level || "-");
+
+
+        info.appendChild(
+            strong
+        );
+
+
+        info.appendChild(
+            span
+        );
+
+
+        const actions =
+            document
+            .createElement("div");
+
+
+        actions.className =
+            "saved-actions";
+
+
+        const edit =
+            document
+            .createElement("button");
+
+
+        edit.className =
+            "small-btn edit-btn";
+
+
+        edit.textContent =
+            "EDIT";
+
+
+        edit.onclick =
+            function(){
+
+                editID(
+                    data.id
+                );
+
+            };
+
+
+        const del =
+            document
+            .createElement("button");
+
+
+        del.className =
+            "small-btn delete-btn";
+
+
+        del.textContent =
+            "DELETE";
+
+
+        del.onclick =
+            function(){
+
+                deleteID(
+                    data.id
+                );
+
+            };
+
+
+        actions.appendChild(
+            edit
+        );
+
+
+        actions.appendChild(
+            del
+        );
+
+
+        item.appendChild(
+            info
+        );
+
+
+        item.appendChild(
+            actions
+        );
+
+
+        list.appendChild(
+            item
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   CLEAR
    ===================================================== */
 
 document
@@ -1423,6 +1743,58 @@ document
 "click",
 clearForm
 );
+
+
+function clearForm(){
+
+    const ids = [
+
+        "idNumber",
+        "idName",
+        "idPrice",
+        "idLevel",
+        "idPrime",
+        "idVault",
+        "idBadge",
+        "idPopular",
+        "image1",
+        "image2",
+        "image3",
+        "image4",
+        "image5",
+        "image6",
+        "idDescription",
+        "idTags"
+
+    ];
+
+
+    ids.forEach(
+        function(id){
+
+            document
+            .getElementById(id)
+            .value = "";
+
+        }
+    );
+
+
+    document
+    .getElementById("idCategory")
+    .value =
+        "golden";
+
+
+    editingId = null;
+
+
+    document
+    .getElementById("saveBtn")
+    .textContent =
+        "SAVE ID";
+
+}
 
 
 /* =====================================================
@@ -1447,24 +1819,39 @@ function(){
 
 
 /* =====================================================
-   HTML ESCAPE
+   STATUS
    ===================================================== */
 
-function escapeHTML(value){
+function showStatus(message){
 
-    return String(value)
+    const status =
+        document
+        .getElementById("status");
 
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+
+    status.textContent =
+        message;
+
+
+    status.style.display =
+        "block";
+
+
+    setTimeout(
+        function(){
+
+            status.style.display =
+                "none";
+
+        },
+        4000
+    );
 
 }
 
 
 /* =====================================================
-   RESTORE LOGIN
+   RESTORE SESSION
    ===================================================== */
 
 const savedKey =
