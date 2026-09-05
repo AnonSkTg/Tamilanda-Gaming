@@ -3,764 +3,776 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<title>Admin Panel | Tamilanda Gaming</title>
+    <meta
+        name="description"
+        content="Tamilanda Gaming ID Details">
 
-<style>
+    <title>ID Details | Tamilanda Gaming</title>
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+    <link rel="stylesheet" href="styles.css">
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#080808;
-    color:#fff;
-    min-height:100vh;
-}
+    <style>
 
-.hidden{
-    display:none!important;
-}
+        /* =====================================================
+           ID DETAILS PAGE
+           ===================================================== */
 
+        .details-page {
+            min-height: 100vh;
+            padding: 55px 6% 100px;
 
-/* =========================
-   HEADER
-========================= */
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(255,176,0,0.10),
+                    transparent 35%
+                ),
+                #080808;
+        }
 
-.admin-header{
-    padding:18px 5%;
 
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+        /* =====================================================
+           LOADING / ERROR
+           ===================================================== */
 
-    background:#101010;
+        .details-loading {
+            max-width: 1250px;
+            margin: 100px auto;
 
-    border-bottom:
-        1px solid rgba(255,176,0,.18);
+            text-align: center;
 
-    position:sticky;
-    top:0;
-    z-index:100;
-}
+            color: #777;
 
-.admin-brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+            font-size: 13px;
+            font-weight: 800;
 
-.admin-brand img{
-    width:45px;
-    height:45px;
+            letter-spacing: 1px;
+        }
 
-    border-radius:50%;
+        .details-error {
+            max-width: 1250px;
+            margin: 100px auto;
+            padding: 35px;
 
-    object-fit:contain;
-}
+            text-align: center;
 
-.admin-brand strong{
-    font-size:17px;
-    letter-spacing:1px;
-}
+            background: #101010;
 
-.admin-brand span{
-    display:block;
+            border: 1px solid
+                rgba(255,255,255,0.07);
 
-    margin-top:4px;
+            border-radius: 20px;
 
-    color:#ffb000;
+            color: #aaa;
+        }
 
-    font-size:10px;
-    font-weight:800;
+        .details-error strong {
+            display: block;
 
-    letter-spacing:2px;
-}
+            margin-bottom: 10px;
 
-.admin-title{
-    color:#aaa;
+            color: #ffb000;
 
-    font-size:12px;
-    font-weight:700;
-}
+            font-size: 20px;
+        }
 
 
-/* =========================
-   CONTAINER
-========================= */
+        /* =====================================================
+           BACK BUTTON
+           ===================================================== */
 
-.admin-container{
-    width:92%;
-    max-width:900px;
+        .back-button {
+            display: inline-flex;
 
-    margin:40px auto 80px;
-}
+            align-items: center;
 
-.page-heading{
-    margin-bottom:30px;
-}
+            gap: 8px;
 
-.eyebrow{
-    color:#ffb000;
+            margin-bottom: 30px;
 
-    font-size:11px;
-    font-weight:800;
+            color: #888;
 
-    letter-spacing:3px;
+            font-size: 12px;
+            font-weight: 800;
 
-    margin-bottom:10px;
-}
+            transition: 0.2s ease;
+        }
 
-h1{
-    font-size:clamp(32px,6vw,55px);
-    line-height:1;
-}
+        .back-button:hover {
+            color: #ffb000;
+        }
 
-.page-heading p{
-    margin-top:12px;
 
-    color:#777;
+        /* =====================================================
+           DETAILS HERO
+           ===================================================== */
 
-    font-size:13px;
-    line-height:1.6;
-}
+        .details-header {
+            max-width: 1250px;
 
+            margin: 0 auto 35px;
+        }
 
-/* =========================
-   CARDS
-========================= */
+        .details-label {
+            color: #ffb000;
 
-.admin-card{
-    background:#101010;
+            font-size: 11px;
+            font-weight: 900;
 
-    border:
-        1px solid rgba(255,255,255,.08);
+            letter-spacing: 3px;
 
-    border-radius:18px;
+            margin-bottom: 12px;
+        }
 
-    padding:25px;
+        .details-header h1 {
+            font-size: clamp(38px, 6vw, 68px);
 
-    margin-bottom:20px;
-}
+            line-height: 0.95;
 
-.card-title{
-    color:#ffb000;
+            letter-spacing: -2px;
 
-    font-size:12px;
-    font-weight:900;
+            font-weight: 900;
 
-    letter-spacing:2px;
+            max-width: 100%;
+        }
 
-    margin-bottom:20px;
-}
+        .details-header h1 span {
+            color: #ffb000;
+        }
 
+        .details-subtitle {
+            margin-top: 15px;
 
-/* =========================
-   FORM
-========================= */
+            color: #777;
 
-.form-grid{
-    display:grid;
+            font-size: 14px;
 
-    grid-template-columns:
-        repeat(2,1fr);
+            line-height: 1.7;
+        }
 
-    gap:16px;
-}
 
-.field{
-    display:flex;
+        /* =====================================================
+           MAIN DETAILS GRID
+           ===================================================== */
 
-    flex-direction:column;
+        .details-container {
+            max-width: 1250px;
 
-    gap:7px;
-}
+            margin: 0 auto;
 
-label{
-    color:#aaa;
+            display: grid;
 
-    font-size:10px;
+            grid-template-columns:
+                1.15fr
+                0.85fr;
 
-    font-weight:800;
+            gap: 25px;
 
-    letter-spacing:.8px;
+            align-items: start;
+        }
 
-    text-transform:uppercase;
-}
 
-input,
-select,
-textarea{
+        /* =====================================================
+           IMAGE GALLERY
+           ===================================================== */
 
-    width:100%;
+        .gallery-box {
+            background: #101010;
 
-    border:
-        1px solid rgba(255,255,255,.10);
+            border: 1px solid
+                rgba(255,255,255,0.07);
 
-    border-radius:10px;
+            border-radius: 20px;
 
-    background:#171717;
+            padding: 18px;
 
-    color:#fff;
+            overflow: hidden;
+        }
 
-    outline:none;
 
-    font-family:inherit;
+        /*
+         * IMPORTANT:
+         *
+         * No fixed aspect-ratio here.
+         *
+         * The image itself decides the frame height.
+         * This prevents portrait screenshots from becoming
+         * unnecessarily small.
+         */
 
-    font-size:13px;
-}
+        .main-gallery-image {
+            width: 100%;
 
-input,
-select{
-    min-height:45px;
+            min-height: 320px;
 
-    padding:0 13px;
-}
+            max-height: 720px;
 
-textarea{
-    min-height:190px;
+            border-radius: 14px;
 
-    padding:13px;
+            overflow: hidden;
 
-    resize:vertical;
+            background:
+                linear-gradient(
+                    145deg,
+                    #191919,
+                    #0b0b0b
+                );
 
-    line-height:1.6;
-}
+            position: relative;
 
-input:focus,
-select:focus,
-textarea:focus{
-    border-color:#ffb000;
-}
+            display: flex;
 
+            align-items: center;
 
-/* =========================
-   STATUS SELECT
-========================= */
+            justify-content: center;
+        }
 
-.status-select{
-    border-color:
-        rgba(255,255,255,.12);
-}
 
-.status-select.available{
-    color:#65d98a;
-}
+        .main-gallery-image img {
+            width: 100%;
 
-.status-select.sold{
-    color:#ff7777;
-}
+            height: auto;
 
+            max-width: 100%;
 
-/* =========================
-   IMAGE UPLOAD
-========================= */
+            max-height: 720px;
 
-.image-grid{
-    display:grid;
+            object-fit: contain;
 
-    grid-template-columns:
-        repeat(3,1fr);
+            display: block;
 
-    gap:12px;
-}
+            border-radius: 10px;
+        }
 
-.image-box{
 
-    padding:15px;
+        .gallery-placeholder {
+            width: 100%;
 
-    border:
-        1px dashed rgba(255,255,255,.12);
+            min-height: 320px;
 
-    border-radius:12px;
+            display: flex;
 
-    background:#0d0d0d;
-}
+            align-items: center;
 
-.image-box span{
+            justify-content: center;
 
-    display:block;
+            color: #333;
 
-    color:#777;
+            font-size: 14px;
 
-    font-size:9px;
+            font-weight: 900;
 
-    font-weight:800;
+            letter-spacing: 3px;
+        }
 
-    margin-bottom:10px;
-}
 
-.image-box input[type="file"]{
+        /* =====================================================
+           GALLERY THUMBNAILS
+           ===================================================== */
 
-    width:100%;
+        .gallery-thumbnails {
+            margin-top: 14px;
 
-    min-height:auto;
+            display: grid;
 
-    padding:8px;
+            grid-template-columns:
+                repeat(6, 1fr);
 
-    font-size:10px;
+            gap: 9px;
+        }
 
-    background:#171717;
+        .gallery-thumb {
+            width: 100%;
 
-    border:
-        1px solid rgba(255,255,255,.08);
-}
+            aspect-ratio: 1 / 1;
 
-.image-status{
+            border-radius: 9px;
 
-    display:block;
+            overflow: hidden;
 
-    margin-top:8px;
+            border: 1px solid
+                rgba(255,255,255,0.08);
 
-    color:#666;
+            background: #151515;
 
-    font-size:9px;
+            cursor: pointer;
 
-    line-height:1.5;
+            transition:
+                border-color 0.2s ease,
+                transform 0.2s ease;
 
-    word-break:break-all;
-}
+            padding: 0;
+        }
 
-.image-status.selected{
-    color:#ffb000;
-}
+        .gallery-thumb:hover {
+            transform: translateY(-2px);
 
-.image-status.uploaded{
-    color:#65d98a;
-}
+            border-color:
+                rgba(255,176,0,0.5);
+        }
 
-.image-status.error{
-    color:#ff7777;
-}
+        .gallery-thumb.active {
+            border-color: #ffb000;
 
-.help-text{
+            box-shadow:
+                0 0 0 1px
+                rgba(255,176,0,0.20);
+        }
 
-    margin-top:12px;
+        .gallery-thumb img {
+            width: 100%;
 
-    color:#555;
+            height: 100%;
 
-    font-size:10px;
+            object-fit: cover;
 
-    line-height:1.7;
-}
+            display: block;
+        }
 
 
-/* =========================
-   BUTTONS
-========================= */
+        /* =====================================================
+           INFO CARD
+           ===================================================== */
 
-.button-row{
+        .details-info {
+            background: #101010;
 
-    display:flex;
+            border: 1px solid
+                rgba(255,255,255,0.07);
 
-    gap:12px;
+            border-radius: 20px;
 
-    flex-wrap:wrap;
-}
+            padding: 28px;
 
-button{
+            height: fit-content;
+        }
 
-    min-height:46px;
 
-    padding:0 22px;
+        .info-top {
+            display: flex;
 
-    border-radius:10px;
+            align-items: flex-start;
 
-    border:0;
+            justify-content: space-between;
 
-    cursor:pointer;
+            gap: 15px;
+        }
 
-    font-family:inherit;
+        .info-category {
+            color: #ffb000;
 
-    font-size:11px;
+            font-size: 10px;
 
-    font-weight:900;
+            font-weight: 900;
 
-    letter-spacing:.5px;
-}
+            letter-spacing: 1.5px;
+        }
 
-button:disabled{
+        .info-title {
+            margin-top: 7px;
 
-    opacity:.5;
+            font-size: 25px;
 
-    cursor:not-allowed;
-}
+            font-weight: 900;
+        }
 
-.save-btn{
+        .info-price {
+            color: #ffb000;
 
-    background:#ffb000;
+            font-size: 27px;
 
-    color:#080808;
-}
+            font-weight: 900;
 
-.clear-btn{
+            white-space: nowrap;
+        }
 
-    background:#1b1b1b;
 
-    border:
-        1px solid rgba(255,255,255,.10);
+        /* =====================================================
+           STATS
+           ===================================================== */
 
-    color:#fff;
-}
+        .details-stats {
+            margin-top: 25px;
 
-.logout-btn{
+            display: grid;
 
-    background:#241414;
+            grid-template-columns:
+                repeat(3, 1fr);
 
-    border:
-        1px solid rgba(255,60,60,.2);
+            gap: 8px;
+        }
 
-    color:#ff7777;
-}
+        .detail-stat {
+            padding: 14px 8px;
 
+            text-align: center;
 
-/* =========================
-   STATUS MESSAGE
-========================= */
+            border-radius: 10px;
 
-.status{
+            background: #171717;
 
-    margin-top:15px;
+            border: 1px solid
+                rgba(255,255,255,0.04);
+        }
 
-    padding:12px;
+        .detail-stat small {
+            display: block;
 
-    border-radius:9px;
+            color: #666;
 
-    background:
-        rgba(255,176,0,.06);
+            font-size: 8px;
 
-    color:#ffb000;
+            font-weight: 800;
 
-    font-size:11px;
+            text-transform: uppercase;
+        }
 
-    line-height:1.5;
+        .detail-stat strong {
+            display: block;
 
-    display:none;
+            margin-top: 5px;
 
-    white-space:pre-wrap;
+            color: #eee;
 
-    word-break:break-word;
-}
+            font-size: 15px;
+        }
 
-.status.success{
 
-    color:#65d98a;
+        /* =====================================================
+           TAGS
+           ===================================================== */
 
-    background:
-        rgba(50,200,100,.07);
-}
+        .detail-tags {
+            display: flex;
 
-.status.error{
+            flex-wrap: wrap;
 
-    color:#ff7777;
+            gap: 7px;
 
-    background:
-        rgba(255,50,50,.07);
-}
+            margin-top: 20px;
+        }
 
+        .detail-tag {
+            padding: 7px 10px;
 
-/* =========================
-   SAVED IDS
-========================= */
+            border-radius: 7px;
 
-.saved-list{
+            background:
+                rgba(255,176,0,0.08);
 
-    display:grid;
+            color: #c89425;
 
-    gap:10px;
-}
+            font-size: 9px;
 
-.saved-item{
+            font-weight: 800;
+        }
 
-    padding:15px;
 
-    display:flex;
+        /* =====================================================
+           BUY BUTTON
+           ===================================================== */
 
-    align-items:center;
+        .buy-now-button {
+            width: 100%;
 
-    justify-content:space-between;
+            min-height: 55px;
 
-    gap:15px;
+            margin-top: 25px;
 
-    background:#151515;
+            display: flex;
 
-    border:
-        1px solid rgba(255,255,255,.07);
+            align-items: center;
 
-    border-radius:12px;
+            justify-content: center;
 
-    transition:
-        border-color .25s ease,
-        transform .25s ease;
-}
+            gap: 10px;
 
-.saved-item:hover{
+            border: 0;
 
-    border-color:
-        rgba(255,176,0,.20);
+            border-radius: 11px;
 
-    transform:
-        translateY(-2px);
-}
+            background: #ffb000;
 
-.saved-info strong{
+            color: #080808;
 
-    display:block;
+            font-size: 13px;
 
-    font-size:13px;
-}
+            font-weight: 900;
 
-.saved-info span{
+            cursor: pointer;
 
-    display:block;
+            box-shadow:
+                0 12px 35px
+                rgba(255,176,0,0.18);
 
-    margin-top:5px;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
 
-    color:#777;
+        .buy-now-button:hover {
+            transform: translateY(-3px);
 
-    font-size:10px;
-}
+            box-shadow:
+                0 18px 45px
+                rgba(255,176,0,0.30);
+        }
 
-.saved-actions{
 
-    display:flex;
+        /* =====================================================
+           SOCIAL LINKS
+           ===================================================== */
 
-    gap:7px;
+        .social-links {
+            margin-top: 12px;
 
-    align-items:center;
-}
+            display: grid;
 
-.small-btn{
+            grid-template-columns:
+                1fr 1fr;
 
-    min-height:36px;
+            gap: 10px;
+        }
 
-    padding:0 13px;
+        .social-button {
+            min-height: 46px;
 
-    font-size:9px;
-}
+            display: flex;
 
-.edit-btn{
+            align-items: center;
 
-    background:
-        rgba(255,176,0,.10);
+            justify-content: center;
 
-    color:#ffb000;
+            border-radius: 9px;
 
-    border:
-        1px solid rgba(255,176,0,.2);
-}
+            border: 1px solid
+                rgba(255,255,255,0.09);
 
-.delete-btn{
+            background: #151515;
 
-    background:
-        rgba(255,50,50,.08);
+            color: #ddd;
 
-    color:#ff7777;
+            font-size: 10px;
 
-    border:
-        1px solid rgba(255,50,50,.15);
-}
+            font-weight: 900;
 
+            transition: 0.2s ease;
+        }
 
-/* =========================
-   SAVED STATUS BADGE
-========================= */
+        .social-button:hover {
+            border-color: #ffb000;
 
-.saved-status{
+            color: #ffb000;
+        }
 
-    display:inline-flex;
 
-    align-items:center;
+        /* =====================================================
+           DESCRIPTION
+           ===================================================== */
 
-    gap:5px;
+        .description-section {
+            max-width: 1250px;
 
-    margin-left:8px;
+            margin: 35px auto 0;
 
-    padding:4px 7px;
+            padding: 30px;
 
-    border-radius:6px;
+            background: #101010;
 
-    font-size:8px;
+            border: 1px solid
+                rgba(255,255,255,0.07);
 
-    font-weight:900;
+            border-radius: 20px;
+        }
 
-    letter-spacing:.5px;
-}
+        .description-heading {
+            color: #ffb000;
 
-.saved-status.available{
+            font-size: 11px;
 
-    color:#65d98a;
+            font-weight: 900;
 
-    background:
-        rgba(50,200,100,.08);
+            letter-spacing: 2px;
 
-    border:
-        1px solid rgba(50,200,100,.14);
-}
+            margin-bottom: 20px;
+        }
 
-.saved-status.sold{
+        .description-title {
+            font-size: 27px;
 
-    color:#ff7777;
+            font-weight: 900;
 
-    background:
-        rgba(255,50,50,.08);
+            margin-bottom: 18px;
+        }
 
-    border:
-        1px solid rgba(255,50,50,.14);
-}
+        .feature-list {
+            display: grid;
 
-.empty{
+            grid-template-columns:
+                repeat(2, 1fr);
 
-    padding:30px;
+            gap: 12px 25px;
+        }
 
-    text-align:center;
+        .feature-item {
+            color: #d0d0d0;
 
-    color:#555;
+            font-size: 13px;
 
-    font-size:12px;
-}
+            line-height: 1.6;
 
+            padding: 10px 0;
 
-/* =========================
-   LOGIN
-========================= */
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.05);
 
-.login-screen{
+            white-space: pre-wrap;
+        }
 
-    min-height:100vh;
+        .feature-item::before {
+            content: "💥";
 
-    display:flex;
+            margin-right: 9px;
+        }
 
-    align-items:center;
+        .no-description {
+            color: #666;
 
-    justify-content:center;
+            font-size: 13px;
 
-    padding:20px;
+            line-height: 1.7;
+        }
 
-    background:
 
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(255,176,0,.08),
-            transparent 40%
-        ),
+        /* =====================================================
+           NOTICE
+           ===================================================== */
 
-        #080808;
-}
+        .details-notice {
+            max-width: 1250px;
 
-.login-box{
+            margin: 20px auto 0;
 
-    width:100%;
+            padding: 18px 20px;
 
-    max-width:430px;
+            border-radius: 12px;
 
-    background:#101010;
+            background:
+                rgba(255,176,0,0.05);
 
-    border:
-        1px solid rgba(255,176,0,.18);
+            border: 1px solid
+                rgba(255,176,0,0.12);
 
-    border-radius:20px;
+            color: #999;
 
-    padding:30px;
-}
+            font-size: 11px;
 
-.login-box h1{
+            line-height: 1.7;
+        }
 
-    font-size:32px;
+        .details-notice strong {
+            color: #ffb000;
+        }
 
-    margin-bottom:10px;
-}
 
-.login-box p{
+        /* =====================================================
+           MOBILE
+           ===================================================== */
 
-    color:#777;
+        @media (max-width: 850px) {
 
-    font-size:12px;
+            .details-container {
+                grid-template-columns: 1fr;
+            }
 
-    line-height:1.6;
+            .gallery-box {
+                padding: 12px;
+            }
 
-    margin-bottom:22px;
-}
+            .details-info {
+                padding: 22px;
+            }
 
-.login-btn{
+            .main-gallery-image {
+                min-height: 250px;
 
-    width:100%;
+                max-height: 600px;
+            }
 
-    background:#ffb000;
+            .main-gallery-image img {
+                max-height: 600px;
+            }
 
-    color:#080808;
-}
+        }
 
-.login-status{
 
-    margin-top:12px;
+        @media (max-width: 600px) {
 
-    color:#ff7777;
+            .details-page {
+                padding: 40px 5% 80px;
+            }
 
-    font-size:11px;
+            .details-header h1 {
+                font-size: 43px;
+            }
 
-    text-align:center;
+            .main-gallery-image {
+                min-height: 220px;
 
-    line-height:1.5;
-}
+                max-height: 500px;
 
+                border-radius: 12px;
+            }
 
-/* =========================
-   MOBILE
-========================= */
+            .main-gallery-image img {
+                max-height: 500px;
+            }
 
-@media(max-width:650px){
+            .gallery-thumbnails {
+                grid-template-columns:
+                    repeat(6, 1fr);
 
-    .admin-header{
-        padding:13px 4%;
-    }
+                gap: 6px;
+            }
 
-    .admin-title{
-        display:none;
-    }
+            .info-title {
+                font-size: 20px;
+            }
 
-    .admin-container{
-        width:92%;
+            .info-price {
+                font-size: 22px;
+            }
 
-        margin-top:30px;
-    }
+            .details-stats {
+                gap: 6px;
+            }
 
-    .admin-card{
-        padding:18px;
-    }
+            .detail-stat {
+                padding: 12px 5px;
+            }
 
-    .form-grid{
-        grid-template-columns:1fr;
-    }
+            .detail-stat strong {
+                font-size: 13px;
+            }
 
-    .image-grid{
-        grid-template-columns:1fr;
-    }
+            .description-section {
+                padding: 22px;
+            }
 
-    .saved-item{
-        align-items:flex-start;
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
 
-        flex-direction:column;
-    }
+        }
 
-    .saved-actions{
-        width:100%;
-    }
-
-    .small-btn{
-        flex:1;
-    }
-
-}
-
-</style>
+    </style>
 
 </head>
 
@@ -768,2400 +780,1475 @@ button:disabled{
 <body>
 
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-<section
-    id="loginScreen"
-    class="login-screen">
+    <header class="top-header">
 
-    <div class="login-box">
+        <a
+            href="index.html"
+            class="brand">
 
-        <div class="eyebrow">
-            TAMILANDA GAMING
-        </div>
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming"
+                class="brand-logo">
 
-        <h1>
-            ADMIN LOGIN
-        </h1>
+            <div class="brand-text">
 
-        <p>
-            Enter your Admin Key to access
-            the ID management panel.
-        </p>
+                <strong>
+                    TAMILANDA
+                </strong>
 
-        <div class="field">
+                <span>
+                    GAMING
+                </span>
 
-            <label>
-                ADMIN KEY
-            </label>
+            </div>
 
-            <input
-                type="password"
-                id="adminKey"
-                placeholder="Enter Admin Key"
-                autocomplete="off">
+        </a>
 
-        </div>
 
-        <br>
+        <nav class="main-nav">
+
+            <a href="index.html">
+                HOME
+            </a>
+
+            <a href="sell.html">
+                SELL YOUR ID
+            </a>
+
+            <a
+                href="buy.html"
+                class="active">
+
+                BUY YOUR ID
+
+            </a>
+
+        </nav>
+
 
         <button
-            class="login-btn"
-            id="loginBtn">
+            class="menu-button"
+            aria-label="Open Menu">
 
-            LOGIN
+            ☰
 
         </button>
 
+    </header>
+
+
+    <!-- =====================================================
+         SIDE MENU
+         ===================================================== -->
+
+    <aside class="side-menu">
+
+        <button
+            class="close-menu"
+            aria-label="Close Menu">
+
+            ×
+
+        </button>
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="terms.html">
+            Terms & Conditions
+        </a>
+
+    </aside>
+
+
+    <!-- =====================================================
+         PAGE
+         ===================================================== -->
+
+    <main class="details-page">
+
+
+        <a
+            href="buy.html"
+            class="back-button">
+
+            ← BACK TO BUY IDS
+
+        </a>
+
+
+        <!-- Loading -->
+
         <div
-            id="loginStatus"
-            class="login-status">
+            id="loading"
+            class="details-loading">
+
+            LOADING ID DETAILS...
+
         </div>
 
-    </div>
 
-</section>
+        <!-- Error -->
 
-
-<!-- =====================================================
-     ADMIN PANEL
-===================================================== -->
-
-<div
-    id="adminPanel"
-    class="hidden">
-
-
-<header class="admin-header">
-
-    <div class="admin-brand">
-
-        <img
-            src="assets/ic_launcher.png"
-            alt="Tamilanda Gaming">
-
-        <div>
+        <div
+            id="errorBox"
+            class="details-error"
+            style="display:none;">
 
             <strong>
-                TAMILANDA
+                ID NOT FOUND
             </strong>
 
-            <span>
-                GAMING ADMIN
-            </span>
+            This account could not be found.
+
+            <br><br>
+
+            <a
+                href="buy.html"
+                class="back-button">
+
+                ← BACK TO BUY IDS
+
+            </a>
 
         </div>
 
-    </div>
 
-    <div class="admin-title">
-        ID MANAGEMENT PANEL
-    </div>
+        <!-- =================================================
+             DYNAMIC CONTENT
+             ================================================= -->
 
-</header>
+        <div
+            id="detailsContent"
+            style="display:none;">
 
 
-<main class="admin-container">
+            <!-- =================================================
+                 HEADER
+                 ================================================= -->
 
+            <section class="details-header">
 
-<section class="page-heading">
+                <div class="details-label">
+                    TAMILANDA GAMING • ID DETAILS
+                </div>
 
-    <div class="eyebrow">
-        TAMILANDA GAMING
-    </div>
+                <h1 id="pageHeading">
 
-    <h1>
-        ID
-        <span style="color:#ffb000;">
-            MANAGEMENT
-        </span>
-    </h1>
+                    <span>
+                        FREE FIRE
+                    </span>
 
-    <p>
-        Create, edit and manage your
-        Free Fire ID listings.
-    </p>
+                    ID
 
-</section>
+                </h1>
 
+                <p
+                    class="details-subtitle"
+                    id="pageSubtitle">
 
-<!-- =====================================================
-     01 ID INFORMATION
-===================================================== -->
+                    Explore the complete account details,
+                    collections and exclusive items.
 
-<section class="admin-card">
+                </p>
 
-<div class="card-title">
-    01 — ID INFORMATION
-</div>
+            </section>
 
-<div class="form-grid">
 
+            <!-- =================================================
+                 MAIN DETAILS
+                 ================================================= -->
 
-<div class="field">
+            <section class="details-container">
 
-<label>
-    ID NUMBER
-</label>
 
-<input
-    type="text"
-    id="idNumber"
-    placeholder="001">
+                <!-- =================================================
+                     IMAGE GALLERY
+                     ================================================= -->
 
-</div>
+                <div class="gallery-box">
 
+                    <div
+                        class="main-gallery-image"
+                        id="mainImage">
 
-<div class="field">
+                        <div class="gallery-placeholder">
+                            ID IMAGE
+                        </div>
 
-<label>
-    ID NAME
-</label>
+                    </div>
 
-<input
-    type="text"
-    id="idName"
-    placeholder="Golden Elite #001">
 
-</div>
+                    <div
+                        class="gallery-thumbnails"
+                        id="thumbnails">
+                    </div>
 
+                </div>
 
-<div class="field">
 
-<label>
-    PRICE
-</label>
+                <!-- =================================================
+                     ACCOUNT INFORMATION
+                     ================================================= -->
 
-<input
-    type="number"
-    id="idPrice"
-    placeholder="50000">
+                <div class="details-info">
 
-</div>
 
+                    <div class="info-top">
 
-<div class="field">
+                        <div>
 
-<label>
-    LEVEL
-</label>
+                            <div
+                                class="info-category"
+                                id="infoCategory">
 
-<input
-    type="number"
-    id="idLevel"
-    placeholder="90">
+                                -
 
-</div>
+                            </div>
 
+                            <div
+                                class="info-title"
+                                id="infoTitle">
 
-<div class="field">
+                                -
 
-<label>
-    PRIME
-</label>
+                            </div>
 
-<input
-    type="text"
-    id="idPrime"
-    placeholder="8">
+                        </div>
 
-</div>
 
+                        <div
+                            class="info-price"
+                            id="infoPrice">
 
-<div class="field">
+                            -
 
-<label>
-    VAULT
-</label>
+                        </div>
 
-<input
-    type="text"
-    id="idVault"
-    placeholder="600+">
+                    </div>
 
-</div>
 
+                    <!-- Stats -->
 
-<div class="field">
+                    <div class="details-stats">
 
-<label>
-    CATEGORY
-</label>
 
-<select id="idCategory">
+                        <div class="detail-stat">
 
-    <option value="golden">
-        Golden Elites
-    </option>
+                            <small>
+                                Account Level
+                            </small>
 
-    <option value="high">
-        High Level
-    </option>
+                            <strong id="level">
+                                -
+                            </strong>
 
-    <option value="starter">
-        Starter IDs
-    </option>
+                        </div>
 
-    <option value="mid">
-        Mid Range IDs
-    </option>
 
-    <option value="hot">
-        Hot IDs
-    </option>
+                        <div class="detail-stat">
 
-</select>
+                            <small>
+                                Prime Level
+                            </small>
 
-</div>
+                            <strong id="prime">
+                                -
+                            </strong>
 
+                        </div>
 
-<div class="field">
 
-<label>
-    BADGE
-</label>
+                        <div class="detail-stat">
 
-<input
-    type="text"
-    id="idBadge"
-    placeholder="GOLDEN ELITE">
+                            <small>
+                                Vault
+                            </small>
 
-</div>
+                            <strong id="vault">
+                                -
+                            </strong>
 
+                        </div>
 
-<div class="field">
 
-<label>
-    POPULAR SCORE
-</label>
+                    </div>
 
-<input
-    type="number"
-    id="idPopular"
-    placeholder="95">
 
-</div>
+                    <!-- Tags -->
 
+                    <div
+                        class="detail-tags"
+                        id="tags">
+                    </div>
 
-<div class="field">
 
-<label>
-    TAGS
-</label>
+                    <!-- Buy -->
 
-<input
-    type="text"
-    id="idTags"
-    placeholder="RARE ITEMS, OLD ACCOUNT, PREMIUM">
+                    <a
+                        href="#"
+                        class="buy-now-button"
+                        id="buyButton"
+                        target="_blank">
 
-</div>
+                        BUY THIS ID
+                        →
 
+                    </a>
 
-<!-- =====================================================
-     AVAILABILITY STATUS
-===================================================== -->
 
-<div class="field">
+                    <!-- Social -->
 
-<label>
-    AVAILABILITY STATUS
-</label>
+                    <div class="social-links">
 
-<select
-    id="idStatus"
-    class="status-select">
+                        <a
+                            href="https://whatsapp.com/channel/0029Vad2AB4NViiWPfEcm2e"
+                            target="_blank"
+                            class="social-button">
 
-    <option value="available">
-        🟢 AVAILABLE
-    </option>
+                            📱 WHATSAPP CHANNEL
 
-    <option value="sold">
-        🔴 SOLD
-    </option>
+                        </a>
 
-</select>
 
-</div>
+                        <a
+                            href="https://youtube.com/@tamilanda_gaming_15"
+                            target="_blank"
+                            class="social-button">
 
+                            ▶️ YOUTUBE
 
-</div>
+                        </a>
 
-</section>
+                    </div>
 
 
-<!-- =====================================================
-     02 IMAGES
-===================================================== -->
+                </div>
 
-<section class="admin-card">
+            </section>
 
-<div class="card-title">
-    02 — ID IMAGES
-</div>
 
+            <!-- =================================================
+                 DESCRIPTION
+                 ================================================= -->
 
-<div class="image-grid">
+            <section class="description-section">
 
+                <div class="description-heading">
+                    ACCOUNT DESCRIPTION
+                </div>
 
-<div class="image-box">
+                <h2 class="description-title">
+                    🔥 Account Features
+                </h2>
 
-<span>
-IMAGE 1 — MAIN / CARD
-</span>
 
-<input
-    type="file"
-    id="imageFile1"
-    accept="image/*">
+                <div
+                    class="feature-list"
+                    id="featureList">
+                </div>
 
-<small
-    class="image-status"
-    id="imageStatus1">
+            </section>
 
-    No image selected
 
-</small>
+            <!-- =================================================
+                 NOTICE
+                 ================================================= -->
 
-</div>
+            <div class="details-notice">
 
+                <strong>
+                    ⚡ Interested in this ID?
+                </strong>
 
-<div class="image-box">
+                Click <strong>BUY THIS ID</strong>
+                to contact Tamilanda Gaming on WhatsApp.
+                Availability and final price will be confirmed
+                before purchase.
 
-<span>
-IMAGE 2
-</span>
+            </div>
 
-<input
-    type="file"
-    id="imageFile2"
-    accept="image/*">
 
-<small
-    class="image-status"
-    id="imageStatus2">
+        </div>
 
-    No image selected
+    </main>
 
-</small>
 
-</div>
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
 
+    <footer>
 
-<div class="image-box">
+        <div class="footer-brand">
 
-<span>
-IMAGE 3
-</span>
+            <img
+                src="assets/ic_launcher.png"
+                alt="Tamilanda Gaming">
 
-<input
-    type="file"
-    id="imageFile3"
-    accept="image/*">
+            <div>
 
-<small
-    class="image-status"
-    id="imageStatus3">
+                <strong>
+                    TAMILANDA GAMING
+                </strong>
 
-    No image selected
+                <p>
+                    Free Fire ID Marketplace
+                </p>
 
-</small>
+            </div>
 
-</div>
+        </div>
 
 
-<div class="image-box">
+        <div class="footer-links">
 
-<span>
-IMAGE 4
-</span>
+            <a href="index.html">
+                Home
+            </a>
 
-<input
-    type="file"
-    id="imageFile4"
-    accept="image/*">
+            <a href="sell.html">
+                Sell Your ID
+            </a>
 
-<small
-    class="image-status"
-    id="imageStatus4">
+            <a href="buy.html">
+                Buy Your ID
+            </a>
 
-    No image selected
+            <a href="contact.html">
+                Contact
+            </a>
 
-</small>
+            <a href="terms.html">
+                Terms
+            </a>
 
-</div>
+        </div>
 
 
-<div class="image-box">
+        <p class="copyright">
 
-<span>
-IMAGE 5
-</span>
+            © <span id="current-year"></span>
+            Tamilanda Gaming.
+            All rights reserved.
 
-<input
-    type="file"
-    id="imageFile5"
-    accept="image/*">
+        </p>
 
-<small
-    class="image-status"
-    id="imageStatus5">
+    </footer>
 
-    No image selected
 
-</small>
+    <!-- =====================================================
+         APP JS
+         ===================================================== -->
 
-</div>
+    <script src="app.js"></script>
 
 
-<div class="image-box">
+    <!-- =====================================================
+         DYNAMIC ID DETAILS JS
+         ===================================================== -->
 
-<span>
-IMAGE 6
-</span>
+    <script>
 
-<input
-    type="file"
-    id="imageFile6"
-    accept="image/*">
+        document.addEventListener(
+            "DOMContentLoaded",
+            async function () {
 
-<small
-    class="image-status"
-    id="imageStatus6">
+                const API_BASE =
+                    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
 
-    No image selected
+                const GITHUB_BASE =
+                    "https://anonsktg.github.io/Tamilanda-Gaming";
 
-</small>
+                const WHATSAPP_NUMBER =
+                    "919786267475";
 
-</div>
 
+                const loading =
+                    document.getElementById("loading");
 
-</div>
+                const errorBox =
+                    document.getElementById("errorBox");
 
+                const detailsContent =
+                    document.getElementById(
+                        "detailsContent"
+                    );
 
-<p class="help-text">
+                const mainImage =
+                    document.getElementById("mainImage");
 
-    📷 Image 1 = Main / Card image.<br>
+                const thumbnails =
+                    document.getElementById(
+                        "thumbnails"
+                    );
 
-    📷 Image 2–6 = View ID gallery images.<br>
+                const featureList =
+                    document.getElementById(
+                        "featureList"
+                    );
 
-    🚀 File name, folder and GitHub path are created automatically.
 
-</p>
+                /* =================================================
+                   CURRENT YEAR
+                   ================================================= */
 
-</section>
+                const currentYear =
+                    document.getElementById(
+                        "current-year"
+                    );
 
+                if (currentYear) {
 
-<!-- =====================================================
-     03 DESCRIPTION
-===================================================== -->
+                    currentYear.textContent =
+                        new Date().getFullYear();
 
-<section class="admin-card">
-
-<div class="card-title">
-    03 — DESCRIPTION / TYPING / ABOUT
-</div>
-
-<div class="field">
-
-<label>
-    THIS ID'S DESCRIPTION
-</label>
-
-<textarea
-    id="idDescription"
-    placeholder="Type this particular ID's description here..."></textarea>
-
-</div>
-
-<p class="help-text">
-
-    This description belongs only to this ID.
-
-</p>
-
-</section>
-
-
-<!-- =====================================================
-     04 SAVE
-===================================================== -->
-
-<section class="admin-card">
-
-<div class="card-title">
-    04 — SAVE ID
-</div>
-
-<div class="button-row">
-
-
-<button
-    class="save-btn"
-    id="saveBtn">
-
-    SAVE ID
-
-</button>
-
-
-<button
-    class="clear-btn"
-    id="clearBtn">
-
-    CLEAR FORM
-
-</button>
-
-
-<button
-    class="logout-btn"
-    id="logoutBtn">
-
-    LOGOUT
-
-</button>
-
-
-</div>
-
-
-<div
-    class="status"
-    id="status">
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     05 SAVED IDS
-===================================================== -->
-
-<section class="admin-card">
-
-<div class="card-title">
-    05 — SAVED IDS
-</div>
-
-<div
-    class="saved-list"
-    id="savedList">
-
-    <div class="empty">
-        Loading IDs...
-    </div>
-
-</div>
-
-</section>
-
-
-</main>
-
-</div>
-
-
-<script>
-
-
-/* =====================================================
-   WORKER
-===================================================== */
-
-const WORKER_URL =
-    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
-
-
-let ADMIN_KEY = "";
-
-let editingId = null;
-
-
-/* =====================================================
-   API REQUEST
-===================================================== */
-
-async function apiRequest(
-    path,
-    options = {}
-){
-
-    const headers = {
-
-        "Content-Type":
-            "application/json",
-
-        ...(options.headers || {})
-
-    };
-
-
-    if(ADMIN_KEY){
-
-        headers["X-Admin-Key"] =
-            ADMIN_KEY;
-
-    }
-
-
-    const response =
-        await fetch(
-            WORKER_URL + path,
-            {
-                ...options,
-                headers:headers
-            }
-        );
-
-
-    let data = {};
-
-
-    try{
-
-        data =
-            await response.json();
-
-    }catch(error){
-
-        data = {};
-
-    }
-
-
-    if(!response.ok){
-
-        throw new Error(
-
-            data.details ||
-
-            data.error ||
-
-            `Request failed (${response.status})`
-
-        );
-
-    }
-
-
-    return data;
-
-}
-
-
-/* =====================================================
-   LOGIN
-===================================================== */
-
-document
-.getElementById("loginBtn")
-.addEventListener(
-"click",
-async function(){
-
-    const key =
-        document
-        .getElementById("adminKey")
-        .value
-        .trim();
-
-
-    const status =
-        document
-        .getElementById("loginStatus");
-
-
-    if(!key){
-
-        status.textContent =
-            "Please enter Admin Key.";
-
-        return;
-
-    }
-
-
-    const button =
-        document
-        .getElementById("loginBtn");
-
-
-    button.disabled =
-        true;
-
-    button.textContent =
-        "CHECKING...";
-
-
-    try{
-
-        const response =
-            await fetch(
-
-                WORKER_URL +
-                "/api/admin/login",
-
-                {
-                    method:"POST",
-
-                    headers:{
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body:
-                        JSON.stringify({
-                            key:key
-                        })
                 }
 
-            );
 
+                /* =================================================
+                   GET ID FROM URL
+                   ================================================= */
 
-        let data = {};
+                const params =
+                    new URLSearchParams(
+                        window.location.search
+                    );
 
+                const id =
+                    params.get("id");
 
-        try{
 
-            data =
-                await response.json();
+                if (!id) {
 
-        }catch(error){
+                    loading.style.display =
+                        "none";
 
-            data = {};
+                    errorBox.style.display =
+                        "block";
 
-        }
+                    return;
 
+                }
 
-        if(
-            !response.ok ||
-            !data.success
-        ){
 
-            throw new Error(
+                /* =================================================
+                   FETCH ID DATA
+                   ================================================= */
 
-                data.details ||
+                try {
 
-                data.error ||
-
-                "Invalid Admin Key"
-
-            );
-
-        }
-
-
-        ADMIN_KEY =
-            key;
-
-
-        sessionStorage.setItem(
-            "tamilanda_admin_key",
-            ADMIN_KEY
-        );
-
-
-        document
-        .getElementById("loginScreen")
-        .classList
-        .add("hidden");
-
-
-        document
-        .getElementById("adminPanel")
-        .classList
-        .remove("hidden");
-
-
-        status.textContent =
-            "";
-
-
-        await loadIDs();
-
-
-    }catch(error){
-
-        ADMIN_KEY =
-            "";
-
-        status.textContent =
-            error.message ||
-            "Login failed.";
-
-    }
-
-
-    button.disabled =
-        false;
-
-    button.textContent =
-        "LOGIN";
-
-});
-
-
-/* =====================================================
-   ENTER TO LOGIN
-===================================================== */
-
-document
-.getElementById("adminKey")
-.addEventListener(
-"keydown",
-function(event){
-
-    if(event.key === "Enter"){
-
-        document
-        .getElementById("loginBtn")
-        .click();
-
-    }
-
-});
-
-
-/* =====================================================
-   LOAD IDS
-===================================================== */
-
-async function loadIDs(){
-
-    const list =
-        document
-        .getElementById("savedList");
-
-
-    list.innerHTML =
-        '<div class="empty">Loading IDs...</div>';
-
-
-    try{
-
-        const result =
-            await apiRequest(
-                "/api/ids"
-            );
-
-
-        const ids =
-            Array.isArray(result)
-
-                ? result
-
-                : (
-                    result.ids ||
-                    result.data ||
-                    []
-                );
-
-
-        renderIDs(
-            ids
-        );
-
-
-    }catch(error){
-
-        list.innerHTML =
-
-            '<div class="empty">' +
-
-            '<strong>Failed to load IDs.</strong>' +
-
-            '<br><br>' +
-
-            escapeHTML(
-                error.message
-            ) +
-
-            '</div>';
-
-    }
-
-}
-
-
-/* =====================================================
-   GET FORM DATA
-===================================================== */
-
-function getFormData(){
-
-    return {
-
-        id:
-            document
-            .getElementById("idNumber")
-            .value
-            .trim(),
-
-        name:
-            document
-            .getElementById("idName")
-            .value
-            .trim(),
-
-        price:
-            Number(
-                document
-                .getElementById("idPrice")
-                .value ||
-                0
-            ),
-
-        level:
-            Number(
-                document
-                .getElementById("idLevel")
-                .value ||
-                0
-            ),
-
-        prime:
-            document
-            .getElementById("idPrime")
-            .value
-            .trim(),
-
-        vault:
-            document
-            .getElementById("idVault")
-            .value
-            .trim(),
-
-        category:
-            document
-            .getElementById("idCategory")
-            .value,
-
-        badge:
-            document
-            .getElementById("idBadge")
-            .value
-            .trim(),
-
-        popular:
-            Number(
-                document
-                .getElementById("idPopular")
-                .value ||
-                0
-            ),
-
-        status:
-            document
-            .getElementById("idStatus")
-            .value,
-
-        images:[],
-
-        description:
-            document
-            .getElementById("idDescription")
-            .value,
-
-        tags:
-            document
-            .getElementById("idTags")
-            .value
-            .split(",")
-
-            .map(
-                tag =>
-                    tag.trim()
-            )
-
-            .filter(Boolean)
-
-    };
-
-}
-
-
-/* =====================================================
-   STATUS SELECT COLOR
-===================================================== */
-
-document
-.getElementById("idStatus")
-.addEventListener(
-"change",
-function(){
-
-    updateStatusSelectColor();
-
-});
-
-
-function updateStatusSelectColor(){
-
-    const select =
-        document
-        .getElementById(
-            "idStatus"
-        );
-
-
-    select.classList.remove(
-        "available",
-        "sold"
-    );
-
-
-    select.classList.add(
-        select.value
-    );
-
-}
-
-
-updateStatusSelectColor();
-
-
-/* =====================================================
-   FILE INPUT STATUS
-===================================================== */
-
-for(
-    let number = 1;
-    number <= 6;
-    number++
-){
-
-    document
-    .getElementById(
-        "imageFile" +
-        number
-    )
-    .addEventListener(
-        "change",
-        function(){
-
-            const file =
-                this.files[0];
-
-
-            const status =
-                document
-                .getElementById(
-                    "imageStatus" +
-                    number
-                );
-
-
-            if(!file){
-
-                status.textContent =
-                    "No image selected";
-
-                status.className =
-                    "image-status";
-
-                return;
-
-            }
-
-
-            status.textContent =
-                "✓ Selected: " +
-                file.name;
-
-
-            status.className =
-                "image-status selected";
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   GET IMAGE FILE
-===================================================== */
-
-function getImageFile(
-    number
-){
-
-    return document
-        .getElementById(
-            "imageFile" +
-            number
-        )
-        .files[0] || null;
-
-}
-
-
-/* =====================================================
-   COMPRESS IMAGE
-===================================================== */
-
-function compressImage(
-    file
-){
-
-    return new Promise(
-    function(resolve,reject){
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload =
-            function(event){
-
-                const image =
-                    new Image();
-
-
-                image.onload =
-                    function(){
-
-                        const maxWidth =
-                            1600;
-
-                        const maxHeight =
-                            1600;
-
-
-                        let width =
-                            image.width;
-
-                        let height =
-                            image.height;
-
-
-                        if(
-                            width >
-                            maxWidth
-                        ){
-
-                            height =
-                                height *
-                                maxWidth /
-                                width;
-
-                            width =
-                                maxWidth;
-
-                        }
-
-
-                        if(
-                            height >
-                            maxHeight
-                        ){
-
-                            width =
-                                width *
-                                maxHeight /
-                                height;
-
-                            height =
-                                maxHeight;
-
-                        }
-
-
-                        const canvas =
-                            document
-                            .createElement(
-                                "canvas"
-                            );
-
-
-                        canvas.width =
-                            Math.round(
-                                width
-                            );
-
-
-                        canvas.height =
-                            Math.round(
-                                height
-                            );
-
-
-                        const ctx =
-                            canvas
-                            .getContext(
-                                "2d"
-                            );
-
-
-                        ctx.drawImage(
-
-                            image,
-
-                            0,
-                            0,
-
-                            canvas.width,
-                            canvas.height
-
+                    const response =
+                        await fetch(
+                            `${API_BASE}/api/ids/${encodeURIComponent(id)}`
                         );
 
 
-                        const base64 =
-                            canvas.toDataURL(
-                                "image/jpeg",
-                                0.82
-                            );
+                    if (!response.ok) {
 
-
-                        resolve(
-                            base64
+                        throw new Error(
+                            "ID not found"
                         );
 
-                    };
+                    }
 
 
-                image.onerror =
-                    function(){
+                    const data =
+                        await response.json();
 
-                        reject(
-                            new Error(
-                                "Could not read image."
+
+                    /* =============================================
+                       DATA
+                       ============================================= */
+
+                    const name =
+                        data.name ||
+                        `Free Fire ID #${id}`;
+
+
+                    const price =
+                        formatPrice(
+                            data.price
+                        );
+
+
+                    const level =
+                        data.level ||
+                        "-";
+
+
+                    const prime =
+                        data.prime ||
+                        "-";
+
+
+                    const vault =
+                        data.vault ||
+                        "-";
+
+
+                    const category =
+                        data.category ||
+                        "FREE FIRE ID";
+
+
+                    const badge =
+                        data.badge ||
+                        "";
+
+
+                    /* =============================================
+                       PAGE TITLE
+                       ============================================= */
+
+                    document.title =
+                        `${name} | Tamilanda Gaming`;
+
+
+                    /* =============================================
+                       HEADER
+                       ============================================= */
+
+                    const pageHeading =
+                        document.getElementById(
+                            "pageHeading"
+                        );
+
+
+                    pageHeading.innerHTML =
+                        `<span>${escapeHTML(
+                            category
+                                .toString()
+                                .toUpperCase()
+                        )}</span><br>
+                        ${escapeHTML(name)}`;
+
+
+                    document.getElementById(
+                        "pageSubtitle"
+                    ).textContent =
+                        `Explore the complete account details, collections and exclusive items of ${name}.`;
+
+
+                    /* =============================================
+                       INFO
+                       ============================================= */
+
+                    document.getElementById(
+                        "infoCategory"
+                    ).textContent =
+                        category
+                            .toString()
+                            .toUpperCase();
+
+
+                    document.getElementById(
+                        "infoTitle"
+                    ).textContent =
+                        name;
+
+
+                    document.getElementById(
+                        "infoPrice"
+                    ).textContent =
+                        price;
+
+
+                    document.getElementById(
+                        "level"
+                    ).textContent =
+                        level;
+
+
+                    document.getElementById(
+                        "prime"
+                    ).textContent =
+                        prime;
+
+
+                    document.getElementById(
+                        "vault"
+                    ).textContent =
+                        vault;
+
+
+                    /* =============================================
+                       TAGS
+                       ============================================= */
+
+                    renderTags(
+                        data,
+                        category,
+                        badge
+                    );
+
+
+                    /* =============================================
+                       GALLERY
+                       ============================================= */
+
+                    renderGallery(
+                        data,
+                        id,
+                        name
+                    );
+
+
+                    /* =============================================
+                       DESCRIPTION
+                       ============================================= */
+
+                    renderDescription(
+                        data.description
+                    );
+
+
+                    /* =============================================
+                       WHATSAPP
+                       ============================================= */
+
+                    const message =
+                        `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
+
+
+                    const whatsappURL =
+                        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                            message
+                        )}`;
+
+
+                    document.getElementById(
+                        "buyButton"
+                    ).href =
+                        whatsappURL;
+
+
+                    /* =============================================
+                       SHOW
+                       ============================================= */
+
+                    loading.style.display =
+                        "none";
+
+                    detailsContent.style.display =
+                        "block";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "ID Details Error:",
+                        error
+                    );
+
+                    loading.style.display =
+                        "none";
+
+                    errorBox.style.display =
+                        "block";
+
+                }
+
+
+                /* =================================================
+                   FORMAT PRICE
+                   ================================================= */
+
+                function formatPrice(value) {
+
+                    if (
+                        value === null ||
+                        value === undefined ||
+                        value === ""
+                    ) {
+
+                        return "Price on Request";
+
+                    }
+
+
+                    const number =
+                        Number(
+                            String(value)
+                                .replace(/₹/g, "")
+                                .replace(/,/g, "")
+                                .trim()
+                        );
+
+
+                    if (
+                        Number.isNaN(number)
+                    ) {
+
+                        return `₹${value}`;
+
+                    }
+
+
+                    if (
+                        number >= 100000
+                    ) {
+
+                        const lakh =
+                            number / 100000;
+
+
+                        return `₹${lakh
+                            .toFixed(
+                                lakh % 1 === 0
+                                    ? 0
+                                    : 1
                             )
+                            .replace(
+                                ".0",
+                                ""
+                            )}L`;
+
+                    }
+
+
+                    if (
+                        number >= 1000
+                    ) {
+
+                        const thousand =
+                            number / 1000;
+
+
+                        return `₹${thousand
+                            .toFixed(
+                                thousand % 1 === 0
+                                    ? 0
+                                    : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}K`;
+
+                    }
+
+
+                    return `₹${number.toLocaleString(
+                        "en-IN"
+                    )}`;
+
+                }
+
+
+                /* =================================================
+                   RENDER TAGS
+                   ================================================= */
+
+                function renderTags(
+                    data,
+                    category,
+                    badge
+                ) {
+
+                    const tagContainer =
+                        document.getElementById(
+                            "tags"
                         );
 
-                    };
 
+                    tagContainer.innerHTML =
+                        "";
 
-                image.src =
-                    event.target.result;
 
-            };
+                    let tags = [];
 
 
-        reader.onerror =
-            function(){
-
-                reject(
-                    new Error(
-                        "Could not read file."
-                    )
-                );
-
-            };
-
-
-        reader.readAsDataURL(
-            file
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   UPLOAD ONE IMAGE
-===================================================== */
-
-async function uploadOneImage(
-    id,
-    imageNumber,
-    file
-){
-
-    const status =
-        document
-        .getElementById(
-            "imageStatus" +
-            imageNumber
-        );
-
-
-    status.textContent =
-        "Compressing image...";
-
-
-    status.className =
-        "image-status selected";
-
-
-    const base64 =
-        await compressImage(
-            file
-        );
-
-
-    status.textContent =
-        "Uploading to GitHub...";
-
-
-    const result =
-        await apiRequest(
-
-            "/api/images",
-
-            {
-                method:"POST",
-
-                body:
-                    JSON.stringify({
-
-                        id:id,
-
-                        imageNumber:
-                            imageNumber,
-
-                        imageData:
-                            base64
-
-                    })
-            }
-
-        );
-
-
-    status.textContent =
-        "✓ Uploaded: " +
-        result.path;
-
-
-    status.className =
-        "image-status uploaded";
-
-
-    return result.path;
-
-}
-
-
-/* =====================================================
-   UPLOAD SELECTED IMAGES
-===================================================== */
-
-async function uploadSelectedImages(
-    id,
-    existingImages
-){
-
-    const images =
-        Array.isArray(
-            existingImages
-        )
-
-            ? [...existingImages]
-
-            : [];
-
-
-    for(
-        let number = 1;
-        number <= 6;
-        number++
-    ){
-
-        const file =
-            getImageFile(
-                number
-            );
-
-
-        if(!file){
-
-            continue;
-
-        }
-
-
-        const path =
-            await uploadOneImage(
-
-                id,
-
-                number,
-
-                file
-
-            );
-
-
-        images[number - 1] =
-            path;
-
-    }
-
-
-    return images.filter(
-        Boolean
-    );
-
-}
-
-
-/* =====================================================
-   SAVE / UPDATE
-===================================================== */
-
-document
-.getElementById("saveBtn")
-.addEventListener(
-"click",
-async function(){
-
-    const data =
-        getFormData();
-
-
-    if(!data.id){
-
-        showStatus(
-            "Please enter ID Number.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(!data.name){
-
-        showStatus(
-            "Please enter ID Name.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    const button =
-        document
-        .getElementById(
-            "saveBtn"
-        );
-
-
-    button.disabled =
-        true;
-
-
-    const isEditing =
-        Boolean(
-            editingId
-        );
-
-
-    try{
-
-        let existingImages =
-            [];
-
-
-        if(isEditing){
-
-            const oldData =
-                await apiRequest(
-
-                    "/api/ids/" +
-                    encodeURIComponent(
-                        editingId
-                    )
-
-                );
-
-
-            existingImages =
-                Array.isArray(
-                    oldData.images
-                )
-
-                    ? oldData.images
-
-                    : [];
-
-        }
-
-
-        button.textContent =
-            "SAVING DATA...";
-
-
-        /* =============================================
-           NEW ID
-        ============================================= */
-
-        if(!isEditing){
-
-            await apiRequest(
-
-                "/api/ids",
-
-                {
-                    method:"POST",
-
-                    body:
-                        JSON.stringify(
-                            data
+                    if (
+                        Array.isArray(
+                            data.tags
                         )
+                    ) {
+
+                        tags =
+                            data.tags
+                                .map(
+                                    item =>
+                                        String(
+                                            item
+                                        ).trim()
+                                )
+                                .filter(Boolean);
+
+                    } else if (
+                        typeof data.tags ===
+                        "string"
+                    ) {
+
+                        tags =
+                            data.tags
+                                .split(",")
+                                .map(
+                                    item =>
+                                        item.trim()
+                                )
+                                .filter(Boolean);
+
+                    }
+
+
+                    if (
+                        category &&
+                        !tags.includes(
+                            category
+                        )
+                    ) {
+
+                        tags.unshift(
+                            category
+                        );
+
+                    }
+
+
+                    if (
+                        badge &&
+                        !tags.includes(
+                            badge
+                        )
+                    ) {
+
+                        tags.push(
+                            badge
+                        );
+
+                    }
+
+
+                    if (
+                        Number(
+                            data.popularScore
+                        ) >= 90
+                    ) {
+
+                        tags.push(
+                            "POPULAR 🔥"
+                        );
+
+                    }
+
+
+                    tags =
+                        [
+                            ...new Set(tags)
+                        ];
+
+
+                    tags.forEach(
+                        function (tag) {
+
+                            const span =
+                                document.createElement(
+                                    "span"
+                                );
+
+
+                            span.className =
+                                "detail-tag";
+
+
+                            span.textContent =
+                                String(
+                                    tag
+                                ).toUpperCase();
+
+
+                            tagContainer.appendChild(
+                                span
+                            );
+
+                        }
+                    );
+
                 }
 
-            );
 
-        }
+                /* =================================================
+                   RENDER GALLERY
+                   ================================================= */
 
+                function renderGallery(
+                    data,
+                    id,
+                    name
+                ) {
 
-        /* =============================================
-           UPLOAD IMAGES
-        ============================================= */
+                    thumbnails.innerHTML =
+                        "";
 
-        const hasImages =
-            [1,2,3,4,5,6]
-            .some(
-                number =>
-                    getImageFile(
-                        number
-                    )
-            );
-
-
-        if(hasImages){
-
-            button.textContent =
-                "UPLOADING IMAGES...";
+                    mainImage.innerHTML =
+                        `<div class="gallery-placeholder">
+                            ID IMAGE
+                        </div>`;
 
 
-            const uploadedImages =
-                await uploadSelectedImages(
-
-                    data.id,
-
-                    existingImages
-
-                );
+                    let images = [];
 
 
-            data.images =
-                uploadedImages;
+                    /*
+                     * If API contains images,
+                     * use them.
+                     */
+
+                    if (
+                        Array.isArray(
+                            data.images
+                        ) &&
+                        data.images.length > 0
+                    ) {
+
+                        images =
+                            data.images
+                                .filter(Boolean)
+                                .map(
+                                    image =>
+                                        resolveImageURL(
+                                            image,
+                                            id
+                                        )
+                                );
+
+                    }
 
 
-        }else{
+                    /*
+                     * Otherwise automatically
+                     * check 01.jpg - 06.jpg
+                     */
 
-            data.images =
-                existingImages;
+                    if (
+                        images.length === 0
+                    ) {
 
-        }
+                        for (
+                            let i = 1;
+                            i <= 6;
+                            i++
+                        ) {
+
+                            const number =
+                                String(i)
+                                    .padStart(
+                                        2,
+                                        "0"
+                                    );
 
 
-        /* =============================================
-           UPDATE DATABASE
-        ============================================= */
+                            images.push(
+                                `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                                    id
+                                )}/${number}.jpg`
+                            );
 
-        if(isEditing){
+                        }
 
-            await apiRequest(
+                    }
 
-                "/api/ids/" +
-                encodeURIComponent(
-                    editingId
-                ),
 
-                {
-                    method:"PUT",
+                    let firstLoaded =
+                        false;
 
-                    body:
-                        JSON.stringify(
-                            data
-                        )
+
+                    images.forEach(
+                        function (
+                            imageURL,
+                            index
+                        ) {
+
+                            const button =
+                                document.createElement(
+                                    "button"
+                                );
+
+
+                            button.type =
+                                "button";
+
+
+                            button.className =
+                                "gallery-thumb";
+
+
+                            const img =
+                                document.createElement(
+                                    "img"
+                                );
+
+
+                            img.src =
+                                imageURL;
+
+
+                            img.alt =
+                                `${name} Image ${index + 1}`;
+
+
+                            img.loading =
+                                "lazy";
+
+
+                            /*
+                             * Image doesn't exist
+                             * → remove thumbnail.
+                             */
+
+                            img.onerror =
+                                function () {
+
+                                    button.remove();
+
+
+                                };
+
+
+                            /*
+                             * First valid image
+                             * becomes main image.
+                             */
+
+                            img.onload =
+                                function () {
+
+                                    if (
+                                        !firstLoaded
+                                    ) {
+
+                                        firstLoaded =
+                                            true;
+
+
+                                        setMainImage(
+                                            imageURL,
+                                            name
+                                        );
+
+
+                                        button.classList.add(
+                                            "active"
+                                        );
+
+                                    }
+
+                                };
+
+
+                            button.appendChild(
+                                img
+                            );
+
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    document
+                                        .querySelectorAll(
+                                            ".gallery-thumb"
+                                        )
+                                        .forEach(
+                                            function (
+                                                item
+                                            ) {
+
+                                                item.classList.remove(
+                                                    "active"
+                                                );
+
+                                            }
+                                        );
+
+
+                                    button.classList.add(
+                                        "active"
+                                    );
+
+
+                                    setMainImage(
+                                        imageURL,
+                                        name
+                                    );
+
+                                }
+                            );
+
+
+                            thumbnails.appendChild(
+                                button
+                            );
+
+                        }
+                    );
+
                 }
 
-            );
 
-        }else{
+                /* =================================================
+                   SET MAIN IMAGE
+                   ================================================= */
 
-            await apiRequest(
+                function setMainImage(
+                    imageURL,
+                    name
+                ) {
 
-                "/api/ids/" +
-                encodeURIComponent(
-                    data.id
-                ),
+                    mainImage.innerHTML =
+                        "";
 
-                {
-                    method:"PUT",
 
-                    body:
-                        JSON.stringify(
-                            data
-                        )
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    img.src =
+                        imageURL;
+
+
+                    img.alt =
+                        name;
+
+
+                    img.onerror =
+                        function () {
+
+                            mainImage.innerHTML =
+                                `<div class="gallery-placeholder">
+                                    ID IMAGE
+                                </div>`;
+
+                        };
+
+
+                    mainImage.appendChild(
+                        img
+                    );
+
                 }
 
-            );
 
-        }
+                /* =================================================
+                   RESOLVE IMAGE URL
+                   ================================================= */
 
-
-        showStatus(
-
-            isEditing
-
-                ? "✓ ID updated successfully!"
-
-                : "✓ ID saved successfully!",
-
-            "success"
-
-        );
-
-
-        clearForm();
-
-
-        await loadIDs();
-
-
-    }catch(error){
-
-        console.error(
-            error
-        );
-
-
-        showStatus(
-
-            "SAVE FAILED\n\n" +
-            error.message,
-
-            "error"
-
-        );
-
-    }
-
-
-    button.disabled =
-        false;
-
-
-    button.textContent =
-        "SAVE ID";
-
-});
-
-
-/* =====================================================
-   EDIT ID
-===================================================== */
-
-async function editID(
-    id
-){
-
-    try{
-
-        const data =
-            await apiRequest(
-
-                "/api/ids/" +
-                encodeURIComponent(
+                function resolveImageURL(
+                    image,
                     id
-                )
+                ) {
 
-            );
-
-
-        editingId =
-            id;
-
-
-        document
-        .getElementById("idNumber")
-        .value =
-            data.id || id;
+                    const value =
+                        String(
+                            image
+                        ).trim();
 
 
-        document
-        .getElementById("idName")
-        .value =
-            data.name || "";
+                    if (
+                        value.startsWith(
+                            "http://"
+                        ) ||
+                        value.startsWith(
+                            "https://"
+                        )
+                    ) {
+
+                        return value;
+
+                    }
 
 
-        document
-        .getElementById("idPrice")
-        .value =
-            data.price || "";
+                    if (
+                        value.startsWith(
+                            "/"
+                        )
+                    ) {
+
+                        return `${GITHUB_BASE}${value}`;
+
+                    }
 
 
-        document
-        .getElementById("idLevel")
-        .value =
-            data.level || "";
+                    if (
+                        value.startsWith(
+                            "assets/"
+                        )
+                    ) {
+
+                        return `${GITHUB_BASE}/${value}`;
+
+                    }
 
 
-        document
-        .getElementById("idPrime")
-        .value =
-            data.prime || "";
+                    return `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                        id
+                    )}/${value}`;
+
+                }
 
 
-        document
-        .getElementById("idVault")
-        .value =
-            data.vault || "";
+                /* =================================================
+                   DESCRIPTION
+                   ================================================= */
+
+                function renderDescription(
+                    description
+                ) {
+
+                    featureList.innerHTML =
+                        "";
 
 
-        document
-        .getElementById("idCategory")
-        .value =
-            data.category ||
-            "golden";
+                    if (
+                        description === null ||
+                        description === undefined
+                    ) {
+
+                        showNoDescription();
+
+                        return;
+
+                    }
 
 
-        document
-        .getElementById("idBadge")
-        .value =
-            data.badge || "";
+                    const text =
+                        String(
+                            description
+                        ).trim();
 
 
-        document
-        .getElementById("idPopular")
-        .value =
-            data.popular ||
-            data.popularScore ||
-            "";
+                    if (!text) {
+
+                        showNoDescription();
+
+                        return;
+
+                    }
 
 
-        /* =============================================
-           STATUS
-        ============================================= */
+                    /*
+                     * Each line entered in Admin
+                     * becomes one feature.
+                     */
 
-        document
-        .getElementById("idStatus")
-        .value =
-            data.status ||
-            "available";
-
-
-        updateStatusSelectColor();
-
-
-        document
-        .getElementById("idDescription")
-        .value =
-            data.description || "";
+                    const lines =
+                        text
+                            .split(/\r?\n/)
+                            .map(
+                                line =>
+                                    line.trim()
+                            )
+                            .filter(Boolean);
 
 
-        document
-        .getElementById("idTags")
-        .value =
-            Array.isArray(
-                data.tags
-            )
+                    if (
+                        lines.length === 0
+                    ) {
 
-                ? data.tags.join(", ")
+                        showNoDescription();
 
-                : "";
+                        return;
 
-
-        for(
-            let number = 1;
-            number <= 6;
-            number++
-        ){
-
-            const status =
-                document
-                .getElementById(
-                    "imageStatus" +
-                    number
-                );
+                    }
 
 
-            const path =
-                data.images?.[
-                    number - 1
-                ];
+                    lines.forEach(
+                        function (line) {
+
+                            const item =
+                                document.createElement(
+                                    "div"
+                                );
 
 
-            if(path){
+                            item.className =
+                                "feature-item";
 
-                status.textContent =
-                    "Current: " +
-                    path;
 
-                status.className =
-                    "image-status uploaded";
+                            item.textContent =
+                                line;
 
-            }else{
 
-                status.textContent =
-                    "No image uploaded";
+                            featureList.appendChild(
+                                item
+                            );
 
-                status.className =
-                    "image-status";
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   NO DESCRIPTION
+                   ================================================= */
+
+                function showNoDescription() {
+
+                    featureList.innerHTML =
+                        `<div class="no-description">
+                            No description has been added for this ID yet.
+                        </div>`;
+
+                }
+
+
+                /* =================================================
+                   ESCAPE HTML
+                   ================================================= */
+
+                function escapeHTML(
+                    value
+                ) {
+
+                    return String(
+                        value
+                    )
+                        .replace(
+                            /&/g,
+                            "&amp;"
+                        )
+                        .replace(
+                            /</g,
+                            "&lt;"
+                        )
+                        .replace(
+                            />/g,
+                            "&gt;"
+                        )
+                        .replace(
+                            /"/g,
+                            "&quot;"
+                        )
+                        .replace(
+                            /'/g,
+                            "&#039;"
+                        );
+
+                }
 
             }
-
-        }
-
-
-        document
-        .getElementById("saveBtn")
-        .textContent =
-            "UPDATE ID";
-
-
-        window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
-        });
-
-
-    }catch(error){
-
-        showStatus(
-
-            error.message ||
-            "Failed to load ID.",
-
-            "error"
-
         );
 
-    }
+    </script>
 
-}
-
-
-/* =====================================================
-   DELETE
-===================================================== */
-
-async function deleteID(
-    id
-){
-
-    const confirmed =
-        confirm(
-            "Delete ID " +
-            id +
-            "?"
-        );
-
-
-    if(!confirmed){
-
-        return;
-
-    }
-
-
-    try{
-
-        await apiRequest(
-
-            "/api/ids/" +
-            encodeURIComponent(
-                id
-            ),
-
-            {
-                method:"DELETE"
-            }
-
-        );
-
-
-        showStatus(
-
-            "✓ ID deleted successfully.",
-
-            "success"
-
-        );
-
-
-        await loadIDs();
-
-
-    }catch(error){
-
-        showStatus(
-
-            error.message ||
-            "Failed to delete ID.",
-
-            "error"
-
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   RENDER IDS
-===================================================== */
-
-function renderIDs(
-    ids
-){
-
-    const list =
-        document
-        .getElementById(
-            "savedList"
-        );
-
-
-    if(!ids.length){
-
-        list.innerHTML =
-            '<div class="empty">' +
-            'No IDs added yet.' +
-            '</div>';
-
-        return;
-
-    }
-
-
-    list.innerHTML =
-        "";
-
-
-    ids.forEach(
-    function(data){
-
-        const item =
-            document
-            .createElement(
-                "div"
-            );
-
-
-        item.className =
-            "saved-item";
-
-
-        const info =
-            document
-            .createElement(
-                "div"
-            );
-
-
-        info.className =
-            "saved-info";
-
-
-        const strong =
-            document
-            .createElement(
-                "strong"
-            );
-
-
-        strong.textContent =
-            data.name ||
-            "Unnamed ID";
-
-
-        /* =============================================
-           STATUS BADGE
-        ============================================= */
-
-        const status =
-            String(
-                data.status ||
-                "available"
-            ).toLowerCase();
-
-
-        const statusBadge =
-            document
-            .createElement(
-                "span"
-            );
-
-
-        statusBadge.className =
-            "saved-status " +
-            (
-                status === "sold"
-                    ? "sold"
-                    : "available"
-            );
-
-
-        statusBadge.textContent =
-            status === "sold"
-                ? "🔴 SOLD"
-                : "🟢 AVAILABLE";
-
-
-        strong.appendChild(
-            statusBadge
-        );
-
-
-        const span =
-            document
-            .createElement(
-                "span"
-            );
-
-
-        span.textContent =
-
-            "ID " +
-            (data.id || "-") +
-
-            " • ₹" +
-
-            Number(
-                data.price || 0
-            ).toLocaleString(
-                "en-IN"
-            ) +
-
-            " • Level " +
-
-            (data.level || "-");
-
-
-        info.appendChild(
-            strong
-        );
-
-
-        info.appendChild(
-            span
-        );
-
-
-        const actions =
-            document
-            .createElement(
-                "div"
-            );
-
-
-        actions.className =
-            "saved-actions";
-
-
-        const edit =
-            document
-            .createElement(
-                "button"
-            );
-
-
-        edit.className =
-            "small-btn edit-btn";
-
-
-        edit.textContent =
-            "EDIT";
-
-
-        edit.onclick =
-            function(){
-
-                editID(
-                    data.id
-                );
-
-            };
-
-
-        const del =
-            document
-            .createElement(
-                "button"
-            );
-
-
-        del.className =
-            "small-btn delete-btn";
-
-
-        del.textContent =
-            "DELETE";
-
-
-        del.onclick =
-            function(){
-
-                deleteID(
-                    data.id
-                );
-
-            };
-
-
-        actions.appendChild(
-            edit
-        );
-
-
-        actions.appendChild(
-            del
-        );
-
-
-        item.appendChild(
-            info
-        );
-
-
-        item.appendChild(
-            actions
-        );
-
-
-        list.appendChild(
-            item
-        );
-
-    });
-
-}
-
-
-/* =====================================================
-   CLEAR FORM
-===================================================== */
-
-document
-.getElementById("clearBtn")
-.addEventListener(
-"click",
-clearForm
-);
-
-
-function clearForm(){
-
-    const ids = [
-
-        "idNumber",
-        "idName",
-        "idPrice",
-        "idLevel",
-        "idPrime",
-        "idVault",
-        "idBadge",
-        "idPopular",
-        "idDescription",
-        "idTags"
-
-    ];
-
-
-    ids.forEach(
-        function(id){
-
-            document
-            .getElementById(id)
-            .value = "";
-
-        }
-    );
-
-
-    document
-    .getElementById("idCategory")
-    .value =
-        "golden";
-
-
-    /* Default status = AVAILABLE */
-
-    document
-    .getElementById("idStatus")
-    .value =
-        "available";
-
-
-    updateStatusSelectColor();
-
-
-    for(
-        let number = 1;
-        number <= 6;
-        number++
-    ){
-
-        document
-        .getElementById(
-            "imageFile" +
-            number
-        )
-        .value =
-            "";
-
-
-        const status =
-            document
-            .getElementById(
-                "imageStatus" +
-                number
-            );
-
-
-        status.textContent =
-            "No image selected";
-
-
-        status.className =
-            "image-status";
-
-    }
-
-
-    editingId =
-        null;
-
-
-    document
-    .getElementById("saveBtn")
-    .textContent =
-        "SAVE ID";
-
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-document
-.getElementById("logoutBtn")
-.addEventListener(
-"click",
-function(){
-
-    ADMIN_KEY =
-        "";
-
-    sessionStorage.removeItem(
-        "tamilanda_admin_key"
-    );
-
-    location.reload();
-
-});
-
-
-/* =====================================================
-   STATUS MESSAGE
-===================================================== */
-
-function showStatus(
-    message,
-    type = ""
-){
-
-    const status =
-        document
-        .getElementById(
-            "status"
-        );
-
-
-    status.textContent =
-        message;
-
-
-    status.className =
-        "status " +
-        type;
-
-
-    status.style.display =
-        "block";
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
-
-function escapeHTML(
-    value
-){
-
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-/* =====================================================
-   RESTORE SESSION
-===================================================== */
-
-const savedKey =
-    sessionStorage.getItem(
-        "tamilanda_admin_key"
-    );
-
-
-if(savedKey){
-
-    ADMIN_KEY =
-        savedKey;
-
-
-    document
-    .getElementById("loginScreen")
-    .classList
-    .add("hidden");
-
-
-    document
-    .getElementById("adminPanel")
-    .classList
-    .remove("hidden");
-
-
-    loadIDs();
-
-}
-
-</script>
 
 </body>
 
