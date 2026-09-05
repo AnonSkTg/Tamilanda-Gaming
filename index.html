@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -14,11 +15,842 @@
 
     <title>Tamilanda Gaming</title>
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        /* =====================================================
+           HOMEPAGE SMOOTH ANIMATIONS
+           ===================================================== */
+
+        @keyframes heroFadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes heroFadeRight {
+
+            from {
+                opacity: 0;
+                transform: translateX(45px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+
+        }
+
+
+        @keyframes showcaseIn {
+
+            from {
+                opacity: 0;
+                transform: scale(1.04);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes showcaseImage {
+
+            from {
+                opacity: 0;
+                transform: scale(1.06);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes floatingGlow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-7px);
+            }
+
+        }
+
+
+        @keyframes dotPulse {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes sectionReveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        /* =====================================================
+           HERO ANIMATION
+           ===================================================== */
+
+        .hero-content {
+            animation:
+                heroFadeUp
+                0.9s
+                cubic-bezier(.22,1,.36,1)
+                both;
+        }
+
+
+        .hero-content .eyebrow {
+            animation:
+                heroFadeUp
+                0.7s
+                0.05s
+                cubic-bezier(.22,1,.36,1)
+                both;
+        }
+
+
+        .hero-content h1 {
+            animation:
+                heroFadeUp
+                0.9s
+                0.12s
+                cubic-bezier(.22,1,.36,1)
+                both;
+        }
+
+
+        .hero-description {
+            animation:
+                heroFadeUp
+                0.8s
+                0.22s
+                cubic-bezier(.22,1,.36,1)
+                both;
+        }
+
+
+        .hero-buttons {
+            animation:
+                heroFadeUp
+                0.8s
+                0.30s
+                cubic-bezier(.22,1,.36,1)
+                both;
+        }
+
+
+        /* =====================================================
+           HERO SLIDER
+           ===================================================== */
+
+        .hero-slider {
+            position: relative;
+
+            animation:
+                heroFadeRight
+                1s
+                0.15s
+                cubic-bezier(.22,1,.36,1)
+                both;
+        }
+
+
+        .hero-slider::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            background:
+                rgba(255,176,0,0.08);
+
+            filter: blur(60px);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            animation:
+                floatingGlow
+                5s
+                ease-in-out
+                infinite;
+
+        }
+
+
+        /* =====================================================
+           DYNAMIC SHOWCASE
+           ===================================================== */
+
+        .dynamic-showcase {
+
+            width: 100%;
+            height: 100%;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: inherit;
+
+            cursor: pointer;
+
+        }
+
+
+        .showcase-image {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            opacity: 0;
+
+            transform: scale(1.04);
+
+            transition:
+                opacity 0.7s ease,
+                transform 1.2s
+                cubic-bezier(.22,1,.36,1);
+
+        }
+
+
+        .showcase-image.active {
+
+            opacity: 1;
+
+            transform: scale(1);
+
+            z-index: 2;
+
+        }
+
+
+        .showcase-image:hover {
+
+            transform: scale(1.025);
+
+        }
+
+
+        /* Dark overlay */
+
+        .showcase-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 3;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.72),
+                    rgba(0,0,0,0.08) 55%,
+                    rgba(0,0,0,0.05)
+                );
+
+        }
+
+
+        /* =====================================================
+           SHOWCASE INFO
+           ===================================================== */
+
+        .showcase-info {
+
+            position: absolute;
+
+            left: 25px;
+            right: 25px;
+            bottom: 35px;
+
+            z-index: 5;
+
+            pointer-events: none;
+
+            opacity: 0;
+
+            transform:
+                translateY(12px);
+
+            transition:
+                opacity 0.45s ease,
+                transform 0.45s ease;
+
+        }
+
+
+        .showcase-info.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        .showcase-category {
+
+            display: block;
+
+            color: #ffb000;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .showcase-name {
+
+            display: block;
+
+            color: #fff;
+
+            font-size: 22px;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            text-shadow:
+                0 3px 15px
+                rgba(0,0,0,0.6);
+
+        }
+
+
+        .showcase-price {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color: #ffb000;
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+        }
+
+
+        /* =====================================================
+           PLACEHOLDER
+           ===================================================== */
+
+        .slider-placeholder {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 100%;
+            height: 100%;
+
+            color: rgba(255,255,255,0.25);
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255,176,0,0.10),
+                    transparent 55%
+                );
+
+        }
+
+
+        /* =====================================================
+           SLIDER CARD
+           ===================================================== */
+
+        .hero-slider .slider-card {
+
+            transition:
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                transform 0.35s ease;
+
+        }
+
+
+        .hero-slider .slider-card:hover {
+
+            border-color:
+                rgba(255,176,0,0.45);
+
+            box-shadow:
+                0 20px 70px
+                rgba(0,0,0,0.35);
+
+        }
+
+
+        /* =====================================================
+           DOTS
+           ===================================================== */
+
+        .slider-dots {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 14px;
+
+            transform:
+                translateX(-50%);
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .slider-dots .dot {
+
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,0.25);
+
+            transition:
+                width 0.35s ease,
+                background 0.35s ease,
+                transform 0.35s ease;
+
+            cursor: pointer;
+
+        }
+
+
+        .slider-dots .dot.active {
+
+            width: 22px;
+
+            border-radius: 20px;
+
+            background: #ffb000;
+
+            animation:
+                dotPulse
+                2s
+                ease-in-out
+                infinite;
+
+        }
+
+
+        /* =====================================================
+           QUICK CARDS
+           ===================================================== */
+
+        .quick-card {
+
+            transition:
+                transform 0.35s
+                cubic-bezier(.22,1,.36,1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+
+        }
+
+
+        .quick-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(255,176,0,0.30);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,0.25);
+
+        }
+
+
+        .quick-icon {
+
+            transition:
+                transform 0.35s ease;
+
+        }
+
+
+        .quick-card:hover
+        .quick-icon {
+
+            transform:
+                scale(1.12)
+                rotate(-4deg);
+
+        }
+
+
+        .quick-card .arrow {
+
+            transition:
+                transform 0.35s ease;
+
+        }
+
+
+        .quick-card:hover
+        .arrow {
+
+            transform:
+                translateX(7px);
+
+        }
+
+
+        /* =====================================================
+           TRUST ITEMS
+           ===================================================== */
+
+        .trust-item {
+
+            transition:
+                transform 0.3s ease;
+
+        }
+
+
+        .trust-item:hover {
+
+            transform:
+                translateY(-4px);
+
+        }
+
+
+        .trust-icon {
+
+            transition:
+                transform 0.35s ease;
+
+        }
+
+
+        .trust-item:hover
+        .trust-icon {
+
+            transform:
+                scale(1.12);
+
+        }
+
+
+        /* =====================================================
+           WHY CARDS
+           ===================================================== */
+
+        .why-card {
+
+            transition:
+                transform 0.35s
+                cubic-bezier(.22,1,.36,1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+
+        }
+
+
+        .why-card:hover {
+
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(255,176,0,0.28);
+
+            box-shadow:
+                0 18px 40px
+                rgba(0,0,0,0.22);
+
+        }
+
+
+        .why-card > div {
+
+            transition:
+                transform 0.35s ease;
+
+        }
+
+
+        .why-card:hover > div {
+
+            transform:
+                scale(1.12)
+                rotate(3deg);
+
+        }
+
+
+        /* =====================================================
+           REVIEW
+           ===================================================== */
+
+        .review-placeholder {
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease;
+
+        }
+
+
+        .review-placeholder:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                rgba(255,176,0,0.25);
+
+        }
+
+
+        .review-icon {
+
+            animation:
+                floatingGlow
+                4s
+                ease-in-out
+                infinite;
+
+        }
+
+
+        /* =====================================================
+           CTA
+           ===================================================== */
+
+        .bottom-cta {
+
+            animation:
+                sectionReveal
+                0.8s
+                ease
+                both;
+
+        }
+
+
+        /* =====================================================
+           BUTTON SMOOTH EFFECT
+           ===================================================== */
+
+        .primary-button,
+        .secondary-button {
+
+            transition:
+                transform 0.3s
+                cubic-bezier(.22,1,.36,1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+
+        }
+
+
+        .primary-button:hover,
+        .secondary-button:hover {
+
+            transform:
+                translateY(-3px);
+
+        }
+
+
+        /* =====================================================
+           HEADER
+           ===================================================== */
+
+        .brand-logo {
+
+            transition:
+                transform 0.4s ease;
+
+        }
+
+
+        .brand:hover
+        .brand-logo {
+
+            transform:
+                rotate(-5deg)
+                scale(1.05);
+
+        }
+
+
+        /* =====================================================
+           REDUCED MOTION
+           ===================================================== */
+
+        @media (
+            prefers-reduced-motion: reduce
+        ) {
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration: 0.01ms !important;
+
+                animation-iteration-count: 1 !important;
+
+                transition-duration: 0.01ms !important;
+
+                scroll-behavior: auto !important;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE SHOWCASE
+           ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .showcase-info {
+
+                left: 18px;
+                right: 18px;
+                bottom: 32px;
+
+            }
+
+            .showcase-name {
+
+                font-size: 18px;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .showcase-info {
+
+                bottom: 28px;
+
+            }
+
+            .showcase-name {
+
+                font-size: 16px;
+
+            }
+
+            .showcase-price {
+
+                font-size: 12px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
     <!-- =================================================
          HEADER
@@ -26,44 +858,54 @@
 
     <header class="top-header">
 
-        <!-- Logo + Name -->
-        <a href="index.html" class="brand">
+        <a
+            href="index.html"
+            class="brand">
 
-            <!-- Temporary logo path -->
-            <!-- We will upload the real logo next -->
             <img
                 src="assets/ic_launcher.png"
                 alt="Tamilanda Gaming Logo"
                 class="brand-logo">
 
             <div class="brand-text">
-                <strong>TAMILANDA</strong>
-                <span>GAMING</span>
+
+                <strong>
+                    TAMILANDA
+                </strong>
+
+                <span>
+                    GAMING
+                </span>
+
             </div>
 
         </a>
 
 
-        <!-- Main Navigation -->
-
         <nav class="main-nav">
 
-            <a href="index.html" class="active">
+            <a
+                href="index.html"
+                class="active">
+
                 HOME
+
             </a>
 
             <a href="sell.html">
+
                 SELL YOUR ID
+
             </a>
 
             <a href="buy.html">
+
                 BUY YOUR ID
+
             </a>
 
         </nav>
 
-
-        <!-- Three Bar Menu -->
 
         <button
             class="menu-button"
@@ -74,7 +916,6 @@
         </button>
 
     </header>
-
 
 
     <!-- =================================================
@@ -111,7 +952,6 @@
     </aside>
 
 
-
     <!-- =================================================
          HERO SECTION
          ================================================= -->
@@ -126,14 +966,22 @@
             <div class="hero-content">
 
                 <p class="eyebrow">
+
                     TAMILANDA GAMING
+
                 </p>
 
 
                 <h1>
+
                     WELCOME TO
-                    <span>TAMILANDA</span>
+
+                    <span>
+                        TAMILANDA
+                    </span>
+
                     GAMING
+
                 </h1>
 
 
@@ -146,8 +994,6 @@
                 </p>
 
 
-                <!-- Buttons -->
-
                 <div class="hero-buttons">
 
                     <a
@@ -156,7 +1002,9 @@
 
                         EXPLORE IDS NOW
 
-                        <span>→</span>
+                        <span>
+                            →
+                        </span>
 
                     </a>
 
@@ -167,7 +1015,9 @@
 
                         SELL YOUR ID
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
 
@@ -176,74 +1026,74 @@
             </div>
 
 
-
             <!-- =================================================
-                 IMAGE SLIDER
+                 DYNAMIC IMAGE SLIDER
                  ================================================= -->
 
             <div class="hero-slider">
 
 
-                <!-- Slide 1 -->
+                <div
+                    class="slider-card active"
+                    id="showcaseCard">
 
-                <div class="slider-card active">
 
-                    <div class="slider-placeholder">
+                    <div
+                        class="dynamic-showcase"
+                        id="dynamicShowcase">
 
-                        ID SHOWCASE
+                        <div
+                            class="slider-placeholder"
+                            id="showcasePlaceholder">
+
+                            ID SHOWCASE
+
+                        </div>
+
+
+                        <div
+                            id="showcaseImages">
+                        </div>
+
+
+                        <div
+                            class="showcase-overlay">
+                        </div>
+
+
+                        <div
+                            class="showcase-info"
+                            id="showcaseInfo">
+
+                            <span
+                                class="showcase-category"
+                                id="showcaseCategory">
+
+                            </span>
+
+                            <span
+                                class="showcase-name"
+                                id="showcaseName">
+
+                            </span>
+
+                            <span
+                                class="showcase-price"
+                                id="showcasePrice">
+
+                            </span>
+
+                        </div>
+
 
                     </div>
 
-                </div>
 
-
-                <!-- Slide 2 -->
-
-                <div class="slider-card">
-
-                    <div class="slider-placeholder">
-
-                        RARE COLLECTION
+                    <div
+                        class="slider-dots"
+                        id="sliderDots">
 
                     </div>
-
-                </div>
-
-
-                <!-- Slide 3 -->
-
-                <div class="slider-card">
-
-                    <div class="slider-placeholder">
-
-                        GOLDEN ELITE
-
-                    </div>
-
-                </div>
-
-
-                <!-- Slide 4 -->
-
-                <div class="slider-card">
-
-                    <div class="slider-placeholder">
-
-                        HIGH LEVEL ID
-
-                    </div>
-
-                </div>
-
-
-                <!-- Slider Dots -->
-
-                <div class="slider-dots">
-
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
 
                 </div>
 
@@ -252,15 +1102,12 @@
         </section>
 
 
-
         <!-- =================================================
              QUICK ACTION CARDS
              ================================================= -->
 
         <section class="quick-section">
 
-
-            <!-- Buy -->
 
             <a
                 href="buy.html"
@@ -292,9 +1139,6 @@
 
             </a>
 
-
-
-            <!-- Sell -->
 
             <a
                 href="sell.html"
@@ -329,7 +1173,6 @@
         </section>
 
 
-
         <!-- =================================================
              TRUST SECTION
              ================================================= -->
@@ -358,7 +1201,6 @@
             </div>
 
 
-
             <div class="trust-item">
 
                 <div class="trust-icon">
@@ -380,7 +1222,6 @@
             </div>
 
 
-
             <div class="trust-item">
 
                 <div class="trust-icon">
@@ -400,7 +1241,6 @@
                 </div>
 
             </div>
-
 
 
             <div class="trust-item">
@@ -426,7 +1266,6 @@
         </section>
 
 
-
         <!-- =================================================
              WHY TAMILANDA
              ================================================= -->
@@ -438,9 +1277,15 @@
             </p>
 
             <h2 class="section-title">
+
                 SIMPLE.
-                <span>SAFE.</span>
+
+                <span>
+                    SAFE.
+                </span>
+
                 FAST.
+
             </h2>
 
 
@@ -465,7 +1310,6 @@
                 </div>
 
 
-
                 <div class="why-card">
 
                     <div>
@@ -484,7 +1328,6 @@
                 </div>
 
 
-
                 <div class="why-card">
 
                     <div>
@@ -501,7 +1344,6 @@
                     </p>
 
                 </div>
-
 
 
                 <div class="why-card">
@@ -526,7 +1368,6 @@
         </section>
 
 
-
         <!-- =================================================
              CUSTOMER REVIEWS
              ================================================= -->
@@ -538,12 +1379,19 @@
             </p>
 
             <h2 class="section-title">
+
                 TRUSTED BY
-                <span>OUR CUSTOMERS</span>
+
+                <span>
+                    OUR CUSTOMERS
+                </span>
+
             </h2>
 
             <p class="section-description">
+
                 Real feedback from our customers.
+
             </p>
 
 
@@ -566,7 +1414,6 @@
         </section>
 
 
-
         <!-- =================================================
              BOTTOM CTA
              ================================================= -->
@@ -578,13 +1425,20 @@
             </p>
 
             <h2>
+
                 FIND YOUR
-                <span>DREAM ID</span>
+
+                <span>
+                    DREAM ID
+                </span>
+
             </h2>
 
             <p>
+
                 Browse available accounts or
                 submit your own account for sale.
+
             </p>
 
 
@@ -596,7 +1450,9 @@
 
                     BUY YOUR ID
 
-                    <span>→</span>
+                    <span>
+                        →
+                    </span>
 
                 </a>
 
@@ -607,7 +1463,9 @@
 
                     SELL YOUR ID
 
-                    <span>↗</span>
+                    <span>
+                        ↗
+                    </span>
 
                 </a>
 
@@ -616,7 +1474,6 @@
         </section>
 
     </main>
-
 
 
     <!-- =================================================
@@ -673,19 +1530,815 @@
 
         <p class="copyright">
 
-            © <span id="current-year"></span>
-            Tamilanda Gaming. All rights reserved.
+            ©
+
+            <span id="current-year"></span>
+
+            Tamilanda Gaming.
+            All rights reserved.
 
         </p>
 
     </footer>
 
 
-
-    <!-- Main JavaScript -->
+    <!-- =================================================
+         MAIN JAVASCRIPT
+         ================================================= -->
 
     <script src="app.js"></script>
 
+
+    <!-- =================================================
+         HOMEPAGE DYNAMIC SHOWCASE
+         ================================================= -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* =================================================
+                   CONFIG
+                   ================================================= */
+
+                const API_BASE =
+                    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
+
+                const GITHUB_BASE =
+                    "https://anonsktg.github.io/Tamilanda-Gaming";
+
+
+                /* =================================================
+                   ELEMENTS
+                   ================================================= */
+
+                const showcase =
+                    document.getElementById(
+                        "dynamicShowcase"
+                    );
+
+                const placeholder =
+                    document.getElementById(
+                        "showcasePlaceholder"
+                    );
+
+                const imagesContainer =
+                    document.getElementById(
+                        "showcaseImages"
+                    );
+
+                const dotsContainer =
+                    document.getElementById(
+                        "sliderDots"
+                    );
+
+                const info =
+                    document.getElementById(
+                        "showcaseInfo"
+                    );
+
+                const categoryElement =
+                    document.getElementById(
+                        "showcaseCategory"
+                    );
+
+                const nameElement =
+                    document.getElementById(
+                        "showcaseName"
+                    );
+
+                const priceElement =
+                    document.getElementById(
+                        "showcasePrice"
+                    );
+
+
+                /* =================================================
+                   CURRENT YEAR
+                   ================================================= */
+
+                const year =
+                    document.getElementById(
+                        "current-year"
+                    );
+
+                if (year) {
+
+                    year.textContent =
+                        new Date().getFullYear();
+
+                }
+
+
+                /* =================================================
+                   LOAD IDS
+                   ================================================= */
+
+                loadShowcase();
+
+
+                async function loadShowcase() {
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                `${API_BASE}/api/ids`,
+                                {
+                                    cache: "no-store"
+                                }
+                            );
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                "Failed to load IDs"
+                            );
+
+                        }
+
+
+                        const ids =
+                            await response.json();
+
+
+                        if (
+                            !Array.isArray(ids) ||
+                            ids.length === 0
+                        ) {
+
+                            showPlaceholder();
+
+                            return;
+
+                        }
+
+
+                        /*
+                         * Only use IDs that have a valid ID value.
+                         */
+
+                        const validIDs =
+                            ids.filter(
+                                function (item) {
+
+                                    return (
+                                        item &&
+                                        item.id
+                                    );
+
+                                }
+                            );
+
+
+                        if (
+                            validIDs.length === 0
+                        ) {
+
+                            showPlaceholder();
+
+                            return;
+
+                        }
+
+
+                        createShowcase(
+                            validIDs
+                        );
+
+
+                    } catch (error) {
+
+                        console.error(
+                            "Showcase error:",
+                            error
+                        );
+
+                        showPlaceholder();
+
+                    }
+
+                }
+
+
+                /* =================================================
+                   CREATE SHOWCASE
+                   ================================================= */
+
+                function createShowcase(
+                    ids
+                ) {
+
+                    imagesContainer.innerHTML =
+                        "";
+
+                    dotsContainer.innerHTML =
+                        "";
+
+                    let currentIndex = 0;
+
+                    const slides = [];
+
+
+                    ids.forEach(
+                        function (
+                            item,
+                            index
+                        ) {
+
+                            const id =
+                                String(
+                                    item.id
+                                );
+
+
+                            /*
+                             * Main image.
+                             */
+
+                            let imageURL =
+                                `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                                    id
+                                )}/01.jpg`;
+
+
+                            /*
+                             * If database contains
+                             * images array, use first image.
+                             */
+
+                            if (
+                                Array.isArray(
+                                    item.images
+                                ) &&
+                                item.images.length > 0
+                            ) {
+
+                                imageURL =
+                                    resolveImageURL(
+                                        item.images[0],
+                                        id
+                                    );
+
+                            }
+
+
+                            const image =
+                                document.createElement(
+                                    "img"
+                                );
+
+
+                            image.className =
+                                "showcase-image";
+
+
+                            image.src =
+                                imageURL;
+
+
+                            image.alt =
+                                item.name ||
+                                `Free Fire ID ${id}`;
+
+
+                            image.loading =
+                                index === 0
+                                    ? "eager"
+                                    : "lazy";
+
+
+                            /*
+                             * Broken image:
+                             * remove that slide.
+                             */
+
+                            image.onerror =
+                                function () {
+
+                                    image.remove();
+
+                                    if (
+                                        slides.length ===
+                                        1
+                                    ) {
+
+                                        showPlaceholder();
+
+                                    }
+
+                                };
+
+
+                            imagesContainer.appendChild(
+                                image
+                            );
+
+
+                            slides.push(
+                                {
+                                    item: item,
+                                    image: image
+                                }
+                            );
+
+
+                            /*
+                             * Dot
+                             */
+
+                            const dot =
+                                document.createElement(
+                                    "span"
+                                );
+
+
+                            dot.className =
+                                "dot";
+
+
+                            if (
+                                index === 0
+                            ) {
+
+                                dot.classList.add(
+                                    "active"
+                                );
+
+                            }
+
+
+                            dot.addEventListener(
+                                "click",
+                                function (
+                                    event
+                                ) {
+
+                                    event.stopPropagation();
+
+                                    currentIndex =
+                                        index;
+
+                                    showSlide(
+                                        currentIndex
+                                    );
+
+                                    resetAutoSlide();
+
+                                }
+                            );
+
+
+                            dotsContainer.appendChild(
+                                dot
+                            );
+
+                        }
+                    );
+
+
+                    if (
+                        slides.length === 0
+                    ) {
+
+                        showPlaceholder();
+
+                        return;
+
+                    }
+
+
+                    placeholder.style.display =
+                        "none";
+
+
+                    showSlide(
+                        0
+                    );
+
+
+                    /*
+                     * Auto slide.
+                     */
+
+                    let autoSlide =
+                        setInterval(
+                            function () {
+
+                                currentIndex =
+                                    (
+                                        currentIndex +
+                                        1
+                                    ) %
+                                    slides.length;
+
+
+                                showSlide(
+                                    currentIndex
+                                );
+
+                            },
+                            5000
+                        );
+
+
+                    function resetAutoSlide() {
+
+                        clearInterval(
+                            autoSlide
+                        );
+
+
+                        autoSlide =
+                            setInterval(
+                                function () {
+
+                                    currentIndex =
+                                        (
+                                            currentIndex +
+                                            1
+                                        ) %
+                                        slides.length;
+
+
+                                    showSlide(
+                                        currentIndex
+                                    );
+
+                                },
+                                5000
+                            );
+
+                    }
+
+
+                    /*
+                     * Pause while mouse is over showcase.
+                     */
+
+                    showcase.addEventListener(
+                        "mouseenter",
+                        function () {
+
+                            clearInterval(
+                                autoSlide
+                            );
+
+                        }
+                    );
+
+
+                    showcase.addEventListener(
+                        "mouseleave",
+                        function () {
+
+                            resetAutoSlide();
+
+                        }
+                    );
+
+
+                    /*
+                     * Click showcase →
+                     * current ID details.
+                     */
+
+                    showcase.addEventListener(
+                        "click",
+                        function () {
+
+                            const selected =
+                                slides[
+                                    currentIndex
+                                ];
+
+
+                            if (
+                                selected &&
+                                selected.item &&
+                                selected.item.id
+                            ) {
+
+                                window.location.href =
+                                    `id-details.html?id=${encodeURIComponent(
+                                        selected.item.id
+                                    )}`;
+
+                            }
+
+                        }
+                    );
+
+
+                    /* =================================================
+                       SHOW SLIDE
+                       ================================================= */
+
+                    function showSlide(
+                        index
+                    ) {
+
+                        if (
+                            !slides[index]
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        currentIndex =
+                            index;
+
+
+                        slides.forEach(
+                            function (
+                                slide,
+                                slideIndex
+                            ) {
+
+                                slide.image.classList.toggle(
+                                    "active",
+                                    slideIndex === index
+                                );
+
+                            }
+                        );
+
+
+                        const dots =
+                            dotsContainer.querySelectorAll(
+                                ".dot"
+                            );
+
+
+                        dots.forEach(
+                            function (
+                                dot,
+                                dotIndex
+                            ) {
+
+                                dot.classList.toggle(
+                                    "active",
+                                    dotIndex === index
+                                );
+
+                            }
+                        );
+
+
+                        const item =
+                            slides[index].item;
+
+
+                        const category =
+                            item.category ||
+                            item.badge ||
+                            "FREE FIRE ID";
+
+
+                        categoryElement.textContent =
+                            String(
+                                category
+                            ).toUpperCase();
+
+
+                        nameElement.textContent =
+                            item.name ||
+                            `ID #${item.id}`;
+
+
+                        priceElement.textContent =
+                            formatPrice(
+                                item.price
+                            );
+
+
+                        info.classList.remove(
+                            "visible"
+                        );
+
+
+                        /*
+                         * Small delay gives the
+                         * text a smooth transition.
+                         */
+
+                        setTimeout(
+                            function () {
+
+                                info.classList.add(
+                                    "visible"
+                                );
+
+                            },
+                            120
+                        );
+
+                    }
+
+                }
+
+
+                /* =================================================
+                   PLACEHOLDER
+                   ================================================= */
+
+                function showPlaceholder() {
+
+                    placeholder.style.display =
+                        "flex";
+
+                    imagesContainer.innerHTML =
+                        "";
+
+                    dotsContainer.innerHTML =
+                        "";
+
+                    info.classList.remove(
+                        "visible"
+                    );
+
+                }
+
+
+                /* =================================================
+                   IMAGE URL
+                   ================================================= */
+
+                function resolveImageURL(
+                    image,
+                    id
+                ) {
+
+                    const value =
+                        String(
+                            image
+                        ).trim();
+
+
+                    if (
+                        value.startsWith(
+                            "http://"
+                        ) ||
+                        value.startsWith(
+                            "https://"
+                        )
+                    ) {
+
+                        return value;
+
+                    }
+
+
+                    if (
+                        value.startsWith(
+                            "/"
+                        )
+                    ) {
+
+                        return (
+                            GITHUB_BASE +
+                            value
+                        );
+
+                    }
+
+
+                    if (
+                        value.startsWith(
+                            "assets/"
+                        )
+                    ) {
+
+                        return (
+                            GITHUB_BASE +
+                            "/" +
+                            value
+                        );
+
+                    }
+
+
+                    return (
+                        `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                            id
+                        )}/${value}`
+                    );
+
+                }
+
+
+                /* =================================================
+                   FORMAT PRICE
+                   ================================================= */
+
+                function formatPrice(
+                    value
+                ) {
+
+                    if (
+                        value === null ||
+                        value === undefined ||
+                        value === ""
+                    ) {
+
+                        return "";
+
+                    }
+
+
+                    const number =
+                        Number(
+                            String(value)
+                                .replace(
+                                    /₹/g,
+                                    ""
+                                )
+                                .replace(
+                                    /,/g,
+                                    ""
+                                )
+                                .trim()
+                        );
+
+
+                    if (
+                        Number.isNaN(
+                            number
+                        )
+                    ) {
+
+                        return `₹${value}`;
+
+                    }
+
+
+                    if (
+                        number >= 100000
+                    ) {
+
+                        const lakh =
+                            number /
+                            100000;
+
+
+                        return `₹${lakh
+                            .toFixed(
+                                lakh % 1 === 0
+                                    ? 0
+                                    : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}L`;
+
+                    }
+
+
+                    if (
+                        number >= 1000
+                    ) {
+
+                        const thousand =
+                            number /
+                            1000;
+
+
+                        return `₹${thousand
+                            .toFixed(
+                                thousand % 1 === 0
+                                    ? 0
+                                    : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}K`;
+
+                    }
+
+
+                    return (
+                        "₹" +
+                        number.toLocaleString(
+                            "en-IN"
+                        )
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
 </body>
 
-    </html>
+</html>
