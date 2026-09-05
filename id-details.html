@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -33,6 +34,50 @@
                     transparent 35%
                 ),
                 #080808;
+        }
+
+
+        /* =====================================================
+           LOADING / ERROR
+           ===================================================== */
+
+        .details-loading {
+            max-width: 1250px;
+            margin: 100px auto;
+            text-align: center;
+
+            color: #777;
+
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .details-error {
+            max-width: 1250px;
+            margin: 100px auto;
+            padding: 35px;
+
+            text-align: center;
+
+            background: #101010;
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            border-radius: 20px;
+
+            color: #aaa;
+        }
+
+        .details-error strong {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #ffb000;
+
+            font-size: 20px;
         }
 
 
@@ -215,6 +260,8 @@
             transition:
                 border-color 0.2s ease,
                 transform 0.2s ease;
+
+            padding: 0;
         }
 
         .gallery-thumb:hover {
@@ -254,7 +301,6 @@
 
             height: fit-content;
         }
-
 
         .info-top {
             display: flex;
@@ -523,12 +569,22 @@
             border-bottom:
                 1px solid
                 rgba(255,255,255,0.05);
+
+            white-space: pre-wrap;
         }
 
         .feature-item::before {
             content: "💥";
 
             margin-right: 9px;
+        }
+
+        .no-description {
+            color: #666;
+
+            font-size: 13px;
+
+            line-height: 1.7;
         }
 
 
@@ -635,7 +691,6 @@
 
         }
 
-
     </style>
 
 </head>
@@ -706,7 +761,6 @@
     </header>
 
 
-
     <!-- =====================================================
          SIDE MENU
          ===================================================== -->
@@ -740,7 +794,6 @@
     </aside>
 
 
-
     <!-- =====================================================
          PAGE
          ===================================================== -->
@@ -757,399 +810,296 @@
         </a>
 
 
-        <!-- =================================================
-             HEADER
-             ================================================= -->
+        <!-- Loading -->
 
-        <section class="details-header">
+        <div
+            id="loading"
+            class="details-loading">
 
-            <div class="details-label">
-                TAMILANDA GAMING • ID DETAILS
-            </div>
-
-            <h1>
-                <span>PREMIUM</span>
-                FREE FIRE ID
-            </h1>
-
-            <p class="details-subtitle">
-                Explore the complete account details,
-                rare collections and exclusive items.
-            </p>
-
-        </section>
-
-
-
-        <!-- =================================================
-             MAIN DETAILS
-             ================================================= -->
-
-        <section class="details-container">
-
-
-            <!-- =================================================
-                 IMAGE GALLERY
-                 ================================================= -->
-
-            <div class="gallery-box">
-
-                <div
-                    class="main-gallery-image"
-                    id="mainImage">
-
-                    <div class="gallery-placeholder">
-                        ID IMAGE
-                    </div>
-
-                </div>
-
-
-                <div
-                    class="gallery-thumbnails"
-                    id="thumbnails">
-
-                    <button
-                        class="gallery-thumb active"
-                        data-image="assets/ids/id001/image1.jpg">
-
-                        <img
-                            src="assets/ids/id001/image1.jpg"
-                            alt="ID Image 1">
-
-                    </button>
-
-
-                    <button
-                        class="gallery-thumb"
-                        data-image="assets/ids/id001/image2.jpg">
-
-                        <img
-                            src="assets/ids/id001/image2.jpg"
-                            alt="ID Image 2">
-
-                    </button>
-
-
-                    <button
-                        class="gallery-thumb"
-                        data-image="assets/ids/id001/image3.jpg">
-
-                        <img
-                            src="assets/ids/id001/image3.jpg"
-                            alt="ID Image 3">
-
-                    </button>
-
-
-                    <button
-                        class="gallery-thumb"
-                        data-image="assets/ids/id001/image4.jpg">
-
-                        <img
-                            src="assets/ids/id001/image4.jpg"
-                            alt="ID Image 4">
-
-                    </button>
-
-
-                    <button
-                        class="gallery-thumb"
-                        data-image="assets/ids/id001/image5.jpg">
-
-                        <img
-                            src="assets/ids/id001/image5.jpg"
-                            alt="ID Image 5">
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 ACCOUNT INFORMATION
-                 ================================================= -->
-
-            <div class="details-info">
-
-
-                <div class="info-top">
-
-                    <div>
-
-                        <div class="info-category">
-                            GOLDEN ELITE
-                        </div>
-
-                        <div class="info-title">
-                            Golden Elite #001
-                        </div>
-
-                    </div>
-
-
-                    <div class="info-price">
-                        ₹50K
-                    </div>
-
-                </div>
-
-
-
-                <!-- Stats -->
-
-                <div class="details-stats">
-
-
-                    <div class="detail-stat">
-
-                        <small>
-                            Account Level
-                        </small>
-
-                        <strong>
-                            90
-                        </strong>
-
-                    </div>
-
-
-                    <div class="detail-stat">
-
-                        <small>
-                            Prime Level
-                        </small>
-
-                        <strong>
-                            8
-                        </strong>
-
-                    </div>
-
-
-                    <div class="detail-stat">
-
-                        <small>
-                            Vault
-                        </small>
-
-                        <strong>
-                            600+
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Tags -->
-
-                <div class="detail-tags">
-
-                    <span class="detail-tag">
-                        GOLDEN ELITE
-                    </span>
-
-                    <span class="detail-tag">
-                        RARE ITEMS
-                    </span>
-
-                    <span class="detail-tag">
-                        PREMIUM
-                    </span>
-
-                    <span class="detail-tag">
-                        POPULAR 🔥
-                    </span>
-
-                </div>
-
-
-
-                <!-- Buy -->
-
-                <a
-                    href="https://wa.me/919786267475?text=Hi%20Tamilanda%20Gaming%2C%20I%20am%20interested%20in%20Golden%20Elite%20%23001%20-%20%E2%82%B950%2C000."
-                    class="buy-now-button"
-                    target="_blank">
-
-                    BUY THIS ID
-                    →
-                    
-                </a>
-
-
-
-                <!-- Social -->
-
-                <div class="social-links">
-
-                    <a
-                        href="https://whatsapp.com/channel/0029Vad2AB4NViiWPfEcm2e"
-                        target="_blank"
-                        class="social-button">
-
-                        📱 WHATSAPP CHANNEL
-
-                    </a>
-
-
-                    <a
-                        href="https://youtube.com/@tamilanda_gaming_15"
-                        target="_blank"
-                        class="social-button">
-
-                        ▶️ YOUTUBE
-
-                    </a>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             DESCRIPTION
-             ================================================= -->
-
-        <section class="description-section">
-
-            <div class="description-heading">
-                ACCOUNT DESCRIPTION
-            </div>
-
-            <h2 class="description-title">
-                🔥 Account Features
-            </h2>
-
-
-            <div class="feature-list">
-
-
-                <div class="feature-item">
-                    7TH TO ALL x OP COMBO
-                </div>
-
-
-                <div class="feature-item">
-                    600+ OP VAULT COLLECTIONS
-                </div>
-
-
-                <div class="feature-item">
-                    7TH ELITE PASS BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    8TH ELITE PASS BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    9TH ELITE PASS BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    10TH TO ALL ELITE PASSES
-                </div>
-
-
-                <div class="feature-item">
-                    PURPLE SHADE BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    WHITE SHADOW BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    DR. SANTY DOCTOR BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    WHITE SOUL BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    INC TOP BUNNY BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    INC TOP ARTIC BLUE BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    INC TOP 2 BLUE SHADE BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    INC TOP 2 BUNNY BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    INC TOP JOKER BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    BLUE LOCK BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    MORE OLD ELITE PASS BUNDLE
-                </div>
-
-
-                <div class="feature-item">
-                    MORE OP VAULT COLLECTIONS
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             NOTICE
-             ================================================= -->
-
-        <div class="details-notice">
-
-            <strong>
-                ⚡ Interested in this ID?
-            </strong>
-
-            Click <strong>BUY THIS ID</strong>
-            to contact Tamilanda Gaming on WhatsApp.
-            Availability and final price will be confirmed
-            before purchase.
+            LOADING ID DETAILS...
 
         </div>
 
 
-    </main>
+        <!-- Error -->
 
+        <div
+            id="errorBox"
+            class="details-error"
+            style="display:none;">
+
+            <strong>
+                ID NOT FOUND
+            </strong>
+
+            This account could not be found.
+
+            <br><br>
+
+            <a
+                href="buy.html"
+                class="back-button">
+
+                ← BACK TO BUY IDS
+
+            </a>
+
+        </div>
+
+
+        <!-- =================================================
+             DYNAMIC CONTENT
+             ================================================= -->
+
+        <div id="detailsContent" style="display:none;">
+
+
+            <!-- =================================================
+                 HEADER
+                 ================================================= -->
+
+            <section class="details-header">
+
+                <div class="details-label">
+                    TAMILANDA GAMING • ID DETAILS
+                </div>
+
+                <h1 id="pageHeading">
+                    <span>FREE FIRE</span>
+                    ID
+                </h1>
+
+                <p
+                    class="details-subtitle"
+                    id="pageSubtitle">
+
+                    Explore the complete account details,
+                    rare collections and exclusive items.
+
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 MAIN DETAILS
+                 ================================================= -->
+
+            <section class="details-container">
+
+
+                <!-- =================================================
+                     IMAGE GALLERY
+                     ================================================= -->
+
+                <div class="gallery-box">
+
+                    <div
+                        class="main-gallery-image"
+                        id="mainImage">
+
+                        <div class="gallery-placeholder">
+                            ID IMAGE
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="gallery-thumbnails"
+                        id="thumbnails">
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACCOUNT INFORMATION
+                     ================================================= -->
+
+                <div class="details-info">
+
+
+                    <div class="info-top">
+
+                        <div>
+
+                            <div
+                                class="info-category"
+                                id="infoCategory">
+
+                                -
+
+                            </div>
+
+                            <div
+                                class="info-title"
+                                id="infoTitle">
+
+                                -
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="info-price"
+                            id="infoPrice">
+
+                            -
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Stats -->
+
+                    <div class="details-stats">
+
+
+                        <div class="detail-stat">
+
+                            <small>
+                                Account Level
+                            </small>
+
+                            <strong id="level">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-stat">
+
+                            <small>
+                                Prime Level
+                            </small>
+
+                            <strong id="prime">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail-stat">
+
+                            <small>
+                                Vault
+                            </small>
+
+                            <strong id="vault">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Tags -->
+
+                    <div
+                        class="detail-tags"
+                        id="tags">
+
+                    </div>
+
+
+                    <!-- Buy -->
+
+                    <a
+                        href="#"
+                        class="buy-now-button"
+                        id="buyButton"
+                        target="_blank">
+
+                        BUY THIS ID
+                        →
+
+                    </a>
+
+
+                    <!-- Social -->
+
+                    <div class="social-links">
+
+                        <a
+                            href="https://whatsapp.com/channel/0029Vad2AB4NViiWPfEcm2e"
+                            target="_blank"
+                            class="social-button">
+
+                            📱 WHATSAPP CHANNEL
+
+                        </a>
+
+
+                        <a
+                            href="https://youtube.com/@tamilanda_gaming_15"
+                            target="_blank"
+                            class="social-button">
+
+                            ▶️ YOUTUBE
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DESCRIPTION
+                 ================================================= -->
+
+            <section class="description-section">
+
+                <div class="description-heading">
+                    ACCOUNT DESCRIPTION
+                </div>
+
+                <h2 class="description-title">
+                    🔥 Account Features
+                </h2>
+
+
+                <div
+                    class="feature-list"
+                    id="featureList">
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 NOTICE
+                 ================================================= -->
+
+            <div class="details-notice">
+
+                <strong>
+                    ⚡ Interested in this ID?
+                </strong>
+
+                Click <strong>BUY THIS ID</strong>
+                to contact Tamilanda Gaming on WhatsApp.
+                Availability and final price will be confirmed
+                before purchase.
+
+            </div>
+
+
+        </div>
+
+    </main>
 
 
     <!-- =====================================================
@@ -1215,105 +1165,978 @@
     </footer>
 
 
-
     <!-- =====================================================
-         JAVASCRIPT
+         APP JS
          ===================================================== -->
 
     <script src="app.js"></script>
 
 
+    <!-- =====================================================
+         DYNAMIC ID DETAILS JS
+         ===================================================== -->
+
     <script>
 
         document.addEventListener(
             "DOMContentLoaded",
-            function () {
+            async function () {
+
+                const API_BASE =
+                    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
+
+                const GITHUB_BASE =
+                    "https://anonsktg.github.io/Tamilanda-Gaming";
+
+                const WHATSAPP_NUMBER =
+                    "919786267475";
+
+
+                const loading =
+                    document.getElementById("loading");
+
+                const errorBox =
+                    document.getElementById("errorBox");
+
+                const detailsContent =
+                    document.getElementById("detailsContent");
 
                 const mainImage =
-                    document.getElementById(
-                        "mainImage"
-                    );
+                    document.getElementById("mainImage");
 
                 const thumbnails =
-                    document.querySelectorAll(
-                        ".gallery-thumb"
-                    );
+                    document.getElementById("thumbnails");
+
+                const featureList =
+                    document.getElementById("featureList");
+
+                const currentYear =
+                    document.getElementById("current-year");
 
 
-                /*
-                 * Set first image
-                 */
+                /* =================================================
+                   CURRENT YEAR
+                   ================================================= */
 
-                const firstImage =
-                    thumbnails[0]?.dataset.image;
+                if (currentYear) {
 
-
-                if (firstImage) {
-
-                    mainImage.innerHTML =
-                        `<img
-                            src="${firstImage}"
-                            alt="Free Fire ID">`;
+                    currentYear.textContent =
+                        new Date().getFullYear();
 
                 }
 
 
-                /*
-                 * Thumbnail click
-                 */
+                /* =================================================
+                   GET ID FROM URL
+                   Example:
+                   id-details.html?id=001
+                   ================================================= */
 
-                thumbnails.forEach(
-                    function (thumbnail) {
+                const params =
+                    new URLSearchParams(
+                        window.location.search
+                    );
 
-                        thumbnail.addEventListener(
-                            "click",
-                            function () {
-
-                                const image =
-                                    thumbnail.dataset.image;
-
-
-                                mainImage.innerHTML =
-                                    `<img
-                                        src="${image}"
-                                        alt="Free Fire ID">`;
+                const id =
+                    params.get("id");
 
 
-                                thumbnails.forEach(
-                                    function (item) {
+                if (!id) {
 
-                                        item.classList.remove(
-                                            "active"
-                                        );
+                    loading.style.display = "none";
 
-                                    }
+                    errorBox.style.display = "block";
+
+                    return;
+
+                }
+
+
+                /* =================================================
+                   FETCH ID DATA
+                   ================================================= */
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API_BASE}/api/ids/${encodeURIComponent(id)}`
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "ID not found"
+                        );
+
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    /* =============================================
+                       BASIC DATA
+                       ============================================= */
+
+                    const name =
+                        data.name ||
+                        `Free Fire ID #${id}`;
+
+
+                    const price =
+                        formatPrice(data.price);
+
+
+                    const level =
+                        data.level ||
+                        "-";
+
+
+                    const prime =
+                        data.prime ||
+                        "-";
+
+
+                    const vault =
+                        data.vault ||
+                        "-";
+
+
+                    const category =
+                        data.category ||
+                        "FREE FIRE ID";
+
+
+                    const badge =
+                        data.badge ||
+                        "";
+
+
+                    /* =============================================
+                       PAGE TITLE
+                       ============================================= */
+
+                    document.title =
+                        `${name} | Tamilanda Gaming`;
+
+
+                    /* =============================================
+                       HEADER
+                       ============================================= */
+
+                    const pageHeading =
+                        document.getElementById(
+                            "pageHeading"
+                        );
+
+
+                    pageHeading.innerHTML =
+                        `<span>${escapeHTML(
+                            category.toString().toUpperCase()
+                        )}</span><br>
+                        ${escapeHTML(name)}`;
+
+
+                    document.getElementById(
+                        "pageSubtitle"
+                    ).textContent =
+                        `Explore the complete account details, collections and exclusive items of ${name}.`;
+
+
+                    /* =============================================
+                       INFO
+                       ============================================= */
+
+                    document.getElementById(
+                        "infoCategory"
+                    ).textContent =
+                        category.toString().toUpperCase();
+
+
+                    document.getElementById(
+                        "infoTitle"
+                    ).textContent =
+                        name;
+
+
+                    document.getElementById(
+                        "infoPrice"
+                    ).textContent =
+                        price;
+
+
+                    document.getElementById(
+                        "level"
+                    ).textContent =
+                        level;
+
+
+                    document.getElementById(
+                        "prime"
+                    ).textContent =
+                        prime;
+
+
+                    document.getElementById(
+                        "vault"
+                    ).textContent =
+                        formatVault(vault);
+
+
+                    /* =============================================
+                       TAGS
+                       ============================================= */
+
+                    renderTags(
+                        data,
+                        category,
+                        badge
+                    );
+
+
+                    /* =============================================
+                       GALLERY
+                       ============================================= */
+
+                    renderGallery(
+                        data,
+                        id,
+                        name,
+                        GITHUB_BASE
+                    );
+
+
+                    /* =============================================
+                       DESCRIPTION
+                       ============================================= */
+
+                    renderDescription(
+                        data.description
+                    );
+
+
+                    /* =============================================
+                       WHATSAPP
+                       ============================================= */
+
+                    const message =
+                        `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
+
+                    const whatsappURL =
+                        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+
+                    document.getElementById(
+                        "buyButton"
+                    ).href =
+                        whatsappURL;
+
+
+                    /* =============================================
+                       SHOW CONTENT
+                       ============================================= */
+
+                    loading.style.display = "none";
+
+                    detailsContent.style.display = "block";
+
+
+                } catch (error) {
+
+                    console.error(
+                        "ID Details Error:",
+                        error
+                    );
+
+                    loading.style.display = "none";
+
+                    errorBox.style.display = "block";
+
+                }
+
+
+                /* =================================================
+                   FORMAT PRICE
+                   ================================================= */
+
+                function formatPrice(value) {
+
+                    if (
+                        value === null ||
+                        value === undefined ||
+                        value === ""
+                    ) {
+                        return "Price on Request";
+                    }
+
+
+                    const number =
+                        Number(
+                            String(value)
+                                .replace(/₹/g, "")
+                                .replace(/,/g, "")
+                                .trim()
+                        );
+
+
+                    if (
+                        Number.isNaN(number)
+                    ) {
+                        return `₹${value}`;
+                    }
+
+
+                    if (number >= 100000) {
+
+                        const lakh =
+                            number / 100000;
+
+                        return `₹${lakh
+                            .toFixed(
+                                lakh % 1 === 0 ? 0 : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}L`;
+
+                    }
+
+
+                    if (number >= 1000) {
+
+                        const thousand =
+                            number / 1000;
+
+                        return `₹${thousand
+                            .toFixed(
+                                thousand % 1 === 0 ? 0 : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}K`;
+
+                    }
+
+
+                    return `₹${number.toLocaleString("en-IN")}`;
+
+                }
+
+
+                /* =================================================
+                   FORMAT VAULT
+                   ================================================= */
+
+                function formatVault(value) {
+
+                    if (
+                        value === null ||
+                        value === undefined ||
+                        value === ""
+                    ) {
+                        return "-";
+                    }
+
+
+                    const text =
+                        String(value).trim();
+
+
+                    if (
+                        text.endsWith("+")
+                    ) {
+                        return text;
+                    }
+
+
+                    return text;
+
+                }
+
+
+                /* =================================================
+                   RENDER TAGS
+                   ================================================= */
+
+                function renderTags(
+                    data,
+                    category,
+                    badge
+                ) {
+
+                    const tagContainer =
+                        document.getElementById(
+                            "tags"
+                        );
+
+
+                    tagContainer.innerHTML =
+                        "";
+
+
+                    let tags = [];
+
+
+                    if (
+                        Array.isArray(data.tags)
+                    ) {
+
+                        tags =
+                            data.tags
+                                .map(
+                                    item =>
+                                        String(item).trim()
+                                )
+                                .filter(Boolean);
+
+                    } else if (
+                        typeof data.tags === "string"
+                    ) {
+
+                        tags =
+                            data.tags
+                                .split(",")
+                                .map(
+                                    item =>
+                                        item.trim()
+                                )
+                                .filter(Boolean);
+
+                    }
+
+
+                    /* Category */
+
+                    if (
+                        category &&
+                        !tags.includes(category)
+                    ) {
+
+                        tags.unshift(
+                            category
+                        );
+
+                    }
+
+
+                    /* Badge */
+
+                    if (
+                        badge &&
+                        !tags.includes(badge)
+                    ) {
+
+                        tags.push(
+                            badge
+                        );
+
+                    }
+
+
+                    /* Popular */
+
+                    if (
+                        Number(data.popularScore) >= 90
+                    ) {
+
+                        tags.push(
+                            "POPULAR 🔥"
+                        );
+
+                    }
+
+
+                    tags =
+                        [...new Set(tags)];
+
+
+                    tags.forEach(
+                        function (tag) {
+
+                            const span =
+                                document.createElement(
+                                    "span"
                                 );
 
 
-                                thumbnail.classList.add(
+                            span.className =
+                                "detail-tag";
+
+
+                            span.textContent =
+                                String(tag).toUpperCase();
+
+
+                            tagContainer.appendChild(
+                                span
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   RENDER GALLERY
+                   ================================================= */
+
+                function renderGallery(
+                    data,
+                    id,
+                    name,
+                    githubBase
+                ) {
+
+                    thumbnails.innerHTML =
+                        "";
+
+
+                    /*
+                     * If admin/database has images array,
+                     * use it.
+                     *
+                     * Otherwise automatically use:
+                     *
+                     * 01.jpg
+                     * 02.jpg
+                     * 03.jpg
+                     * 04.jpg
+                     * 05.jpg
+                     * 06.jpg
+                     */
+
+                    let images = [];
+
+
+                    if (
+                        Array.isArray(data.images) &&
+                        data.images.length > 0
+                    ) {
+
+                        images =
+                            data.images
+                                .filter(Boolean)
+                                .map(
+                                    image =>
+                                        resolveImageURL(
+                                            image,
+                                            id,
+                                            githubBase
+                                        )
+                                );
+
+                    }
+
+
+                    if (
+                        images.length === 0
+                    ) {
+
+                        for (
+                            let i = 1;
+                            i <= 6;
+                            i++
+                        ) {
+
+                            const number =
+                                String(i)
+                                    .padStart(
+                                        2,
+                                        "0"
+                                    );
+
+
+                            images.push(
+                                `${githubBase}/assets/ids/${encodeURIComponent(id)}/${number}.jpg`
+                            );
+
+                        }
+
+                    }
+
+
+                    let firstValidImage =
+                        false;
+
+
+                    images.forEach(
+                        function (
+                            imageURL,
+                            index
+                        ) {
+
+                            const button =
+                                document.createElement(
+                                    "button"
+                                );
+
+
+                            button.type =
+                                "button";
+
+
+                            button.className =
+                                "gallery-thumb";
+
+
+                            if (
+                                index === 0
+                            ) {
+
+                                button.classList.add(
                                     "active"
                                 );
 
                             }
-                        );
-
-                    }
-                );
 
 
-                /*
-                 * Current year
-                 */
+                            const img =
+                                document.createElement(
+                                    "img"
+                                );
 
-                const year =
-                    document.getElementById(
-                        "current-year"
+
+                            img.src =
+                                imageURL;
+
+
+                            img.alt =
+                                `${name} Image ${index + 1}`;
+
+
+                            img.loading =
+                                "lazy";
+
+
+                            /*
+                             * If image does not exist,
+                             * remove thumbnail.
+                             */
+
+                            img.onerror =
+                                function () {
+
+                                    button.remove();
+
+
+                                    if (
+                                        index === 0 &&
+                                        !firstValidImage
+                                    ) {
+
+                                        mainImage.innerHTML =
+                                            `<div class="gallery-placeholder">
+                                                ID IMAGE
+                                            </div>`;
+
+                                    }
+
+                                };
+
+
+                            img.onload =
+                                function () {
+
+                                    if (
+                                        !firstValidImage
+                                    ) {
+
+                                        firstValidImage =
+                                            true;
+
+
+                                        setMainImage(
+                                            imageURL,
+                                            name
+                                        );
+
+                                    }
+
+                                };
+
+
+                            button.appendChild(
+                                img
+                            );
+
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    document
+                                        .querySelectorAll(
+                                            ".gallery-thumb"
+                                        )
+                                        .forEach(
+                                            function (
+                                                item
+                                            ) {
+
+                                                item.classList.remove(
+                                                    "active"
+                                                );
+
+                                            }
+                                        );
+
+
+                                    button.classList.add(
+                                        "active"
+                                    );
+
+
+                                    setMainImage(
+                                        imageURL,
+                                        name
+                                    );
+
+                                }
+                            );
+
+
+                            thumbnails.appendChild(
+                                button
+                            );
+
+                        }
                     );
 
-                if (year) {
+                }
 
-                    year.textContent =
-                        new Date().getFullYear();
+
+                /* =================================================
+                   SET MAIN IMAGE
+                   ================================================= */
+
+                function setMainImage(
+                    imageURL,
+                    name
+                ) {
+
+                    mainImage.innerHTML =
+                        "";
+
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    img.src =
+                        imageURL;
+
+
+                    img.alt =
+                        name;
+
+
+                    img.onerror =
+                        function () {
+
+                            mainImage.innerHTML =
+                                `<div class="gallery-placeholder">
+                                    ID IMAGE
+                                </div>`;
+
+                        };
+
+
+                    mainImage.appendChild(
+                        img
+                    );
+
+                }
+
+
+                /* =================================================
+                   RESOLVE IMAGE URL
+                   ================================================= */
+
+                function resolveImageURL(
+                    image,
+                    id,
+                    githubBase
+                ) {
+
+                    const value =
+                        String(image).trim();
+
+
+                    if (
+                        value.startsWith("http://") ||
+                        value.startsWith("https://")
+                    ) {
+
+                        return value;
+
+                    }
+
+
+                    if (
+                        value.startsWith("/")
+                    ) {
+
+                        return `${githubBase}${value}`;
+
+                    }
+
+
+                    if (
+                        value.startsWith("assets/")
+                    ) {
+
+                        return `${githubBase}/${value}`;
+
+                    }
+
+
+                    return `${githubBase}/assets/ids/${encodeURIComponent(id)}/${value}`;
+
+                }
+
+
+                /* =================================================
+                   RENDER DESCRIPTION
+                   ================================================= */
+
+                function renderDescription(
+                    description
+                ) {
+
+                    featureList.innerHTML =
+                        "";
+
+
+                    if (
+                        description === null ||
+                        description === undefined
+                    ) {
+
+                        showNoDescription();
+
+                        return;
+
+                    }
+
+
+                    const text =
+                        String(description)
+                            .trim();
+
+
+                    if (!text) {
+
+                        showNoDescription();
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Each new line becomes
+                     * one feature item.
+                     */
+
+                    const lines =
+                        text
+                            .split(/\r?\n/)
+                            .map(
+                                line =>
+                                    line.trim()
+                            )
+                            .filter(Boolean);
+
+
+                    if (
+                        lines.length === 0
+                    ) {
+
+                        showNoDescription();
+
+                        return;
+
+                    }
+
+
+                    lines.forEach(
+                        function (line) {
+
+                            const item =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            item.className =
+                                "feature-item";
+
+
+                            item.textContent =
+                                line;
+
+
+                            featureList.appendChild(
+                                item
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================================
+                   NO DESCRIPTION
+                   ================================================= */
+
+                function showNoDescription() {
+
+                    featureList.innerHTML =
+                        `<div class="no-description">
+                            No description has been added for this ID yet.
+                        </div>`;
+
+                }
+
+
+                /* =================================================
+                   BASIC HTML ESCAPE
+                   ================================================= */
+
+                function escapeHTML(
+                    value
+                ) {
+
+                    return String(value)
+                        .replace(
+                            /&/g,
+                            "&amp;"
+                        )
+                        .replace(
+                            /</g,
+                            "&lt;"
+                        )
+                        .replace(
+                            />/g,
+                            "&gt;"
+                        )
+                        .replace(
+                            /"/g,
+                            "&quot;"
+                        )
+                        .replace(
+                            /'/g,
+                            "&#039;"
+                        );
 
                 }
 
