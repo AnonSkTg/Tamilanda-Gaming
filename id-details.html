@@ -44,12 +44,14 @@
         .details-loading {
             max-width: 1250px;
             margin: 100px auto;
+
             text-align: center;
 
             color: #777;
 
             font-size: 13px;
             font-weight: 800;
+
             letter-spacing: 1px;
         }
 
@@ -87,7 +89,9 @@
 
         .back-button {
             display: inline-flex;
+
             align-items: center;
+
             gap: 8px;
 
             margin-bottom: 30px;
@@ -111,6 +115,7 @@
 
         .details-header {
             max-width: 1250px;
+
             margin: 0 auto 35px;
         }
 
@@ -133,6 +138,8 @@
             letter-spacing: -2px;
 
             font-weight: 900;
+
+            max-width: 100%;
         }
 
         .details-header h1 span {
@@ -145,6 +152,7 @@
             color: #777;
 
             font-size: 14px;
+
             line-height: 1.7;
         }
 
@@ -155,6 +163,7 @@
 
         .details-container {
             max-width: 1250px;
+
             margin: 0 auto;
 
             display: grid;
@@ -164,6 +173,8 @@
                 0.85fr;
 
             gap: 25px;
+
+            align-items: start;
         }
 
 
@@ -184,10 +195,23 @@
             overflow: hidden;
         }
 
+
+        /*
+         * IMPORTANT:
+         *
+         * No fixed aspect-ratio here.
+         *
+         * The image itself decides the frame height.
+         * This prevents portrait screenshots from becoming
+         * unnecessarily small.
+         */
+
         .main-gallery-image {
             width: 100%;
 
-            aspect-ratio: 16 / 10;
+            min-height: 320px;
+
+            max-height: 720px;
 
             border-radius: 14px;
 
@@ -201,36 +225,56 @@
                 );
 
             position: relative;
-        }
-
-        .main-gallery-image img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    display: block;
-}
-
-        .gallery-placeholder {
-            width: 100%;
-            height: 100%;
 
             display: flex;
 
             align-items: center;
+
+            justify-content: center;
+        }
+
+
+        .main-gallery-image img {
+            width: 100%;
+
+            height: auto;
+
+            max-width: 100%;
+
+            max-height: 720px;
+
+            object-fit: contain;
+
+            display: block;
+
+            border-radius: 10px;
+        }
+
+
+        .gallery-placeholder {
+            width: 100%;
+
+            min-height: 320px;
+
+            display: flex;
+
+            align-items: center;
+
             justify-content: center;
 
             color: #333;
 
             font-size: 14px;
+
             font-weight: 900;
 
             letter-spacing: 3px;
         }
 
 
-        /* Gallery thumbnails */
+        /* =====================================================
+           GALLERY THUMBNAILS
+           ===================================================== */
 
         .gallery-thumbnails {
             margin-top: 14px;
@@ -238,12 +282,14 @@
             display: grid;
 
             grid-template-columns:
-                repeat(5, 1fr);
+                repeat(6, 1fr);
 
             gap: 9px;
         }
 
         .gallery-thumb {
+            width: 100%;
+
             aspect-ratio: 1 / 1;
 
             border-radius: 9px;
@@ -273,10 +319,15 @@
 
         .gallery-thumb.active {
             border-color: #ffb000;
+
+            box-shadow:
+                0 0 0 1px
+                rgba(255,176,0,0.20);
         }
 
         .gallery-thumb img {
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -302,10 +353,12 @@
             height: fit-content;
         }
 
+
         .info-top {
             display: flex;
 
             align-items: flex-start;
+
             justify-content: space-between;
 
             gap: 15px;
@@ -315,6 +368,7 @@
             color: #ffb000;
 
             font-size: 10px;
+
             font-weight: 900;
 
             letter-spacing: 1.5px;
@@ -324,6 +378,7 @@
             margin-top: 7px;
 
             font-size: 25px;
+
             font-weight: 900;
         }
 
@@ -331,6 +386,7 @@
             color: #ffb000;
 
             font-size: 27px;
+
             font-weight: 900;
 
             white-space: nowrap;
@@ -371,6 +427,7 @@
             color: #666;
 
             font-size: 8px;
+
             font-weight: 800;
 
             text-transform: uppercase;
@@ -412,6 +469,7 @@
             color: #c89425;
 
             font-size: 9px;
+
             font-weight: 800;
         }
 
@@ -430,6 +488,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             gap: 10px;
@@ -443,6 +502,7 @@
             color: #080808;
 
             font-size: 13px;
+
             font-weight: 900;
 
             cursor: pointer;
@@ -486,6 +546,7 @@
             display: flex;
 
             align-items: center;
+
             justify-content: center;
 
             border-radius: 9px;
@@ -498,6 +559,7 @@
             color: #ddd;
 
             font-size: 10px;
+
             font-weight: 900;
 
             transition: 0.2s ease;
@@ -533,6 +595,7 @@
             color: #ffb000;
 
             font-size: 11px;
+
             font-weight: 900;
 
             letter-spacing: 2px;
@@ -637,6 +700,16 @@
                 padding: 22px;
             }
 
+            .main-gallery-image {
+                min-height: 250px;
+
+                max-height: 600px;
+            }
+
+            .main-gallery-image img {
+                max-height: 600px;
+            }
+
         }
 
 
@@ -651,12 +724,20 @@
             }
 
             .main-gallery-image {
-                aspect-ratio: 4 / 3;
+                min-height: 220px;
+
+                max-height: 500px;
+
+                border-radius: 12px;
+            }
+
+            .main-gallery-image img {
+                max-height: 500px;
             }
 
             .gallery-thumbnails {
                 grid-template-columns:
-                    repeat(5, 1fr);
+                    repeat(6, 1fr);
 
                 gap: 6px;
             }
@@ -851,7 +932,9 @@
              DYNAMIC CONTENT
              ================================================= -->
 
-        <div id="detailsContent" style="display:none;">
+        <div
+            id="detailsContent"
+            style="display:none;">
 
 
             <!-- =================================================
@@ -865,8 +948,13 @@
                 </div>
 
                 <h1 id="pageHeading">
-                    <span>FREE FIRE</span>
+
+                    <span>
+                        FREE FIRE
+                    </span>
+
                     ID
+
                 </h1>
 
                 <p
@@ -874,7 +962,7 @@
                     id="pageSubtitle">
 
                     Explore the complete account details,
-                    rare collections and exclusive items.
+                    collections and exclusive items.
 
                 </p>
 
@@ -1006,7 +1094,6 @@
                     <div
                         class="detail-tags"
                         id="tags">
-
                     </div>
 
 
@@ -1073,7 +1160,6 @@
                 <div
                     class="feature-list"
                     id="featureList">
-
                 </div>
 
             </section>
@@ -1199,24 +1285,32 @@
                     document.getElementById("errorBox");
 
                 const detailsContent =
-                    document.getElementById("detailsContent");
+                    document.getElementById(
+                        "detailsContent"
+                    );
 
                 const mainImage =
                     document.getElementById("mainImage");
 
                 const thumbnails =
-                    document.getElementById("thumbnails");
+                    document.getElementById(
+                        "thumbnails"
+                    );
 
                 const featureList =
-                    document.getElementById("featureList");
-
-                const currentYear =
-                    document.getElementById("current-year");
+                    document.getElementById(
+                        "featureList"
+                    );
 
 
                 /* =================================================
                    CURRENT YEAR
                    ================================================= */
+
+                const currentYear =
+                    document.getElementById(
+                        "current-year"
+                    );
 
                 if (currentYear) {
 
@@ -1228,8 +1322,6 @@
 
                 /* =================================================
                    GET ID FROM URL
-                   Example:
-                   id-details.html?id=001
                    ================================================= */
 
                 const params =
@@ -1243,9 +1335,11 @@
 
                 if (!id) {
 
-                    loading.style.display = "none";
+                    loading.style.display =
+                        "none";
 
-                    errorBox.style.display = "block";
+                    errorBox.style.display =
+                        "block";
 
                     return;
 
@@ -1278,7 +1372,7 @@
 
 
                     /* =============================================
-                       BASIC DATA
+                       DATA
                        ============================================= */
 
                     const name =
@@ -1287,7 +1381,9 @@
 
 
                     const price =
-                        formatPrice(data.price);
+                        formatPrice(
+                            data.price
+                        );
 
 
                     const level =
@@ -1335,7 +1431,9 @@
 
                     pageHeading.innerHTML =
                         `<span>${escapeHTML(
-                            category.toString().toUpperCase()
+                            category
+                                .toString()
+                                .toUpperCase()
                         )}</span><br>
                         ${escapeHTML(name)}`;
 
@@ -1353,7 +1451,9 @@
                     document.getElementById(
                         "infoCategory"
                     ).textContent =
-                        category.toString().toUpperCase();
+                        category
+                            .toString()
+                            .toUpperCase();
 
 
                     document.getElementById(
@@ -1383,7 +1483,7 @@
                     document.getElementById(
                         "vault"
                     ).textContent =
-                        formatVault(vault);
+                        vault;
 
 
                     /* =============================================
@@ -1404,8 +1504,7 @@
                     renderGallery(
                         data,
                         id,
-                        name,
-                        GITHUB_BASE
+                        name
                     );
 
 
@@ -1425,8 +1524,11 @@
                     const message =
                         `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
 
+
                     const whatsappURL =
-                        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+                        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                            message
+                        )}`;
 
 
                     document.getElementById(
@@ -1436,12 +1538,14 @@
 
 
                     /* =============================================
-                       SHOW CONTENT
+                       SHOW
                        ============================================= */
 
-                    loading.style.display = "none";
+                    loading.style.display =
+                        "none";
 
-                    detailsContent.style.display = "block";
+                    detailsContent.style.display =
+                        "block";
 
 
                 } catch (error) {
@@ -1451,9 +1555,11 @@
                         error
                     );
 
-                    loading.style.display = "none";
+                    loading.style.display =
+                        "none";
 
-                    errorBox.style.display = "block";
+                    errorBox.style.display =
+                        "block";
 
                 }
 
@@ -1469,7 +1575,9 @@
                         value === undefined ||
                         value === ""
                     ) {
+
                         return "Price on Request";
+
                     }
 
 
@@ -1485,18 +1593,25 @@
                     if (
                         Number.isNaN(number)
                     ) {
+
                         return `₹${value}`;
+
                     }
 
 
-                    if (number >= 100000) {
+                    if (
+                        number >= 100000
+                    ) {
 
                         const lakh =
                             number / 100000;
 
+
                         return `₹${lakh
                             .toFixed(
-                                lakh % 1 === 0 ? 0 : 1
+                                lakh % 1 === 0
+                                    ? 0
+                                    : 1
                             )
                             .replace(
                                 ".0",
@@ -1506,14 +1621,19 @@
                     }
 
 
-                    if (number >= 1000) {
+                    if (
+                        number >= 1000
+                    ) {
 
                         const thousand =
                             number / 1000;
 
+
                         return `₹${thousand
                             .toFixed(
-                                thousand % 1 === 0 ? 0 : 1
+                                thousand % 1 === 0
+                                    ? 0
+                                    : 1
                             )
                             .replace(
                                 ".0",
@@ -1523,38 +1643,9 @@
                     }
 
 
-                    return `₹${number.toLocaleString("en-IN")}`;
-
-                }
-
-
-                /* =================================================
-                   FORMAT VAULT
-                   ================================================= */
-
-                function formatVault(value) {
-
-                    if (
-                        value === null ||
-                        value === undefined ||
-                        value === ""
-                    ) {
-                        return "-";
-                    }
-
-
-                    const text =
-                        String(value).trim();
-
-
-                    if (
-                        text.endsWith("+")
-                    ) {
-                        return text;
-                    }
-
-
-                    return text;
+                    return `₹${number.toLocaleString(
+                        "en-IN"
+                    )}`;
 
                 }
 
@@ -1583,19 +1674,24 @@
 
 
                     if (
-                        Array.isArray(data.tags)
+                        Array.isArray(
+                            data.tags
+                        )
                     ) {
 
                         tags =
                             data.tags
                                 .map(
                                     item =>
-                                        String(item).trim()
+                                        String(
+                                            item
+                                        ).trim()
                                 )
                                 .filter(Boolean);
 
                     } else if (
-                        typeof data.tags === "string"
+                        typeof data.tags ===
+                        "string"
                     ) {
 
                         tags =
@@ -1610,11 +1706,11 @@
                     }
 
 
-                    /* Category */
-
                     if (
                         category &&
-                        !tags.includes(category)
+                        !tags.includes(
+                            category
+                        )
                     ) {
 
                         tags.unshift(
@@ -1624,11 +1720,11 @@
                     }
 
 
-                    /* Badge */
-
                     if (
                         badge &&
-                        !tags.includes(badge)
+                        !tags.includes(
+                            badge
+                        )
                     ) {
 
                         tags.push(
@@ -1638,10 +1734,10 @@
                     }
 
 
-                    /* Popular */
-
                     if (
-                        Number(data.popularScore) >= 90
+                        Number(
+                            data.popularScore
+                        ) >= 90
                     ) {
 
                         tags.push(
@@ -1652,7 +1748,9 @@
 
 
                     tags =
-                        [...new Set(tags)];
+                        [
+                            ...new Set(tags)
+                        ];
 
 
                     tags.forEach(
@@ -1669,7 +1767,9 @@
 
 
                             span.textContent =
-                                String(tag).toUpperCase();
+                                String(
+                                    tag
+                                ).toUpperCase();
 
 
                             tagContainer.appendChild(
@@ -1689,33 +1789,30 @@
                 function renderGallery(
                     data,
                     id,
-                    name,
-                    githubBase
+                    name
                 ) {
 
                     thumbnails.innerHTML =
                         "";
 
+                    mainImage.innerHTML =
+                        `<div class="gallery-placeholder">
+                            ID IMAGE
+                        </div>`;
 
-                    /*
-                     * If admin/database has images array,
-                     * use it.
-                     *
-                     * Otherwise automatically use:
-                     *
-                     * 01.jpg
-                     * 02.jpg
-                     * 03.jpg
-                     * 04.jpg
-                     * 05.jpg
-                     * 06.jpg
-                     */
 
                     let images = [];
 
 
+                    /*
+                     * If API contains images,
+                     * use them.
+                     */
+
                     if (
-                        Array.isArray(data.images) &&
+                        Array.isArray(
+                            data.images
+                        ) &&
                         data.images.length > 0
                     ) {
 
@@ -1726,13 +1823,17 @@
                                     image =>
                                         resolveImageURL(
                                             image,
-                                            id,
-                                            githubBase
+                                            id
                                         )
                                 );
 
                     }
 
+
+                    /*
+                     * Otherwise automatically
+                     * check 01.jpg - 06.jpg
+                     */
 
                     if (
                         images.length === 0
@@ -1753,7 +1854,9 @@
 
 
                             images.push(
-                                `${githubBase}/assets/ids/${encodeURIComponent(id)}/${number}.jpg`
+                                `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                                    id
+                                )}/${number}.jpg`
                             );
 
                         }
@@ -1761,7 +1864,7 @@
                     }
 
 
-                    let firstValidImage =
+                    let firstLoaded =
                         false;
 
 
@@ -1785,17 +1888,6 @@
                                 "gallery-thumb";
 
 
-                            if (
-                                index === 0
-                            ) {
-
-                                button.classList.add(
-                                    "active"
-                                );
-
-                            }
-
-
                             const img =
                                 document.createElement(
                                     "img"
@@ -1815,8 +1907,8 @@
 
 
                             /*
-                             * If image does not exist,
-                             * remove thumbnail.
+                             * Image doesn't exist
+                             * → remove thumbnail.
                              */
 
                             img.onerror =
@@ -1825,35 +1917,33 @@
                                     button.remove();
 
 
-                                    if (
-                                        index === 0 &&
-                                        !firstValidImage
-                                    ) {
-
-                                        mainImage.innerHTML =
-                                            `<div class="gallery-placeholder">
-                                                ID IMAGE
-                                            </div>`;
-
-                                    }
-
                                 };
 
+
+                            /*
+                             * First valid image
+                             * becomes main image.
+                             */
 
                             img.onload =
                                 function () {
 
                                     if (
-                                        !firstValidImage
+                                        !firstLoaded
                                     ) {
 
-                                        firstValidImage =
+                                        firstLoaded =
                                             true;
 
 
                                         setMainImage(
                                             imageURL,
                                             name
+                                        );
+
+
+                                        button.classList.add(
+                                            "active"
                                         );
 
                                     }
@@ -1962,17 +2052,22 @@
 
                 function resolveImageURL(
                     image,
-                    id,
-                    githubBase
+                    id
                 ) {
 
                     const value =
-                        String(image).trim();
+                        String(
+                            image
+                        ).trim();
 
 
                     if (
-                        value.startsWith("http://") ||
-                        value.startsWith("https://")
+                        value.startsWith(
+                            "http://"
+                        ) ||
+                        value.startsWith(
+                            "https://"
+                        )
                     ) {
 
                         return value;
@@ -1981,30 +2076,36 @@
 
 
                     if (
-                        value.startsWith("/")
+                        value.startsWith(
+                            "/"
+                        )
                     ) {
 
-                        return `${githubBase}${value}`;
+                        return `${GITHUB_BASE}${value}`;
 
                     }
 
 
                     if (
-                        value.startsWith("assets/")
+                        value.startsWith(
+                            "assets/"
+                        )
                     ) {
 
-                        return `${githubBase}/${value}`;
+                        return `${GITHUB_BASE}/${value}`;
 
                     }
 
 
-                    return `${githubBase}/assets/ids/${encodeURIComponent(id)}/${value}`;
+                    return `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                        id
+                    )}/${value}`;
 
                 }
 
 
                 /* =================================================
-                   RENDER DESCRIPTION
+                   DESCRIPTION
                    ================================================= */
 
                 function renderDescription(
@@ -2028,8 +2129,9 @@
 
 
                     const text =
-                        String(description)
-                            .trim();
+                        String(
+                            description
+                        ).trim();
 
 
                     if (!text) {
@@ -2042,8 +2144,8 @@
 
 
                     /*
-                     * Each new line becomes
-                     * one feature item.
+                     * Each line entered in Admin
+                     * becomes one feature.
                      */
 
                     const lines =
@@ -2109,14 +2211,16 @@
 
 
                 /* =================================================
-                   BASIC HTML ESCAPE
+                   ESCAPE HTML
                    ================================================= */
 
                 function escapeHTML(
                     value
                 ) {
 
-                    return String(value)
+                    return String(
+                        value
+                    )
                         .replace(
                             /&/g,
                             "&amp;"
