@@ -29,6 +29,7 @@ body{
     display:none!important;
 }
 
+
 /* =========================
    HEADER
 ========================= */
@@ -47,7 +48,6 @@ body{
 
     position:sticky;
     top:0;
-
     z-index:100;
 }
 
@@ -68,7 +68,6 @@ body{
 
 .admin-brand strong{
     font-size:17px;
-
     letter-spacing:1px;
 }
 
@@ -80,7 +79,6 @@ body{
     color:#ffb000;
 
     font-size:10px;
-
     font-weight:800;
 
     letter-spacing:2px;
@@ -90,7 +88,6 @@ body{
     color:#aaa;
 
     font-size:12px;
-
     font-weight:700;
 }
 
@@ -101,7 +98,6 @@ body{
 
 .admin-container{
     width:92%;
-
     max-width:900px;
 
     margin:40px auto 80px;
@@ -115,7 +111,6 @@ body{
     color:#ffb000;
 
     font-size:11px;
-
     font-weight:800;
 
     letter-spacing:3px;
@@ -125,7 +120,6 @@ body{
 
 h1{
     font-size:clamp(32px,6vw,55px);
-
     line-height:1;
 }
 
@@ -135,7 +129,6 @@ h1{
     color:#777;
 
     font-size:13px;
-
     line-height:1.6;
 }
 
@@ -161,7 +154,6 @@ h1{
     color:#ffb000;
 
     font-size:12px;
-
     font-weight:900;
 
     letter-spacing:2px;
@@ -227,14 +219,12 @@ textarea{
 
 input,
 select{
-
     min-height:45px;
 
     padding:0 13px;
 }
 
 textarea{
-
     min-height:190px;
 
     padding:13px;
@@ -247,7 +237,6 @@ textarea{
 input:focus,
 select:focus,
 textarea:focus{
-
     border-color:#ffb000;
 }
 
@@ -257,7 +246,6 @@ textarea:focus{
 ========================= */
 
 .image-grid{
-
     display:grid;
 
     grid-template-columns:
@@ -303,8 +291,8 @@ textarea:focus{
 
     background:#171717;
 
-    border:1px solid
-        rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 }
 
 .image-status{
@@ -437,9 +425,14 @@ button:disabled{
     line-height:1.5;
 
     display:none;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
 }
 
 .status.success{
+
     color:#65d98a;
 
     background:
@@ -447,6 +440,7 @@ button:disabled{
 }
 
 .status.error{
+
     color:#ff7777;
 
     background:
@@ -541,6 +535,17 @@ button:disabled{
         1px solid rgba(255,50,50,.15);
 }
 
+.empty{
+
+    padding:30px;
+
+    text-align:center;
+
+    color:#555;
+
+    font-size:12px;
+}
+
 
 /* =========================
    LOGIN
@@ -561,13 +566,9 @@ button:disabled{
     background:
 
         radial-gradient(
-
             circle at 50% 0%,
-
             rgba(255,176,0,.08),
-
             transparent 40%
-
         ),
 
         #080808;
@@ -687,7 +688,7 @@ button:disabled{
 
 
 <!-- =====================================================
-     LOGIN SCREEN
+     LOGIN
 ===================================================== -->
 
 <section
@@ -987,7 +988,7 @@ button:disabled{
 
 
 <!-- =====================================================
-     02 ID IMAGES
+     02 IMAGES
 ===================================================== -->
 
 <section class="admin-card">
@@ -1270,7 +1271,7 @@ IMAGE 6
 <script>
 
 /* =====================================================
-   WORKER CONFIGURATION
+   WORKER
 ===================================================== */
 
 const WORKER_URL =
@@ -1321,6 +1322,7 @@ async function apiRequest(
 
     let data = {};
 
+
     try{
 
         data =
@@ -1335,9 +1337,19 @@ async function apiRequest(
 
     if(!response.ok){
 
+        /*
+         * IMPORTANT:
+         * Show the REAL error from Worker.
+         */
+
         throw new Error(
+
+            data.details ||
+
             data.error ||
-            "Request failed"
+
+            `Request failed (${response.status})`
+
         );
 
     }
@@ -1395,8 +1407,10 @@ async function(){
 
         const response =
             await fetch(
+
                 WORKER_URL +
                 "/api/admin/login",
+
                 {
                     method:"POST",
 
@@ -1410,10 +1424,12 @@ async function(){
                             key:key
                         })
                 }
+
             );
 
 
         let data = {};
+
 
         try{
 
@@ -1433,8 +1449,13 @@ async function(){
         ){
 
             throw new Error(
+
+                data.details ||
+
                 data.error ||
+
                 "Invalid Admin Key"
+
             );
 
         }
@@ -1462,7 +1483,8 @@ async function(){
         .remove("hidden");
 
 
-        status.textContent = "";
+        status.textContent =
+            "";
 
 
         await loadIDs();
@@ -1470,7 +1492,8 @@ async function(){
 
     }catch(error){
 
-        ADMIN_KEY = "";
+        ADMIN_KEY =
+            "";
 
         status.textContent =
             error.message ||
@@ -1479,7 +1502,8 @@ async function(){
     }
 
 
-    button.disabled = false;
+    button.disabled =
+        false;
 
     button.textContent =
         "LOGIN";
@@ -1488,7 +1512,7 @@ async function(){
 
 
 /* =====================================================
-   ENTER KEY LOGIN
+   ENTER TO LOGIN
 ===================================================== */
 
 document
@@ -1533,7 +1557,9 @@ async function loadIDs(){
 
         const ids =
             Array.isArray(result)
+
                 ? result
+
                 : (
                     result.ids ||
                     result.data ||
@@ -1541,17 +1567,25 @@ async function loadIDs(){
                 );
 
 
-        renderIDs(ids);
+        renderIDs(
+            ids
+        );
 
 
     }catch(error){
 
         list.innerHTML =
+
             '<div class="empty">' +
-            'Failed to load IDs.<br><br>' +
+
+            '<strong>Failed to load IDs.</strong>' +
+
+            '<br><br>' +
+
             escapeHTML(
                 error.message
             ) +
+
             '</div>';
 
     }
@@ -1565,16 +1599,13 @@ async function loadIDs(){
 
 function getFormData(){
 
-    const id =
-        document
-        .getElementById("idNumber")
-        .value
-        .trim();
-
-
     return {
 
-        id:id,
+        id:
+            document
+            .getElementById("idNumber")
+            .value
+            .trim(),
 
         name:
             document
@@ -1641,10 +1672,12 @@ function getFormData(){
             .getElementById("idTags")
             .value
             .split(",")
+
             .map(
                 tag =>
                     tag.trim()
             )
+
             .filter(Boolean)
 
     };
@@ -1653,14 +1686,75 @@ function getFormData(){
 
 
 /* =====================================================
-   IMAGE FILE GET
+   FILE INPUT STATUS
 ===================================================== */
 
-function getImageFile(number){
+for(
+    let number = 1;
+    number <= 6;
+    number++
+){
+
+    document
+    .getElementById(
+        "imageFile" +
+        number
+    )
+    .addEventListener(
+        "change",
+        function(){
+
+            const file =
+                this.files[0];
+
+
+            const status =
+                document
+                .getElementById(
+                    "imageStatus" +
+                    number
+                );
+
+
+            if(!file){
+
+                status.textContent =
+                    "No image selected";
+
+                status.className =
+                    "image-status";
+
+                return;
+
+            }
+
+
+            status.textContent =
+                "✓ Selected: " +
+                file.name;
+
+
+            status.className =
+                "image-status selected";
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   GET IMAGE FILE
+===================================================== */
+
+function getImageFile(
+    number
+){
 
     return document
         .getElementById(
-            "imageFile" + number
+            "imageFile" +
+            number
         )
         .files[0] || null;
 
@@ -1750,6 +1844,7 @@ function compressImage(
                                 width
                             );
 
+
                         canvas.height =
                             Math.round(
                                 height
@@ -1764,11 +1859,15 @@ function compressImage(
 
 
                         ctx.drawImage(
+
                             image,
+
                             0,
                             0,
+
                             canvas.width,
                             canvas.height
+
                         );
 
 
@@ -1779,7 +1878,9 @@ function compressImage(
                             );
 
 
-                        resolve(base64);
+                        resolve(
+                            base64
+                        );
 
                     };
 
@@ -1814,7 +1915,9 @@ function compressImage(
             };
 
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(
+            file
+        );
 
     });
 
@@ -1842,6 +1945,7 @@ async function uploadOneImage(
     status.textContent =
         "Compressing image...";
 
+
     status.className =
         "image-status selected";
 
@@ -1858,7 +1962,9 @@ async function uploadOneImage(
 
     const result =
         await apiRequest(
+
             "/api/images",
+
             {
                 method:"POST",
 
@@ -1875,12 +1981,14 @@ async function uploadOneImage(
 
                     })
             }
+
         );
 
 
     status.textContent =
         "✓ Uploaded: " +
         result.path;
+
 
     status.className =
         "image-status uploaded";
@@ -1904,7 +2012,9 @@ async function uploadSelectedImages(
         Array.isArray(
             existingImages
         )
+
             ? [...existingImages]
+
             : [];
 
 
@@ -1929,9 +2039,13 @@ async function uploadSelectedImages(
 
         const path =
             await uploadOneImage(
+
                 id,
+
                 number,
+
                 file
+
             );
 
 
@@ -1988,30 +2102,42 @@ async function(){
 
     const button =
         document
-        .getElementById("saveBtn");
+        .getElementById(
+            "saveBtn"
+        );
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
+
+
+    const isEditing =
+        Boolean(
+            editingId
+        );
 
 
     try{
 
+        let existingImages =
+            [];
+
+
         /*
-         * First get existing ID
+         * Get existing images
          * when editing.
          */
 
-        let existingImages = [];
-
-
-        if(editingId){
+        if(isEditing){
 
             const oldData =
                 await apiRequest(
+
                     "/api/ids/" +
                     encodeURIComponent(
                         editingId
                     )
+
                 );
 
 
@@ -2019,7 +2145,9 @@ async function(){
                 Array.isArray(
                     oldData.images
                 )
+
                     ? oldData.images
+
                     : [];
 
         }
@@ -2030,10 +2158,77 @@ async function(){
 
 
         /*
-         * Save ID data first.
+         * For new ID
          */
 
-        if(editingId){
+        if(!isEditing){
+
+            await apiRequest(
+
+                "/api/ids",
+
+                {
+                    method:"POST",
+
+                    body:
+                        JSON.stringify(
+                            data
+                        )
+                }
+
+            );
+
+        }
+
+
+        /*
+         * Upload images
+         */
+
+        const hasImages =
+            [1,2,3,4,5,6]
+            .some(
+                number =>
+                    getImageFile(
+                        number
+                    )
+            );
+
+
+        if(hasImages){
+
+            button.textContent =
+                "UPLOADING IMAGES...";
+
+
+            const uploadedImages =
+                await uploadSelectedImages(
+
+                    data.id,
+
+                    existingImages
+
+                );
+
+
+            data.images =
+                uploadedImages;
+
+
+        }else{
+
+            data.images =
+                existingImages;
+
+        }
+
+
+        /*
+         * Update database
+         * with image paths.
+         */
+
+        if(isEditing){
 
             await apiRequest(
 
@@ -2055,65 +2250,13 @@ async function(){
 
         }else{
 
-            await apiRequest(
-
-                "/api/ids",
-
-                {
-                    method:"POST",
-
-                    body:
-                        JSON.stringify(
-                            data
-                        )
-                }
-
-            );
-
-        }
-
-
-        /*
-         * Upload selected images.
-         */
-
-        const selectedImage =
-            [1,2,3,4,5,6]
-            .some(
-                number =>
-                    getImageFile(
-                        number
-                    )
-            );
-
-
-        if(selectedImage){
-
-            button.textContent =
-                "UPLOADING IMAGES...";
-
-
-            const uploadedImages =
-                await uploadSelectedImages(
-                    data.id,
-                    existingImages
-                );
-
-
             /*
-             * Save image paths
-             * into ID database.
+             * New ID was already
+             * created above.
+             *
+             * Now update it with
+             * image paths.
              */
-
-            const finalData = {
-
-                ...data,
-
-                images:
-                    uploadedImages
-
-            };
-
 
             await apiRequest(
 
@@ -2127,7 +2270,7 @@ async function(){
 
                     body:
                         JSON.stringify(
-                            finalData
+                            data
                         )
                 }
 
@@ -2137,14 +2280,20 @@ async function(){
 
 
         showStatus(
-            editingId
+
+            isEditing
+
                 ? "✓ ID updated successfully!"
+
                 : "✓ ID saved successfully!",
+
             "success"
+
         );
 
 
         clearForm();
+
 
         await loadIDs();
 
@@ -2157,20 +2306,23 @@ async function(){
 
 
         showStatus(
-            error.message ||
-            "Save failed.",
+
+            "SAVE FAILED\n\n" +
+            error.message,
+
             "error"
+
         );
 
     }
 
 
-    button.disabled = false;
+    button.disabled =
+        false;
+
 
     button.textContent =
-        editingId
-            ? "UPDATE ID"
-            : "SAVE ID";
+        "SAVE ID";
 
 });
 
@@ -2179,16 +2331,20 @@ async function(){
    EDIT ID
 ===================================================== */
 
-async function editID(id){
+async function editID(
+    id
+){
 
     try{
 
         const data =
             await apiRequest(
+
                 "/api/ids/" +
                 encodeURIComponent(
                     id
                 )
+
             );
 
 
@@ -2263,16 +2419,11 @@ async function editID(id){
             Array.isArray(
                 data.tags
             )
+
                 ? data.tags.join(", ")
+
                 : "";
 
-
-        /*
-         * File inputs cannot be
-         * filled automatically.
-         *
-         * Show existing paths instead.
-         */
 
         for(
             let number = 1;
@@ -2334,9 +2485,12 @@ async function editID(id){
     }catch(error){
 
         showStatus(
+
             error.message ||
             "Failed to load ID.",
+
             "error"
+
         );
 
     }
@@ -2345,10 +2499,12 @@ async function editID(id){
 
 
 /* =====================================================
-   DELETE ID
+   DELETE
 ===================================================== */
 
-async function deleteID(id){
+async function deleteID(
+    id
+){
 
     const confirmed =
         confirm(
@@ -2382,8 +2538,11 @@ async function deleteID(id){
 
 
         showStatus(
+
             "✓ ID deleted successfully.",
+
             "success"
+
         );
 
 
@@ -2393,9 +2552,12 @@ async function deleteID(id){
     }catch(error){
 
         showStatus(
+
             error.message ||
             "Failed to delete ID.",
+
             "error"
+
         );
 
     }
@@ -2430,7 +2592,8 @@ function renderIDs(
     }
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+        "";
 
 
     ids.forEach(
@@ -2478,21 +2641,27 @@ function renderIDs(
 
 
         span.textContent =
+
             "ID " +
             (data.id || "-") +
+
             " • ₹" +
+
             Number(
                 data.price || 0
             ).toLocaleString(
                 "en-IN"
             ) +
+
             " • Level " +
+
             (data.level || "-");
 
 
         info.appendChild(
             strong
         );
+
 
         info.appendChild(
             span
@@ -2520,6 +2689,7 @@ function renderIDs(
         edit.className =
             "small-btn edit-btn";
 
+
         edit.textContent =
             "EDIT";
 
@@ -2544,6 +2714,7 @@ function renderIDs(
         del.className =
             "small-btn delete-btn";
 
+
         del.textContent =
             "DELETE";
 
@@ -2562,6 +2733,7 @@ function renderIDs(
             edit
         );
 
+
         actions.appendChild(
             del
         );
@@ -2570,6 +2742,7 @@ function renderIDs(
         item.appendChild(
             info
         );
+
 
         item.appendChild(
             actions
@@ -2638,15 +2811,13 @@ function clearForm(){
         number++
     ){
 
-        const input =
-            document
-            .getElementById(
-                "imageFile" +
-                number
-            );
-
-
-        input.value = "";
+        document
+        .getElementById(
+            "imageFile" +
+            number
+        )
+        .value =
+            "";
 
 
         const status =
@@ -2659,6 +2830,7 @@ function clearForm(){
 
         status.textContent =
             "No image selected";
+
 
         status.className =
             "image-status";
@@ -2688,7 +2860,8 @@ document
 "click",
 function(){
 
-    ADMIN_KEY = "";
+    ADMIN_KEY =
+        "";
 
     sessionStorage.removeItem(
         "tamilanda_admin_key"
@@ -2700,7 +2873,7 @@ function(){
 
 
 /* =====================================================
-   STATUS MESSAGE
+   STATUS
 ===================================================== */
 
 function showStatus(
@@ -2726,17 +2899,6 @@ function showStatus(
 
     status.style.display =
         "block";
-
-
-    setTimeout(
-        function(){
-
-            status.style.display =
-                "none";
-
-        },
-        5000
-    );
 
 }
 
@@ -2780,7 +2942,7 @@ function escapeHTML(
 
 
 /* =====================================================
-   RESTORE LOGIN SESSION
+   RESTORE SESSION
 ===================================================== */
 
 const savedKey =
