@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "001",
+    "name": "Vk id",
+    "price": 67000,
+    "level": 82,
+    "prime": "8",
+    "vault": "700",
+    "category": "hot",
+    "badge": "yes",
+    "popular": 98,
+    "images": [],
+    "description": "oti",
+    "tags": [
+      "Rwed pre"
+    ]
+  }
+]
