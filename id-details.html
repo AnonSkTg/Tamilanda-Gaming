@@ -683,6 +683,57 @@
 
 
         /* =====================================================
+           AVAILABILITY STATUS
+           ===================================================== */
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 7px 10px;
+            border-radius: 7px;
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.available {
+            background: rgba(46,204,113,0.10);
+            color: #35d47a;
+            border: 1px solid rgba(46,204,113,0.20);
+        }
+
+        .status-badge.sold {
+            background: rgba(214,0,0,0.10);
+            color: #ff4b4b;
+            border: 1px solid rgba(214,0,0,0.22);
+        }
+
+        .buy-now-button.sold {
+            background: #2a2a2a;
+            color: #777;
+            border: 1px solid rgba(255,255,255,0.08);
+            cursor: not-allowed;
+            box-shadow: none;
+            pointer-events: none;
+        }
+
+        .buy-now-button.sold:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .details-info.sold {
+            border-color: rgba(214,0,0,0.20);
+        }
+
+        .details-info.sold .info-price {
+            color: #888;
+        }
+
+
+        /* =====================================================
            MOBILE
            ===================================================== */
 
@@ -1025,6 +1076,14 @@
                                 id="infoTitle">
 
                                 -
+
+                            </div>
+
+                            <div
+                                class="status-badge available"
+                                id="statusBadge">
+
+                                🟢 AVAILABLE
 
                             </div>
 
@@ -1410,6 +1469,14 @@
                         data.badge ||
                         "";
 
+                    const status =
+                        String(data.status || "available")
+                            .toLowerCase()
+                            .trim();
+
+                    const isSold =
+                        status === "sold";
+
 
                     /* =============================================
                        PAGE TITLE
@@ -1467,6 +1534,25 @@
                     ).textContent =
                         price;
 
+                    const statusBadge =
+                        document.getElementById("statusBadge");
+
+                    const detailsInfo =
+                        document.querySelector(".details-info");
+
+                    if (statusBadge) {
+                        statusBadge.className =
+                            "status-badge " +
+                            (isSold ? "sold" : "available");
+
+                        statusBadge.textContent =
+                            isSold ? "🔴 SOLD" : "🟢 AVAILABLE";
+                    }
+
+                    if (detailsInfo) {
+                        detailsInfo.classList.toggle("sold", isSold);
+                    }
+
 
                     document.getElementById(
                         "level"
@@ -1521,20 +1607,34 @@
                        WHATSAPP
                        ============================================= */
 
-                    const message =
-                        `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
+                    const buyButton =
+                        document.getElementById("buyButton");
 
+                    if (isSold) {
 
-                    const whatsappURL =
-                        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-                            message
-                        )}`;
+                        buyButton.removeAttribute("href");
+                        buyButton.removeAttribute("target");
+                        buyButton.classList.add("sold");
+                        buyButton.textContent = "🔴 SOLD";
+                        buyButton.setAttribute("aria-disabled", "true");
 
+                    } else {
 
-                    document.getElementById(
-                        "buyButton"
-                    ).href =
-                        whatsappURL;
+                        const message =
+                            `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
+
+                        const whatsappURL =
+                            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                                message
+                            )}`;
+
+                        buyButton.href = whatsappURL;
+                        buyButton.target = "_blank";
+                        buyButton.classList.remove("sold");
+                        buyButton.textContent = "BUY THIS ID →";
+                        buyButton.removeAttribute("aria-disabled");
+
+                    }
 
 
                     /* =============================================
