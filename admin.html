@@ -242,6 +242,24 @@ textarea:focus{
 
 
 /* =========================
+   STATUS SELECT
+========================= */
+
+.status-select{
+    border-color:
+        rgba(255,255,255,.12);
+}
+
+.status-select.available{
+    color:#65d98a;
+}
+
+.status-select.sold{
+    color:#ff7777;
+}
+
+
+/* =========================
    IMAGE UPLOAD
 ========================= */
 
@@ -404,7 +422,7 @@ button:disabled{
 
 
 /* =========================
-   STATUS
+   STATUS MESSAGE
 ========================= */
 
 .status{
@@ -477,6 +495,19 @@ button:disabled{
         1px solid rgba(255,255,255,.07);
 
     border-radius:12px;
+
+    transition:
+        border-color .25s ease,
+        transform .25s ease;
+}
+
+.saved-item:hover{
+
+    border-color:
+        rgba(255,176,0,.20);
+
+    transform:
+        translateY(-2px);
 }
 
 .saved-info strong{
@@ -502,6 +533,8 @@ button:disabled{
     display:flex;
 
     gap:7px;
+
+    align-items:center;
 }
 
 .small-btn{
@@ -533,6 +566,54 @@ button:disabled{
 
     border:
         1px solid rgba(255,50,50,.15);
+}
+
+
+/* =========================
+   SAVED STATUS BADGE
+========================= */
+
+.saved-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-left:8px;
+
+    padding:4px 7px;
+
+    border-radius:6px;
+
+    font-size:8px;
+
+    font-weight:900;
+
+    letter-spacing:.5px;
+}
+
+.saved-status.available{
+
+    color:#65d98a;
+
+    background:
+        rgba(50,200,100,.08);
+
+    border:
+        1px solid rgba(50,200,100,.14);
+}
+
+.saved-status.sold{
+
+    color:#ff7777;
+
+    background:
+        rgba(255,50,50,.08);
+
+    border:
+        1px solid rgba(255,50,50,.14);
 }
 
 .empty{
@@ -744,7 +825,6 @@ button:disabled{
 </section>
 
 
-
 <!-- =====================================================
      ADMIN PANEL
 ===================================================== -->
@@ -783,7 +863,6 @@ button:disabled{
 </header>
 
 
-
 <main class="admin-container">
 
 
@@ -806,7 +885,6 @@ button:disabled{
     </p>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -981,10 +1059,36 @@ button:disabled{
 </div>
 
 
+<!-- =====================================================
+     AVAILABILITY STATUS
+===================================================== -->
+
+<div class="field">
+
+<label>
+    AVAILABILITY STATUS
+</label>
+
+<select
+    id="idStatus"
+    class="status-select">
+
+    <option value="available">
+        🟢 AVAILABLE
+    </option>
+
+    <option value="sold">
+        🔴 SOLD
+    </option>
+
+</select>
+
+</div>
+
+
 </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1023,7 +1127,6 @@ IMAGE 1 — MAIN / CARD
 </div>
 
 
-
 <div class="image-box">
 
 <span>
@@ -1044,7 +1147,6 @@ IMAGE 2
 </small>
 
 </div>
-
 
 
 <div class="image-box">
@@ -1069,7 +1171,6 @@ IMAGE 3
 </div>
 
 
-
 <div class="image-box">
 
 <span>
@@ -1092,7 +1193,6 @@ IMAGE 4
 </div>
 
 
-
 <div class="image-box">
 
 <span>
@@ -1113,7 +1213,6 @@ IMAGE 5
 </small>
 
 </div>
-
 
 
 <div class="image-box">
@@ -1154,7 +1253,6 @@ IMAGE 6
 </section>
 
 
-
 <!-- =====================================================
      03 DESCRIPTION
 ===================================================== -->
@@ -1184,7 +1282,6 @@ IMAGE 6
 </p>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1238,7 +1335,6 @@ IMAGE 6
 </section>
 
 
-
 <!-- =====================================================
      05 SAVED IDS
 ===================================================== -->
@@ -1267,8 +1363,8 @@ IMAGE 6
 </div>
 
 
-
 <script>
+
 
 /* =====================================================
    WORKER
@@ -1337,11 +1433,6 @@ async function apiRequest(
 
     if(!response.ok){
 
-        /*
-         * IMPORTANT:
-         * Show the REAL error from Worker.
-         */
-
         throw new Error(
 
             data.details ||
@@ -1397,7 +1488,8 @@ async function(){
         .getElementById("loginBtn");
 
 
-    button.disabled = true;
+    button.disabled =
+        true;
 
     button.textContent =
         "CHECKING...";
@@ -1660,6 +1752,11 @@ function getFormData(){
                 0
             ),
 
+        status:
+            document
+            .getElementById("idStatus")
+            .value,
+
         images:[],
 
         description:
@@ -1683,6 +1780,46 @@ function getFormData(){
     };
 
 }
+
+
+/* =====================================================
+   STATUS SELECT COLOR
+===================================================== */
+
+document
+.getElementById("idStatus")
+.addEventListener(
+"change",
+function(){
+
+    updateStatusSelectColor();
+
+});
+
+
+function updateStatusSelectColor(){
+
+    const select =
+        document
+        .getElementById(
+            "idStatus"
+        );
+
+
+    select.classList.remove(
+        "available",
+        "sold"
+    );
+
+
+    select.classList.add(
+        select.value
+    );
+
+}
+
+
+updateStatusSelectColor();
 
 
 /* =====================================================
@@ -2123,11 +2260,6 @@ async function(){
             [];
 
 
-        /*
-         * Get existing images
-         * when editing.
-         */
-
         if(isEditing){
 
             const oldData =
@@ -2157,9 +2289,9 @@ async function(){
             "SAVING DATA...";
 
 
-        /*
-         * For new ID
-         */
+        /* =============================================
+           NEW ID
+        ============================================= */
 
         if(!isEditing){
 
@@ -2181,9 +2313,9 @@ async function(){
         }
 
 
-        /*
-         * Upload images
-         */
+        /* =============================================
+           UPLOAD IMAGES
+        ============================================= */
 
         const hasImages =
             [1,2,3,4,5,6]
@@ -2223,10 +2355,9 @@ async function(){
         }
 
 
-        /*
-         * Update database
-         * with image paths.
-         */
+        /* =============================================
+           UPDATE DATABASE
+        ============================================= */
 
         if(isEditing){
 
@@ -2249,14 +2380,6 @@ async function(){
             );
 
         }else{
-
-            /*
-             * New ID was already
-             * created above.
-             *
-             * Now update it with
-             * image paths.
-             */
 
             await apiRequest(
 
@@ -2404,7 +2527,23 @@ async function editID(
         document
         .getElementById("idPopular")
         .value =
-            data.popular || "";
+            data.popular ||
+            data.popularScore ||
+            "";
+
+
+        /* =============================================
+           STATUS
+        ============================================= */
+
+        document
+        .getElementById("idStatus")
+        .value =
+            data.status ||
+            "available";
+
+
+        updateStatusSelectColor();
 
 
         document
@@ -2633,6 +2772,44 @@ function renderIDs(
             "Unnamed ID";
 
 
+        /* =============================================
+           STATUS BADGE
+        ============================================= */
+
+        const status =
+            String(
+                data.status ||
+                "available"
+            ).toLowerCase();
+
+
+        const statusBadge =
+            document
+            .createElement(
+                "span"
+            );
+
+
+        statusBadge.className =
+            "saved-status " +
+            (
+                status === "sold"
+                    ? "sold"
+                    : "available"
+            );
+
+
+        statusBadge.textContent =
+            status === "sold"
+                ? "🔴 SOLD"
+                : "🟢 AVAILABLE";
+
+
+        strong.appendChild(
+            statusBadge
+        );
+
+
         const span =
             document
             .createElement(
@@ -2805,6 +2982,17 @@ function clearForm(){
         "golden";
 
 
+    /* Default status = AVAILABLE */
+
+    document
+    .getElementById("idStatus")
+    .value =
+        "available";
+
+
+    updateStatusSelectColor();
+
+
     for(
         let number = 1;
         number <= 6;
@@ -2873,7 +3061,7 @@ function(){
 
 
 /* =====================================================
-   STATUS
+   STATUS MESSAGE
 ===================================================== */
 
 function showStatus(
