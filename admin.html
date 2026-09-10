@@ -814,7 +814,7 @@ button:disabled{
 
         <div class="field">
 
-            <label for="adminKey">
+            <label>
                 ADMIN KEY
             </label>
 
@@ -829,7 +829,6 @@ button:disabled{
         <br>
 
         <button
-            type="button"
             class="login-btn"
             id="loginBtn">
 
@@ -924,7 +923,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idNumber">
+<label>
     ID NUMBER
 </label>
 
@@ -938,7 +937,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idName">
+<label>
     ID NAME
 </label>
 
@@ -952,7 +951,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idPrice">
+<label>
     PRICE
 </label>
 
@@ -966,7 +965,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idLevel">
+<label>
     LEVEL
 </label>
 
@@ -980,7 +979,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idPrime">
+<label>
     PRIME
 </label>
 
@@ -994,7 +993,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idVault">
+<label>
     VAULT
 </label>
 
@@ -1008,7 +1007,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idCategory">
+<label>
     CATEGORY
 </label>
 
@@ -1041,7 +1040,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idBadge">
+<label>
     BADGE
 </label>
 
@@ -1055,7 +1054,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idPopular">
+<label>
     POPULAR SCORE
 </label>
 
@@ -1069,7 +1068,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idTags">
+<label>
     TAGS
 </label>
 
@@ -1087,7 +1086,7 @@ button:disabled{
 
 <div class="field">
 
-<label for="idStatus">
+<label>
     AVAILABILITY STATUS
 </label>
 
@@ -1101,27 +1100,6 @@ button:disabled{
 
     <option value="sold">
         🔴 SOLD
-    </option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label for="idShowcase">
-    FEATURE ON HOMEPAGE SHOWCASE
-</label>
-
-<select id="idShowcase">
-
-    <option value="yes">
-        ⭐ YES (SHOWCASE ON HOMEPAGE SLIDER)
-    </option>
-
-    <option value="no">
-        NO
     </option>
 
 </select>
@@ -1146,28 +1124,6 @@ button:disabled{
 
 
 <div class="image-grid">
-
-
-<div class="image-box" style="grid-column: 1 / -1; border-color: rgba(255, 176, 0, 0.4); background: rgba(255, 176, 0, 0.04);">
-
-<span style="color:#ffb000; font-weight:900;">
-⭐ HOMEPAGE HERO SHOWCASE IMAGE (FOR HOMEPAGE SLIDER)
-</span>
-
-<input
-    type="file"
-    id="imageFileShowcase"
-    accept="image/*">
-
-<small
-    class="image-status"
-    id="imageStatusShowcase">
-
-    No showcase image selected (Defaults to Card Image)
-
-</small>
-
-</div>
 
 
 <div class="image-box">
@@ -1330,7 +1286,7 @@ IMAGE 6
 
 <div class="field">
 
-<label for="idDescription">
+<label>
     THIS ID'S DESCRIPTION
 </label>
 
@@ -1363,7 +1319,6 @@ IMAGE 6
 
 
 <button
-    type="button"
     class="save-btn"
     id="saveBtn">
 
@@ -1373,7 +1328,6 @@ IMAGE 6
 
 
 <button
-    type="button"
     class="clear-btn"
     id="clearBtn">
 
@@ -1383,7 +1337,6 @@ IMAGE 6
 
 
 <button
-    type="button"
     class="logout-btn"
     id="logoutBtn">
 
@@ -1418,7 +1371,6 @@ IMAGE 6
 <input
     type="search"
     id="savedSearch"
-    aria-label="Search saved IDs"
     placeholder="🔍 Search by ID number or ID name..."
     autocomplete="off">
 
@@ -1443,84 +1395,6 @@ IMAGE 6
 </section>
 
 
-<!-- =====================================================
-     06 TRANSACTION PROOF MANAGEMENT
-===================================================== -->
-
-<section class="admin-card">
-
-<div class="card-title">
-    06 — TRANSACTION PROOF MANAGEMENT (2 SCREENSHOTS + 1 NOTE)
-</div>
-
-<div class="form-grid">
-
-<div class="field" style="grid-column: 1 / -1;">
-<label for="proofTitle">
-    PROOF TITLE / BADGE
-</label>
-<input
-    type="text"
-    id="proofTitle"
-    placeholder="e.g. Level 82 Deal Handover Proof">
-</div>
-
-<div class="field" style="grid-column: 1 / -1;">
-<label for="proofNote">
-    PROOF NOTE / DESCRIPTION
-</label>
-<textarea
-    id="proofNote"
-    style="min-height:90px;"
-    placeholder="Type details about this deal (e.g., Payment received via UPI & account login handed over in 5 mins)..."></textarea>
-</div>
-
-</div>
-
-<br>
-
-<div class="image-grid" style="grid-template-columns: repeat(2, 1fr);">
-
-<div class="image-box">
-<span>SCREENSHOT 1 — HANDOVER CHAT / RECEIPT</span>
-<input type="file" id="proofFile1" accept="image/*">
-<small class="image-status" id="proofStatus1">No image selected</small>
-</div>
-
-<div class="image-box">
-<span>SCREENSHOT 2 — PAYMENT / CONFIRMATION</span>
-<input type="file" id="proofFile2" accept="image/*">
-<small class="image-status" id="proofStatus2">No image selected</small>
-</div>
-
-</div>
-
-<br>
-
-<div class="button-row">
-<button type="button" class="save-btn" id="saveProofBtn">
-    SAVE & PUBLISH PROOF
-</button>
-<button type="button" class="clear-btn" id="clearProofBtn">
-    CLEAR PROOF FORM
-</button>
-</div>
-
-<div class="status" id="proofStatusMsg"></div>
-
-<br><br>
-
-<div class="card-title">
-    SAVED PROOFS LIST
-</div>
-
-<div class="saved-list" id="savedProofsList">
-    <div class="empty">Loading Proofs...</div>
-</div>
-
-</section>
-
-
 </main>
 
 </div>
@@ -1540,9 +1414,6 @@ const WORKER_URL =
 let ADMIN_KEY = "";
 
 let editingId = null;
-
-let allSavedIDs = [];
-let savedSearchTerm = "";
 
 
 /* =====================================================
@@ -1746,7 +1617,6 @@ async function(){
 
 
         await loadIDs();
-        await loadProofs();
 
 
     }catch(error){
@@ -1792,25 +1662,11 @@ function(event){
 
 
 /* =====================================================
-   SEARCH BINDING (ATTACHED UNCONDITIONALLY)
-===================================================== */
-
-document
-.getElementById("savedSearch")
-.addEventListener(
-"input",
-function(event){
-
-    savedSearchTerm = event.target.value;
-
-    renderIDs(allSavedIDs);
-
-});
-
-
-/* =====================================================
    LOAD IDS
 ===================================================== */
+
+let allSavedIDs = [];
+let savedSearchTerm = "";
 
 async function loadIDs(){
 
@@ -1943,11 +1799,6 @@ function getFormData(){
             .getElementById("idStatus")
             .value,
 
-        showcase:
-            document
-            .getElementById("idShowcase")
-            .value,
-
         images:[],
 
         description:
@@ -2016,46 +1867,6 @@ updateStatusSelectColor();
 /* =====================================================
    FILE INPUT STATUS
 ===================================================== */
-
-document
-.getElementById("imageFileShowcase")
-?.addEventListener(
-"change",
-function(){
-
-    const file =
-        this.files[0];
-
-
-    const status =
-        document
-        .getElementById(
-            "imageStatusShowcase"
-        );
-
-
-    if(!file){
-
-        status.textContent =
-            "No showcase image selected (Defaults to Card Image)";
-
-        status.className =
-            "image-status";
-
-        return;
-
-    }
-
-
-    status.textContent =
-        "✓ Selected Showcase Image: " +
-        file.name;
-
-
-    status.className =
-        "image-status selected";
-
-});
 
 for(
     let number = 1;
@@ -2487,38 +2298,31 @@ async function(){
 
     try{
 
-        let existingImages = [];
-        let existingShowcaseImage = "";
+        let existingImages =
+            [];
+
 
         if(isEditing){
 
-            try {
-                const oldData =
-                    await apiRequest(
+            const oldData =
+                await apiRequest(
 
-                        "/api/ids/" +
-                        encodeURIComponent(
-                            editingId
-                        )
-
-                    );
-
-
-                existingImages =
-                    Array.isArray(
-                        oldData.images
+                    "/api/ids/" +
+                    encodeURIComponent(
+                        editingId
                     )
 
-                        ? oldData.images
+                );
 
-                        : [];
 
-                existingShowcaseImage =
-                    oldData.showcaseImage || "";
-            } catch(e) {
-                existingImages = [];
-                existingShowcaseImage = "";
-            }
+            existingImages =
+                Array.isArray(
+                    oldData.images
+                )
+
+                    ? oldData.images
+
+                    : [];
 
         }
 
@@ -2526,6 +2330,10 @@ async function(){
         button.textContent =
             "SAVING DATA...";
 
+
+        /* =============================================
+           NEW ID
+        ============================================= */
 
         if(!isEditing){
 
@@ -2546,18 +2354,10 @@ async function(){
 
         }
 
-        /* Showcase Image Upload */
-        const showcaseFile =
-            document.getElementById("imageFileShowcase")?.files[0];
 
-        if (showcaseFile) {
-            button.textContent = "UPLOADING SHOWCASE IMAGE...";
-            const showcasePath = await uploadOneImage(data.id, 0, showcaseFile);
-            data.showcaseImage = showcasePath;
-        } else {
-            data.showcaseImage = existingShowcaseImage;
-        }
-
+        /* =============================================
+           UPLOAD IMAGES
+        ============================================= */
 
         const hasImages =
             [1,2,3,4,5,6]
@@ -2596,6 +2396,10 @@ async function(){
 
         }
 
+
+        /* =============================================
+           UPDATE DATABASE
+        ============================================= */
 
         if(isEditing){
 
@@ -2770,18 +2574,15 @@ async function editID(
             "";
 
 
+        /* =============================================
+           STATUS
+        ============================================= */
+
         document
         .getElementById("idStatus")
         .value =
             data.status ||
             "available";
-
-
-        document
-        .getElementById("idShowcase")
-        .value =
-            data.showcase ||
-            "yes";
 
 
         updateStatusSelectColor();
@@ -2804,17 +2605,6 @@ async function editID(
 
                 : "";
 
-
-        const showcaseStatus = document.getElementById("imageStatusShowcase");
-        if (showcaseStatus) {
-            if (data.showcaseImage) {
-                showcaseStatus.textContent = "Current Showcase: " + data.showcaseImage;
-                showcaseStatus.className = "image-status uploaded";
-            } else {
-                showcaseStatus.textContent = "No showcase image selected (Defaults to Card Image)";
-                showcaseStatus.className = "image-status";
-            }
-        }
 
         for(
             let number = 1;
@@ -3034,6 +2824,10 @@ function renderIDs(
             "Unnamed ID";
 
 
+        /* =============================================
+           STATUS BADGE
+        ============================================= */
+
         const status =
             String(
                 data.status ||
@@ -3121,8 +2915,6 @@ function renderIDs(
             );
 
 
-        edit.type = "button";
-
         edit.className =
             "small-btn edit-btn";
 
@@ -3147,8 +2939,6 @@ function renderIDs(
                 "button"
             );
 
-
-        del.type = "button";
 
         del.className =
             "small-btn delete-btn";
@@ -3244,28 +3034,16 @@ function clearForm(){
         "golden";
 
 
+    /* Default status = AVAILABLE */
+
     document
     .getElementById("idStatus")
     .value =
         "available";
 
 
-    document
-    .getElementById("idShowcase")
-    .value =
-        "yes";
-
-
     updateStatusSelectColor();
 
-
-    const showcaseInput = document.getElementById("imageFileShowcase");
-    if (showcaseInput) showcaseInput.value = "";
-    const showcaseStatus = document.getElementById("imageStatusShowcase");
-    if (showcaseStatus) {
-        showcaseStatus.textContent = "No showcase image selected (Defaults to Card Image)";
-        showcaseStatus.className = "image-status";
-    }
 
     for(
         let number = 1;
@@ -3404,187 +3182,6 @@ function escapeHTML(
 
 
 /* =====================================================
-   TRANSACTION PROOFS MANAGEMENT JS
-===================================================== */
-
-for (let num = 1; num <= 2; num++) {
-    const input = document.getElementById("proofFile" + num);
-    if (input) {
-        input.addEventListener("change", function () {
-            const file = this.files[0];
-            const status = document.getElementById("proofStatus" + num);
-            if (!file) {
-                status.textContent = "No image selected";
-                status.className = "image-status";
-                return;
-            }
-            status.textContent = "✓ Selected: " + file.name;
-            status.className = "image-status selected";
-        });
-    }
-}
-
-let allProofs = [];
-
-async function loadProofs() {
-    const list = document.getElementById("savedProofsList");
-    if (!list) return;
-
-    list.innerHTML = '<div class="empty">Loading Proofs...</div>';
-
-    try {
-        let proofs = [];
-        try {
-            const result = await apiRequest("/api/proofs");
-            proofs = Array.isArray(result) ? result : (result.proofs || []);
-        } catch (err) {
-            proofs = JSON.parse(localStorage.getItem("tamilanda_proofs_db")) || [];
-        }
-
-        allProofs = proofs;
-        renderProofs(proofs);
-    } catch (error) {
-        list.innerHTML = '<div class="empty">Failed to load proofs.</div>';
-    }
-}
-
-function renderProofs(proofs) {
-    const list = document.getElementById("savedProofsList");
-    if (!list) return;
-
-    if (!proofs.length) {
-        list.innerHTML = '<div class="empty">No proofs added yet.</div>';
-        return;
-    }
-
-    list.innerHTML = "";
-    proofs.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "saved-item";
-        div.innerHTML = `
-            <div class="saved-info">
-                <strong>📸 ${escapeHTML(item.title || "Transaction Proof")}</strong>
-                <span>Note: ${escapeHTML(item.note || "No note provided")}</span>
-                <span style="color:#65d98a; margin-top:3px;">Images: ${(item.images || []).length} screenshot(s) attached</span>
-            </div>
-            <div class="saved-actions">
-                <button type="button" class="small-btn delete-btn" onclick="deleteProof('${item.id}')">
-                    DELETE
-                </button>
-            </div>
-        `;
-        list.appendChild(div);
-    });
-}
-
-document.getElementById("saveProofBtn")?.addEventListener("click", async function () {
-    const title = document.getElementById("proofTitle").value.trim();
-    const note = document.getElementById("proofNote").value.trim();
-    const file1 = document.getElementById("proofFile1").files[0];
-    const file2 = document.getElementById("proofFile2").files[0];
-
-    const statusMsg = document.getElementById("proofStatusMsg");
-
-    if (!title) {
-        statusMsg.style.display = "block";
-        statusMsg.className = "status error";
-        statusMsg.textContent = "Please enter a proof title.";
-        return;
-    }
-
-    this.disabled = true;
-    this.textContent = "SAVING PROOF...";
-
-    try {
-        const proofId = "proof_" + Date.now();
-        const images = [];
-
-        if (file1) {
-            try {
-                const path1 = await uploadOneImage(proofId, 1, file1);
-                images.push(path1);
-            } catch (e) {
-                const base1 = await compressImage(file1);
-                images.push(base1);
-            }
-        }
-
-        if (file2) {
-            try {
-                const path2 = await uploadOneImage(proofId, 2, file2);
-                images.push(path2);
-            } catch (e) {
-                const base2 = await compressImage(file2);
-                images.push(base2);
-            }
-        }
-
-        const proofData = {
-            id: proofId,
-            title: title,
-            note: note,
-            images: images,
-            date: new Date().toISOString()
-        };
-
-        try {
-            await apiRequest("/api/proofs", {
-                method: "POST",
-                body: JSON.stringify(proofData)
-            });
-        } catch (err) {
-            let localList = JSON.parse(localStorage.getItem("tamilanda_proofs_db")) || [];
-            localList.unshift(proofData);
-            localStorage.setItem("tamilanda_proofs_db", JSON.stringify(localList));
-        }
-
-        statusMsg.style.display = "block";
-        statusMsg.className = "status success";
-        statusMsg.textContent = "✓ Proof published successfully!";
-
-        clearProofForm();
-        await loadProofs();
-
-    } catch (err) {
-        statusMsg.style.display = "block";
-        statusMsg.className = "status error";
-        statusMsg.textContent = "Proof save failed: " + err.message;
-    }
-
-    this.disabled = false;
-    this.textContent = "SAVE & PUBLISH PROOF";
-});
-
-document.getElementById("clearProofBtn")?.addEventListener("click", clearProofForm);
-
-function clearProofForm() {
-    document.getElementById("proofTitle").value = "";
-    document.getElementById("proofNote").value = "";
-    document.getElementById("proofFile1").value = "";
-    document.getElementById("proofFile2").value = "";
-    document.getElementById("proofStatus1").textContent = "No image selected";
-    document.getElementById("proofStatus1").className = "image-status";
-    document.getElementById("proofStatus2").textContent = "No image selected";
-    document.getElementById("proofStatus2").className = "image-status";
-}
-
-async function deleteProof(proofId) {
-    if (!confirm("Delete this proof?")) return;
-    try {
-        try {
-            await apiRequest(`/api/proofs/${encodeURIComponent(proofId)}`, { method: "DELETE" });
-        } catch (e) {
-            let localList = JSON.parse(localStorage.getItem("tamilanda_proofs_db")) || [];
-            localList = localList.filter(item => item.id !== proofId);
-            localStorage.setItem("tamilanda_proofs_db", JSON.stringify(localList));
-        }
-        await loadProofs();
-    } catch (err) {
-        alert("Failed to delete proof: " + err.message);
-    }
-}
-
-/* =====================================================
    RESTORE SESSION
 ===================================================== */
 
@@ -3612,8 +3209,12 @@ if(savedKey){
     .remove("hidden");
 
 
-    loadIDs();
-    loadProofs();
+    document.getElementById("savedSearch").addEventListener("input", function(event){
+    savedSearchTerm = event.target.value;
+    renderIDs(allSavedIDs);
+});
+
+loadIDs();
 
 }
 

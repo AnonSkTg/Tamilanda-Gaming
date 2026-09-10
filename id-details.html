@@ -195,6 +195,17 @@
             overflow: hidden;
         }
 
+
+        /*
+         * IMPORTANT:
+         *
+         * No fixed aspect-ratio here.
+         *
+         * The image itself decides the frame height.
+         * This prevents portrait screenshots from becoming
+         * unnecessarily small.
+         */
+
         .main-gallery-image {
             width: 100%;
 
@@ -237,8 +248,6 @@
             display: block;
 
             border-radius: 10px;
-
-            transition: opacity 0.3s ease;
         }
 
 
@@ -870,11 +879,6 @@
 
             </a>
 
-            <a href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e" target="_blank" rel="noopener noreferrer" class="nav-channel-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.003l-1.416 5.171 5.292-1.388c1.458.796 3.097 1.215 4.776 1.216h.005c5.505 0 9.988-4.478 9.989-9.984 0-2.667-1.037-5.175-2.923-7.062a9.924 9.924 0 0 0-7.065-2.94zm0 18.232h-.004a8.28 8.28 0 0 1-4.22-1.163l-.303-.18-3.137.822.836-3.056-.198-.315a8.283 8.28 0 0 1-1.272-4.341c.001-4.568 3.72-8.283 8.293-8.283 2.213 0 4.292.863 5.856 2.43 1.564 1.567 2.424 3.648 2.424 5.861 0 4.569-3.719 8.285-8.275 8.285zm4.542-6.208c-.249-.125-1.472-.727-1.7-.822-.228-.095-.394-.142-.56.142-.166.284-.643.822-.788.989-.145.167-.29.188-.539.063-.249-.125-1.052-.388-2.003-1.237-.74-.66-1.24-1.475-1.385-1.724-.145-.249-.015-.384.109-.508.112-.112.249-.29.373-.435.125-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.56-1.349-.768-1.848-.203-.487-.41-.421-.56-.429-.143-.008-.308-.008-.473-.008-.166 0-.435.062-.663.311-.228.249-.871.851-.871 2.076 0 1.225.892 2.408 1.016 2.574.125.166 1.756 2.681 4.254 3.76 2.498 1.079 2.498.719 2.955.677.457-.042 1.472-.602 1.679-1.183.208-.581.208-1.079.145-1.183-.062-.104-.228-.166-.477-.291z"/></svg>
-                CHANNEL
-            </a>
-
         </nav>
 
 
@@ -1166,24 +1170,13 @@
                     </a>
 
 
-                    <!-- Social & Share -->
+                    <!-- Social -->
 
                     <div class="social-links">
 
-                        <button
-                            type="button"
-                            id="shareButton"
-                            class="social-button"
-                            style="cursor:pointer; width:100%; grid-column: 1 / -1;">
-
-                            📲 SHARE THIS ID ON WHATSAPP
-
-                        </button>
-
                         <a
-                            href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e"
+                            href="https://whatsapp.com/channel/0029Vad2AB4NViiWPfEcm2e"
                             target="_blank"
-                            rel="noopener noreferrer"
                             class="social-button">
 
                             📱 WHATSAPP CHANNEL
@@ -1194,7 +1187,6 @@
                         <a
                             href="https://youtube.com/@tamilanda_gaming_15"
                             target="_blank"
-                            rel="noopener noreferrer"
                             class="social-button">
 
                             ▶️ YOUTUBE
@@ -1352,30 +1344,66 @@
                     document.getElementById("errorBox");
 
                 const detailsContent =
-                    document.getElementById("detailsContent");
+                    document.getElementById(
+                        "detailsContent"
+                    );
 
                 const mainImage =
                     document.getElementById("mainImage");
 
                 const thumbnails =
-                    document.getElementById("thumbnails");
+                    document.getElementById(
+                        "thumbnails"
+                    );
 
                 const featureList =
-                    document.getElementById("featureList");
+                    document.getElementById(
+                        "featureList"
+                    );
+
+
+                /* =================================================
+                   CURRENT YEAR
+                   ================================================= */
+
+                const currentYear =
+                    document.getElementById(
+                        "current-year"
+                    );
+
+                if (currentYear) {
+
+                    currentYear.textContent =
+                        new Date().getFullYear();
+
+                }
 
 
                 /* =================================================
                    GET ID FROM URL
                    ================================================= */
 
-                const params = new URLSearchParams(window.location.search);
-                const id = params.get("id");
+                const params =
+                    new URLSearchParams(
+                        window.location.search
+                    );
+
+                const id =
+                    params.get("id");
+
 
                 if (!id) {
-                    loading.style.display = "none";
-                    errorBox.style.display = "block";
+
+                    loading.style.display =
+                        "none";
+
+                    errorBox.style.display =
+                        "block";
+
                     return;
+
                 }
+
 
                 /* =================================================
                    FETCH ID DATA
@@ -1383,295 +1411,937 @@
 
                 try {
 
-                    const response = await fetch(`${API_BASE}/api/ids/${encodeURIComponent(id)}`);
+                    const response =
+                        await fetch(
+                            `${API_BASE}/api/ids/${encodeURIComponent(id)}`
+                        );
+
 
                     if (!response.ok) {
-                        throw new Error("ID not found");
+
+                        throw new Error(
+                            "ID not found"
+                        );
+
                     }
 
-                    const data = await response.json();
 
-                    const name = data.name || `Free Fire ID #${id}`;
-                    const price = formatPrice(data.price);
-                    const level = data.level || "-";
-                    const prime = data.prime || "-";
-                    const vault = data.vault || "-";
-                    const category = data.category || "FREE FIRE ID";
-                    const badge = data.badge || "";
-                    const status = String(data.status || "available").toLowerCase().trim();
-                    const isSold = status === "sold";
+                    const data =
+                        await response.json();
 
-                    document.title = `${name} | Tamilanda Gaming`;
 
-                    const pageHeading = document.getElementById("pageHeading");
-                    pageHeading.innerHTML = `<span>${escapeHTML(category.toString().toUpperCase())}</span><br>${escapeHTML(name)}`;
+                    /* =============================================
+                       DATA
+                       ============================================= */
 
-                    document.getElementById("pageSubtitle").textContent =
+                    const name =
+                        data.name ||
+                        `Free Fire ID #${id}`;
+
+
+                    const price =
+                        formatPrice(
+                            data.price
+                        );
+
+
+                    const level =
+                        data.level ||
+                        "-";
+
+
+                    const prime =
+                        data.prime ||
+                        "-";
+
+
+                    const vault =
+                        data.vault ||
+                        "-";
+
+
+                    const category =
+                        data.category ||
+                        "FREE FIRE ID";
+
+
+                    const badge =
+                        data.badge ||
+                        "";
+
+                    const status =
+                        String(data.status || "available")
+                            .toLowerCase()
+                            .trim();
+
+                    const isSold =
+                        status === "sold";
+
+
+                    /* =============================================
+                       PAGE TITLE
+                       ============================================= */
+
+                    document.title =
+                        `${name} | Tamilanda Gaming`;
+
+
+                    /* =============================================
+                       HEADER
+                       ============================================= */
+
+                    const pageHeading =
+                        document.getElementById(
+                            "pageHeading"
+                        );
+
+
+                    pageHeading.innerHTML =
+                        `<span>${escapeHTML(
+                            category
+                                .toString()
+                                .toUpperCase()
+                        )}</span><br>
+                        ${escapeHTML(name)}`;
+
+
+                    document.getElementById(
+                        "pageSubtitle"
+                    ).textContent =
                         `Explore the complete account details, collections and exclusive items of ${name}.`;
 
-                    document.getElementById("infoCategory").textContent = category.toString().toUpperCase();
-                    document.getElementById("infoTitle").textContent = name;
-                    document.getElementById("infoPrice").textContent = price;
 
-                    const statusBadge = document.getElementById("statusBadge");
-                    const detailsInfo = document.querySelector(".details-info");
+                    /* =============================================
+                       INFO
+                       ============================================= */
+
+                    document.getElementById(
+                        "infoCategory"
+                    ).textContent =
+                        category
+                            .toString()
+                            .toUpperCase();
+
+
+                    document.getElementById(
+                        "infoTitle"
+                    ).textContent =
+                        name;
+
+
+                    document.getElementById(
+                        "infoPrice"
+                    ).textContent =
+                        price;
+
+                    const statusBadge =
+                        document.getElementById("statusBadge");
+
+                    const detailsInfo =
+                        document.querySelector(".details-info");
 
                     if (statusBadge) {
-                        statusBadge.className = "status-badge " + (isSold ? "sold" : "available");
-                        statusBadge.textContent = isSold ? "🔴 SOLD" : "🟢 AVAILABLE";
+                        statusBadge.className =
+                            "status-badge " +
+                            (isSold ? "sold" : "available");
+
+                        statusBadge.textContent =
+                            isSold ? "🔴 SOLD" : "🟢 AVAILABLE";
                     }
 
                     if (detailsInfo) {
                         detailsInfo.classList.toggle("sold", isSold);
                     }
 
-                    document.getElementById("level").textContent = level;
-                    document.getElementById("prime").textContent = prime;
-                    document.getElementById("vault").textContent = vault;
 
-                    renderTags(data, category, badge);
-                    renderGallery(data, id, name);
-                    renderDescription(data.description);
+                    document.getElementById(
+                        "level"
+                    ).textContent =
+                        level;
 
-                    const buyButton = document.getElementById("buyButton");
+
+                    document.getElementById(
+                        "prime"
+                    ).textContent =
+                        prime;
+
+
+                    document.getElementById(
+                        "vault"
+                    ).textContent =
+                        vault;
+
+
+                    /* =============================================
+                       TAGS
+                       ============================================= */
+
+                    renderTags(
+                        data,
+                        category,
+                        badge
+                    );
+
+
+                    /* =============================================
+                       GALLERY
+                       ============================================= */
+
+                    renderGallery(
+                        data,
+                        id,
+                        name
+                    );
+
+
+                    /* =============================================
+                       DESCRIPTION
+                       ============================================= */
+
+                    renderDescription(
+                        data.description
+                    );
+
+
+                    /* =============================================
+                       WHATSAPP
+                       ============================================= */
+
+                    const buyButton =
+                        document.getElementById("buyButton");
 
                     if (isSold) {
+
                         buyButton.removeAttribute("href");
                         buyButton.removeAttribute("target");
                         buyButton.classList.add("sold");
                         buyButton.textContent = "🔴 SOLD";
                         buyButton.setAttribute("aria-disabled", "true");
+
                     } else {
-                        const message = `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
-                        const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+                        const message =
+                            `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
+
+                        const whatsappURL =
+                            `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                                message
+                            )}`;
+
                         buyButton.href = whatsappURL;
                         buyButton.target = "_blank";
                         buyButton.classList.remove("sold");
                         buyButton.textContent = "BUY THIS ID →";
                         buyButton.removeAttribute("aria-disabled");
+
                     }
 
-                    const shareButton = document.getElementById("shareButton");
-                    if (shareButton) {
-                        shareButton.addEventListener("click", () => {
-                            const shareText = `Check out this ${name} (${price}) on Tamilanda Gaming:\n${window.location.href}`;
-                            window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
-                        });
-                    }
 
-                    loading.style.display = "none";
-                    detailsContent.style.display = "block";
+                    /* =============================================
+                       SHOW
+                       ============================================= */
+
+                    loading.style.display =
+                        "none";
+
+                    detailsContent.style.display =
+                        "block";
+
 
                 } catch (error) {
-                    console.error("ID Details Error:", error);
-                    loading.style.display = "none";
-                    errorBox.style.display = "block";
+
+                    console.error(
+                        "ID Details Error:",
+                        error
+                    );
+
+                    loading.style.display =
+                        "none";
+
+                    errorBox.style.display =
+                        "block";
+
                 }
+
 
                 /* =================================================
                    FORMAT PRICE
                    ================================================= */
 
                 function formatPrice(value) {
-                    if (value === null || value === undefined || value === "") {
+
+                    if (
+                        value === null ||
+                        value === undefined ||
+                        value === ""
+                    ) {
+
                         return "Price on Request";
+
                     }
 
-                    const number = Number(String(value).replace(/[^0-9.]/g, ""));
 
-                    if (Number.isNaN(number) || number === 0) {
-                        return String(value);
+                    const number =
+                        Number(
+                            String(value)
+                                .replace(/₹/g, "")
+                                .replace(/,/g, "")
+                                .trim()
+                        );
+
+
+                    if (
+                        Number.isNaN(number)
+                    ) {
+
+                        return `₹${value}`;
+
                     }
 
-                    if (number >= 100000) {
-                        const lakh = number / 100000;
-                        return `₹${lakh.toFixed(lakh % 1 === 0 ? 0 : 1).replace(".0", "")}L`;
+
+                    if (
+                        number >= 100000
+                    ) {
+
+                        const lakh =
+                            number / 100000;
+
+
+                        return `₹${lakh
+                            .toFixed(
+                                lakh % 1 === 0
+                                    ? 0
+                                    : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}L`;
+
                     }
 
-                    if (number >= 1000) {
-                        const thousand = number / 1000;
-                        return `₹${thousand.toFixed(thousand % 1 === 0 ? 0 : 1).replace(".0", "")}K`;
+
+                    if (
+                        number >= 1000
+                    ) {
+
+                        const thousand =
+                            number / 1000;
+
+
+                        return `₹${thousand
+                            .toFixed(
+                                thousand % 1 === 0
+                                    ? 0
+                                    : 1
+                            )
+                            .replace(
+                                ".0",
+                                ""
+                            )}K`;
+
                     }
 
-                    return `₹${number.toLocaleString("en-IN")}`;
+
+                    return `₹${number.toLocaleString(
+                        "en-IN"
+                    )}`;
+
                 }
+
 
                 /* =================================================
                    RENDER TAGS
                    ================================================= */
 
-                function renderTags(data, category, badge) {
-                    const tagContainer = document.getElementById("tags");
-                    tagContainer.innerHTML = "";
+                function renderTags(
+                    data,
+                    category,
+                    badge
+                ) {
+
+                    const tagContainer =
+                        document.getElementById(
+                            "tags"
+                        );
+
+
+                    tagContainer.innerHTML =
+                        "";
+
 
                     let tags = [];
 
-                    if (Array.isArray(data.tags)) {
-                        tags = data.tags.map(item => String(item).trim()).filter(Boolean);
-                    } else if (typeof data.tags === "string") {
-                        tags = data.tags.split(",").map(item => item.trim()).filter(Boolean);
+
+                    if (
+                        Array.isArray(
+                            data.tags
+                        )
+                    ) {
+
+                        tags =
+                            data.tags
+                                .map(
+                                    item =>
+                                        String(
+                                            item
+                                        ).trim()
+                                )
+                                .filter(Boolean);
+
+                    } else if (
+                        typeof data.tags ===
+                        "string"
+                    ) {
+
+                        tags =
+                            data.tags
+                                .split(",")
+                                .map(
+                                    item =>
+                                        item.trim()
+                                )
+                                .filter(Boolean);
+
                     }
 
-                    if (category && !tags.includes(category)) {
-                        tags.unshift(category);
+
+                    if (
+                        category &&
+                        !tags.includes(
+                            category
+                        )
+                    ) {
+
+                        tags.unshift(
+                            category
+                        );
+
                     }
 
-                    if (badge && !tags.includes(badge)) {
-                        tags.push(badge);
+
+                    if (
+                        badge &&
+                        !tags.includes(
+                            badge
+                        )
+                    ) {
+
+                        tags.push(
+                            badge
+                        );
+
                     }
 
-                    if (Number(data.popularScore) >= 90) {
-                        tags.push("POPULAR 🔥");
+
+                    if (
+                        Number(
+                            data.popularScore
+                        ) >= 90
+                    ) {
+
+                        tags.push(
+                            "POPULAR 🔥"
+                        );
+
                     }
 
-                    tags = [...new Set(tags)];
 
-                    tags.forEach(function (tag) {
-                        const span = document.createElement("span");
-                        span.className = "detail-tag";
-                        span.textContent = String(tag).toUpperCase();
-                        tagContainer.appendChild(span);
-                    });
+                    tags =
+                        [
+                            ...new Set(tags)
+                        ];
+
+
+                    tags.forEach(
+                        function (tag) {
+
+                            const span =
+                                document.createElement(
+                                    "span"
+                                );
+
+
+                            span.className =
+                                "detail-tag";
+
+
+                            span.textContent =
+                                String(
+                                    tag
+                                ).toUpperCase();
+
+
+                            tagContainer.appendChild(
+                                span
+                            );
+
+                        }
+                    );
+
                 }
+
 
                 /* =================================================
                    RENDER GALLERY
                    ================================================= */
 
-                function renderGallery(data, id, name) {
-                    thumbnails.innerHTML = "";
-                    mainImage.innerHTML = `<div class="gallery-placeholder">ID IMAGE</div>`;
+                function renderGallery(
+                    data,
+                    id,
+                    name
+                ) {
+
+                    thumbnails.innerHTML =
+                        "";
+
+                    mainImage.innerHTML =
+                        `<div class="gallery-placeholder">
+                            ID IMAGE
+                        </div>`;
+
 
                     let images = [];
 
-                    if (Array.isArray(data.images) && data.images.length > 0) {
-                        images = data.images.filter(Boolean).map(image => resolveImageURL(image, id));
+
+                    /*
+                     * If API contains images,
+                     * use them.
+                     */
+
+                    if (
+                        Array.isArray(
+                            data.images
+                        ) &&
+                        data.images.length > 0
+                    ) {
+
+                        images =
+                            data.images
+                                .filter(Boolean)
+                                .map(
+                                    image =>
+                                        resolveImageURL(
+                                            image,
+                                            id
+                                        )
+                                );
+
                     }
 
-                    if (images.length === 0) {
-                        for (let i = 1; i <= 6; i++) {
-                            const number = String(i).padStart(2, "0");
-                            images.push(`${GITHUB_BASE}/assets/ids/${encodeURIComponent(id)}/${number}.jpg`);
+
+                    /*
+                     * Otherwise automatically
+                     * check 01.jpg - 06.jpg
+                     */
+
+                    if (
+                        images.length === 0
+                    ) {
+
+                        for (
+                            let i = 1;
+                            i <= 6;
+                            i++
+                        ) {
+
+                            const number =
+                                String(i)
+                                    .padStart(
+                                        2,
+                                        "0"
+                                    );
+
+
+                            images.push(
+                                `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                                    id
+                                )}/${number}.jpg`
+                            );
+
                         }
+
                     }
 
-                    let firstLoaded = false;
 
-                    images.forEach(function (imageURL, index) {
-                        const button = document.createElement("button");
-                        button.type = "button";
-                        button.className = "gallery-thumb";
+                    let firstLoaded =
+                        false;
 
-                        const img = document.createElement("img");
-                        img.src = imageURL;
-                        img.alt = `${name} Image ${index + 1}`;
-                        img.loading = "lazy";
 
-                        img.onerror = function () {
-                            button.remove();
-                        };
+                    images.forEach(
+                        function (
+                            imageURL,
+                            index
+                        ) {
 
-                        img.onload = function () {
-                            if (!firstLoaded) {
-                                firstLoaded = true;
-                                setMainImage(imageURL, name);
-                                button.classList.add("active");
-                            }
-                        };
+                            const button =
+                                document.createElement(
+                                    "button"
+                                );
 
-                        button.appendChild(img);
 
-                        button.addEventListener("click", function () {
-                            document.querySelectorAll(".gallery-thumb").forEach(item => item.classList.remove("active"));
-                            button.classList.add("active");
-                            setMainImage(imageURL, name);
-                        });
+                            button.type =
+                                "button";
 
-                        thumbnails.appendChild(button);
-                    });
+
+                            button.className =
+                                "gallery-thumb";
+
+
+                            const img =
+                                document.createElement(
+                                    "img"
+                                );
+
+
+                            img.src =
+                                imageURL;
+
+
+                            img.alt =
+                                `${name} Image ${index + 1}`;
+
+
+                            img.loading =
+                                "lazy";
+
+
+                            /*
+                             * Image doesn't exist
+                             * → remove thumbnail.
+                             */
+
+                            img.onerror =
+                                function () {
+
+                                    button.remove();
+
+
+                                };
+
+
+                            /*
+                             * First valid image
+                             * becomes main image.
+                             */
+
+                            img.onload =
+                                function () {
+
+                                    if (
+                                        !firstLoaded
+                                    ) {
+
+                                        firstLoaded =
+                                            true;
+
+
+                                        setMainImage(
+                                            imageURL,
+                                            name
+                                        );
+
+
+                                        button.classList.add(
+                                            "active"
+                                        );
+
+                                    }
+
+                                };
+
+
+                            button.appendChild(
+                                img
+                            );
+
+
+                            button.addEventListener(
+                                "click",
+                                function () {
+
+                                    document
+                                        .querySelectorAll(
+                                            ".gallery-thumb"
+                                        )
+                                        .forEach(
+                                            function (
+                                                item
+                                            ) {
+
+                                                item.classList.remove(
+                                                    "active"
+                                                );
+
+                                            }
+                                        );
+
+
+                                    button.classList.add(
+                                        "active"
+                                    );
+
+
+                                    setMainImage(
+                                        imageURL,
+                                        name
+                                    );
+
+                                }
+                            );
+
+
+                            thumbnails.appendChild(
+                                button
+                            );
+
+                        }
+                    );
+
                 }
+
 
                 /* =================================================
                    SET MAIN IMAGE
                    ================================================= */
 
-                function setMainImage(imageURL, name) {
-                    mainImage.innerHTML = "";
-                    const img = document.createElement("img");
-                    img.src = imageURL;
-                    img.alt = name;
+                function setMainImage(
+                    imageURL,
+                    name
+                ) {
 
-                    img.onerror = function () {
-                        mainImage.innerHTML = `<div class="gallery-placeholder">ID IMAGE</div>`;
-                    };
+                    mainImage.innerHTML =
+                        "";
 
-                    mainImage.appendChild(img);
+
+                    const img =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    img.src =
+                        imageURL;
+
+
+                    img.alt =
+                        name;
+
+
+                    img.onerror =
+                        function () {
+
+                            mainImage.innerHTML =
+                                `<div class="gallery-placeholder">
+                                    ID IMAGE
+                                </div>`;
+
+                        };
+
+
+                    mainImage.appendChild(
+                        img
+                    );
+
                 }
+
 
                 /* =================================================
                    RESOLVE IMAGE URL
                    ================================================= */
 
-                function resolveImageURL(image, id) {
-                    const value = String(image).trim();
+                function resolveImageURL(
+                    image,
+                    id
+                ) {
 
-                    if (value.startsWith("http://") || value.startsWith("https://")) {
+                    const value =
+                        String(
+                            image
+                        ).trim();
+
+
+                    if (
+                        value.startsWith(
+                            "http://"
+                        ) ||
+                        value.startsWith(
+                            "https://"
+                        )
+                    ) {
+
                         return value;
+
                     }
-                    if (value.startsWith("/")) {
+
+
+                    if (
+                        value.startsWith(
+                            "/"
+                        )
+                    ) {
+
                         return `${GITHUB_BASE}${value}`;
+
                     }
-                    if (value.startsWith("assets/")) {
+
+
+                    if (
+                        value.startsWith(
+                            "assets/"
+                        )
+                    ) {
+
                         return `${GITHUB_BASE}/${value}`;
+
                     }
-                    return `${GITHUB_BASE}/assets/ids/${encodeURIComponent(id)}/${value}`;
+
+
+                    return `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                        id
+                    )}/${value}`;
+
                 }
+
 
                 /* =================================================
                    DESCRIPTION
                    ================================================= */
 
-                function renderDescription(description) {
-                    featureList.innerHTML = "";
+                function renderDescription(
+                    description
+                ) {
 
-                    if (description === null || description === undefined) {
+                    featureList.innerHTML =
+                        "";
+
+
+                    if (
+                        description === null ||
+                        description === undefined
+                    ) {
+
                         showNoDescription();
+
                         return;
+
                     }
 
-                    const text = String(description).trim();
+
+                    const text =
+                        String(
+                            description
+                        ).trim();
+
 
                     if (!text) {
+
                         showNoDescription();
+
                         return;
+
                     }
 
-                    const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
 
-                    if (lines.length === 0) {
+                    /*
+                     * Each line entered in Admin
+                     * becomes one feature.
+                     */
+
+                    const lines =
+                        text
+                            .split(/\r?\n/)
+                            .map(
+                                line =>
+                                    line.trim()
+                            )
+                            .filter(Boolean);
+
+
+                    if (
+                        lines.length === 0
+                    ) {
+
                         showNoDescription();
+
                         return;
+
                     }
 
-                    lines.forEach(function (line) {
-                        const item = document.createElement("div");
-                        item.className = "feature-item";
-                        item.textContent = line;
-                        featureList.appendChild(item);
-                    });
+
+                    lines.forEach(
+                        function (line) {
+
+                            const item =
+                                document.createElement(
+                                    "div"
+                                );
+
+
+                            item.className =
+                                "feature-item";
+
+
+                            item.textContent =
+                                line;
+
+
+                            featureList.appendChild(
+                                item
+                            );
+
+                        }
+                    );
+
                 }
+
+
+                /* =================================================
+                   NO DESCRIPTION
+                   ================================================= */
 
                 function showNoDescription() {
-                    featureList.innerHTML = `<div class="no-description">No description has been added for this ID yet.</div>`;
+
+                    featureList.innerHTML =
+                        `<div class="no-description">
+                            No description has been added for this ID yet.
+                        </div>`;
+
                 }
 
-                function escapeHTML(value) {
-                    return String(value)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
-                        .replace(/"/g, "&quot;")
-                        .replace(/'/g, "&#039;");
+
+                /* =================================================
+                   ESCAPE HTML
+                   ================================================= */
+
+                function escapeHTML(
+                    value
+                ) {
+
+                    return String(
+                        value
+                    )
+                        .replace(
+                            /&/g,
+                            "&amp;"
+                        )
+                        .replace(
+                            /</g,
+                            "&lt;"
+                        )
+                        .replace(
+                            />/g,
+                            "&gt;"
+                        )
+                        .replace(
+                            /"/g,
+                            "&quot;"
+                        )
+                        .replace(
+                            /'/g,
+                            "&#039;"
+                        );
+
                 }
 
             }
