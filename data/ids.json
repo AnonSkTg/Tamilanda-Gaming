@@ -7,9 +7,9 @@
     "prime": "8",
     "vault": "700",
     "category": "hot",
-    "badge": "yes",
+    "badge": "HOT ID 🔥",
     "popular": 98,
-    "status": "available",
+    "status": "sold",
     "images": [
       "assets/ids/001/01.jpg",
       "assets/ids/001/02.jpg",
@@ -18,9 +18,10 @@
       "assets/ids/001/05.jpg",
       "assets/ids/001/06.jpg"
     ],
-    "description": "oti",
+    "description": "Old rare account with high vault collection.",
     "tags": [
-      "Rwed pre"
+      "HOT ID",
+      "RARE"
     ]
   }
 ]

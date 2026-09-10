@@ -249,6 +249,8 @@
             cursor: pointer;
 
             transition: 0.25s ease;
+
+            position: relative;
         }
 
 
@@ -266,6 +268,8 @@
             font-size: 27px;
 
             margin-bottom: 10px;
+
+            display: block;
         }
 
 
@@ -296,6 +300,15 @@
             font-size: 10px;
         }
 
+        .upload-preview {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+            border: 1px solid #ffb000;
+        }
 
         /* ==========================================
            NOTE
@@ -559,6 +572,11 @@
                 BUY YOUR ID
             </a>
 
+            <a href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e" target="_blank" rel="noopener noreferrer" class="nav-channel-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.003l-1.416 5.171 5.292-1.388c1.458.796 3.097 1.215 4.776 1.216h.005c5.505 0 9.988-4.478 9.989-9.984 0-2.667-1.037-5.175-2.923-7.062a9.924 9.924 0 0 0-7.065-2.94zm0 18.232h-.004a8.28 8.28 0 0 1-4.22-1.163l-.303-.18-3.137.822.836-3.056-.198-.315a8.283 8.28 0 0 1-1.272-4.341c.001-4.568 3.72-8.283 8.293-8.283 2.213 0 4.292.863 5.856 2.43 1.564 1.567 2.424 3.648 2.424 5.861 0 4.569-3.719 8.285-8.275 8.285zm4.542-6.208c-.249-.125-1.472-.727-1.7-.822-.228-.095-.394-.142-.56.142-.166.284-.643.822-.788.989-.145.167-.29.188-.539.063-.249-.125-1.052-.388-2.003-1.237-.74-.66-1.24-1.475-1.385-1.724-.145-.249-.015-.384.109-.508.112-.112.249-.29.373-.435.125-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.56-1.349-.768-1.848-.203-.487-.41-.421-.56-.429-.143-.008-.308-.008-.473-.008-.166 0-.435.062-.663.311-.228.249-.871.851-.871 2.076 0 1.225.892 2.408 1.016 2.574.125.166 1.756 2.681 4.254 3.76 2.498 1.079 2.498.719 2.955.677.457-.042 1.472-.602 1.679-1.183.208-.581.208-1.079.145-1.183-.062-.104-.228-.166-.477-.291z"/></svg>
+                CHANNEL
+            </a>
+
         </nav>
 
 
@@ -807,9 +825,9 @@
 
                     <label class="upload-box">
 
-                        <div class="upload-icon">
+                        <span class="upload-icon">
                             👤
-                        </div>
+                        </span>
 
                         <strong>
                             IMAGE 1 — PROFILE
@@ -824,6 +842,8 @@
                             name="profileImage"
                             accept="image/*">
 
+                        <img class="upload-preview" alt="Profile Preview">
+
                     </label>
 
 
@@ -832,9 +852,9 @@
 
                     <label class="upload-box">
 
-                        <div class="upload-icon">
+                        <span class="upload-icon">
                             🔫
-                        </div>
+                        </span>
 
                         <strong>
                             IMAGE 2 — GUN GALLERY
@@ -849,6 +869,8 @@
                             name="gunImage"
                             accept="image/*">
 
+                        <img class="upload-preview" alt="Gun Preview">
+
                     </label>
 
 
@@ -857,9 +879,9 @@
 
                     <label class="upload-box">
 
-                        <div class="upload-icon">
+                        <span class="upload-icon">
                             💇
-                        </div>
+                        </span>
 
                         <strong>
                             IMAGE 3 — HAIR COLLECTION
@@ -874,6 +896,8 @@
                             name="hairImage"
                             accept="image/*">
 
+                        <img class="upload-preview" alt="Hair Preview">
+
                     </label>
 
 
@@ -882,9 +906,9 @@
 
                     <label class="upload-box">
 
-                        <div class="upload-icon">
+                        <span class="upload-icon">
                             🎭
-                        </div>
+                        </span>
 
                         <strong>
                             IMAGE 4 — MASK COLLECTION
@@ -899,6 +923,8 @@
                             name="maskImage"
                             accept="image/*">
 
+                        <img class="upload-preview" alt="Mask Preview">
+
                     </label>
 
 
@@ -907,9 +933,9 @@
 
                     <label class="upload-box">
 
-                        <div class="upload-icon">
+                        <span class="upload-icon">
                             💎
-                        </div>
+                        </span>
 
                         <strong>
                             IMAGE 5 — TOTAL VAULT
@@ -924,6 +950,8 @@
                             name="vaultImage"
                             accept="image/*">
 
+                        <img class="upload-preview" alt="Vault Preview">
+
                     </label>
 
 
@@ -932,9 +960,9 @@
 
                     <label class="upload-box">
 
-                        <div class="upload-icon">
+                        <span class="upload-icon">
                             🔥
-                        </div>
+                        </span>
 
                         <strong>
                             IMAGE 6 — RARE ITEM
@@ -949,6 +977,8 @@
                             type="file"
                             name="rareImage"
                             accept="image/*">
+
+                        <img class="upload-preview" alt="Rare Item Preview">
 
                     </label>
 
@@ -1047,7 +1077,7 @@
                     type="submit"
                     class="submit-button">
 
-                    SUBMIT SELL REQUEST
+                    SUBMIT VIA WHATSAPP
                     →
 
                 </button>
@@ -1137,7 +1167,7 @@
 
 
     <!-- ==========================================
-         SELL FORM DEMO HANDLER
+         SELL FORM WHATSAPP HANDLER
          ========================================== -->
 
     <script>
@@ -1146,38 +1176,67 @@
             "DOMContentLoaded",
             function () {
 
+                const WHATSAPP_NUMBER = "919786267475";
+
                 const form =
-                    document.getElementById(
-                        "sellForm"
-                    );
+                    document.getElementById("sellForm");
 
                 const status =
-                    document.getElementById(
-                        "submitStatus"
-                    );
+                    document.getElementById("submitStatus");
 
+                /* Live Image Preview Handler */
+                const fileInputs = document.querySelectorAll('.upload-box input[type="file"]');
+                fileInputs.forEach(input => {
+                    input.addEventListener('change', function () {
+                        const preview = this.parentElement.querySelector('.upload-preview');
+                        if (this.files && this.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                preview.src = e.target.result;
+                                preview.style.display = 'block';
+                            };
+                            reader.readAsDataURL(this.files[0]);
+                        } else if (preview) {
+                            preview.style.display = 'none';
+                        }
+                    });
+                });
 
-                if (!form) {
-                    return;
-                }
+                if (!form) return;
 
+                form.addEventListener("submit", function (event) {
+                    event.preventDefault();
 
-                form.addEventListener(
-                    "submit",
-                    function (event) {
+                    const level = document.getElementById("accountLevel").value.trim();
+                    const prime = document.getElementById("primeLevel").value.trim();
+                    const vault = document.getElementById("vaultCollection").value.trim();
+                    const golden = document.getElementById("goldenElite").value;
+                    const price = document.getElementById("expectedPrice").value.trim();
+                    const note = document.getElementById("sellerNote").value.trim();
 
-                        event.preventDefault();
-
-
-                        status.className =
-                            "submit-status success";
-
-
-                        status.textContent =
-                            "Request captured successfully. Production version will securely upload your screenshots and send the request to admin.";
-
+                    if (!level || !price) {
+                        status.className = "submit-status error";
+                        status.textContent = "Please fill in all required fields.";
+                        return;
                     }
-                );
+
+                    const message =
+                        `🎮 *TAMILANDA GAMING - SELL ID REQUEST*\n\n` +
+                        `• *Account Level:* ${level}\n` +
+                        `• *Prime Level:* ${prime || '-'}\n` +
+                        `• *Total Vault:* ${vault || '-'}\n` +
+                        `• *Golden Elite:* ${golden ? golden.toUpperCase() : '-'}\n` +
+                        `• *Expected Price:* ₹${price}\n` +
+                        (note ? `• *Note:* ${note}\n` : '') +
+                        `\nI confirm my account is bound and ready for review. Please send me instructions to submit screenshots.`;
+
+                    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+                    status.className = "submit-status success";
+                    status.textContent = "Opening WhatsApp to submit your ID details...";
+
+                    window.open(whatsappURL, "_blank");
+                });
 
             }
         );
