@@ -13,6 +13,7 @@
     "showcase": "yes",
     "images": [],
     "description": "",
-    "tags": []
+    "tags": [],
+    "showcaseImage": "assets/showcase/12.jpg"
   }
 ]
