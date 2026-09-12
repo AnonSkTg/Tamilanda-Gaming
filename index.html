@@ -1989,89 +1989,113 @@
 
                     try {
 
-                        const response =
+                        /*
+                         * Showcase uses the GitHub Pages JSON directly.
+                         * This avoids depending on the Worker response shape
+                         * for a read-only homepage feature.
+                         */
+                        const dataURL =
+                            `${GITHUB_BASE}/data/ids.json?cb=${Date.now()}`;
+
+                        let response =
                             await fetch(
-                                `${API_BASE}/api/ids`,
+                                dataURL,
                                 {
                                     cache: "no-store"
                                 }
                             );
 
-
+                        /*
+                         * Fallback to Worker if the static JSON cannot be read.
+                         */
                         if (!response.ok) {
-
-                            throw new Error(
-                                "Failed to load IDs"
-                            );
-
+                            response =
+                                await fetch(
+                                    `${API_BASE}/api/ids?cb=${Date.now()}`,
+                                    {
+                                        cache: "no-store"
+                                    }
+                                );
                         }
 
+                        if (!response.ok) {
+                            throw new Error(
+                                "Failed to load ID data"
+                            );
+                        }
 
-                        const ids =
+                        const payload =
                             await response.json();
 
+                        const ids =
+                            Array.isArray(payload)
+                                ? payload
+                                : (
+                                    payload.ids ||
+                                    payload.data ||
+                                    []
+                                );
 
                         if (
                             !Array.isArray(ids) ||
                             ids.length === 0
                         ) {
-
                             showPlaceholder();
-
                             return;
-
                         }
-
-
-                        /*
-                         * Only use IDs that have a valid ID value.
-                         */
 
                         const validIDs =
                             ids.filter(
-                                function (item) {
-
+                                function(item) {
                                     return (
                                         item &&
                                         item.id
+                                    );
+                                }
+                            );
+
+                        if (!validIDs.length) {
+                            showPlaceholder();
+                            return;
+                        }
+
+                        /*
+                         * Admin controls showcase visibility.
+                         * Accept boolean, numeric and common string values.
+                         */
+                        const showcaseIDs =
+                            validIDs.filter(
+                                function(item) {
+
+                                    const value =
+                                        String(
+                                            item.showcase ?? ""
+                                        )
+                                        .trim()
+                                        .toLowerCase();
+
+                                    return (
+                                        item.showcase === true ||
+                                        item.showcase === 1 ||
+                                        value === "yes" ||
+                                        value === "true" ||
+                                        value === "1" ||
+                                        value === "on"
                                     );
 
                                 }
                             );
 
-
-                        if (
-                            validIDs.length === 0
-                        ) {
-
-                            showPlaceholder();
-
-                            return;
-
-                        }
-
-                        const showcaseIDs = validIDs.filter(function (item) {
-                            const value = String(item.showcase ?? "").trim().toLowerCase();
-
-                            return (
-                                item.showcase === true ||
-                                item.showcase === 1 ||
-                                value === "yes" ||
-                                value === "true" ||
-                                value === "1" ||
-                                value === "on"
-                            );
-                        });
-
-                        if (showcaseIDs.length === 0) {
+                        if (!showcaseIDs.length) {
                             showPlaceholder();
                             return;
                         }
 
-                        createShowcase(showcaseIDs);
+                        createShowcase(
+                            showcaseIDs
+                        );
 
-
-                    } catch (error) {
+                    } catch(error) {
 
                         console.error(
                             "Showcase error:",
@@ -2117,15 +2141,83 @@
                         image.loading = slides.length === 0 ? "eager" : "lazy";
 
                         image.onerror = function () {
-                            const failedIndex = slides.findIndex(slide => slide.image === image);
-                            if (failedIndex >= 0) {
-                                slides.splice(failedIndex, 1);
+
+                            const fallback =
+                                `${GITHUB_BASE}/assets/ids/` +
+                                `${encodeURIComponent(id)}/01.jpg`;
+
+                            if (
+                                image.src !== fallback &&
+                                fallback
+                            ) {
+
+                                image.onerror =
+                                    function() {
+
+                                        const failedIndex =
+                                            slides.findIndex(
+                                                slide =>
+                                                    slide.image === image
+                                            );
+
+                                        if (failedIndex >= 0) {
+                                            slides.splice(
+                                                failedIndex,
+                                                1
+                                            );
+                                        }
+
+                                        image.remove();
+
+                                        if (!slides.length) {
+                                            showPlaceholder();
+                                        } else {
+                                            currentIndex =
+                                                Math.min(
+                                                    currentIndex,
+                                                    slides.length - 1
+                                                );
+
+                                            showSlide(
+                                                currentIndex
+                                            );
+                                        }
+
+                                    };
+
+                                image.src =
+                                    fallback;
+
+                                return;
                             }
+
+                            const failedIndex =
+                                slides.findIndex(
+                                    slide =>
+                                        slide.image === image
+                                );
+
+                            if (failedIndex >= 0) {
+                                slides.splice(
+                                    failedIndex,
+                                    1
+                                );
+                            }
+
                             image.remove();
-                            if (!slides.length) showPlaceholder();
-                            else {
-                                currentIndex = Math.min(currentIndex, slides.length - 1);
-                                showSlide(currentIndex);
+
+                            if (!slides.length) {
+                                showPlaceholder();
+                            } else {
+                                currentIndex =
+                                    Math.min(
+                                        currentIndex,
+                                        slides.length - 1
+                                    );
+
+                                showSlide(
+                                    currentIndex
+                                );
                             }
                         };
 
@@ -2246,57 +2338,45 @@
 
                     const value =
                         String(
-                            image
+                            image || ""
                         ).trim();
 
-
-                    if (
-                        value.startsWith(
-                            "http://"
-                        ) ||
-                        value.startsWith(
-                            "https://"
-                        )
-                    ) {
-
-                        return value;
-
+                    if (!value) {
+                        return (
+                            `${GITHUB_BASE}/assets/ids/` +
+                            `${encodeURIComponent(id)}/01.jpg`
+                        );
                     }
 
+                    if (
+                        value.startsWith("http://") ||
+                        value.startsWith("https://")
+                    ) {
+                        return value;
+                    }
 
                     if (
-                        value.startsWith(
-                            "/"
-                        )
+                        value.startsWith("/")
                     ) {
-
                         return (
                             GITHUB_BASE +
                             value
                         );
-
                     }
 
-
                     if (
-                        value.startsWith(
-                            "assets/"
-                        )
+                        value.startsWith("assets/")
                     ) {
-
                         return (
                             GITHUB_BASE +
                             "/" +
                             value
                         );
-
                     }
 
-
                     return (
-                        `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
-                            id
-                        )}/${value}`
+                        `${GITHUB_BASE}/assets/ids/` +
+                        `${encodeURIComponent(id)}/${value}`
                     );
 
                 }
