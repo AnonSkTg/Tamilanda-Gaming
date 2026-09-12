@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": "001",
+    "name": "Rdx Kunal",
+    "price": 4000,
+    "level": 77,
+    "prime": "8",
+    "vault": "990",
+    "category": "golden",
+    "badge": "",
+    "popular": 0,
+    "status": "available",
+    "showcase": "yes",
+    "images": [],
+    "description": "",
+    "tags": []
+  }
+]
