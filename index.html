@@ -2051,27 +2051,17 @@
                         }
 
                         const showcaseIDs = validIDs.filter(item => {
-                            const showcaseValue = String(item.showcase ?? "")
-                                .trim()
-                                .toLowerCase();
-
+                            const showcaseValue = String(item.showcase ?? "").trim().toLowerCase();
                             const showcaseEnabled =
                                 item.showcase === true ||
-                                showcaseValue === "true" ||
+                                item.showcase === 1 ||
                                 showcaseValue === "yes" ||
+                                showcaseValue === "true" ||
                                 showcaseValue === "1" ||
                                 showcaseValue === "on";
 
-                            const sold =
-                                String(item.status ?? "")
-                                    .trim()
-                                    .toLowerCase() === "sold";
-
-                            return showcaseEnabled && !sold;
+                            return showcaseEnabled;
                         });
-
-                        // If no showcase flag is found, do NOT silently show all IDs.
-                        // Admin-controlled showcase remains the source of truth.
 
                         createShowcase(showcaseIDs);
 
@@ -2122,34 +2112,13 @@
                         image.loading = slides.length === 0 ? "eager" : "lazy";
 
                         image.onerror = function () {
-                            const fallback =
-                                `${GITHUB_BASE}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
-
-                            if (image.src !== fallback) {
-                                image.onerror = function () {
-                                    const failedIndex = slides.findIndex(slide => slide.image === image);
-                                    if (failedIndex >= 0) slides.splice(failedIndex, 1);
-                                    image.remove();
-
-                                    if (!slides.length) {
-                                        showPlaceholder();
-                                    } else {
-                                        currentIndex = Math.min(currentIndex, slides.length - 1);
-                                        showSlide(currentIndex);
-                                    }
-                                };
-
-                                image.src = fallback;
-                                return;
-                            }
-
                             const failedIndex = slides.findIndex(slide => slide.image === image);
-                            if (failedIndex >= 0) slides.splice(failedIndex, 1);
+                            if (failedIndex >= 0) {
+                                slides.splice(failedIndex, 1);
+                            }
                             image.remove();
-
-                            if (!slides.length) {
-                                showPlaceholder();
-                            } else {
+                            if (!slides.length) showPlaceholder();
+                            else {
                                 currentIndex = Math.min(currentIndex, slides.length - 1);
                                 showSlide(currentIndex);
                             }
@@ -2272,12 +2241,8 @@
 
                     const value =
                         String(
-                            image || ""
+                            image
                         ).trim();
-
-                    if (!value) {
-                        return `${GITHUB_BASE}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
-                    }
 
 
                     if (
