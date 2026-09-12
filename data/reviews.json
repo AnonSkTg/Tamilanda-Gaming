@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "review_1789199158348_bfc77s",
+    "buyerName": "Sabee",
+    "rating": 5,
+    "image": "assets/reviews/review_1789199158348_bfc77s.jpg",
+    "visible": true,
+    "createdAt": "2026-09-12T07:46:34.266Z"
+  }
+]
