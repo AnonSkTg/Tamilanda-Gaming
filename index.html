@@ -255,6 +255,14 @@
 
             position: absolute;
 
+            /*
+             * This hero image must always be painted.
+             * The global stylesheet uses content-visibility:auto
+             * for images, which can interfere with an absolutely
+             * positioned slider image.
+             */
+            content-visibility: visible !important;
+
             inset: 0;
 
             width: 100%;
@@ -1989,179 +1997,86 @@
 
                     try {
 
+                        let ids = [];
+
                         /*
-                         * IMPORTANT:
-                         * Read showcase information from BOTH sources:
-                         *
-                         * 1. GitHub data/ids.json  -> reliable showcase flag/image
-                         * 2. Cloudflare Worker /api/ids -> latest ID data
-                         *
-                         * If the Worker drops showcase fields, the static
-                         * GitHub JSON restores them by ID.
+                         * Read the GitHub JSON first because it is the
+                         * exact database used by the uploaded showcase image.
                          */
+                        try {
 
-                        const staticURL =
-                            `${GITHUB_BASE}/data/ids.json?showcase=${Date.now()}`;
-
-                        const workerURL =
-                            `${API_BASE}/api/ids?showcase=${Date.now()}`;
-
-                        const [staticResult, workerResult] =
-                            await Promise.allSettled([
-
-                                fetch(
-                                    staticURL,
+                            const staticResponse =
+                                await fetch(
+                                    `${GITHUB_BASE}/data/ids.json?cb=${Date.now()}`,
                                     {
                                         cache: "no-store"
                                     }
-                                ),
+                                );
 
-                                fetch(
-                                    workerURL,
-                                    {
-                                        cache: "no-store"
-                                    }
-                                )
+                            if (staticResponse.ok) {
 
-                            ]);
+                                const staticPayload =
+                                    await staticResponse.json();
 
-                        let staticIDs = [];
-                        let workerIDs = [];
-
-                        if (
-                            staticResult.status === "fulfilled" &&
-                            staticResult.value.ok
-                        ) {
-
-                            try {
-
-                                const payload =
-                                    await staticResult.value.json();
-
-                                staticIDs =
-                                    Array.isArray(payload)
-                                        ? payload
+                                ids =
+                                    Array.isArray(staticPayload)
+                                        ? staticPayload
                                         : (
-                                            payload.ids ||
-                                            payload.data ||
+                                            staticPayload.ids ||
+                                            staticPayload.data ||
                                             []
                                         );
 
-                            } catch(error) {
-
-                                console.warn(
-                                    "Static ID JSON could not be parsed:",
-                                    error
-                                );
-
                             }
 
-                        }
+                        } catch(error) {
 
-                        if (
-                            workerResult.status === "fulfilled" &&
-                            workerResult.value.ok
-                        ) {
-
-                            try {
-
-                                const payload =
-                                    await workerResult.value.json();
-
-                                workerIDs =
-                                    Array.isArray(payload)
-                                        ? payload
-                                        : (
-                                            payload.ids ||
-                                            payload.data ||
-                                            []
-                                        );
-
-                            } catch(error) {
-
-                                console.warn(
-                                    "Worker ID response could not be parsed:",
-                                    error
-                                );
-
-                            }
+                            console.warn(
+                                "Static ID JSON unavailable:",
+                                error
+                            );
 
                         }
 
                         /*
-                         * Merge by ID.
-                         *
-                         * Worker data remains the main record.
-                         * GitHub static data supplies/fixes showcase fields.
+                         * Fallback to Worker API.
                          */
-
-                        const mergedMap =
-                            new Map();
-
-                        staticIDs
-                            .filter(
-                                item =>
-                                    item &&
-                                    item.id
-                            )
-                            .forEach(
-                                function(item) {
-
-                                    mergedMap.set(
-                                        String(item.id),
-                                        {
-                                            ...item
-                                        }
-                                    );
-
-                                }
-                            );
-
-                        workerIDs
-                            .filter(
-                                item =>
-                                    item &&
-                                    item.id
-                            )
-                            .forEach(
-                                function(item) {
-
-                                    const key =
-                                        String(item.id);
-
-                                    mergedMap.set(
-                                        key,
-                                        {
-                                            ...(mergedMap.get(key) || {}),
-                                            ...item,
-
-                                            /*
-                                             * Preserve showcase fields
-                                             * from the static JSON when
-                                             * the Worker does not return them.
-                                             */
-                                            showcase:
-                                                item.showcase ??
-                                                mergedMap.get(key)?.showcase,
-
-                                            showcaseImage:
-                                                item.showcaseImage ??
-                                                item.showcase_image ??
-                                                mergedMap.get(key)?.showcaseImage ??
-                                                mergedMap.get(key)?.showcase_image
-
-                                        }
-                                    );
-
-                                }
-                            );
-
-                        const ids =
-                            Array.from(
-                                mergedMap.values()
-                            );
-
                         if (!ids.length) {
+
+                            const response =
+                                await fetch(
+                                    `${API_BASE}/api/ids?cb=${Date.now()}`,
+                                    {
+                                        cache: "no-store"
+                                    }
+                                );
+
+                            if (!response.ok) {
+
+                                throw new Error(
+                                    "Failed to load IDs"
+                                );
+
+                            }
+
+                            const payload =
+                                await response.json();
+
+                            ids =
+                                Array.isArray(payload)
+                                    ? payload
+                                    : (
+                                        payload.ids ||
+                                        payload.data ||
+                                        []
+                                    );
+
+                        }
+
+                        if (
+                            !Array.isArray(ids) ||
+                            ids.length === 0
+                        ) {
 
                             showPlaceholder();
                             return;
@@ -2184,7 +2099,7 @@
                             validIDs.filter(
                                 function(item) {
 
-                                    const value =
+                                    const showcaseValue =
                                         String(
                                             item.showcase ?? ""
                                         )
@@ -2194,24 +2109,23 @@
                                     return (
                                         item.showcase === true ||
                                         item.showcase === 1 ||
-                                        value === "yes" ||
-                                        value === "true" ||
-                                        value === "1" ||
-                                        value === "on"
+                                        showcaseValue === "yes" ||
+                                        showcaseValue === "true" ||
+                                        showcaseValue === "1" ||
+                                        showcaseValue === "on"
                                     );
 
                                 }
                             );
 
+                        console.log(
+                            "Tamilanda Showcase IDs:",
+                            showcaseIDs
+                        );
+
                         if (!showcaseIDs.length) {
-
-                            console.warn(
-                                "No IDs are marked for homepage showcase."
-                            );
-
                             showPlaceholder();
                             return;
-
                         }
 
                         createShowcase(
@@ -2265,62 +2179,10 @@
 
                         image.onerror = function () {
 
-                            const fallback =
-                                `${GITHUB_BASE}/assets/ids/` +
-                                `${encodeURIComponent(id)}/01.jpg`;
-
-                            /*
-                             * First failure:
-                             * try the normal ID main/card image.
-                             */
-                            if (
-                                image.src !== fallback
-                            ) {
-
-                                image.onerror =
-                                    function() {
-
-                                        const failedIndex =
-                                            slides.findIndex(
-                                                slide =>
-                                                    slide.image === image
-                                            );
-
-                                        if (
-                                            failedIndex >= 0
-                                        ) {
-                                            slides.splice(
-                                                failedIndex,
-                                                1
-                                            );
-                                        }
-
-                                        image.remove();
-
-                                        if (
-                                            !slides.length
-                                        ) {
-                                            showPlaceholder();
-                                        } else {
-                                            currentIndex =
-                                                Math.min(
-                                                    currentIndex,
-                                                    slides.length - 1
-                                                );
-
-                                            showSlide(
-                                                currentIndex
-                                            );
-                                        }
-
-                                    };
-
-                                image.src =
-                                    fallback;
-
-                                return;
-
-                            }
+                            console.error(
+                                "SHOWCASE IMAGE LOAD FAILED:",
+                                image.src
+                            );
 
                             const failedIndex =
                                 slides.findIndex(
@@ -2328,9 +2190,7 @@
                                         slide.image === image
                                 );
 
-                            if (
-                                failedIndex >= 0
-                            ) {
+                            if (failedIndex >= 0) {
                                 slides.splice(
                                     failedIndex,
                                     1
@@ -2352,7 +2212,6 @@
                                     currentIndex
                                 );
                             }
-
                         };
 
                         imagesContainer.appendChild(image);
@@ -2472,9 +2331,12 @@
 
                     const value =
                         String(
-                            image
+                            image || ""
                         ).trim();
 
+                    if (!value) {
+                        return "";
+                    }
 
                     if (
                         value.startsWith(
@@ -2484,11 +2346,22 @@
                             "https://"
                         )
                     ) {
-
                         return value;
-
                     }
 
+                    if (
+                        value.startsWith(
+                            "assets/"
+                        )
+                    ) {
+
+                        return (
+                            "https://raw.githubusercontent.com/" +
+                            "AnonSkTg/Tamilanda-Gaming/main/" +
+                            value
+                        );
+
+                    }
 
                     if (
                         value.startsWith(
@@ -2502,22 +2375,6 @@
                         );
 
                     }
-
-
-                    if (
-                        value.startsWith(
-                            "assets/"
-                        )
-                    ) {
-
-                        return (
-                            GITHUB_BASE +
-                            "/" +
-                            value
-                        );
-
-                    }
-
 
                     return (
                         `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
