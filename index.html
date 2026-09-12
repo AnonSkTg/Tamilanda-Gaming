@@ -1990,79 +1990,196 @@
                     try {
 
                         /*
-                         * Showcase uses the GitHub Pages JSON directly.
-                         * This avoids depending on the Worker response shape
-                         * for a read-only homepage feature.
+                         * IMPORTANT:
+                         * Read showcase information from BOTH sources:
+                         *
+                         * 1. GitHub data/ids.json  -> reliable showcase flag/image
+                         * 2. Cloudflare Worker /api/ids -> latest ID data
+                         *
+                         * If the Worker drops showcase fields, the static
+                         * GitHub JSON restores them by ID.
                          */
-                        const dataURL =
-                            `${GITHUB_BASE}/data/ids.json?cb=${Date.now()}`;
 
-                        let response =
-                            await fetch(
-                                dataURL,
-                                {
-                                    cache: "no-store"
-                                }
-                            );
+                        const staticURL =
+                            `${GITHUB_BASE}/data/ids.json?showcase=${Date.now()}`;
 
-                        /*
-                         * Fallback to Worker if the static JSON cannot be read.
-                         */
-                        if (!response.ok) {
-                            response =
-                                await fetch(
-                                    `${API_BASE}/api/ids?cb=${Date.now()}`,
+                        const workerURL =
+                            `${API_BASE}/api/ids?showcase=${Date.now()}`;
+
+                        const [staticResult, workerResult] =
+                            await Promise.allSettled([
+
+                                fetch(
+                                    staticURL,
                                     {
                                         cache: "no-store"
                                     }
-                                );
-                        }
+                                ),
 
-                        if (!response.ok) {
-                            throw new Error(
-                                "Failed to load ID data"
-                            );
-                        }
+                                fetch(
+                                    workerURL,
+                                    {
+                                        cache: "no-store"
+                                    }
+                                )
 
-                        const payload =
-                            await response.json();
+                            ]);
 
-                        const ids =
-                            Array.isArray(payload)
-                                ? payload
-                                : (
-                                    payload.ids ||
-                                    payload.data ||
-                                    []
-                                );
+                        let staticIDs = [];
+                        let workerIDs = [];
 
                         if (
-                            !Array.isArray(ids) ||
-                            ids.length === 0
+                            staticResult.status === "fulfilled" &&
+                            staticResult.value.ok
                         ) {
+
+                            try {
+
+                                const payload =
+                                    await staticResult.value.json();
+
+                                staticIDs =
+                                    Array.isArray(payload)
+                                        ? payload
+                                        : (
+                                            payload.ids ||
+                                            payload.data ||
+                                            []
+                                        );
+
+                            } catch(error) {
+
+                                console.warn(
+                                    "Static ID JSON could not be parsed:",
+                                    error
+                                );
+
+                            }
+
+                        }
+
+                        if (
+                            workerResult.status === "fulfilled" &&
+                            workerResult.value.ok
+                        ) {
+
+                            try {
+
+                                const payload =
+                                    await workerResult.value.json();
+
+                                workerIDs =
+                                    Array.isArray(payload)
+                                        ? payload
+                                        : (
+                                            payload.ids ||
+                                            payload.data ||
+                                            []
+                                        );
+
+                            } catch(error) {
+
+                                console.warn(
+                                    "Worker ID response could not be parsed:",
+                                    error
+                                );
+
+                            }
+
+                        }
+
+                        /*
+                         * Merge by ID.
+                         *
+                         * Worker data remains the main record.
+                         * GitHub static data supplies/fixes showcase fields.
+                         */
+
+                        const mergedMap =
+                            new Map();
+
+                        staticIDs
+                            .filter(
+                                item =>
+                                    item &&
+                                    item.id
+                            )
+                            .forEach(
+                                function(item) {
+
+                                    mergedMap.set(
+                                        String(item.id),
+                                        {
+                                            ...item
+                                        }
+                                    );
+
+                                }
+                            );
+
+                        workerIDs
+                            .filter(
+                                item =>
+                                    item &&
+                                    item.id
+                            )
+                            .forEach(
+                                function(item) {
+
+                                    const key =
+                                        String(item.id);
+
+                                    mergedMap.set(
+                                        key,
+                                        {
+                                            ...(mergedMap.get(key) || {}),
+                                            ...item,
+
+                                            /*
+                                             * Preserve showcase fields
+                                             * from the static JSON when
+                                             * the Worker does not return them.
+                                             */
+                                            showcase:
+                                                item.showcase ??
+                                                mergedMap.get(key)?.showcase,
+
+                                            showcaseImage:
+                                                item.showcaseImage ??
+                                                item.showcase_image ??
+                                                mergedMap.get(key)?.showcaseImage ??
+                                                mergedMap.get(key)?.showcase_image
+
+                                        }
+                                    );
+
+                                }
+                            );
+
+                        const ids =
+                            Array.from(
+                                mergedMap.values()
+                            );
+
+                        if (!ids.length) {
+
                             showPlaceholder();
                             return;
+
                         }
 
                         const validIDs =
                             ids.filter(
                                 function(item) {
+
                                     return (
                                         item &&
                                         item.id
                                     );
+
                                 }
                             );
 
-                        if (!validIDs.length) {
-                            showPlaceholder();
-                            return;
-                        }
-
-                        /*
-                         * Admin controls showcase visibility.
-                         * Accept boolean, numeric and common string values.
-                         */
                         const showcaseIDs =
                             validIDs.filter(
                                 function(item) {
@@ -2087,8 +2204,14 @@
                             );
 
                         if (!showcaseIDs.length) {
+
+                            console.warn(
+                                "No IDs are marked for homepage showcase."
+                            );
+
                             showPlaceholder();
                             return;
+
                         }
 
                         createShowcase(
@@ -2146,9 +2269,12 @@
                                 `${GITHUB_BASE}/assets/ids/` +
                                 `${encodeURIComponent(id)}/01.jpg`;
 
+                            /*
+                             * First failure:
+                             * try the normal ID main/card image.
+                             */
                             if (
-                                image.src !== fallback &&
-                                fallback
+                                image.src !== fallback
                             ) {
 
                                 image.onerror =
@@ -2160,7 +2286,9 @@
                                                     slide.image === image
                                             );
 
-                                        if (failedIndex >= 0) {
+                                        if (
+                                            failedIndex >= 0
+                                        ) {
                                             slides.splice(
                                                 failedIndex,
                                                 1
@@ -2169,7 +2297,9 @@
 
                                         image.remove();
 
-                                        if (!slides.length) {
+                                        if (
+                                            !slides.length
+                                        ) {
                                             showPlaceholder();
                                         } else {
                                             currentIndex =
@@ -2189,6 +2319,7 @@
                                     fallback;
 
                                 return;
+
                             }
 
                             const failedIndex =
@@ -2197,7 +2328,9 @@
                                         slide.image === image
                                 );
 
-                            if (failedIndex >= 0) {
+                            if (
+                                failedIndex >= 0
+                            ) {
                                 slides.splice(
                                     failedIndex,
                                     1
@@ -2219,6 +2352,7 @@
                                     currentIndex
                                 );
                             }
+
                         };
 
                         imagesContainer.appendChild(image);
@@ -2338,45 +2472,57 @@
 
                     const value =
                         String(
-                            image || ""
+                            image
                         ).trim();
 
-                    if (!value) {
-                        return (
-                            `${GITHUB_BASE}/assets/ids/` +
-                            `${encodeURIComponent(id)}/01.jpg`
-                        );
-                    }
 
                     if (
-                        value.startsWith("http://") ||
-                        value.startsWith("https://")
+                        value.startsWith(
+                            "http://"
+                        ) ||
+                        value.startsWith(
+                            "https://"
+                        )
                     ) {
+
                         return value;
+
                     }
 
+
                     if (
-                        value.startsWith("/")
+                        value.startsWith(
+                            "/"
+                        )
                     ) {
+
                         return (
                             GITHUB_BASE +
                             value
                         );
+
                     }
 
+
                     if (
-                        value.startsWith("assets/")
+                        value.startsWith(
+                            "assets/"
+                        )
                     ) {
+
                         return (
                             GITHUB_BASE +
                             "/" +
                             value
                         );
+
                     }
 
+
                     return (
-                        `${GITHUB_BASE}/assets/ids/` +
-                        `${encodeURIComponent(id)}/${value}`
+                        `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
+                            id
+                        )}/${value}`
                     );
 
                 }
