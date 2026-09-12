@@ -2050,18 +2050,23 @@
 
                         }
 
-                        const showcaseIDs = validIDs.filter(item => {
-                            const showcaseValue = String(item.showcase ?? "").trim().toLowerCase();
-                            const showcaseEnabled =
+                        const showcaseIDs = validIDs.filter(function (item) {
+                            const value = String(item.showcase ?? "").trim().toLowerCase();
+
+                            return (
                                 item.showcase === true ||
                                 item.showcase === 1 ||
-                                showcaseValue === "yes" ||
-                                showcaseValue === "true" ||
-                                showcaseValue === "1" ||
-                                showcaseValue === "on";
-
-                            return showcaseEnabled;
+                                value === "yes" ||
+                                value === "true" ||
+                                value === "1" ||
+                                value === "on"
+                            );
                         });
+
+                        if (showcaseIDs.length === 0) {
+                            showPlaceholder();
+                            return;
+                        }
 
                         createShowcase(showcaseIDs);
 
