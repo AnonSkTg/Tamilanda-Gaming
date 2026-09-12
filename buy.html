@@ -947,29 +947,107 @@ document.addEventListener(
 
         function resolveImageURL(image, id) {
             if (!image) return "";
-            const value = String(image).trim();
 
-            if (value.startsWith("http://") || value.startsWith("https://")) {
+            const value =
+                String(image).trim();
+
+            if (!value) return "";
+
+            if (
+                value.startsWith("http://") ||
+                value.startsWith("https://")
+            ) {
                 return value;
             }
+
+            /*
+             * Dynamically uploaded assets are stored in GitHub.
+             * Use raw.githubusercontent.com for "assets/..." paths
+             * so newly uploaded images do not depend on GitHub Pages
+             * deployment/cache timing.
+             */
+            if (value.startsWith("assets/")) {
+                return (
+                    "https://raw.githubusercontent.com/" +
+                    "AnonSkTg/Tamilanda-Gaming/main/" +
+                    value
+                );
+            }
+
             if (value.startsWith("/")) {
                 return GITHUB_PAGES + value;
             }
-            if (value.startsWith("assets/")) {
-                return GITHUB_PAGES + "/" + value;
-            }
-            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/${value}`;
+
+            return (
+                `${GITHUB_PAGES}/assets/ids/` +
+                `${encodeURIComponent(id)}/${value}`
+            );
         }
 
         function getImageURL(item) {
-            const id = String(item.id || item.idNumber || item.number || "").trim();
+
+            const id =
+                String(
+                    item.id ||
+                    item.idNumber ||
+                    item.number ||
+                    ""
+                ).trim();
+
             if (!id) return "";
 
-            if (Array.isArray(item.images) && item.images.length > 0) {
-                return resolveImageURL(item.images[0], id);
+            /*
+             * Priority:
+             *
+             * 1. Normal ID image
+             * 2. Showcase image
+             * 3. Conventional 01.jpg path
+             *
+             * This is important because an ID may have only the
+             * showcase image uploaded.
+             */
+
+            if (
+                Array.isArray(item.images) &&
+                item.images.length > 0
+            ) {
+
+                const normalImage =
+                    resolveImageURL(
+                        item.images[0],
+                        id
+                    );
+
+                if (normalImage) {
+                    return normalImage;
+                }
+
             }
 
-            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
+            const showcaseImage =
+                item.showcaseImage ||
+                item.showcase_image ||
+                item.heroImage ||
+                "";
+
+            if (showcaseImage) {
+
+                const showcaseURL =
+                    resolveImageURL(
+                        showcaseImage,
+                        id
+                    );
+
+                if (showcaseURL) {
+                    return showcaseURL;
+                }
+
+            }
+
+            return (
+                `${GITHUB_PAGES}/assets/ids/` +
+                `${encodeURIComponent(id)}/01.jpg`
+            );
         }
 
         function getTags(item) {
