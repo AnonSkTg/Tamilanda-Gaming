@@ -255,14 +255,6 @@
 
             position: absolute;
 
-            /*
-             * This hero image must always be painted.
-             * The global stylesheet uses content-visibility:auto
-             * for images, which can interfere with an absolutely
-             * positioned slider image.
-             */
-            content-visibility: visible !important;
-
             inset: 0;
 
             width: 100%;
@@ -453,11 +445,51 @@
 
         .hero-slider .slider-card {
 
+            /*
+             * IMPORTANT:
+             * The slider card must fill the .hero-slider.
+             * Without an explicit height, the child showcase
+             * has no reliable containing height for height:100%.
+             * That makes the dynamic image area collapse/paint
+             * incorrectly even though the data and slide exist.
+             */
+            width:100%;
+            height:100%;
+            min-height:0;
+            position:relative;
+
             transition:
                 border-color 0.35s ease,
                 box-shadow 0.35s ease,
                 transform 0.35s ease;
 
+        }
+
+        /*
+         * Make the dynamic image layer fill the complete card.
+         */
+        #showcaseImages{
+            position:absolute;
+            inset:0;
+            width:100%;
+            height:100%;
+            z-index:1;
+        }
+
+        /*
+         * The site-wide stylesheet uses content-visibility:auto
+         * on images. The hero showcase is an absolutely positioned,
+         * animated image layer, so explicitly keep it paintable.
+         */
+        .showcase-image{
+            content-visibility:visible !important;
+            visibility:visible;
+        }
+
+        .showcase-image.active{
+            opacity:1 !important;
+            visibility:visible;
+            z-index:2;
         }
 
 
@@ -1997,81 +2029,27 @@
 
                     try {
 
-                        let ids = [];
+                        const response =
+                            await fetch(
+                                `${API_BASE}/api/ids`,
+                                {
+                                    cache: "no-store"
+                                }
+                            );
 
-                        /*
-                         * Read the GitHub JSON first because it is the
-                         * exact database used by the uploaded showcase image.
-                         */
-                        try {
 
-                            const staticResponse =
-                                await fetch(
-                                    `${GITHUB_BASE}/data/ids.json?cb=${Date.now()}`,
-                                    {
-                                        cache: "no-store"
-                                    }
-                                );
+                        if (!response.ok) {
 
-                            if (staticResponse.ok) {
-
-                                const staticPayload =
-                                    await staticResponse.json();
-
-                                ids =
-                                    Array.isArray(staticPayload)
-                                        ? staticPayload
-                                        : (
-                                            staticPayload.ids ||
-                                            staticPayload.data ||
-                                            []
-                                        );
-
-                            }
-
-                        } catch(error) {
-
-                            console.warn(
-                                "Static ID JSON unavailable:",
-                                error
+                            throw new Error(
+                                "Failed to load IDs"
                             );
 
                         }
 
-                        /*
-                         * Fallback to Worker API.
-                         */
-                        if (!ids.length) {
 
-                            const response =
-                                await fetch(
-                                    `${API_BASE}/api/ids?cb=${Date.now()}`,
-                                    {
-                                        cache: "no-store"
-                                    }
-                                );
+                        const ids =
+                            await response.json();
 
-                            if (!response.ok) {
-
-                                throw new Error(
-                                    "Failed to load IDs"
-                                );
-
-                            }
-
-                            const payload =
-                                await response.json();
-
-                            ids =
-                                Array.isArray(payload)
-                                    ? payload
-                                    : (
-                                        payload.ids ||
-                                        payload.data ||
-                                        []
-                                    );
-
-                        }
 
                         if (
                             !Array.isArray(ids) ||
@@ -2079,13 +2057,19 @@
                         ) {
 
                             showPlaceholder();
+
                             return;
 
                         }
 
+
+                        /*
+                         * Only use IDs that have a valid ID value.
+                         */
+
                         const validIDs =
                             ids.filter(
-                                function(item) {
+                                function (item) {
 
                                     return (
                                         item &&
@@ -2095,44 +2079,27 @@
                                 }
                             );
 
-                        const showcaseIDs =
-                            validIDs.filter(
-                                function(item) {
 
-                                    const showcaseValue =
-                                        String(
-                                            item.showcase ?? ""
-                                        )
-                                        .trim()
-                                        .toLowerCase();
+                        if (
+                            validIDs.length === 0
+                        ) {
 
-                                    return (
-                                        item.showcase === true ||
-                                        item.showcase === 1 ||
-                                        showcaseValue === "yes" ||
-                                        showcaseValue === "true" ||
-                                        showcaseValue === "1" ||
-                                        showcaseValue === "on"
-                                    );
-
-                                }
-                            );
-
-                        console.log(
-                            "Tamilanda Showcase IDs:",
-                            showcaseIDs
-                        );
-
-                        if (!showcaseIDs.length) {
                             showPlaceholder();
+
                             return;
+
                         }
 
-                        createShowcase(
-                            showcaseIDs
-                        );
+                        const showcaseIDs = validIDs.filter(item => {
+                            const showcaseEnabled = item.showcase === true || String(item.showcase || "").toLowerCase() === "yes";
+                            const sold = String(item.status || "").toLowerCase() === "sold";
+                            return showcaseEnabled && !sold;
+                        });
 
-                    } catch(error) {
+                        createShowcase(showcaseIDs);
+
+
+                    } catch (error) {
 
                         console.error(
                             "Showcase error:",
@@ -2178,39 +2145,15 @@
                         image.loading = slides.length === 0 ? "eager" : "lazy";
 
                         image.onerror = function () {
-
-                            console.error(
-                                "SHOWCASE IMAGE LOAD FAILED:",
-                                image.src
-                            );
-
-                            const failedIndex =
-                                slides.findIndex(
-                                    slide =>
-                                        slide.image === image
-                                );
-
+                            const failedIndex = slides.findIndex(slide => slide.image === image);
                             if (failedIndex >= 0) {
-                                slides.splice(
-                                    failedIndex,
-                                    1
-                                );
+                                slides.splice(failedIndex, 1);
                             }
-
                             image.remove();
-
-                            if (!slides.length) {
-                                showPlaceholder();
-                            } else {
-                                currentIndex =
-                                    Math.min(
-                                        currentIndex,
-                                        slides.length - 1
-                                    );
-
-                                showSlide(
-                                    currentIndex
-                                );
+                            if (!slides.length) showPlaceholder();
+                            else {
+                                currentIndex = Math.min(currentIndex, slides.length - 1);
+                                showSlide(currentIndex);
                             }
                         };
 
@@ -2331,12 +2274,9 @@
 
                     const value =
                         String(
-                            image || ""
+                            image
                         ).trim();
 
-                    if (!value) {
-                        return "";
-                    }
 
                     if (
                         value.startsWith(
@@ -2346,22 +2286,11 @@
                             "https://"
                         )
                     ) {
+
                         return value;
-                    }
-
-                    if (
-                        value.startsWith(
-                            "assets/"
-                        )
-                    ) {
-
-                        return (
-                            "https://raw.githubusercontent.com/" +
-                            "AnonSkTg/Tamilanda-Gaming/main/" +
-                            value
-                        );
 
                     }
+
 
                     if (
                         value.startsWith(
@@ -2375,6 +2304,22 @@
                         );
 
                     }
+
+
+                    if (
+                        value.startsWith(
+                            "assets/"
+                        )
+                    ) {
+
+                        return (
+                            GITHUB_BASE +
+                            "/" +
+                            value
+                        );
+
+                    }
+
 
                     return (
                         `${GITHUB_BASE}/assets/ids/${encodeURIComponent(
