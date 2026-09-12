@@ -1157,7 +1157,7 @@ document.addEventListener(
             } else if (sortValue === "high-level") {
                 filtered.sort((a,b) => Number(b.level || 0) - Number(a.level || 0));
             } else if (sortValue === "low-level") {
-                filtered.sort((a,b) => Number(a.level || 0) - Number(a.level || 0));
+                filtered.sort((a,b) => Number(a.level || 0) - Number(b.level || 0));
             }
 
             if (filtered.length === 0) {
