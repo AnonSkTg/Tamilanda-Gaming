@@ -5,17 +5,26 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
 <title>Admin Panel | Tamilanda Gaming</title>
 
 <style>
 
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -29,10 +38,9 @@ body{
     display:none!important;
 }
 
-
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .admin-header{
     padding:18px 5%;
@@ -91,10 +99,9 @@ body{
     font-weight:700;
 }
 
-
-/* =========================
+/* =========================================================
    CONTAINER
-========================= */
+========================================================= */
 
 .admin-container{
     width:92%;
@@ -132,10 +139,9 @@ h1{
     line-height:1.6;
 }
 
-
-/* =========================
+/* =========================================================
    CARDS
-========================= */
+========================================================= */
 
 .admin-card{
     background:#101010;
@@ -161,10 +167,9 @@ h1{
     margin-bottom:20px;
 }
 
-
-/* =========================
+/* =========================================================
    FORM
-========================= */
+========================================================= */
 
 .form-grid{
     display:grid;
@@ -177,7 +182,6 @@ h1{
 
 .field{
     display:flex;
-
     flex-direction:column;
 
     gap:7px;
@@ -187,7 +191,6 @@ label{
     color:#aaa;
 
     font-size:10px;
-
     font-weight:800;
 
     letter-spacing:.8px;
@@ -213,18 +216,19 @@ textarea{
     outline:none;
 
     font-family:inherit;
-
     font-size:13px;
 }
 
 input,
 select{
+
     min-height:45px;
 
     padding:0 13px;
 }
 
 textarea{
+
     min-height:190px;
 
     padding:13px;
@@ -237,13 +241,18 @@ textarea{
 input:focus,
 select:focus,
 textarea:focus{
+
     border-color:#ffb000;
 }
 
+input::placeholder,
+textarea::placeholder{
+    color:#555;
+}
 
-/* =========================
+/* =========================================================
    STATUS SELECT
-========================= */
+========================================================= */
 
 .status-select{
     border-color:
@@ -258,12 +267,29 @@ textarea:focus{
     color:#ff7777;
 }
 
+/* =========================================================
+   SHOWCASE SELECT
+========================================================= */
 
-/* =========================
+.showcase-select{
+    border-color:
+        rgba(255,176,0,.25);
+}
+
+.showcase-select.yes{
+    color:#ffb000;
+}
+
+.showcase-select.no{
+    color:#777;
+}
+
+/* =========================================================
    IMAGE UPLOAD
-========================= */
+========================================================= */
 
 .image-grid{
+
     display:grid;
 
     grid-template-columns:
@@ -291,7 +317,6 @@ textarea:focus{
     color:#777;
 
     font-size:9px;
-
     font-weight:800;
 
     margin-bottom:10px;
@@ -340,6 +365,78 @@ textarea:focus{
     color:#ff7777;
 }
 
+/* =========================================================
+   SHOWCASE IMAGE
+========================================================= */
+
+.showcase-image-box{
+
+    padding:16px;
+
+    margin-bottom:16px;
+
+    border:
+        1px dashed rgba(255,176,0,.30);
+
+    border-radius:13px;
+
+    background:
+        rgba(255,176,0,.035);
+}
+
+.showcase-image-box > span{
+
+    display:block;
+
+    color:#ffb000;
+
+    font-size:10px;
+    font-weight:900;
+
+    letter-spacing:.8px;
+
+    margin-bottom:10px;
+}
+
+.showcase-preview{
+
+    display:none;
+
+    margin-top:12px;
+
+    width:100%;
+
+    max-height:260px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+
+    border:
+        1px solid rgba(255,176,0,.18);
+}
+
+.showcase-preview.show{
+    display:block;
+}
+
+.showcase-current{
+
+    margin-top:9px;
+
+    color:#65d98a;
+
+    font-size:9px;
+
+    line-height:1.5;
+
+    word-break:break-all;
+}
+
+/* =========================================================
+   HELP TEXT
+========================================================= */
+
 .help-text{
 
     margin-top:12px;
@@ -351,10 +448,9 @@ textarea:focus{
     line-height:1.7;
 }
 
-
-/* =========================
+/* =========================================================
    BUTTONS
-========================= */
+========================================================= */
 
 .button-row{
 
@@ -380,7 +476,6 @@ button{
     font-family:inherit;
 
     font-size:11px;
-
     font-weight:900;
 
     letter-spacing:.5px;
@@ -420,10 +515,9 @@ button:disabled{
     color:#ff7777;
 }
 
-
-/* =========================
+/* =========================================================
    STATUS MESSAGE
-========================= */
+========================================================= */
 
 .status{
 
@@ -465,15 +559,18 @@ button:disabled{
         rgba(255,50,50,.07);
 }
 
-
-/* =========================
-   SAVED IDS SEARCH
-========================= */
+/* =========================================================
+   SAVED SEARCH
+========================================================= */
 
 .saved-search{
+
     display:flex;
+
     gap:10px;
+
     align-items:center;
+
     margin-bottom:12px;
 }
 
@@ -482,14 +579,17 @@ button:disabled{
 }
 
 .saved-search-count{
+
     color:#777;
+
     font-size:11px;
+
     white-space:nowrap;
 }
 
-/* =========================
-   SAVED IDS
-========================= */
+/* =========================================================
+   SAVED LIST
+========================================================= */
 
 .saved-list{
 
@@ -531,11 +631,17 @@ button:disabled{
         translateY(-2px);
 }
 
+.saved-info{
+    min-width:0;
+}
+
 .saved-info strong{
 
     display:block;
 
     font-size:13px;
+
+    word-break:break-word;
 }
 
 .saved-info span{
@@ -547,6 +653,10 @@ button:disabled{
     color:#777;
 
     font-size:10px;
+
+    line-height:1.5;
+
+    word-break:break-word;
 }
 
 .saved-actions{
@@ -556,6 +666,8 @@ button:disabled{
     gap:7px;
 
     align-items:center;
+
+    flex-shrink:0;
 }
 
 .small-btn{
@@ -589,10 +701,20 @@ button:disabled{
         1px solid rgba(255,50,50,.15);
 }
 
+.visibility-btn{
 
-/* =========================
-   SAVED STATUS BADGE
-========================= */
+    background:
+        rgba(100,150,255,.08);
+
+    color:#8db8ff;
+
+    border:
+        1px solid rgba(100,150,255,.15);
+}
+
+/* =========================================================
+   BADGES
+========================================================= */
 
 .saved-status{
 
@@ -609,7 +731,6 @@ button:disabled{
     border-radius:6px;
 
     font-size:8px;
-
     font-weight:900;
 
     letter-spacing:.5px;
@@ -637,6 +758,32 @@ button:disabled{
         1px solid rgba(255,50,50,.14);
 }
 
+.showcase-badge{
+
+    display:inline-flex;
+
+    margin-left:7px;
+
+    padding:4px 7px;
+
+    border-radius:6px;
+
+    color:#ffb000;
+
+    background:
+        rgba(255,176,0,.08);
+
+    border:
+        1px solid rgba(255,176,0,.14);
+
+    font-size:8px;
+    font-weight:900;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
 .empty{
 
     padding:30px;
@@ -648,10 +795,141 @@ button:disabled{
     font-size:12px;
 }
 
+/* =========================================================
+   REVIEWS
+========================================================= */
 
-/* =========================
+.review-preview-box{
+
+    display:none;
+
+    margin-top:12px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:#0d0d0d;
+
+    border:
+        1px solid rgba(255,255,255,.07);
+}
+
+.review-preview-box.show{
+    display:block;
+}
+
+.review-preview-box img{
+
+    display:block;
+
+    width:100%;
+
+    max-height:420px;
+
+    object-fit:contain;
+
+    border-radius:9px;
+
+    background:#080808;
+}
+
+.review-stars{
+
+    display:flex;
+
+    gap:5px;
+
+    margin-top:8px;
+}
+
+.review-star{
+
+    font-size:25px;
+
+    cursor:pointer;
+
+    color:#444;
+
+    transition:
+        color .15s ease,
+        transform .15s ease;
+}
+
+.review-star.active{
+
+    color:#ffb000;
+
+    transform:scale(1.05);
+}
+
+.review-card{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:flex-start;
+}
+
+.review-thumb{
+
+    width:80px;
+
+    height:80px;
+
+    flex-shrink:0;
+
+    border-radius:9px;
+
+    object-fit:cover;
+
+    background:#080808;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+}
+
+.review-meta{
+    min-width:0;
+}
+
+.review-meta strong{
+
+    display:block;
+
+    font-size:13px;
+
+    word-break:break-word;
+}
+
+.review-rating{
+
+    margin-top:5px;
+
+    color:#ffb000;
+
+    font-size:12px;
+}
+
+.review-visibility{
+
+    margin-top:5px;
+
+    color:#65d98a;
+
+    font-size:9px;
+
+    font-weight:800;
+}
+
+.review-visibility.hidden-review{
+    color:#777;
+}
+
+/* =========================================================
    LOGIN
-========================= */
+========================================================= */
 
 .login-screen{
 
@@ -732,14 +1010,14 @@ button:disabled{
     line-height:1.5;
 }
 
-
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:650px){
 
     .admin-header{
+
         padding:13px 4%;
     }
 
@@ -748,35 +1026,71 @@ button:disabled{
     }
 
     .admin-container{
+
         width:92%;
 
         margin-top:30px;
     }
 
     .admin-card{
+
         padding:18px;
     }
 
     .form-grid{
+
         grid-template-columns:1fr;
     }
 
     .image-grid{
+
         grid-template-columns:1fr;
     }
 
     .saved-item{
+
         align-items:flex-start;
 
         flex-direction:column;
     }
 
     .saved-actions{
+
         width:100%;
     }
 
     .small-btn{
+
         flex:1;
+    }
+
+    .review-card{
+
+        flex-direction:column;
+    }
+
+    .review-thumb{
+
+        width:100%;
+
+        height:180px;
+    }
+
+    .button-row button{
+
+        flex:1;
+    }
+
+    .saved-search{
+
+        align-items:stretch;
+
+        flex-direction:column;
+    }
+
+    .saved-search-count{
+
+        text-align:right;
     }
 
 }
@@ -790,7 +1104,7 @@ button:disabled{
 
 
 <!-- =====================================================
-     LOGIN
+     LOGIN SCREEN
 ===================================================== -->
 
 <section
@@ -917,6 +1231,7 @@ button:disabled{
 <div class="card-title">
     01 — ID INFORMATION
 </div>
+
 
 <div class="form-grid">
 
@@ -1080,10 +1395,6 @@ button:disabled{
 </div>
 
 
-<!-- =====================================================
-     AVAILABILITY STATUS
-===================================================== -->
-
 <div class="field">
 
 <label>
@@ -1107,13 +1418,46 @@ button:disabled{
 </div>
 
 
+<!-- SHOWCASE -->
+
+<div class="field">
+
+<label>
+    FEATURE ON HOMEPAGE SHOWCASE
+</label>
+
+<select
+    id="idShowcase"
+    class="showcase-select">
+
+    <option value="yes">
+        ⭐ YES — SHOW ON HOMEPAGE
+    </option>
+
+    <option value="no">
+        NO
+    </option>
+
+</select>
+
 </div>
+
+
+</div>
+
+
+<p class="help-text">
+
+    ⭐ YES = This ID can appear in the homepage showcase slider.<br>
+    ⭐ NO = This ID will not appear in the homepage showcase.
+
+</p>
 
 </section>
 
 
 <!-- =====================================================
-     02 IMAGES
+     02 ID IMAGES
 ===================================================== -->
 
 <section class="admin-card">
@@ -1123,13 +1467,48 @@ button:disabled{
 </div>
 
 
+<!-- SHOWCASE HERO IMAGE -->
+
+<div
+    class="showcase-image-box">
+
+    <span>
+        ⭐ HOMEPAGE HERO SHOWCASE IMAGE
+    </span>
+
+    <input
+        type="file"
+        id="showcaseImageFile"
+        accept="image/*">
+
+    <small
+        class="image-status"
+        id="showcaseImageStatus">
+
+        No showcase image selected
+
+    </small>
+
+    <img
+        id="showcasePreview"
+        class="showcase-preview"
+        alt="Showcase Preview">
+
+    <div
+        id="showcaseCurrent"
+        class="showcase-current">
+    </div>
+
+</div>
+
+
 <div class="image-grid">
 
 
 <div class="image-box">
 
 <span>
-IMAGE 1 — MAIN / CARD
+    IMAGE 1 — MAIN / CARD
 </span>
 
 <input
@@ -1151,7 +1530,7 @@ IMAGE 1 — MAIN / CARD
 <div class="image-box">
 
 <span>
-IMAGE 2
+    IMAGE 2
 </span>
 
 <input
@@ -1173,7 +1552,7 @@ IMAGE 2
 <div class="image-box">
 
 <span>
-IMAGE 3
+    IMAGE 3
 </span>
 
 <input
@@ -1195,7 +1574,7 @@ IMAGE 3
 <div class="image-box">
 
 <span>
-IMAGE 4
+    IMAGE 4
 </span>
 
 <input
@@ -1217,7 +1596,7 @@ IMAGE 4
 <div class="image-box">
 
 <span>
-IMAGE 5
+    IMAGE 5
 </span>
 
 <input
@@ -1239,7 +1618,7 @@ IMAGE 5
 <div class="image-box">
 
 <span>
-IMAGE 6
+    IMAGE 6
 </span>
 
 <input
@@ -1264,9 +1643,8 @@ IMAGE 6
 <p class="help-text">
 
     📷 Image 1 = Main / Card image.<br>
-
     📷 Image 2–6 = View ID gallery images.<br>
-
+    ⭐ Showcase image = Homepage hero slider image.<br>
     🚀 File name, folder and GitHub path are created automatically.
 
 </p>
@@ -1306,7 +1684,7 @@ IMAGE 6
 
 
 <!-- =====================================================
-     04 SAVE
+     04 SAVE ID
 ===================================================== -->
 
 <section class="admin-card">
@@ -1315,8 +1693,8 @@ IMAGE 6
     04 — SAVE ID
 </div>
 
-<div class="button-row">
 
+<div class="button-row">
 
 <button
     class="save-btn"
@@ -1344,7 +1722,6 @@ IMAGE 6
 
 </button>
 
-
 </div>
 
 
@@ -1366,6 +1743,7 @@ IMAGE 6
     05 — SAVED IDS
 </div>
 
+
 <div class="saved-search">
 
 <input
@@ -1377,10 +1755,13 @@ IMAGE 6
 <div
     class="saved-search-count"
     id="savedSearchCount">
+
     0 IDs
+
 </div>
 
 </div>
+
 
 <div
     class="saved-list"
@@ -1395,6 +1776,180 @@ IMAGE 6
 </section>
 
 
+<!-- =====================================================
+     06 CUSTOMER REVIEWS
+===================================================== -->
+
+<section class="admin-card">
+
+<div class="card-title">
+    06 — CUSTOMER REVIEWS
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="field">
+
+<label>
+    BUYER NAME
+</label>
+
+<input
+    type="text"
+    id="reviewBuyerName"
+    placeholder="Buyer Name">
+
+</div>
+
+
+<div class="field">
+
+<label>
+    RATING
+</label>
+
+<select id="reviewRating">
+
+    <option value="5">
+        ⭐⭐⭐⭐⭐ — 5
+    </option>
+
+    <option value="4">
+        ⭐⭐⭐⭐ — 4
+    </option>
+
+    <option value="3">
+        ⭐⭐⭐ — 3
+    </option>
+
+    <option value="2">
+        ⭐⭐ — 2
+    </option>
+
+    <option value="1">
+        ⭐ — 1
+    </option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<div
+    class="field"
+    style="margin-top:16px;">
+
+<label>
+    REVIEW SCREENSHOT
+</label>
+
+<input
+    type="file"
+    id="reviewImageFile"
+    accept="image/*">
+
+<small
+    class="image-status"
+    id="reviewImageStatus">
+
+    No review screenshot selected
+
+</small>
+
+</div>
+
+
+<div
+    id="reviewPreviewBox"
+    class="review-preview-box">
+
+<img
+    id="reviewPreviewImg"
+    alt="Review Preview">
+
+</div>
+
+
+<div
+    class="button-row"
+    style="margin-top:16px;">
+
+<button
+    class="save-btn"
+    id="saveReviewBtn">
+
+    ADD REVIEW
+
+</button>
+
+
+<button
+    class="clear-btn"
+    id="clearReviewBtn">
+
+    CLEAR
+
+</button>
+
+</div>
+
+
+<div
+    class="status"
+    id="reviewStatus">
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     07 SAVED REVIEWS
+===================================================== -->
+
+<section class="admin-card">
+
+<div class="card-title">
+    07 — SAVED REVIEWS
+</div>
+
+
+<div class="saved-search">
+
+<input
+    type="search"
+    id="reviewSearch"
+    placeholder="🔍 Search buyer name..."
+    autocomplete="off">
+
+<div
+    class="saved-search-count"
+    id="reviewSearchCount">
+
+    0 Reviews
+
+</div>
+
+</div>
+
+
+<div
+    class="saved-list"
+    id="reviewList">
+
+    <div class="empty">
+        Loading reviews...
+    </div>
+
+</div>
+
+</section>
+
+
 </main>
 
 </div>
@@ -1402,10 +1957,9 @@ IMAGE 6
 
 <script>
 
-
-/* =====================================================
+/* =========================================================
    WORKER
-===================================================== */
+========================================================= */
 
 const WORKER_URL =
     "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
@@ -1415,10 +1969,18 @@ let ADMIN_KEY = "";
 
 let editingId = null;
 
+let allSavedIDs = [];
 
-/* =====================================================
+let savedSearchTerm = "";
+
+let allReviews = [];
+
+let reviewSearchTerm = "";
+
+
+/* =========================================================
    API REQUEST
-===================================================== */
+========================================================= */
 
 async function apiRequest(
     path,
@@ -1473,9 +2035,7 @@ async function apiRequest(
         throw new Error(
 
             data.details ||
-
             data.error ||
-
             `Request failed (${response.status})`
 
         );
@@ -1488,9 +2048,9 @@ async function apiRequest(
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGIN
-===================================================== */
+========================================================= */
 
 document
 .getElementById("loginBtn")
@@ -1536,10 +2096,8 @@ async function(){
 
         const response =
             await fetch(
-
                 WORKER_URL +
                 "/api/admin/login",
-
                 {
                     method:"POST",
 
@@ -1553,7 +2111,6 @@ async function(){
                             key:key
                         })
                 }
-
             );
 
 
@@ -1580,9 +2137,7 @@ async function(){
             throw new Error(
 
                 data.details ||
-
                 data.error ||
-
                 "Invalid Admin Key"
 
             );
@@ -1618,6 +2173,8 @@ async function(){
 
         await loadIDs();
 
+        await loadReviews();
+
 
     }catch(error){
 
@@ -1640,9 +2197,9 @@ async function(){
 });
 
 
-/* =====================================================
+/* =========================================================
    ENTER TO LOGIN
-===================================================== */
+========================================================= */
 
 document
 .getElementById("adminKey")
@@ -1661,12 +2218,9 @@ function(event){
 });
 
 
-/* =====================================================
+/* =========================================================
    LOAD IDS
-===================================================== */
-
-let allSavedIDs = [];
-let savedSearchTerm = "";
+========================================================= */
 
 async function loadIDs(){
 
@@ -1699,11 +2253,11 @@ async function loadIDs(){
                 );
 
 
-        allSavedIDs = ids;
+        allSavedIDs =
+            ids;
 
-        renderIDs(
-            ids
-        );
+
+        renderIDs(ids);
 
 
     }catch(error){
@@ -1727,9 +2281,9 @@ async function loadIDs(){
 }
 
 
-/* =====================================================
+/* =========================================================
    GET FORM DATA
-===================================================== */
+========================================================= */
 
 function getFormData(){
 
@@ -1741,11 +2295,13 @@ function getFormData(){
             .value
             .trim(),
 
+
         name:
             document
             .getElementById("idName")
             .value
             .trim(),
+
 
         price:
             Number(
@@ -1755,6 +2311,7 @@ function getFormData(){
                 0
             ),
 
+
         level:
             Number(
                 document
@@ -1763,11 +2320,13 @@ function getFormData(){
                 0
             ),
 
+
         prime:
             document
             .getElementById("idPrime")
             .value
             .trim(),
+
 
         vault:
             document
@@ -1775,16 +2334,19 @@ function getFormData(){
             .value
             .trim(),
 
+
         category:
             document
             .getElementById("idCategory")
             .value,
+
 
         badge:
             document
             .getElementById("idBadge")
             .value
             .trim(),
+
 
         popular:
             Number(
@@ -1794,17 +2356,27 @@ function getFormData(){
                 0
             ),
 
+
         status:
             document
             .getElementById("idStatus")
             .value,
 
+
+        showcase:
+            document
+            .getElementById("idShowcase")
+            .value,
+
+
         images:[],
+
 
         description:
             document
             .getElementById("idDescription")
             .value,
+
 
         tags:
             document
@@ -1824,28 +2396,23 @@ function getFormData(){
 }
 
 
-/* =====================================================
+/* =========================================================
    STATUS SELECT COLOR
-===================================================== */
+========================================================= */
 
 document
 .getElementById("idStatus")
 .addEventListener(
 "change",
-function(){
-
-    updateStatusSelectColor();
-
-});
+updateStatusSelectColor
+);
 
 
 function updateStatusSelectColor(){
 
     const select =
         document
-        .getElementById(
-            "idStatus"
-        );
+        .getElementById("idStatus");
 
 
     select.classList.remove(
@@ -1861,12 +2428,46 @@ function updateStatusSelectColor(){
 }
 
 
+/* =========================================================
+   SHOWCASE SELECT COLOR
+========================================================= */
+
+document
+.getElementById("idShowcase")
+.addEventListener(
+"change",
+updateShowcaseSelectColor
+);
+
+
+function updateShowcaseSelectColor(){
+
+    const select =
+        document
+        .getElementById("idShowcase");
+
+
+    select.classList.remove(
+        "yes",
+        "no"
+    );
+
+
+    select.classList.add(
+        select.value
+    );
+
+}
+
+
 updateStatusSelectColor();
 
+updateShowcaseSelectColor();
 
-/* =====================================================
-   FILE INPUT STATUS
-===================================================== */
+
+/* =========================================================
+   IMAGE FILE STATUS
+========================================================= */
 
 for(
     let number = 1;
@@ -1922,9 +2523,89 @@ for(
 }
 
 
-/* =====================================================
+/* =========================================================
+   SHOWCASE FILE STATUS + PREVIEW
+========================================================= */
+
+document
+.getElementById("showcaseImageFile")
+.addEventListener(
+"change",
+function(){
+
+    const file =
+        this.files[0];
+
+
+    const status =
+        document
+        .getElementById(
+            "showcaseImageStatus"
+        );
+
+
+    const preview =
+        document
+        .getElementById(
+            "showcasePreview"
+        );
+
+
+    if(!file){
+
+        status.textContent =
+            "No showcase image selected";
+
+        status.className =
+            "image-status";
+
+
+        preview.src =
+            "";
+
+        preview.classList.remove(
+            "show"
+        );
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "✓ Selected: " +
+        file.name;
+
+
+    status.className =
+        "image-status selected";
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(event){
+
+            preview.src =
+                event.target.result;
+
+            preview.classList.add(
+                "show"
+            );
+
+        };
+
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* =========================================================
    GET IMAGE FILE
-===================================================== */
+========================================================= */
 
 function getImageFile(
     number
@@ -1940,9 +2621,9 @@ function getImageFile(
 }
 
 
-/* =====================================================
+/* =========================================================
    COMPRESS IMAGE
-===================================================== */
+========================================================= */
 
 function compressImage(
     file
@@ -2038,15 +2719,11 @@ function compressImage(
 
 
                         ctx.drawImage(
-
                             image,
-
                             0,
                             0,
-
                             canvas.width,
                             canvas.height
-
                         );
 
 
@@ -2103,9 +2780,9 @@ function compressImage(
 }
 
 
-/* =====================================================
-   UPLOAD ONE IMAGE
-===================================================== */
+/* =========================================================
+   UPLOAD NORMAL ID IMAGE
+========================================================= */
 
 async function uploadOneImage(
     id,
@@ -2141,9 +2818,7 @@ async function uploadOneImage(
 
     const result =
         await apiRequest(
-
             "/api/images",
-
             {
                 method:"POST",
 
@@ -2160,7 +2835,6 @@ async function uploadOneImage(
 
                     })
             }
-
         );
 
 
@@ -2178,9 +2852,9 @@ async function uploadOneImage(
 }
 
 
-/* =====================================================
-   UPLOAD SELECTED IMAGES
-===================================================== */
+/* =========================================================
+   UPLOAD SELECTED ID IMAGES
+========================================================= */
 
 async function uploadSelectedImages(
     id,
@@ -2210,25 +2884,21 @@ async function uploadSelectedImages(
 
 
         if(!file){
-
             continue;
-
         }
 
 
         const path =
             await uploadOneImage(
-
                 id,
-
                 number,
-
                 file
-
             );
 
 
-        images[number - 1] =
+        images[
+            number - 1
+        ] =
             path;
 
     }
@@ -2241,9 +2911,89 @@ async function uploadSelectedImages(
 }
 
 
-/* =====================================================
-   SAVE / UPDATE
-===================================================== */
+/* =========================================================
+   UPLOAD SHOWCASE IMAGE
+=========================================================
+
+   IMPORTANT:
+   This uses the dedicated Worker endpoint:
+
+   POST /api/showcase-image
+
+   The Worker must support this endpoint.
+========================================================= */
+
+async function uploadShowcaseImage(
+    id,
+    file
+){
+
+    if(!file){
+        return null;
+    }
+
+
+    const status =
+        document
+        .getElementById(
+            "showcaseImageStatus"
+        );
+
+
+    status.textContent =
+        "Compressing showcase image...";
+
+
+    status.className =
+        "image-status selected";
+
+
+    const base64 =
+        await compressImage(
+            file
+        );
+
+
+    status.textContent =
+        "Uploading showcase image...";
+
+
+    const result =
+        await apiRequest(
+            "/api/showcase-image",
+            {
+                method:"POST",
+
+                body:
+                    JSON.stringify({
+
+                        id:id,
+
+                        imageData:
+                            base64
+
+                    })
+            }
+        );
+
+
+    status.textContent =
+        "✓ Showcase uploaded: " +
+        result.path;
+
+
+    status.className =
+        "image-status uploaded";
+
+
+    return result.path;
+
+}
+
+
+/* =========================================================
+   SAVE / UPDATE ID
+========================================================= */
 
 document
 .getElementById("saveBtn")
@@ -2302,12 +3052,21 @@ async function(){
             [];
 
 
+        let existingShowcaseImage =
+            "";
+
+
+        /* =================================================
+           GET EXISTING DATA
+        ================================================= */
+
         if(isEditing){
 
             const oldData =
                 await apiRequest(
 
                     "/api/ids/" +
+
                     encodeURIComponent(
                         editingId
                     )
@@ -2324,6 +3083,12 @@ async function(){
 
                     : [];
 
+
+            existingShowcaseImage =
+                oldData.showcaseImage ||
+                oldData.showcase_image ||
+                "";
+
         }
 
 
@@ -2331,16 +3096,14 @@ async function(){
             "SAVING DATA...";
 
 
-        /* =============================================
+        /* =================================================
            NEW ID
-        ============================================= */
+        ================================================= */
 
         if(!isEditing){
 
             await apiRequest(
-
                 "/api/ids",
-
                 {
                     method:"POST",
 
@@ -2349,15 +3112,14 @@ async function(){
                             data
                         )
                 }
-
             );
 
         }
 
 
-        /* =============================================
-           UPLOAD IMAGES
-        ============================================= */
+        /* =================================================
+           NORMAL IMAGES
+        ================================================= */
 
         const hasImages =
             [1,2,3,4,5,6]
@@ -2375,19 +3137,11 @@ async function(){
                 "UPLOADING IMAGES...";
 
 
-            const uploadedImages =
-                await uploadSelectedImages(
-
-                    data.id,
-
-                    existingImages
-
-                );
-
-
             data.images =
-                uploadedImages;
-
+                await uploadSelectedImages(
+                    data.id,
+                    existingImages
+                );
 
         }else{
 
@@ -2397,15 +3151,56 @@ async function(){
         }
 
 
-        /* =============================================
+        /* =================================================
+           SHOWCASE IMAGE
+        ================================================= */
+
+        const showcaseFile =
+            document
+            .getElementById(
+                "showcaseImageFile"
+            )
+            .files[0] || null;
+
+
+        if(showcaseFile){
+
+            button.textContent =
+                "UPLOADING SHOWCASE...";
+
+
+            const showcasePath =
+                await uploadShowcaseImage(
+                    data.id,
+                    showcaseFile
+                );
+
+
+            if(showcasePath){
+
+                data.showcaseImage =
+                    showcasePath;
+
+            }
+
+        }else{
+
+            data.showcaseImage =
+                existingShowcaseImage;
+
+        }
+
+
+        /* =================================================
            UPDATE DATABASE
-        ============================================= */
+        ================================================= */
 
         if(isEditing){
 
             await apiRequest(
 
                 "/api/ids/" +
+
                 encodeURIComponent(
                     editingId
                 ),
@@ -2426,6 +3221,7 @@ async function(){
             await apiRequest(
 
                 "/api/ids/" +
+
                 encodeURIComponent(
                     data.id
                 ),
@@ -2492,9 +3288,9 @@ async function(){
 });
 
 
-/* =====================================================
+/* =========================================================
    EDIT ID
-===================================================== */
+========================================================= */
 
 async function editID(
     id
@@ -2506,6 +3302,7 @@ async function editID(
             await apiRequest(
 
                 "/api/ids/" +
+
                 encodeURIComponent(
                     id
                 )
@@ -2574,10 +3371,6 @@ async function editID(
             "";
 
 
-        /* =============================================
-           STATUS
-        ============================================= */
-
         document
         .getElementById("idStatus")
         .value =
@@ -2585,18 +3378,24 @@ async function editID(
             "available";
 
 
-        updateStatusSelectColor();
+        document
+        .getElementById("idShowcase")
+        .value =
+            data.showcase ||
+            "no";
 
 
         document
         .getElementById("idDescription")
         .value =
-            data.description || "";
+            data.description ||
+            "";
 
 
         document
         .getElementById("idTags")
         .value =
+
             Array.isArray(
                 data.tags
             )
@@ -2605,6 +3404,15 @@ async function editID(
 
                 : "";
 
+
+        updateStatusSelectColor();
+
+        updateShowcaseSelectColor();
+
+
+        /* =================================================
+           NORMAL IMAGE STATUS
+        ================================================= */
 
         for(
             let number = 1;
@@ -2626,11 +3434,21 @@ async function editID(
                 ];
 
 
+            document
+            .getElementById(
+                "imageFile" +
+                number
+            )
+            .value =
+                "";
+
+
             if(path){
 
                 status.textContent =
                     "Current: " +
                     path;
+
 
                 status.className =
                     "image-status uploaded";
@@ -2640,10 +3458,88 @@ async function editID(
                 status.textContent =
                     "No image uploaded";
 
+
                 status.className =
                     "image-status";
 
             }
+
+        }
+
+
+        /* =================================================
+           SHOWCASE CURRENT IMAGE
+        ================================================= */
+
+        document
+        .getElementById(
+            "showcaseImageFile"
+        )
+        .value =
+            "";
+
+
+        const showcaseStatus =
+            document
+            .getElementById(
+                "showcaseImageStatus"
+            );
+
+
+        const showcaseCurrent =
+            document
+            .getElementById(
+                "showcaseCurrent"
+            );
+
+
+        const showcasePreview =
+            document
+            .getElementById(
+                "showcasePreview"
+            );
+
+
+        showcasePreview.src =
+            "";
+
+        showcasePreview.classList.remove(
+            "show"
+        );
+
+
+        const showcasePath =
+            data.showcaseImage ||
+            data.showcase_image ||
+            "";
+
+
+        if(showcasePath){
+
+            showcaseStatus.textContent =
+                "Current showcase image exists";
+
+
+            showcaseStatus.className =
+                "image-status uploaded";
+
+
+            showcaseCurrent.textContent =
+                "Current: " +
+                showcasePath;
+
+        }else{
+
+            showcaseStatus.textContent =
+                "No showcase image uploaded";
+
+
+            showcaseStatus.className =
+                "image-status";
+
+
+            showcaseCurrent.textContent =
+                "";
 
         }
 
@@ -2679,9 +3575,9 @@ async function editID(
 }
 
 
-/* =====================================================
-   DELETE
-===================================================== */
+/* =========================================================
+   DELETE ID
+========================================================= */
 
 async function deleteID(
     id
@@ -2696,9 +3592,7 @@ async function deleteID(
 
 
     if(!confirmed){
-
         return;
-
     }
 
 
@@ -2707,6 +3601,7 @@ async function deleteID(
         await apiRequest(
 
             "/api/ids/" +
+
             encodeURIComponent(
                 id
             ),
@@ -2746,9 +3641,9 @@ async function deleteID(
 }
 
 
-/* =====================================================
+/* =========================================================
    RENDER IDS
-===================================================== */
+========================================================= */
 
 function renderIDs(
     ids
@@ -2760,26 +3655,81 @@ function renderIDs(
             "savedList"
         );
 
-    const term = savedSearchTerm.toLowerCase().trim();
 
-    const filteredIDs = term
-        ? ids.filter(function(data){
-            return String(data.id || "").toLowerCase().includes(term) ||
-                   String(data.name || "").toLowerCase().includes(term);
-        })
-        : ids;
+    const term =
+        savedSearchTerm
+        .toLowerCase()
+        .trim();
 
-    const count = document.getElementById("savedSearchCount");
-    if(count){
-        count.textContent = filteredIDs.length + " ID" + (filteredIDs.length === 1 ? "" : "s");
-    }
+
+    const filteredIDs =
+        term
+
+            ? ids.filter(
+                function(data){
+
+                    return
+
+                        String(
+                            data.id || ""
+                        )
+                        .toLowerCase()
+                        .includes(term)
+
+                        ||
+
+                        String(
+                            data.name || ""
+                        )
+                        .toLowerCase()
+                        .includes(term);
+
+                }
+            )
+
+            : ids;
+
+
+    const count =
+        document
+        .getElementById(
+            "savedSearchCount"
+        );
+
+
+    count.textContent =
+
+        filteredIDs.length +
+
+        " ID" +
+
+        (
+            filteredIDs.length === 1
+                ? ""
+                : "s"
+        );
+
 
     if(!filteredIDs.length){
+
         list.innerHTML =
+
             '<div class="empty">' +
-            (term ? 'No matching IDs found.' : 'No IDs added yet.') +
+
+            (
+                term
+
+                    ? "No matching IDs found."
+
+                    : "No IDs added yet."
+            )
+
+            +
+
             '</div>';
+
         return;
+
     }
 
 
@@ -2824,15 +3774,14 @@ function renderIDs(
             "Unnamed ID";
 
 
-        /* =============================================
-           STATUS BADGE
-        ============================================= */
+        /* STATUS */
 
         const status =
             String(
                 data.status ||
                 "available"
-            ).toLowerCase();
+            )
+            .toLowerCase();
 
 
         const statusBadge =
@@ -2844,22 +3793,61 @@ function renderIDs(
 
         statusBadge.className =
             "saved-status " +
+
             (
                 status === "sold"
+
                     ? "sold"
+
                     : "available"
             );
 
 
         statusBadge.textContent =
+
             status === "sold"
+
                 ? "🔴 SOLD"
+
                 : "🟢 AVAILABLE";
 
 
         strong.appendChild(
             statusBadge
         );
+
+
+        /* SHOWCASE */
+
+        if(
+            String(
+                data.showcase || ""
+            )
+            .toLowerCase()
+            ===
+            "yes"
+        ){
+
+            const showcaseBadge =
+                document
+                .createElement(
+                    "span"
+                );
+
+
+            showcaseBadge.className =
+                "showcase-badge";
+
+
+            showcaseBadge.textContent =
+                "⭐ SHOWCASE";
+
+
+            strong.appendChild(
+                showcaseBadge
+            );
+
+        }
 
 
         const span =
@@ -2872,13 +3860,15 @@ function renderIDs(
         span.textContent =
 
             "ID " +
+
             (data.id || "-") +
 
             " • ₹" +
 
             Number(
                 data.price || 0
-            ).toLocaleString(
+            )
+            .toLocaleString(
                 "en-IN"
             ) +
 
@@ -2987,9 +3977,30 @@ function renderIDs(
 }
 
 
-/* =====================================================
-   CLEAR FORM
-===================================================== */
+/* =========================================================
+   SAVED ID SEARCH
+========================================================= */
+
+document
+.getElementById("savedSearch")
+.addEventListener(
+"input",
+function(event){
+
+    savedSearchTerm =
+        event.target.value;
+
+
+    renderIDs(
+        allSavedIDs
+    );
+
+});
+
+
+/* =========================================================
+   CLEAR ID FORM
+========================================================= */
 
 document
 .getElementById("clearBtn")
@@ -3022,7 +4033,8 @@ function clearForm(){
 
             document
             .getElementById(id)
-            .value = "";
+            .value =
+                "";
 
         }
     );
@@ -3034,16 +4046,24 @@ function clearForm(){
         "golden";
 
 
-    /* Default status = AVAILABLE */
-
     document
     .getElementById("idStatus")
     .value =
         "available";
 
 
+    document
+    .getElementById("idShowcase")
+    .value =
+        "no";
+
+
     updateStatusSelectColor();
 
+    updateShowcaseSelectColor();
+
+
+    /* NORMAL IMAGES */
 
     for(
         let number = 1;
@@ -3078,6 +4098,55 @@ function clearForm(){
     }
 
 
+    /* SHOWCASE */
+
+    document
+    .getElementById(
+        "showcaseImageFile"
+    )
+    .value =
+        "";
+
+
+    document
+    .getElementById(
+        "showcaseImageStatus"
+    )
+    .textContent =
+        "No showcase image selected";
+
+
+    document
+    .getElementById(
+        "showcaseImageStatus"
+    )
+    .className =
+        "image-status";
+
+
+    document
+    .getElementById(
+        "showcaseCurrent"
+    )
+    .textContent =
+        "";
+
+
+    const preview =
+        document
+        .getElementById(
+            "showcasePreview"
+        );
+
+
+    preview.src =
+        "";
+
+    preview.classList.remove(
+        "show"
+    );
+
+
     editingId =
         null;
 
@@ -3090,9 +4159,9 @@ function clearForm(){
 }
 
 
-/* =====================================================
+/* =========================================================
    LOGOUT
-===================================================== */
+========================================================= */
 
 document
 .getElementById("logoutBtn")
@@ -3103,18 +4172,20 @@ function(){
     ADMIN_KEY =
         "";
 
+
     sessionStorage.removeItem(
         "tamilanda_admin_key"
     );
+
 
     location.reload();
 
 });
 
 
-/* =====================================================
+/* =========================================================
    STATUS MESSAGE
-===================================================== */
+========================================================= */
 
 function showStatus(
     message,
@@ -3143,9 +4214,1021 @@ function showStatus(
 }
 
 
-/* =====================================================
+/* =========================================================
+   REVIEW IMAGE PREVIEW
+========================================================= */
+
+document
+.getElementById("reviewImageFile")
+.addEventListener(
+"change",
+function(){
+
+    const file =
+        this.files[0];
+
+
+    const status =
+        document
+        .getElementById(
+            "reviewImageStatus"
+        );
+
+
+    const box =
+        document
+        .getElementById(
+            "reviewPreviewBox"
+        );
+
+
+    const preview =
+        document
+        .getElementById(
+            "reviewPreviewImg"
+        );
+
+
+    if(!file){
+
+        status.textContent =
+            "No review screenshot selected";
+
+
+        status.className =
+            "image-status";
+
+
+        box.classList.remove(
+            "show"
+        );
+
+
+        preview.src =
+            "";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        "✓ Selected: " +
+        file.name;
+
+
+    status.className =
+        "image-status selected";
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+        function(event){
+
+            preview.src =
+                event.target.result;
+
+
+            box.classList.add(
+                "show"
+            );
+
+        };
+
+
+    reader.readAsDataURL(
+        file
+    );
+
+});
+
+
+/* =========================================================
+   SAVE REVIEW
+========================================================= */
+
+document
+.getElementById("saveReviewBtn")
+.addEventListener(
+"click",
+async function(){
+
+    const buyerName =
+        document
+        .getElementById(
+            "reviewBuyerName"
+        )
+        .value
+        .trim();
+
+
+    const rating =
+        Number(
+            document
+            .getElementById(
+                "reviewRating"
+            )
+            .value
+        );
+
+
+    const file =
+        document
+        .getElementById(
+            "reviewImageFile"
+        )
+        .files[0] || null;
+
+
+    if(!buyerName){
+
+        showReviewStatus(
+            "Please enter Buyer Name.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if(!file){
+
+        showReviewStatus(
+            "Please select Review Screenshot.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const button =
+        document
+        .getElementById(
+            "saveReviewBtn"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    button.textContent =
+        "UPLOADING...";
+
+
+    try{
+
+        /* ===============================================
+           COMPRESS REVIEW IMAGE
+        =============================================== */
+
+        const imageData =
+            await compressImage(
+                file
+            );
+
+
+        /* ===============================================
+           UPLOAD REVIEW IMAGE
+        =============================================== */
+
+        const imageResult =
+            await apiRequest(
+                "/api/reviews/images",
+                {
+                    method:"POST",
+
+                    body:
+                        JSON.stringify({
+
+                            imageData:
+                                imageData
+
+                        })
+                }
+            );
+
+
+        const imagePath =
+            imageResult.path ||
+            imageResult.url ||
+            imageResult.image ||
+            "";
+
+
+        if(!imagePath){
+
+            throw new Error(
+                "Review image upload did not return a path."
+            );
+
+        }
+
+
+        button.textContent =
+            "SAVING REVIEW...";
+
+
+        /* ===============================================
+           SAVE REVIEW DATA
+        =============================================== */
+
+        await apiRequest(
+            "/api/reviews",
+            {
+                method:"POST",
+
+                body:
+                    JSON.stringify({
+
+                        buyerName:
+                            buyerName,
+
+                        rating:
+                            rating,
+
+                        image:
+                            imagePath
+
+                    })
+            }
+        );
+
+
+        showReviewStatus(
+            "✓ Review added successfully!",
+            "success"
+        );
+
+
+        clearReviewForm();
+
+
+        await loadReviews();
+
+
+    }catch(error){
+
+        console.error(
+            error
+        );
+
+
+        showReviewStatus(
+            "REVIEW SAVE FAILED\n\n" +
+            error.message,
+            "error"
+        );
+
+    }
+
+
+    button.disabled =
+        false;
+
+
+    button.textContent =
+        "ADD REVIEW";
+
+});
+
+
+/* =========================================================
+   LOAD REVIEWS
+========================================================= */
+
+async function loadReviews(){
+
+    const list =
+        document
+        .getElementById(
+            "reviewList"
+        );
+
+
+    if(!list){
+        return;
+    }
+
+
+    list.innerHTML =
+        '<div class="empty">Loading reviews...</div>';
+
+
+    try{
+
+        const result =
+            await apiRequest(
+                "/api/reviews"
+            );
+
+
+        const reviews =
+            Array.isArray(result)
+
+                ? result
+
+                : (
+                    result.reviews ||
+                    result.data ||
+                    []
+                );
+
+
+        allReviews =
+            reviews;
+
+
+        renderReviews(
+            reviews
+        );
+
+
+    }catch(error){
+
+        allReviews =
+            [];
+
+
+        list.innerHTML =
+
+            '<div class="empty">' +
+
+            '<strong>Failed to load reviews.</strong>' +
+
+            '<br><br>' +
+
+            escapeHTML(
+                error.message
+            ) +
+
+            '</div>';
+
+    }
+
+}
+
+
+/* =========================================================
+   RENDER REVIEWS
+========================================================= */
+
+function renderReviews(
+    reviews
+){
+
+    const list =
+        document
+        .getElementById(
+            "reviewList"
+        );
+
+
+    const term =
+        reviewSearchTerm
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        term
+
+            ? reviews.filter(
+                function(review){
+
+                    return String(
+                        review.buyerName ||
+                        review.buyer_name ||
+                        review.name ||
+                        ""
+                    )
+                    .toLowerCase()
+                    .includes(term);
+
+                }
+            )
+
+            : reviews;
+
+
+    document
+    .getElementById(
+        "reviewSearchCount"
+    )
+    .textContent =
+
+        filtered.length +
+
+        " Review" +
+
+        (
+            filtered.length === 1
+                ? ""
+                : "s"
+        );
+
+
+    if(!filtered.length){
+
+        list.innerHTML =
+
+            '<div class="empty">' +
+
+            (
+                term
+                    ? "No matching reviews found."
+                    : "No reviews added yet."
+            )
+
+            +
+
+            '</div>';
+
+        return;
+
+    }
+
+
+    list.innerHTML =
+        "";
+
+
+    filtered.forEach(
+    function(review){
+
+        const item =
+            document
+            .createElement(
+                "div"
+            );
+
+
+        item.className =
+            "saved-item";
+
+
+        const card =
+            document
+            .createElement(
+                "div"
+            );
+
+
+        card.className =
+            "review-card";
+
+
+        const image =
+            document
+            .createElement(
+                "img"
+            );
+
+
+        image.className =
+            "review-thumb";
+
+
+        image.alt =
+            "Buyer Review";
+
+
+        const imagePath =
+            review.image ||
+            review.imagePath ||
+            review.image_url ||
+            review.url ||
+            "";
+
+
+        image.src =
+            imagePath;
+
+
+        image.onerror =
+            function(){
+
+                image.style.display =
+                    "none";
+
+            };
+
+
+        const meta =
+            document
+            .createElement(
+                "div"
+            );
+
+
+        meta.className =
+            "review-meta";
+
+
+        const name =
+            document
+            .createElement(
+                "strong"
+            );
+
+
+        name.textContent =
+
+            review.buyerName ||
+            review.buyer_name ||
+            review.name ||
+            "Buyer";
+
+
+        const rating =
+            Number(
+                review.rating || 0
+            );
+
+
+        const stars =
+            document
+            .createElement(
+                "div"
+            );
+
+
+        stars.className =
+            "review-rating";
+
+
+        stars.textContent =
+
+            "★".repeat(
+                Math.max(
+                    0,
+                    Math.min(
+                        5,
+                        rating
+                    )
+                )
+            )
+
+            +
+
+            "☆".repeat(
+                Math.max(
+                    0,
+                    5 -
+                    Math.min(
+                        5,
+                        rating
+                    )
+                )
+            );
+
+
+        const visible =
+            review.visible !== false &&
+            review.visibility !== false &&
+            String(
+                review.status || ""
+            ).toLowerCase()
+            !==
+            "hidden";
+
+
+        const visibility =
+            document
+            .createElement(
+                "div"
+            );
+
+
+        visibility.className =
+            "review-visibility" +
+
+            (
+                visible
+                    ? ""
+                    : " hidden-review"
+            );
+
+
+        visibility.textContent =
+
+            visible
+                ? "● VISIBLE ON WEBSITE"
+                : "● HIDDEN FROM WEBSITE";
+
+
+        meta.appendChild(
+            name
+        );
+
+        meta.appendChild(
+            stars
+        );
+
+        meta.appendChild(
+            visibility
+        );
+
+
+        card.appendChild(
+            image
+        );
+
+        card.appendChild(
+            meta
+        );
+
+
+        const actions =
+            document
+            .createElement(
+                "div"
+            );
+
+
+        actions.className =
+            "saved-actions";
+
+
+        const visibilityButton =
+            document
+            .createElement(
+                "button"
+            );
+
+
+        visibilityButton.className =
+            "small-btn visibility-btn";
+
+
+        visibilityButton.textContent =
+
+            visible
+                ? "HIDE"
+                : "SHOW";
+
+
+        visibilityButton.onclick =
+            function(){
+
+                toggleReviewVisibility(
+                    review
+                );
+
+            };
+
+
+        const del =
+            document
+            .createElement(
+                "button"
+            );
+
+
+        del.className =
+            "small-btn delete-btn";
+
+
+        del.textContent =
+            "DELETE";
+
+
+        del.onclick =
+            function(){
+
+                deleteReview(
+                    review
+                );
+
+            };
+
+
+        actions.appendChild(
+            visibilityButton
+        );
+
+
+        actions.appendChild(
+            del
+        );
+
+
+        item.appendChild(
+            card
+        );
+
+
+        item.appendChild(
+            actions
+        );
+
+
+        list.appendChild(
+            item
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   REVIEW SEARCH
+========================================================= */
+
+document
+.getElementById("reviewSearch")
+.addEventListener(
+"input",
+function(event){
+
+    reviewSearchTerm =
+        event.target.value;
+
+
+    renderReviews(
+        allReviews
+    );
+
+});
+
+
+/* =========================================================
+   TOGGLE REVIEW VISIBILITY
+========================================================= */
+
+async function toggleReviewVisibility(
+    review
+){
+
+    const id =
+        review.id ||
+        review._id;
+
+
+    if(!id){
+
+        showReviewStatus(
+            "Review ID not found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const currentlyVisible =
+        review.visible !== false &&
+        review.visibility !== false &&
+        String(
+            review.status || ""
+        ).toLowerCase()
+        !==
+        "hidden";
+
+
+    try{
+
+        await apiRequest(
+
+            "/api/reviews/" +
+
+            encodeURIComponent(
+                id
+            ) +
+
+            "/visibility",
+
+            {
+                method:"PUT",
+
+                body:
+                    JSON.stringify({
+
+                        visible:
+                            !currentlyVisible
+
+                    })
+            }
+
+        );
+
+
+        await loadReviews();
+
+
+    }catch(error){
+
+        showReviewStatus(
+            error.message ||
+            "Failed to update review visibility.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DELETE REVIEW
+========================================================= */
+
+async function deleteReview(
+    review
+){
+
+    const id =
+        review.id ||
+        review._id;
+
+
+    if(!id){
+
+        showReviewStatus(
+            "Review ID not found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const buyer =
+        review.buyerName ||
+        review.buyer_name ||
+        review.name ||
+        "this review";
+
+
+    const confirmed =
+        confirm(
+            "Delete review from " +
+            buyer +
+            "?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        await apiRequest(
+
+            "/api/reviews/" +
+
+            encodeURIComponent(
+                id
+            ),
+
+            {
+                method:"DELETE"
+            }
+
+        );
+
+
+        showReviewStatus(
+            "✓ Review deleted successfully.",
+            "success"
+        );
+
+
+        await loadReviews();
+
+
+    }catch(error){
+
+        showReviewStatus(
+            error.message ||
+            "Failed to delete review.",
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CLEAR REVIEW FORM
+========================================================= */
+
+document
+.getElementById("clearReviewBtn")
+.addEventListener(
+"click",
+clearReviewForm
+);
+
+
+function clearReviewForm(){
+
+    document
+    .getElementById(
+        "reviewBuyerName"
+    )
+    .value =
+        "";
+
+
+    document
+    .getElementById(
+        "reviewRating"
+    )
+    .value =
+        "5";
+
+
+    document
+    .getElementById(
+        "reviewImageFile"
+    )
+    .value =
+        "";
+
+
+    document
+    .getElementById(
+        "reviewImageStatus"
+    )
+    .textContent =
+        "No review screenshot selected";
+
+
+    document
+    .getElementById(
+        "reviewImageStatus"
+    )
+    .className =
+        "image-status";
+
+
+    document
+    .getElementById(
+        "reviewPreviewImg"
+    )
+    .src =
+        "";
+
+
+    document
+    .getElementById(
+        "reviewPreviewBox"
+    )
+    .classList
+    .remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   REVIEW STATUS
+========================================================= */
+
+function showReviewStatus(
+    message,
+    type = ""
+){
+
+    const status =
+        document
+        .getElementById(
+            "reviewStatus"
+        );
+
+
+    status.textContent =
+        message;
+
+
+    status.className =
+        "status " +
+        type;
+
+
+    status.style.display =
+        "block";
+
+}
+
+
+/* =========================================================
    ESCAPE HTML
-===================================================== */
+========================================================= */
 
 function escapeHTML(
     value
@@ -3181,9 +5264,9 @@ function escapeHTML(
 }
 
 
-/* =====================================================
+/* =========================================================
    RESTORE SESSION
-===================================================== */
+========================================================= */
 
 const savedKey =
     sessionStorage.getItem(
@@ -3209,12 +5292,9 @@ if(savedKey){
     .remove("hidden");
 
 
-    document.getElementById("savedSearch").addEventListener("input", function(event){
-    savedSearchTerm = event.target.value;
-    renderIDs(allSavedIDs);
-});
+    loadIDs();
 
-loadIDs();
+    loadReviews();
 
 }
 
