@@ -66,8 +66,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
 
-            gap: 20px;
+            gap: 15px;
             padding: 15px;
 
             background: #101010;
@@ -89,6 +90,28 @@
             font-size: 20px;
         }
 
+        .catalog-search-box {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .catalog-search-box input {
+            width: 100%;
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 9px;
+            background: #171717;
+            color: #fff;
+            outline: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: border-color 0.2s ease;
+        }
+
+        .catalog-search-box input:focus {
+            border-color: #ffb000;
+        }
+
         .sort-box {
             display: flex;
             align-items: center;
@@ -102,7 +125,7 @@
         }
 
         .sort-box select {
-            min-width: 220px;
+            min-width: 180px;
 
             padding: 11px 14px;
 
@@ -188,6 +211,8 @@
                 border-color 0.22s ease,
                 box-shadow 0.22s ease,
                 opacity 0.22s ease;
+            contain: content;
+            position: relative;
         }
 
         .id-card:hover {
@@ -201,22 +226,13 @@
                 rgba(0,0,0,0.35);
         }
 
-        /* =========================================
-           SOLD CARD
-           ========================================= */
-
         .id-card.sold {
-            border-color:
-                rgba(214,0,0,0.20);
+            border-color: rgba(214,0,0,0.20);
         }
 
         .id-card.sold:hover {
-            border-color:
-                rgba(214,0,0,0.45);
-
-            box-shadow:
-                0 20px 50px
-                rgba(120,0,0,0.16);
+            border-color: rgba(214,0,0,0.45);
+            box-shadow: 0 20px 50px rgba(120,0,0,0.16);
         }
 
         .id-card.sold .id-image img {
@@ -227,160 +243,79 @@
             color: #888;
         }
 
-        /* =========================================
-           IMAGE
-           ========================================= */
-
         .id-image {
             position: relative;
-
             width: 100%;
-
             aspect-ratio: 4 / 5;
-
             overflow: hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #191919,
-                    #0c0c0c
-                );
+            background: linear-gradient(145deg, #191919, #0c0c0c);
         }
 
         .id-image img {
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             display: block;
-
-            transition:
-                transform 0.35s ease,
-                filter 0.3s ease;
+            transition: transform 0.35s ease, filter 0.3s ease;
         }
 
-        .id-card:hover
-        .id-image img {
+        .id-card:hover .id-image img {
             transform: scale(1.035);
         }
 
         .id-image-placeholder {
             width: 100%;
             height: 100%;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             color: #333;
-
             font-size: 12px;
             font-weight: 900;
-
             letter-spacing: 2px;
         }
 
-        /* =========================================
-           NORMAL BADGE
-           ========================================= */
-
         .id-badge {
             position: absolute;
-
             top: 12px;
             left: 12px;
-
             padding: 7px 10px;
-
             border-radius: 7px;
-
             background: #ffb000;
             color: #080808;
-
             font-size: 9px;
             font-weight: 900;
-
             z-index: 2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-
-        /* =========================================
-           POPULAR
-           ========================================= */
 
         .popular-badge {
             position: absolute;
-
             top: 12px;
-            right: 12px;
-
+            right: 48px;
             padding: 7px 10px;
-
             border-radius: 7px;
-
             background: rgba(0,0,0,0.75);
             color: #fff;
-
             font-size: 9px;
             font-weight: 900;
-
             backdrop-filter: blur(8px);
-
             z-index: 2;
         }
 
-        /* =========================================
-           SOLD BADGE
-           ========================================= */
-
         .sold-badge {
             position: absolute;
-
             top: 12px;
-            right: 12px;
-
+            right: 48px;
             padding: 7px 10px;
-
             border-radius: 7px;
-
             background: #d60000;
             color: #fff;
-
             font-size: 9px;
             font-weight: 900;
-
             z-index: 4;
-
-            box-shadow:
-                0 5px 20px
-                rgba(214,0,0,0.28);
-
-            animation:
-                soldPulse 2s ease-in-out infinite;
+            box-shadow: 0 5px 20px rgba(214,0,0,0.28);
         }
-
-        @keyframes soldPulse {
-
-            0%,
-            100% {
-                box-shadow:
-                    0 5px 20px
-                    rgba(214,0,0,0.20);
-            }
-
-            50% {
-                box-shadow:
-                    0 5px 28px
-                    rgba(214,0,0,0.40);
-            }
-
-        }
-
-        /* =========================================
-           CONTENT
-           ========================================= */
 
         .id-content {
             padding: 18px;
@@ -388,10 +323,8 @@
 
         .id-title-row {
             display: flex;
-
             align-items: center;
             justify-content: space-between;
-
             gap: 10px;
         }
 
@@ -402,271 +335,158 @@
 
         .id-price {
             color: #ffb000;
-
             font-size: 18px;
             font-weight: 900;
-
             white-space: nowrap;
         }
 
         .id-stats {
             margin-top: 16px;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
+            grid-template-columns: repeat(3,1fr);
             gap: 7px;
         }
 
         .stat {
             padding: 10px 7px;
-
             border-radius: 8px;
-
             background: #171717;
-
             text-align: center;
         }
 
         .stat small {
             display: block;
-
             color: #666;
-
             font-size: 8px;
             font-weight: 800;
-
             text-transform: uppercase;
         }
 
         .stat strong {
             display: block;
-
             margin-top: 4px;
-
             color: #ddd;
-
             font-size: 11px;
         }
 
         .id-tags {
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 6px;
-
             margin-top: 13px;
         }
 
         .tag {
             padding: 5px 8px;
-
             border-radius: 6px;
-
-            background:
-                rgba(255,176,0,0.07);
-
+            background: rgba(255,176,0,0.07);
             color: #b88922;
-
             font-size: 8px;
             font-weight: 800;
         }
 
-        /* =========================================
-           VIEW BUTTON
-           ========================================= */
-
         .view-id-btn {
             width: 100%;
-
             margin-top: 16px;
-
             min-height: 43px;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             border-radius: 9px;
-
             background: #181818;
-
-            border:
-                1px solid
-                rgba(255,255,255,0.09);
-
+            border: 1px solid rgba(255,255,255,0.09);
             color: #fff;
-
             font-size: 11px;
             font-weight: 900;
-
             text-decoration: none;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease,
-                border-color 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
         }
 
         .view-id-btn:hover {
             background: #ffb000;
-
             color: #080808;
-
             border-color: #ffb000;
         }
 
-        /* SOLD BUTTON */
-
-        .id-card.sold .view-id-btn:hover {
-            background: #d60000;
-
-            color: #fff;
-
-            border-color: #d60000;
+        .request-banner {
+            max-width: 1250px;
+            margin: 60px auto 0;
+            padding: 35px;
+            background: radial-gradient(circle at center, rgba(255,176,0,0.12), transparent 70%), #101010;
+            border: 1px solid rgba(255,176,0,0.2);
+            border-radius: 20px;
+            text-align: center;
         }
 
-        /* =========================================
-           EMPTY STATE
-           ========================================= */
+        .request-banner h3 {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .request-banner h3 span {
+            color: #ffb000;
+        }
+
+        .request-banner p {
+            color: #777;
+            font-size: 12px;
+            margin: 8px auto 20px;
+            max-width: 500px;
+        }
+
+        .request-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            background: #ffb000;
+            color: #080808;
+            font-size: 12px;
+            font-weight: 900;
+            transition: transform 0.2s ease;
+        }
+
+        .request-btn:hover {
+            transform: translateY(-2px);
+        }
 
         .empty-state {
             max-width: 600px;
-
             margin: 70px auto;
-
             padding: 55px 25px;
-
             text-align: center;
-
-            border:
-                1px dashed
-                rgba(255,255,255,0.12);
-
+            border: 1px dashed rgba(255,255,255,0.12);
             border-radius: 18px;
-
             background: #0d0d0d;
         }
 
-        .empty-state div {
-            font-size: 35px;
-            margin-bottom: 15px;
-        }
-
-        .empty-state h2 {
-            font-size: 20px;
-        }
-
-        .empty-state p {
-            margin-top: 8px;
-
-            color: #666;
-
-            font-size: 12px;
-        }
+        .empty-state div { font-size: 35px; margin-bottom: 15px; }
+        .empty-state h2 { font-size: 20px; }
+        .empty-state p { margin-top: 8px; color: #666; font-size: 12px; }
 
         .loading-state {
             max-width: 600px;
-
             margin: 70px auto;
-
             padding: 40px 25px;
-
             text-align: center;
-
             color: #777;
-
             font-size: 13px;
         }
 
-        /* =========================================
-           RESPONSIVE
-           ========================================= */
-
         @media (max-width: 1000px) {
-
-            .id-grid {
-                grid-template-columns:
-                    repeat(2, minmax(0,1fr));
-            }
-
+            .id-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
         }
 
         @media (max-width: 600px) {
-
-            .buy-page {
-                padding: 42px 5% 80px;
-            }
-
-            .buy-heading h1 {
-                font-size: 43px;
-            }
-
-            .buy-heading p {
-                font-size: 13px;
-            }
-
-            .catalog-toolbar {
-                align-items: stretch;
-
-                flex-direction: column;
-
-                margin-top: 38px;
-            }
-
-            .sort-box {
-                width: 100%;
-
-                flex-direction: column;
-
-                align-items: stretch;
-            }
-
-            .sort-box select {
-                width: 100%;
-                min-width: 0;
-            }
-
-            .category-filters {
-                gap: 7px;
-                margin-bottom: 30px;
-            }
-
-            .category-btn {
-                padding: 10px 12px;
-                font-size: 9px;
-            }
-
-            .id-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .id-content {
-                padding: 16px;
-            }
-
-            .id-title {
-                font-size: 16px;
-            }
-
-            .id-price {
-                font-size: 17px;
-            }
-
-        }
-
-        @media (max-width: 380px) {
-
-            .category-btn {
-                padding: 9px 10px;
-                font-size: 8px;
-            }
-
+            .buy-page { padding: 42px 5% 80px; }
+            .buy-heading h1 { font-size: 43px; }
+            .catalog-toolbar { flex-direction: column; align-items: stretch; }
+            .sort-box { width: 100%; flex-direction: column; align-items: stretch; }
+            .sort-box select { width: 100%; }
+            .category-filters { gap: 7px; margin-bottom: 30px; }
+            .category-btn { padding: 10px 12px; font-size: 9px; }
+            .id-grid { grid-template-columns: 1fr; gap: 16px; }
         }
 
     </style>
@@ -713,6 +533,11 @@
 
         <a href="buy.html" class="active">
             BUY YOUR ID
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e" target="_blank" rel="noopener noreferrer" class="nav-channel-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.003l-1.416 5.171 5.292-1.388c1.458.796 3.097 1.215 4.776 1.216h.005c5.505 0 9.988-4.478 9.989-9.984 0-2.667-1.037-5.175-2.923-7.062a9.924 9.924 0 0 0-7.065-2.94zm0 18.232h-.004a8.28 8.28 0 0 1-4.22-1.163l-.303-.18-3.137.822.836-3.056-.198-.315a8.283 8.28 0 0 1-1.272-4.341c.001-4.568 3.72-8.283 8.293-8.283 2.213 0 4.292.863 5.856 2.43 1.564 1.567 2.424 3.648 2.424 5.861 0 4.569-3.719 8.285-8.275 8.285zm4.542-6.208c-.249-.125-1.472-.727-1.7-.822-.228-.095-.394-.142-.56.142-.166.284-.643.822-.788.989-.145.167-.29.188-.539.063-.249-.125-1.052-.388-2.003-1.237-.74-.66-1.24-1.475-1.385-1.724-.145-.249-.015-.384.109-.508.112-.112.249-.29.373-.435.125-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.56-1.349-.768-1.848-.203-.487-.41-.421-.56-.429-.143-.008-.308-.008-.473-.008-.166 0-.435.062-.663.311-.228.249-.871.851-.871 2.076 0 1.225.892 2.408 1.016 2.574.125.166 1.756 2.681 4.254 3.76 2.498 1.079 2.498.719 2.955.677.457-.042 1.472-.602 1.679-1.183.208-.581.208-1.079.145-1.183-.062-.104-.228-.166-.477-.291z"/></svg>
+            CHANNEL
         </a>
 
     </nav>
@@ -796,6 +621,15 @@
 
         </div>
 
+        <div class="catalog-search-box">
+            <input
+                type="search"
+                id="catalogSearch"
+                aria-label="Search catalog IDs"
+                placeholder="🔍 Search ID#, level, vault, or name..."
+                autocomplete="off">
+        </div>
+
 
         <div class="sort-box">
 
@@ -843,6 +677,14 @@
             data-filter="all">
 
             ALL IDS
+
+        </button>
+
+        <button
+            class="category-btn"
+            data-filter="favorites">
+
+            ❤️ MY FAVORITES
 
         </button>
 
@@ -918,10 +760,34 @@
         </h2>
 
         <p>
-            Try another category or sorting option.
+            Try searching another keyword or clearing your filters.
         </p>
 
     </div>
+
+
+    <!-- CUSTOM ORDER BANNER -->
+
+    <section class="request-banner">
+
+        <h3>
+            CAN'T FIND YOUR <span>DREAM ID?</span>
+        </h3>
+
+        <p>
+            Tell us your budget and requirements (EVO Guns, Old Elites, Vault level). Our admin team will find a custom account for you!
+        </p>
+
+        <a
+            href="https://wa.me/919786267475?text=Hi%20Tamilanda%20Gaming%2C%20I%20am%20looking%20for%20a%20custom%20Free%20Fire%20ID%20with%20my%20specific%20requirements."
+            target="_blank"
+            class="request-btn">
+
+            💬 REQUEST CUSTOM ID ON WHATSAPP
+
+        </a>
+
+    </section>
 
 
 </main>
@@ -997,866 +863,380 @@ document.addEventListener(
     "DOMContentLoaded",
     async function () {
 
-
         const WORKER_URL =
             "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
-
 
         const GITHUB_PAGES =
             "https://anonsktg.github.io/Tamilanda-Gaming";
 
-
         const grid =
             document.getElementById("idGrid");
-
 
         const emptyState =
             document.getElementById("emptyState");
 
-
         const loadingState =
             document.getElementById("loadingState");
-
 
         const sort =
             document.getElementById("sort");
 
+        const searchInput =
+            document.getElementById("catalogSearch");
 
         const buttons =
             document.querySelectorAll(
                 ".category-btn"
             );
 
-
         let allIDs = [];
-
         let currentFilter = "all";
-
+        let searchTerm = "";
 
         /* =========================================
            FORMAT PRICE
            ========================================= */
 
         function formatPrice(value) {
-
-            const price =
-                Number(value || 0);
-
-
-            if (price >= 100000) {
-
-                return "₹" +
-                    (price / 100000)
-                        .toFixed(
-                            price % 100000 === 0
-                                ? 0
-                                : 1
-                        ) +
-                    "L";
-
+            if (value === null || value === undefined || value === "") {
+                return "Price on Request";
             }
 
+            const number = Number(String(value).replace(/[^0-9.]/g, ""));
 
-            if (price >= 1000) {
-
-                return "₹" +
-                    (price / 1000)
-                        .toFixed(
-                            price % 1000 === 0
-                                ? 0
-                                : 1
-                        ) +
-                    "K";
-
+            if (Number.isNaN(number) || number === 0) {
+                return String(value);
             }
 
+            if (number >= 100000) {
+                const lakh = number / 100000;
+                return `₹${lakh.toFixed(lakh % 1 === 0 ? 0 : 1).replace(".0", "")}L`;
+            }
 
-            return "₹" + price;
+            if (number >= 1000) {
+                const thousand = number / 1000;
+                return `₹${thousand.toFixed(thousand % 1 === 0 ? 0 : 1).replace(".0", "")}K`;
+            }
 
+            return `₹${number.toLocaleString("en-IN")}`;
         }
 
-
         /* =========================================
-           CATEGORY
+           CATEGORY RESOLVER
            ========================================= */
 
-        function getCategory(value) {
+        function getCategory(item) {
+            if (!item) return "all";
 
-            const text =
-                String(value || "")
-                    .toLowerCase()
-                    .trim();
+            const categoryText = String(item.category || "").toLowerCase().trim();
+            const badgeText = String(item.badge || "").toLowerCase().trim();
+            const tagsText = Array.isArray(item.tags)
+                ? item.tags.join(" ").toLowerCase()
+                : String(item.tags || "").toLowerCase();
 
+            const combined = `${categoryText} ${badgeText} ${tagsText}`;
 
-            if (
-                text.includes("gold")
-            ) {
+            if (combined.includes("gold")) return "golden";
+            if (combined.includes("high")) return "high";
+            if (combined.includes("starter")) return "starter";
+            if (combined.includes("mid")) return "mid";
+            if (combined.includes("hot")) return "hot";
 
-                return "golden";
-
-            }
-
-
-            if (
-                text.includes("high")
-            ) {
-
-                return "high";
-
-            }
-
-
-            if (
-                text.includes("starter")
-            ) {
-
-                return "starter";
-
-            }
-
-
-            if (
-                text.includes("mid")
-            ) {
-
-                return "mid";
-
-            }
-
-
-            if (
-                text.includes("hot")
-            ) {
-
-                return "hot";
-
-            }
-
-
-            return "all";
-
+            return categoryText || "all";
         }
 
+        function resolveImageURL(image, id) {
+            if (!image) return "";
+            const value = String(image).trim();
 
-        /* =========================================
-           IMAGE URL
-           ========================================= */
+            if (value.startsWith("http://") || value.startsWith("https://")) {
+                return value;
+            }
+            if (value.startsWith("/")) {
+                return GITHUB_PAGES + value;
+            }
+            if (value.startsWith("assets/")) {
+                return GITHUB_PAGES + "/" + value;
+            }
+            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/${value}`;
+        }
 
         function getImageURL(item) {
+            const id = String(item.id || item.idNumber || item.number || "").trim();
+            if (!id) return "";
 
-            const id =
-                String(
-                    item.id ||
-                    item.idNumber ||
-                    item.number ||
-                    ""
-                ).trim();
-
-
-            if (!id) {
-
-                return "";
-
+            if (Array.isArray(item.images) && item.images.length > 0) {
+                return resolveImageURL(item.images[0], id);
             }
 
-
-            return (
-                GITHUB_PAGES +
-                "/assets/ids/" +
-                encodeURIComponent(id) +
-                "/01.jpg"
-            );
-
+            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
         }
-
-
-        /* =========================================
-           TAGS
-           ========================================= */
 
         function getTags(item) {
-
-            if (
-                Array.isArray(item.tags)
-            ) {
-
-                return item.tags;
-
+            if (Array.isArray(item.tags)) return item.tags;
+            if (typeof item.tags === "string") {
+                return item.tags.split(",").map(tag => tag.trim()).filter(Boolean);
             }
-
-
-            if (
-                typeof item.tags === "string"
-            ) {
-
-                return item.tags
-                    .split(",")
-                    .map(
-                        tag =>
-                            tag.trim()
-                    )
-                    .filter(Boolean);
-
-            }
-
-
             return [];
-
         }
-
-
-        /* =========================================
-           STATUS
-           ========================================= */
 
         function getStatus(item) {
-
-            return String(
-                item.status || "available"
-            )
-                .toLowerCase()
-                .trim();
-
+            return String(item.status || "available").toLowerCase().trim();
         }
-
 
         /* =========================================
            CREATE CARD
            ========================================= */
 
         function createCard(item) {
+            const id = String(item.id || item.idNumber || item.number || "");
+            const name = item.name || ("ID #" + id);
+            const price = item.price;
+            const level = item.level || "-";
+            const prime = item.prime || "-";
+            const vault = item.vault || "-";
+            const category = getCategory(item);
 
-            const id =
-                String(
-                    item.id ||
-                    item.idNumber ||
-                    item.number ||
-                    ""
-                );
-
-
-            const name =
-                item.name ||
-                ("ID #" + id);
-
-
-            const price =
-                Number(
-                    item.price || 0
-                );
-
-
-            const level =
-                item.level ||
-                "-";
-
-
-            const prime =
-                item.prime ||
-                "-";
-
-
-            const vault =
-                item.vault ||
-                "-";
-
-
-            const category =
-                getCategory(
-                    item.category
-                );
-
-
-            const badge =
-                item.badge ||
-                (
-                    category === "golden"
-                        ? "GOLDEN ELITE"
-                        : category === "high"
-                            ? "HIGH LEVEL"
-                            : category === "starter"
-                                ? "STARTER"
-                                : category === "mid"
-                                    ? "MID RANGE"
-                                    : category === "hot"
-                                        ? "HOT ID 🔥"
-                                        : "FREE FIRE ID"
-                );
-
-
-            const popular =
-                Number(
-                    item.popularScore ??
-                    item.popular ??
-                    0
-                );
-
-
-            const status =
-                getStatus(item);
-
-
-            const isSold =
-                status === "sold";
-
-
-            const tags =
-                getTags(item);
-
-
-            const card =
-                document.createElement("article");
-
-
-            card.className =
-                "id-card" +
-                (
-                    isSold
-                        ? " sold"
-                        : ""
-                );
-
-
-            card.dataset.id =
-                id;
-
-
-            card.dataset.category =
-                category;
-
-
-            card.dataset.price =
-                price;
-
-
-            card.dataset.level =
-                Number(level) || 0;
-
-
-            card.dataset.popular =
-                popular;
-
-
-            card.dataset.status =
-                status;
-
-
-            const imageURL =
-                getImageURL(item);
-
-
-            let tagsHTML = "";
-
-
-            tags.forEach(
-                function (tag) {
-
-                    tagsHTML +=
-                        `
-                        <span class="tag">
-                            ${escapeHTML(tag)}
-                        </span>
-                        `;
-
-                }
+            const badge = item.badge || (
+                category === "golden" ? "GOLDEN ELITE" :
+                category === "high" ? "HIGH LEVEL" :
+                category === "starter" ? "STARTER" :
+                category === "mid" ? "MID RANGE" :
+                category === "hot" ? "HOT ID 🔥" : "FREE FIRE ID"
             );
 
+            const popular = Number(item.popularScore ?? item.popular ?? 0);
+            const status = getStatus(item);
+            const isSold = status === "sold";
+            const tags = getTags(item);
+            const isFav = window.TamilandaWishlist ? window.TamilandaWishlist.has(id) : false;
+
+            const card = document.createElement("article");
+            card.className = "id-card" + (isSold ? " sold" : "");
+            card.dataset.id = id;
+
+            const imageURL = getImageURL(item);
+
+            let tagsHTML = "";
+            tags.forEach(function (tag) {
+                tagsHTML += `<span class="tag">${escapeHTML(tag)}</span>`;
+            });
 
             if (!tagsHTML) {
-
-                tagsHTML =
-                    `
-                    <span class="tag">
-                        PREMIUM
-                    </span>
-                    `;
-
+                tagsHTML = `<span class="tag">PREMIUM</span>`;
             }
 
+            const popularHTML = popular > 0 && !isSold
+                ? `<span class="popular-badge">🔥 POPULAR</span>`
+                : "";
 
-            const popularHTML =
-                popular > 0 && !isSold
-                    ? `
-                        <span class="popular-badge">
-                            🔥 POPULAR
-                        </span>
-                      `
-                    : "";
+            const soldHTML = isSold
+                ? `<span class="sold-badge">🔴 SOLD</span>`
+                : "";
 
+            const imageHTML = imageURL
+                ? `<img
+                    src="${imageURL}"
+                    alt="${escapeHTML(name)}"
+                    loading="lazy"
+                    onerror="
+                        this.style.display='none';
+                        this.nextElementSibling.style.display='flex';
+                    "
+                   >
+                   <div class="id-image-placeholder" style="display:none;">
+                       ID IMAGE
+                   </div>`
+                : `<div class="id-image-placeholder">ID IMAGE</div>`;
 
-            const soldHTML =
-                isSold
-                    ? `
-                        <span class="sold-badge">
-                            🔴 SOLD
-                        </span>
-                      `
-                    : "";
-
-
-            const imageHTML =
-                imageURL
-                    ? `
-                        <img
-                            src="${imageURL}"
-                            alt="${escapeHTML(name)}"
-                            loading="lazy"
-                            onerror="
-                                this.style.display='none';
-                                this.nextElementSibling.style.display='flex';
-                            "
-                        >
-
-                        <div
-                            class="id-image-placeholder"
-                            style="display:none;">
-
-                            ID IMAGE
-
-                        </div>
-                      `
-                    : `
-                        <div class="id-image-placeholder">
-                            ID IMAGE
-                        </div>
-                      `;
-
-
-            card.innerHTML =
-                `
-
+            card.innerHTML = `
+                <button type="button" class="fav-btn ${isFav ? 'active' : ''}" data-id="${id}" aria-label="Favorite ID">
+                    ❤️
+                </button>
                 <div class="id-image">
-
                     ${imageHTML}
-
-                    <span class="id-badge">
-                        ${escapeHTML(badge)}
-                    </span>
-
+                    <span class="id-badge">${escapeHTML(badge)}</span>
                     ${popularHTML}
-
                     ${soldHTML}
-
                 </div>
-
 
                 <div class="id-content">
-
-
                     <div class="id-title-row">
-
-                        <h2 class="id-title">
-                            ${escapeHTML(name)}
-                        </h2>
-
-                        <div class="id-price">
-                            ${formatPrice(price)}
-                        </div>
-
+                        <h2 class="id-title">${escapeHTML(name)}</h2>
+                        <div class="id-price">${formatPrice(price)}</div>
                     </div>
-
 
                     <div class="id-stats">
-
-
                         <div class="stat">
-
-                            <small>
-                                Level
-                            </small>
-
-                            <strong>
-                                ${escapeHTML(
-                                    String(level)
-                                )}
-                            </strong>
-
+                            <small>Level</small>
+                            <strong>${escapeHTML(String(level))}</strong>
                         </div>
-
-
                         <div class="stat">
-
-                            <small>
-                                Prime
-                            </small>
-
-                            <strong>
-                                ${escapeHTML(
-                                    String(prime)
-                                )}
-                            </strong>
-
+                            <small>Prime</small>
+                            <strong>${escapeHTML(String(prime))}</strong>
                         </div>
-
-
                         <div class="stat">
-
-                            <small>
-                                Vault
-                            </small>
-
-                            <strong>
-                                ${escapeHTML(
-                                    String(vault)
-                                )}
-                            </strong>
-
+                            <small>Vault</small>
+                            <strong>${escapeHTML(String(vault))}</strong>
                         </div>
-
-
                     </div>
-
 
                     <div class="id-tags">
-
                         ${tagsHTML}
-
                     </div>
 
-
-                    <a
-                        href="id-details.html?id=${encodeURIComponent(id)}"
-                        class="view-id-btn">
-
-                        VIEW ID →
-
+                    <a href="id-details.html?id=${encodeURIComponent(id)}" class="view-id-btn">
+                        ${isSold ? "VIEW SOLD ID →" : "VIEW ID DETAILS →"}
                     </a>
-
-
+                    ${!isSold ? `
+                    <a href="https://wa.me/919786267475?text=${encodeURIComponent(`Hi Tamilanda Gaming, I want to buy ${name} (${formatPrice(price)}). ID: ${id}`)}" target="_blank" class="quick-buy-whatsapp-btn" onclick="event.stopPropagation()">
+                        💬 BUY VIA WHATSAPP
+                    </a>` : ''}
                 </div>
+            `;
 
-                `;
-
+            const favBtn = card.querySelector(".fav-btn");
+            if (favBtn) {
+                favBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    if (window.TamilandaWishlist) {
+                        const active = window.TamilandaWishlist.toggle(id);
+                        favBtn.classList.toggle("active", active);
+                        if (currentFilter === "favorites") {
+                            render();
+                        }
+                    }
+                });
+            }
 
             return card;
-
         }
 
-
-        /* =========================================
-           ESCAPE HTML
-           ========================================= */
-
         function escapeHTML(value) {
-
             return String(value ?? "")
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;")
                 .replace(/"/g, "&quot;")
                 .replace(/'/g, "&#039;");
-
         }
-
 
         /* =========================================
            RENDER
            ========================================= */
 
         function render() {
-
             grid.innerHTML = "";
+            let filtered = [...allIDs];
 
-
-            let filtered =
-                [...allIDs];
-
-
-            if (
-                currentFilter !== "all"
-            ) {
-
-                filtered =
-                    filtered.filter(
-                        function (item) {
-
-                            return (
-                                getCategory(
-                                    item.category
-                                ) ===
-                                currentFilter
-                            );
-
-                        }
-                    );
-
+            if (currentFilter === "favorites") {
+                filtered = filtered.filter(item => window.TamilandaWishlist && window.TamilandaWishlist.has(item.id));
+            } else if (currentFilter !== "all") {
+                filtered = filtered.filter(item => getCategory(item) === currentFilter);
             }
 
-
-            const sortValue =
-                sort.value;
-
-
-            if (
-                sortValue ===
-                "high-price"
-            ) {
-
-                filtered.sort(
-                    (a,b) =>
-                        Number(b.price || 0) -
-                        Number(a.price || 0)
-                );
-
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase().trim();
+                filtered = filtered.filter(item => {
+                    const idStr = String(item.id || "").toLowerCase();
+                    const nameStr = String(item.name || "").toLowerCase();
+                    const catStr = String(item.category || "").toLowerCase();
+                    const descStr = String(item.description || "").toLowerCase();
+                    return idStr.includes(term) || nameStr.includes(term) || catStr.includes(term) || descStr.includes(term);
+                });
             }
 
+            const sortValue = sort.value;
 
-            else if (
-                sortValue ===
-                "low-price"
-            ) {
-
-                filtered.sort(
-                    (a,b) =>
-                        Number(a.price || 0) -
-                        Number(b.price || 0)
-                );
-
+            if (sortValue === "high-price") {
+                filtered.sort((a,b) => Number(b.price || 0) - Number(a.price || 0));
+            } else if (sortValue === "low-price") {
+                filtered.sort((a,b) => Number(a.price || 0) - Number(b.price || 0));
+            } else if (sortValue === "popular") {
+                filtered.sort((a,b) => Number(b.popularScore ?? b.popular ?? 0) - Number(a.popularScore ?? a.popular ?? 0));
+            } else if (sortValue === "high-level") {
+                filtered.sort((a,b) => Number(b.level || 0) - Number(a.level || 0));
+            } else if (sortValue === "low-level") {
+                filtered.sort((a,b) => Number(a.level || 0) - Number(a.level || 0));
             }
 
-
-            else if (
-                sortValue ===
-                "popular"
-            ) {
-
-                filtered.sort(
-                    (a,b) =>
-                        Number(
-                            b.popularScore ??
-                            b.popular ??
-                            0
-                        ) -
-                        Number(
-                            a.popularScore ??
-                            a.popular ??
-                            0
-                        )
-                );
-
-            }
-
-
-            else if (
-                sortValue ===
-                "high-level"
-            ) {
-
-                filtered.sort(
-                    (a,b) =>
-                        Number(b.level || 0) -
-                        Number(a.level || 0)
-                );
-
-            }
-
-
-            else if (
-                sortValue ===
-                "low-level"
-            ) {
-
-                filtered.sort(
-                    (a,b) =>
-                        Number(a.level || 0) -
-                        Number(b.level || 0)
-                );
-
-            }
-
-
-            if (
-                filtered.length === 0
-            ) {
-
-                emptyState.style.display =
-                    "block";
-
+            if (filtered.length === 0) {
+                emptyState.style.display = "block";
                 return;
-
             }
 
+            emptyState.style.display = "none";
 
-            emptyState.style.display =
-                "none";
+            const fragment = document.createDocumentFragment();
+            filtered.forEach(function (item) {
+                fragment.appendChild(createCard(item));
+            });
 
-
-            filtered.forEach(
-                function (item) {
-
-                    grid.appendChild(
-                        createCard(item)
-                    );
-
-                }
-            );
-
+            grid.appendChild(fragment);
         }
-
 
         /* =========================================
            LOAD IDs
            ========================================= */
 
         async function loadIDs() {
-
             try {
-
                 if (loadingState) {
-
                     loadingState.remove();
-
                 }
 
-
-                const response =
-                    await fetch(
-                        WORKER_URL +
-                        "/api/ids",
-                        {
-                            method: "GET",
-                            cache: "no-store"
-                        }
-                    );
-
+                const response = await fetch(`${WORKER_URL}/api/ids`, {
+                    method: "GET",
+                    cache: "no-store"
+                });
 
                 if (!response.ok) {
-
-                    throw new Error(
-                        "API Error " +
-                        response.status
-                    );
-
+                    throw new Error("API Error " + response.status);
                 }
 
+                const data = await response.json();
 
-                const data =
-                    await response.json();
-
-
-                if (
-                    !Array.isArray(data)
-                ) {
-
-                    throw new Error(
-                        "Invalid ID data"
-                    );
-
+                if (!Array.isArray(data)) {
+                    throw new Error("Invalid ID data");
                 }
 
-
-                allIDs =
-                    data;
-
-
+                allIDs = data;
                 render();
 
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Failed to load IDs:",
-                    error
-                );
-
-
-                grid.innerHTML =
-                    `
+            } catch (error) {
+                console.error("Failed to load IDs:", error);
+                grid.innerHTML = `
                     <div class="loading-state">
-
-                        Failed to load IDs.
-
-                        <br><br>
-
+                        Failed to load IDs. <br><br>
                         Please try again later.
-
                     </div>
-                    `;
-
+                `;
             }
-
         }
 
-
         /* =========================================
-           CATEGORY BUTTONS
+           LISTENERS
            ========================================= */
 
-        buttons.forEach(
-            function (button) {
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-
-                        buttons.forEach(
-                            function (btn) {
-
-                                btn.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-
-                        button.classList.add(
-                            "active"
-                        );
-
-
-                        currentFilter =
-                            button.dataset.filter;
-
-
-                        render();
-
-                    }
-                );
-
-            }
-        );
-
-
-        /* =========================================
-           SORT
-           ========================================= */
-
-        sort.addEventListener(
-            "change",
-            function () {
-
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                buttons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                currentFilter = button.dataset.filter;
                 render();
+            });
+        });
 
-            }
-        );
+        sort.addEventListener("change", function () {
+            render();
+        });
 
-
-        /* =========================================
-           YEAR
-           ========================================= */
-
-        const year =
-            document.getElementById(
-                "current-year"
-            );
-
-
-        if (year) {
-
-            year.textContent =
-                new Date()
-                    .getFullYear();
-
+        if (searchInput) {
+            searchInput.addEventListener("input", function (e) {
+                searchTerm = e.target.value;
+                render();
+            });
         }
-
-
-        /* =========================================
-           START
-           ========================================= */
 
         await loadIDs();
 
