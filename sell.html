@@ -655,6 +655,21 @@
             class="sell-form"
             id="sellForm">
 
+            <section class="seller-contact-section">
+                <h2 class="form-section-title">SELLER <span>CONTACT</span></h2>
+                <div class="account-details-grid">
+                    <div class="form-field">
+                        <label for="sellerName">YOUR NAME</label>
+                        <input id="sellerName" name="sellerName" type="text" placeholder="Your name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="sellerWhatsApp">WHATSAPP NUMBER</label>
+                        <input id="sellerWhatsApp" name="sellerWhatsApp" type="tel" inputmode="numeric" placeholder="10 digit WhatsApp number" pattern="[0-9 +()-]{8,20}" required>
+                    </div>
+                </div>
+            </section>
+
+
 
             <!-- ======================================
                  ACCOUNT DETAILS
@@ -1137,53 +1152,133 @@
 
 
     <!-- ==========================================
-         SELL FORM DEMO HANDLER
+         SELL FORM SUBMISSION
          ========================================== -->
 
     <script>
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
+        document.addEventListener("DOMContentLoaded", function () {
 
-                const form =
-                    document.getElementById(
-                        "sellForm"
-                    );
+            const API_BASE = "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
+            const ADMIN_WHATSAPP = "919786267475";
+            const form = document.getElementById("sellForm");
+            const status = document.getElementById("submitStatus");
 
-                const status =
-                    document.getElementById(
-                        "submitStatus"
-                    );
+            if (!form || !status) return;
 
+            function compressImage(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = event => {
+                        const image = new Image();
+                        image.onload = () => {
+                            const max = 1600;
+                            let width = image.width;
+                            let height = image.height;
+                            if (width > max) { height *= max / width; width = max; }
+                            if (height > max) { width *= max / height; height = max; }
+                            const canvas = document.createElement("canvas");
+                            canvas.width = Math.round(width);
+                            canvas.height = Math.round(height);
+                            canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
+                            resolve(canvas.toDataURL("image/jpeg", 0.82));
+                        };
+                        image.onerror = () => reject(new Error("Could not read an image."));
+                        image.src = event.target.result;
+                    };
+                    reader.onerror = () => reject(new Error("Could not read a file."));
+                    reader.readAsDataURL(file);
+                });
+            }
 
-                if (!form) {
+            form.addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                const submitButton = form.querySelector("button[type=submit]");
+                const files = Array.from(form.querySelectorAll('input[type="file"]'))
+                    .map(input => input.files[0] || null);
+
+                const payload = {
+                    sellerName: document.getElementById("sellerName").value.trim(),
+                    sellerWhatsApp: document.getElementById("sellerWhatsApp").value.trim(),
+                    accountLevel: document.getElementById("accountLevel").value,
+                    primeLevel: document.getElementById("primeLevel").value,
+                    vaultCollection: document.getElementById("vaultCollection").value,
+                    goldenElite: document.getElementById("goldenElite").value,
+                    expectedPrice: document.getElementById("expectedPrice").value,
+                    sellerNote: document.getElementById("sellerNote").value.trim(),
+                    images: []
+                };
+
+                if (!payload.sellerName || !payload.sellerWhatsApp) {
+                    status.className = "submit-status error";
+                    status.textContent = "Please enter your name and WhatsApp number.";
                     return;
                 }
 
+                submitButton.disabled = true;
+                submitButton.textContent = "SUBMITTING...";
+                status.className = "submit-status";
+                status.textContent = "Uploading your screenshots securely...";
 
-                form.addEventListener(
-                    "submit",
-                    function (event) {
-
-                        event.preventDefault();
-
-
-                        status.className =
-                            "submit-status success";
-
-
-                        status.textContent =
-                            "Request captured successfully. Production version will securely upload your screenshots and send the request to admin.";
-
+                try {
+                    for (const file of files) {
+                        if (file) payload.images.push(await compressImage(file));
                     }
-                );
 
-            }
-        );
+                    const response = await fetch(`${API_BASE}/api/sell-requests`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        let errorText = "Sell request API unavailable.";
+                        try {
+                            const errorData = await response.json();
+                            errorText = errorData.error || errorData.details || errorText;
+                        } catch (_) {}
+                        throw new Error(errorText);
+                    }
+
+                    const result = await response.json();
+                    const requestId = result.requestId || result.id || "submitted";
+
+                    status.className = "submit-status success";
+                    status.textContent = `✓ Sell request submitted successfully. Request ID: ${requestId}`;
+                    form.reset();
+
+                } catch (error) {
+                    /* Fallback: never pretend the request was saved.
+                       Open WhatsApp with the complete text summary and ask the seller to attach screenshots. */
+                    const message = [
+                        "TAMILANDA GAMING - SELL REQUEST",
+                        "",
+                        `Name: ${payload.sellerName}`,
+                        `WhatsApp: ${payload.sellerWhatsApp}`,
+                        `Account Level: ${payload.accountLevel}`,
+                        `Prime Level: ${payload.primeLevel}`,
+                        `Vault Collection: ${payload.vaultCollection}`,
+                        `Golden Elite: ${payload.goldenElite}`,
+                        `Expected Price: ₹${payload.expectedPrice}`,
+                        `Note: ${payload.sellerNote || "-"}`,
+                        "",
+                        "I will send the account screenshots in this WhatsApp chat."
+                    ].join("\n");
+
+                    const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(message)}`;
+                    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+
+                    status.className = "submit-status";
+                    status.textContent = "The online submission service is unavailable, so WhatsApp was opened instead. Please attach your screenshots there.";
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = "SUBMIT SELL REQUEST →";
+                }
+            });
+        });
 
     </script>
-
 
 </body>
 
