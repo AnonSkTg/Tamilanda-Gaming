@@ -261,18 +261,42 @@ Admin 2 — +91 93630 63571
            ========================================== */
 
         .agreement {
-            margin-top: 20px;
+            width: min(100%, 700px);
+            margin: 20px auto 0;
             display: flex;
-            align-items: flex-start;
-            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             color: #777;
             font-size: 11px;
             line-height: 1.5;
+            text-align: left;
         }
 
         .agreement input {
-            margin-top: 2px;
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            margin: 0;
             accent-color: #ffb000;
+            cursor: pointer;
+        }
+
+        .agreement span {
+            max-width: 620px;
+        }
+
+        @media (max-width: 600px) {
+            .agreement {
+                align-items: flex-start;
+                justify-content: flex-start;
+                gap: 10px;
+                font-size: 11px;
+            }
+
+            .agreement input {
+                margin-top: 1px;
+            }
         }
 
         /* ==========================================
