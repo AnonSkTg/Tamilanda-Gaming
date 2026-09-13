@@ -13,6 +13,11 @@
         name="description"
         content="Sell your Free Fire ID through Tamilanda Gaming.">
 
+    <link
+        rel="icon"
+        type="image/png"
+        href="/assets/ic_launcher.png">
+
     <title>Sell Your ID | Tamilanda Gaming</title>
 
     <link rel="stylesheet" href="styles.css">
@@ -25,9 +30,7 @@
 
         .sell-page {
             min-height: 100vh;
-
             padding: 55px 6% 100px;
-
             background:
                 radial-gradient(
                     circle at 50% 0%,
@@ -37,44 +40,30 @@
                 #080808;
         }
 
-
         .sell-heading {
             max-width: 800px;
-
             margin: 0 auto 45px;
-
             text-align: center;
         }
 
-
         .sell-heading h1 {
             font-size: clamp(40px, 6vw, 68px);
-
             line-height: 0.95;
-
             letter-spacing: -2px;
-
             font-weight: 900;
         }
-
 
         .sell-heading h1 span {
             color: #ffb000;
         }
 
-
         .sell-heading p {
             max-width: 600px;
-
             margin: 18px auto 0;
-
             color: #777;
-
             font-size: 14px;
-
             line-height: 1.7;
         }
-
 
         /* ==========================================
            FORM
@@ -83,32 +72,22 @@
         .sell-form {
             width: 100%;
             max-width: 1000px;
-
             margin: auto;
-
             padding: 30px;
-
             border-radius: 18px;
-
             background: #101010;
-
-            border: 1px solid
-                rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
         }
-
 
         .form-section-title {
             margin-bottom: 20px;
-
             font-size: 17px;
             font-weight: 900;
         }
 
-
         .form-section-title span {
             color: #ffb000;
         }
-
 
         /* ==========================================
            ACCOUNT DETAILS
@@ -116,81 +95,52 @@
 
         .account-details-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 16px;
         }
 
-
         .form-field {
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
         }
-
 
         .form-field.full {
             grid-column: 1 / -1;
         }
 
-
         .form-field label {
             color: #b0b0b0;
-
             font-size: 11px;
-
             font-weight: 800;
-
             letter-spacing: 0.3px;
         }
-
 
         .form-field input,
         .form-field select,
         .form-field textarea {
-
             width: 100%;
-
             padding: 14px;
-
             border-radius: 9px;
-
-            border: 1px solid
-                rgba(255,255,255,0.10);
-
+            border: 1px solid rgba(255,255,255,0.10);
             background: #171717;
-
             color: #ffffff;
-
             outline: none;
-
             font-size: 13px;
-
             transition: 0.2s ease;
         }
-
 
         .form-field input:focus,
         .form-field select:focus,
         .form-field textarea:focus {
-
             border-color: #ffb000;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(255,176,0,0.05);
+            box-shadow: 0 0 0 3px rgba(255,176,0,0.05);
         }
-
 
         .form-field input::placeholder,
         .form-field textarea::placeholder {
             color: #555;
         }
-
 
         /* ==========================================
            IMAGE UPLOADS
@@ -200,269 +150,195 @@
             margin-top: 38px;
         }
 
-
         .upload-description {
             margin-bottom: 18px;
-
             color: #666;
-
             font-size: 12px;
-
             line-height: 1.6;
         }
 
-
         .upload-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
         }
 
-
         .upload-box {
-
             min-height: 135px;
-
             padding: 20px;
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
             align-items: center;
-
             text-align: center;
-
-            border: 1px dashed
-                rgba(255,255,255,0.16);
-
+            border: 1px dashed rgba(255,255,255,0.16);
             border-radius: 13px;
-
             background: #0c0c0c;
-
             cursor: pointer;
-
             transition: 0.25s ease;
         }
 
-
         .upload-box:hover {
-
             border-color: #ffb000;
-
-            background:
-                rgba(255,176,0,0.035);
+            background: rgba(255,176,0,0.035);
         }
 
-
         .upload-icon {
-
             font-size: 27px;
-
             margin-bottom: 10px;
         }
 
-
         .upload-box strong {
-
             font-size: 12px;
         }
 
-
         .upload-box small {
-
             margin-top: 6px;
-
             color: #666;
-
             font-size: 9px;
         }
 
-
         .upload-box input {
-
             width: 100%;
-
             margin-top: 12px;
-
             color: #777;
-
             font-size: 10px;
         }
-
 
         /* ==========================================
            NOTE
            ========================================== */
 
         .note-section {
-
             margin-top: 35px;
         }
 
-
         .note-section textarea {
-
             min-height: 120px;
-
             resize: vertical;
         }
-
 
         /* ==========================================
            IMPORTANT NOTICE
            ========================================== */
 
         .important-notice {
-
             margin-top: 25px;
-
             padding: 18px;
-
             display: flex;
-
             gap: 12px;
-
             border-radius: 11px;
-
-            background:
-                rgba(255,176,0,0.06);
-
-            border: 1px solid
-                rgba(255,176,0,0.18);
-
+            background: rgba(255,176,0,0.06);
+            border: 1px solid rgba(255,176,0,0.18);
             color: #c7a64e;
-
             font-size: 12px;
-
             line-height: 1.6;
         }
 
-
         .important-notice-icon {
-
             font-size: 20px;
-
             flex-shrink: 0;
         }
 
-
         .important-notice strong {
-
             color: #ffb000;
         }
-
 
         /* ==========================================
            CHECKBOX
            ========================================== */
 
         .agreement {
-
             margin-top: 20px;
-
             display: flex;
-
             align-items: flex-start;
-
             gap: 10px;
-
             color: #777;
-
             font-size: 11px;
-
             line-height: 1.5;
         }
 
-
         .agreement input {
-
             margin-top: 2px;
-
             accent-color: #ffb000;
         }
-
 
         /* ==========================================
            SUBMIT
            ========================================== */
 
         .submit-area {
-
             margin-top: 30px;
-
             padding-top: 25px;
-
-            border-top: 1px solid
-                rgba(255,255,255,0.07);
-
+            border-top: 1px solid rgba(255,255,255,0.07);
             text-align: center;
         }
 
-
         .submit-button {
-
             min-width: 240px;
-
             min-height: 52px;
-
             padding: 0 25px;
-
             border: 0;
-
             border-radius: 10px;
-
             background: #ffb000;
-
             color: #080808;
-
             font-size: 13px;
-
             font-weight: 900;
-
             cursor: pointer;
-
             transition: 0.25s ease;
         }
 
-
         .submit-button:hover {
-
             transform: translateY(-3px);
-
-            box-shadow:
-                0 12px 30px
-                rgba(255,176,0,0.22);
+            box-shadow: 0 12px 30px rgba(255,176,0,0.22);
         }
 
+        .submit-button:disabled {
+            opacity: 0.65;
+            cursor: wait;
+            transform: none;
+            box-shadow: none;
+        }
 
         .submit-status {
-
             min-height: 18px;
-
             margin-top: 15px;
-
             color: #777;
-
             font-size: 11px;
+            line-height: 1.6;
         }
-
 
         .submit-status.success {
             color: #57d88a;
         }
 
-
         .submit-status.error {
             color: #ff6c6c;
         }
 
+        .whatsapp-followup {
+            display: none;
+            margin: 16px auto 0;
+            width: min(100%, 360px);
+            padding: 13px 18px;
+            border-radius: 10px;
+            background: #25d366;
+            color: #071108;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 900;
+            transition: 0.2s ease;
+        }
+
+        .whatsapp-followup.show {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .whatsapp-followup:hover {
+            transform: translateY(-2px);
+        }
 
         /* ==========================================
            MOBILE
@@ -471,33 +347,31 @@
         @media (max-width: 700px) {
 
             .sell-page {
-                padding:
-                    45px 5% 80px;
+                padding: 45px 5% 80px;
             }
-
 
             .sell-heading h1 {
                 font-size: 43px;
             }
 
-
             .sell-form {
                 padding: 20px;
             }
-
 
             .account-details-grid,
             .upload-grid {
                 grid-template-columns: 1fr;
             }
 
-
             .form-field.full {
                 grid-column: auto;
             }
 
-
             .submit-button {
+                width: 100%;
+            }
+
+            .whatsapp-followup {
                 width: 100%;
             }
 
@@ -507,9 +381,7 @@
 
 </head>
 
-
 <body>
-
 
     <!-- ==========================================
          HEADER
@@ -540,7 +412,6 @@
 
         </a>
 
-
         <nav class="main-nav">
 
             <a href="index.html">
@@ -561,7 +432,6 @@
 
         </nav>
 
-
         <button
             class="menu-button"
             aria-label="Open Menu">
@@ -571,8 +441,6 @@
         </button>
 
     </header>
-
-
 
     <!-- ==========================================
          SIDE MENU
@@ -588,21 +456,17 @@
 
         </button>
 
-
         <a href="index.html">
             Home
         </a>
-
 
         <a href="about.html">
             About
         </a>
 
-
         <a href="contact.html">
             Contact Us
         </a>
-
 
         <a href="terms.html">
             Terms & Conditions
@@ -610,16 +474,11 @@
 
     </aside>
 
-
-
     <!-- ==========================================
          SELL PAGE
          ========================================== -->
 
     <main class="sell-page">
-
-
-        <!-- Heading -->
 
         <section class="sell-heading">
 
@@ -627,25 +486,19 @@
                 TAMILANDA GAMING
             </p>
 
-
             <h1>
                 SELL YOUR
                 <span>BORING IDS</span>
                 NOW
             </h1>
 
-
             <p>
-
                 Have a Free Fire account you no longer
                 need? Submit the account details and
                 screenshots below for review.
-
             </p>
 
         </section>
-
-
 
         <!-- ==========================================
              FORM
@@ -656,34 +509,54 @@
             id="sellForm">
 
             <section class="seller-contact-section">
-                <h2 class="form-section-title">SELLER <span>CONTACT</span></h2>
+
+                <h2 class="form-section-title">
+                    SELLER <span>CONTACT</span>
+                </h2>
+
                 <div class="account-details-grid">
+
                     <div class="form-field">
-                        <label for="sellerName">YOUR NAME</label>
-                        <input id="sellerName" name="sellerName" type="text" placeholder="Your name" required>
+
+                        <label for="sellerName">
+                            YOUR NAME
+                        </label>
+
+                        <input
+                            id="sellerName"
+                            name="sellerName"
+                            type="text"
+                            placeholder="Your name"
+                            required>
+
                     </div>
+
                     <div class="form-field">
-                        <label for="sellerWhatsApp">WHATSAPP NUMBER</label>
-                        <input id="sellerWhatsApp" name="sellerWhatsApp" type="tel" inputmode="numeric" placeholder="10 digit WhatsApp number" pattern="[0-9 +()-]{8,20}" required>
+
+                        <label for="sellerWhatsApp">
+                            WHATSAPP NUMBER
+                        </label>
+
+                        <input
+                            id="sellerWhatsApp"
+                            name="sellerWhatsApp"
+                            type="tel"
+                            inputmode="numeric"
+                            placeholder="10 digit WhatsApp number"
+                            pattern="[0-9 +()-]{8,20}"
+                            required>
+
                     </div>
+
                 </div>
+
             </section>
-
-
-
-            <!-- ======================================
-                 ACCOUNT DETAILS
-                 ====================================== -->
 
             <h2 class="form-section-title">
                 ACCOUNT <span>DETAILS</span>
             </h2>
 
-
             <div class="account-details-grid">
-
-
-                <!-- Account Level -->
 
                 <div class="form-field">
 
@@ -702,9 +575,6 @@
 
                 </div>
 
-
-                <!-- Prime Level -->
-
                 <div class="form-field">
 
                     <label for="primeLevel">
@@ -722,9 +592,6 @@
 
                 </div>
 
-
-                <!-- Vault -->
-
                 <div class="form-field">
 
                     <label for="vaultCollection">
@@ -740,9 +607,6 @@
                         required>
 
                 </div>
-
-
-                <!-- Golden Elite -->
 
                 <div class="form-field">
 
@@ -771,9 +635,6 @@
 
                 </div>
 
-
-                <!-- Expected Price -->
-
                 <div class="form-field">
 
                     <label for="expectedPrice">
@@ -790,14 +651,7 @@
 
                 </div>
 
-
             </div>
-
-
-
-            <!-- ======================================
-                 IMAGE UPLOADS
-                 ====================================== -->
 
             <section class="upload-section">
 
@@ -805,20 +659,13 @@
                     ACCOUNT <span>SCREENSHOTS</span>
                 </h2>
 
-
                 <p class="upload-description">
-
                     Upload clear screenshots of your account.
                     Images can be any size or aspect ratio.
                     No 4:5 restriction for seller uploads.
-
                 </p>
 
-
                 <div class="upload-grid">
-
-
-                    <!-- Image 1 -->
 
                     <label class="upload-box">
 
@@ -841,10 +688,6 @@
 
                     </label>
 
-
-
-                    <!-- Image 2 -->
-
                     <label class="upload-box">
 
                         <div class="upload-icon">
@@ -865,10 +708,6 @@
                             accept="image/*">
 
                     </label>
-
-
-
-                    <!-- Image 3 -->
 
                     <label class="upload-box">
 
@@ -891,10 +730,6 @@
 
                     </label>
 
-
-
-                    <!-- Image 4 -->
-
                     <label class="upload-box">
 
                         <div class="upload-icon">
@@ -916,10 +751,6 @@
 
                     </label>
 
-
-
-                    <!-- Image 5 -->
-
                     <label class="upload-box">
 
                         <div class="upload-icon">
@@ -940,10 +771,6 @@
                             accept="image/*">
 
                     </label>
-
-
-
-                    <!-- Image 6 -->
 
                     <label class="upload-box">
 
@@ -971,24 +798,16 @@
 
             </section>
 
-
-
-            <!-- ======================================
-                 NOTE
-                 ====================================== -->
-
             <section class="note-section">
 
                 <h2 class="form-section-title">
                     ADDITIONAL <span>NOTE</span>
                 </h2>
 
-
                 <div class="form-field">
 
                     <label for="sellerNote">
                         NOTE
-
                     </label>
 
                     <textarea
@@ -999,12 +818,6 @@
                 </div>
 
             </section>
-
-
-
-            <!-- ======================================
-                 IMPORTANT NOTICE
-                 ====================================== -->
 
             <div class="important-notice">
 
@@ -1027,12 +840,6 @@
 
             </div>
 
-
-
-            <!-- ======================================
-                 AGREEMENT
-                 ====================================== -->
-
             <label class="agreement">
 
                 <input
@@ -1050,12 +857,6 @@
 
             </label>
 
-
-
-            <!-- ======================================
-                 SUBMIT
-                 ====================================== -->
-
             <div class="submit-area">
 
                 <button
@@ -1067,21 +868,26 @@
 
                 </button>
 
-
                 <p
                     id="submitStatus"
-                    class="submit-status">
+                    class="submit-status"></p>
 
-                </p>
+                <a
+                    id="whatsappFollowup"
+                    class="whatsapp-followup"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    💬 CONTACT ADMIN ON WHATSAPP
+
+                </a>
 
             </div>
-
 
         </form>
 
     </main>
-
-
 
     <!-- ==========================================
          FOOTER
@@ -1109,7 +915,6 @@
 
         </div>
 
-
         <div class="footer-links">
 
             <a href="index.html">
@@ -1134,7 +939,6 @@
 
         </div>
 
-
         <p class="copyright">
 
             © <span id="current-year"></span>
@@ -1144,12 +948,7 @@
 
     </footer>
 
-
-
-    <!-- Main JavaScript -->
-
     <script src="app.js"></script>
-
 
     <!-- ==========================================
          SELL FORM SUBMISSION
@@ -1157,126 +956,592 @@
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-            const API_BASE = "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
-            const ADMIN_WHATSAPP = "919786267475";
-            const form = document.getElementById("sellForm");
-            const status = document.getElementById("submitStatus");
+                const API_BASE =
+                    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
 
-            if (!form || !status) return;
+                const ADMIN_WHATSAPP =
+                    "919786267475";
 
-            function compressImage(file) {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = event => {
-                        const image = new Image();
-                        image.onload = () => {
-                            const max = 1600;
-                            let width = image.width;
-                            let height = image.height;
-                            if (width > max) { height *= max / width; width = max; }
-                            if (height > max) { width *= max / height; height = max; }
-                            const canvas = document.createElement("canvas");
-                            canvas.width = Math.round(width);
-                            canvas.height = Math.round(height);
-                            canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.height);
-                            resolve(canvas.toDataURL("image/jpeg", 0.82));
-                        };
-                        image.onerror = () => reject(new Error("Could not read an image."));
-                        image.src = event.target.result;
-                    };
-                    reader.onerror = () => reject(new Error("Could not read a file."));
-                    reader.readAsDataURL(file);
-                });
-            }
+                const form =
+                    document.getElementById(
+                        "sellForm"
+                    );
 
-            form.addEventListener("submit", async function (event) {
-                event.preventDefault();
+                const status =
+                    document.getElementById(
+                        "submitStatus"
+                    );
 
-                const submitButton = form.querySelector("button[type=submit]");
-                const files = Array.from(form.querySelectorAll('input[type="file"]'))
-                    .map(input => input.files[0] || null);
+                const whatsappFollowup =
+                    document.getElementById(
+                        "whatsappFollowup"
+                    );
 
-                const payload = {
-                    sellerName: document.getElementById("sellerName").value.trim(),
-                    sellerWhatsApp: document.getElementById("sellerWhatsApp").value.trim(),
-                    accountLevel: document.getElementById("accountLevel").value,
-                    primeLevel: document.getElementById("primeLevel").value,
-                    vaultCollection: document.getElementById("vaultCollection").value,
-                    goldenElite: document.getElementById("goldenElite").value,
-                    expectedPrice: document.getElementById("expectedPrice").value,
-                    sellerNote: document.getElementById("sellerNote").value.trim(),
-                    images: []
-                };
+                const currentYear =
+                    document.getElementById(
+                        "current-year"
+                    );
 
-                if (!payload.sellerName || !payload.sellerWhatsApp) {
-                    status.className = "submit-status error";
-                    status.textContent = "Please enter your name and WhatsApp number.";
+                if(currentYear){
+                    currentYear.textContent =
+                        new Date().getFullYear();
+                }
+
+                if(
+                    !form ||
+                    !status
+                ){
                     return;
                 }
 
-                submitButton.disabled = true;
-                submitButton.textContent = "SUBMITTING...";
-                status.className = "submit-status";
-                status.textContent = "Uploading your screenshots securely...";
+                function buildWhatsAppURL(
+                    payload,
+                    requestId
+                ){
 
-                try {
-                    for (const file of files) {
-                        if (file) payload.images.push(await compressImage(file));
-                    }
-
-                    const response = await fetch(`${API_BASE}/api/sell-requests`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (!response.ok) {
-                        let errorText = "Sell request API unavailable.";
-                        try {
-                            const errorData = await response.json();
-                            errorText = errorData.error || errorData.details || errorText;
-                        } catch (_) {}
-                        throw new Error(errorText);
-                    }
-
-                    const result = await response.json();
-                    const requestId = result.requestId || result.id || "submitted";
-
-                    status.className = "submit-status success";
-                    status.textContent = `✓ Sell request submitted successfully. Request ID: ${requestId}`;
-                    form.reset();
-
-                } catch (error) {
-                    /* Fallback: never pretend the request was saved.
-                       Open WhatsApp with the complete text summary and ask the seller to attach screenshots. */
                     const message = [
                         "TAMILANDA GAMING - SELL REQUEST",
                         "",
-                        `Name: ${payload.sellerName}`,
-                        `WhatsApp: ${payload.sellerWhatsApp}`,
-                        `Account Level: ${payload.accountLevel}`,
-                        `Prime Level: ${payload.primeLevel}`,
-                        `Vault Collection: ${payload.vaultCollection}`,
-                        `Golden Elite: ${payload.goldenElite}`,
-                        `Expected Price: ₹${payload.expectedPrice}`,
+                        `Request ID: ${requestId || "-"}`,
+                        `Name: ${payload.sellerName || "-"}`,
+                        `WhatsApp: ${payload.sellerWhatsApp || "-"}`,
+                        `Account Level: ${payload.accountLevel || "-"}`,
+                        `Prime Level: ${payload.primeLevel || "-"}`,
+                        `Vault Collection: ${payload.vaultCollection || "-"}`,
+                        `Golden Elite: ${payload.goldenElite || "-"}`,
+                        `Expected Price: ₹${payload.expectedPrice || "-"}`,
                         `Note: ${payload.sellerNote || "-"}`,
                         "",
-                        "I will send the account screenshots in this WhatsApp chat."
+                        "The seller request has already been submitted on the website."
                     ].join("\n");
 
-                    const whatsappURL = `https://wa.me/${ADMIN_WHATSAPP}?text=${encodeURIComponent(message)}`;
-                    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+                    return (
+                        "https://wa.me/" +
+                        ADMIN_WHATSAPP +
+                        "?text=" +
+                        encodeURIComponent(
+                            message
+                        )
+                    );
 
-                    status.className = "submit-status";
-                    status.textContent = "The online submission service is unavailable, so WhatsApp was opened instead. Please attach your screenshots there.";
-                } finally {
-                    submitButton.disabled = false;
-                    submitButton.textContent = "SUBMIT SELL REQUEST →";
                 }
-            });
-        });
+
+                function compressImage(
+                    file
+                ){
+
+                    return new Promise(
+                        function(resolve,reject){
+
+                            const reader =
+                                new FileReader();
+
+                            reader.onload =
+                                function(event){
+
+                                    const image =
+                                        new Image();
+
+                                    image.onload =
+                                        function(){
+
+                                            /*
+                                             * Keep seller payload small
+                                             * enough for the JSON API.
+                                             *
+                                             * 1200px max + JPEG 0.72
+                                             * is intentionally lighter
+                                             * than the previous version.
+                                             */
+
+                                            const max =
+                                                1200;
+
+                                            let width =
+                                                image.width;
+
+                                            let height =
+                                                image.height;
+
+                                            if(
+                                                width >
+                                                max
+                                            ){
+
+                                                height =
+                                                    height *
+                                                    max /
+                                                    width;
+
+                                                width =
+                                                    max;
+
+                                            }
+
+                                            if(
+                                                height >
+                                                max
+                                            ){
+
+                                                width =
+                                                    width *
+                                                    max /
+                                                    height;
+
+                                                height =
+                                                    max;
+
+                                            }
+
+                                            const canvas =
+                                                document.createElement(
+                                                    "canvas"
+                                                );
+
+                                            canvas.width =
+                                                Math.max(
+                                                    1,
+                                                    Math.round(
+                                                        width
+                                                    )
+                                                );
+
+                                            canvas.height =
+                                                Math.max(
+                                                    1,
+                                                    Math.round(
+                                                        height
+                                                    )
+                                                );
+
+                                            const context =
+                                                canvas.getContext(
+                                                    "2d"
+                                                );
+
+                                            if(!context){
+
+                                                reject(
+                                                    new Error(
+                                                        "Image processing is not supported in this browser."
+                                                    )
+                                                );
+
+                                                return;
+
+                                            }
+
+                                            context.drawImage(
+                                                image,
+                                                0,
+                                                0,
+                                                canvas.width,
+                                                canvas.height
+                                            );
+
+                                            resolve(
+                                                canvas.toDataURL(
+                                                    "image/jpeg",
+                                                    0.72
+                                                )
+                                            );
+
+                                        };
+
+                                    image.onerror =
+                                        function(){
+
+                                            reject(
+                                                new Error(
+                                                    "Could not read an image."
+                                                )
+                                            );
+
+                                        };
+
+                                    image.src =
+                                        event.target.result;
+
+                                };
+
+                            reader.onerror =
+                                function(){
+
+                                    reject(
+                                        new Error(
+                                            "Could not read a file."
+                                        )
+                                    );
+
+                                };
+
+                            reader.readAsDataURL(
+                                file
+                            );
+
+                        }
+                    );
+
+                }
+
+                async function getPayload(){
+
+                    const fileInputs =
+                        Array.from(
+                            form.querySelectorAll(
+                                'input[type="file"]'
+                            )
+                        );
+
+                    const files =
+                        fileInputs
+                            .map(
+                                function(input){
+                                    return (
+                                        input.files &&
+                                        input.files[0]
+                                            ? input.files[0]
+                                            : null
+                                    );
+                                }
+                            )
+                            .filter(Boolean);
+
+                    const payload = {
+
+                        sellerName:
+                            document
+                                .getElementById(
+                                    "sellerName"
+                                )
+                                .value
+                                .trim(),
+
+                        sellerWhatsApp:
+                            document
+                                .getElementById(
+                                    "sellerWhatsApp"
+                                )
+                                .value
+                                .trim(),
+
+                        accountLevel:
+                            document
+                                .getElementById(
+                                    "accountLevel"
+                                )
+                                .value,
+
+                        primeLevel:
+                            document
+                                .getElementById(
+                                    "primeLevel"
+                                )
+                                .value,
+
+                        vaultCollection:
+                            document
+                                .getElementById(
+                                    "vaultCollection"
+                                )
+                                .value,
+
+                        goldenElite:
+                            document
+                                .getElementById(
+                                    "goldenElite"
+                                )
+                                .value,
+
+                        expectedPrice:
+                            document
+                                .getElementById(
+                                    "expectedPrice"
+                                )
+                                .value,
+
+                        sellerNote:
+                            document
+                                .getElementById(
+                                    "sellerNote"
+                                )
+                                .value
+                                .trim(),
+
+                        images: []
+
+                    };
+
+                    if(
+                        !payload.sellerName ||
+                        !payload.sellerWhatsApp
+                    ){
+
+                        throw new Error(
+                            "Please enter your name and WhatsApp number."
+                        );
+
+                    }
+
+                    status.textContent =
+                        "Preparing screenshots...";
+
+                    for(
+                        const file of files
+                    ){
+
+                        const compressed =
+                            await compressImage(
+                                file
+                            );
+
+                        payload.images.push(
+                            compressed
+                        );
+
+                    }
+
+                    /*
+                     * Guard against a huge JSON body.
+                     *
+                     * This prevents another invisible failure
+                     * followed by an unwanted WhatsApp redirect.
+                     */
+
+                    const estimatedBytes =
+                        new Blob(
+                            [
+                                JSON.stringify(
+                                    payload
+                                )
+                            ]
+                        ).size;
+
+                    const MAX_CLIENT_PAYLOAD =
+                        6 * 1024 * 1024;
+
+                    if(
+                        estimatedBytes >
+                        MAX_CLIENT_PAYLOAD
+                    ){
+
+                        throw new Error(
+                            "The selected screenshots are too large. Please remove one or more images and submit again."
+                        );
+
+                    }
+
+                    return payload;
+
+                }
+
+                form.addEventListener(
+                    "submit",
+                    async function(event){
+
+                        event.preventDefault();
+
+                        const submitButton =
+                            form.querySelector(
+                                "button[type=submit]"
+                            );
+
+                        if(whatsappFollowup){
+
+                            whatsappFollowup.classList.remove(
+                                "show"
+                            );
+
+                            whatsappFollowup.href =
+                                "#";
+
+                        }
+
+                        submitButton.disabled =
+                            true;
+
+                        submitButton.textContent =
+                            "SUBMITTING...";
+
+                        status.className =
+                            "submit-status";
+
+                        status.textContent =
+                            "Uploading your screenshots securely...";
+
+                        try{
+
+                            const payload =
+                                await getPayload();
+
+                            const controller =
+                                new AbortController();
+
+                            const timeout =
+                                setTimeout(
+                                    function(){
+                                        controller.abort();
+                                    },
+                                    45000
+                                );
+
+                            let response;
+
+                            try{
+
+                                response =
+                                    await fetch(
+                                        `${API_BASE}/api/sell-requests`,
+                                        {
+                                            method:"POST",
+                                            headers:{
+                                                "Content-Type":
+                                                    "application/json"
+                                            },
+                                            body:
+                                                JSON.stringify(
+                                                    payload
+                                                ),
+                                            signal:
+                                                controller.signal
+                                        }
+                                    );
+
+                            }finally{
+
+                                clearTimeout(
+                                    timeout
+                                );
+
+                            }
+
+                            let result = {};
+
+                            try{
+
+                                result =
+                                    await response.json();
+
+                            }catch(error){
+
+                                result =
+                                    {};
+
+                            }
+
+                            if(!response.ok){
+
+                                throw new Error(
+                                    result.error ||
+                                    result.details ||
+                                    `Sell request API returned HTTP ${response.status}.`
+                                );
+
+                            }
+
+                            const requestId =
+                                result.requestId ||
+                                result.id ||
+                                "submitted";
+
+                            status.className =
+                                "submit-status success";
+
+                            status.textContent =
+                                `✓ Sell request submitted successfully. Request ID: ${requestId}`;
+
+                            /*
+                             * WhatsApp is now OPTIONAL after a
+                             * successful website submission.
+                             * No automatic redirect.
+                             */
+
+                            if(whatsappFollowup){
+
+                                whatsappFollowup.href =
+                                    buildWhatsAppURL(
+                                        payload,
+                                        requestId
+                                    );
+
+                                whatsappFollowup.classList.add(
+                                    "show"
+                                );
+
+                            }
+
+                            form.reset();
+
+                            /*
+                             * Keep success visible.
+                             * Do not immediately reset the button
+                             * into a misleading failed state.
+                             */
+
+                            submitButton.textContent =
+                                "REQUEST SUBMITTED ✓";
+
+                            return;
+
+                        }catch(error){
+
+                            console.error(
+                                "Sell request submission failed:",
+                                error
+                            );
+
+                            status.className =
+                                "submit-status error";
+
+                            status.textContent =
+                                "SELL REQUEST FAILED: " +
+                                (
+                                    error.name ===
+                                    "AbortError"
+                                        ? "Request timed out. Please try again."
+                                        : error.message
+                                ) +
+                                " No request was marked as successfully saved.";
+
+                        }finally{
+
+                            if(
+                                status.classList.contains(
+                                    "success"
+                                )
+                            ){
+
+                                /*
+                                 * Keep button in success state.
+                                 */
+
+                                submitButton.disabled =
+                                    false;
+
+                                submitButton.textContent =
+                                    "REQUEST SUBMITTED ✓";
+
+                            }else{
+
+                                submitButton.disabled =
+                                    false;
+
+                                submitButton.textContent =
+                                    "SUBMIT SELL REQUEST →";
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            }
+        );
 
     </script>
 
