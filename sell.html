@@ -1008,7 +1008,7 @@
                         "",
                         `Request ID: ${requestId || "-"}`,
                         `Name: ${payload.sellerName || "-"}`,
-                        `WhatsApp: ${payload.sellerWhatsApp || "-"}`,
+                        `WhatsApp: ${payload.sellerPhone || payload.sellerWhatsApp || "-"}`,
                         `Account Level: ${payload.accountLevel || "-"}`,
                         `Prime Level: ${payload.primeLevel || "-"}`,
                         `Vault Collection: ${payload.vaultCollection || "-"}`,
@@ -1229,6 +1229,18 @@
                                 .value
                                 .trim(),
 
+                        /* Worker compatibility:
+                         * the backend validates sellerPhone.
+                         * Keep sellerWhatsApp too for the UI/data model.
+                         */
+                        sellerPhone:
+                            document
+                                .getElementById(
+                                    "sellerWhatsApp"
+                                )
+                                .value
+                                .trim(),
+
                         accountLevel:
                             document
                                 .getElementById(
@@ -1278,7 +1290,7 @@
 
                     if(
                         !payload.sellerName ||
-                        !payload.sellerWhatsApp
+                        !payload.sellerPhone
                     ){
 
                         throw new Error(
