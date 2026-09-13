@@ -2866,3 +2866,241 @@ textarea:focus {
         padding:16px;
     }
 }
+
+/* =====================================================
+   TAMILANDA GAMING — GLOBAL ADMIN CHOOSER
+   Fixes the WhatsApp admin selector on all pages.
+   ===================================================== */
+
+body.tg-admin-modal-open {
+    overflow: hidden !important;
+}
+
+.tg-admin-chooser {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity .25s ease, visibility .25s ease !important;
+}
+
+.tg-admin-chooser.open {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.tg-admin-backdrop {
+    position: absolute !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, .78) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+}
+
+.tg-admin-dialog {
+    position: relative !important;
+    z-index: 2 !important;
+    width: min(440px, 100%) !important;
+    max-height: min(680px, calc(100vh - 40px)) !important;
+    overflow-y: auto !important;
+    padding: 30px !important;
+    border: 1px solid rgba(255, 176, 0, .35) !important;
+    border-radius: 24px !important;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 176, 0, .10), transparent 45%),
+        linear-gradient(145deg, #171717, #0b0b0b) !important;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .65),
+        0 0 45px rgba(255, 176, 0, .08) !important;
+    transform: translateY(18px) scale(.97) !important;
+    transition: transform .28s cubic-bezier(.2,.8,.2,1) !important;
+}
+
+.tg-admin-chooser.open .tg-admin-dialog {
+    transform: translateY(0) scale(1) !important;
+}
+
+.tg-admin-close {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: 36px !important;
+    height: 36px !important;
+    display: grid !important;
+    place-items: center !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 50% !important;
+    background: rgba(255,255,255,.05) !important;
+    color: #fff !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    transition: .2s ease !important;
+}
+
+.tg-admin-close:hover {
+    border-color: rgba(255,176,0,.55) !important;
+    background: rgba(255,176,0,.12) !important;
+    transform: rotate(90deg) !important;
+}
+
+.tg-admin-icon {
+    width: 58px !important;
+    height: 58px !important;
+    margin: 0 auto 14px !important;
+    display: grid !important;
+    place-items: center !important;
+    border: 1px solid rgba(255,176,0,.25) !important;
+    border-radius: 18px !important;
+    background: rgba(255,176,0,.08) !important;
+    font-size: 27px !important;
+    box-shadow: 0 10px 30px rgba(255,176,0,.08) !important;
+}
+
+.tg-admin-dialog h3 {
+    margin: 0 !important;
+    color: #fff !important;
+    text-align: center !important;
+    font-size: 25px !important;
+    font-weight: 800 !important;
+    letter-spacing: .3px !important;
+    text-transform: uppercase !important;
+}
+
+.tg-admin-subtitle {
+    margin: 9px auto 22px !important;
+    max-width: 340px !important;
+    color: #999 !important;
+    text-align: center !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+}
+
+.tg-admin-list {
+    display: grid !important;
+    gap: 12px !important;
+}
+
+.tg-admin-option {
+    width: 100% !important;
+    min-height: 76px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 13px !important;
+    padding: 13px 15px !important;
+    border: 1px solid rgba(255,255,255,.10) !important;
+    border-radius: 16px !important;
+    background: rgba(255,255,255,.035) !important;
+    color: #fff !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    font: inherit !important;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease !important;
+}
+
+.tg-admin-option:hover {
+    transform: translateY(-2px) !important;
+    border-color: rgba(255,176,0,.48) !important;
+    background: rgba(255,176,0,.08) !important;
+    box-shadow: 0 12px 28px rgba(0,0,0,.28) !important;
+}
+
+.tg-admin-option:active {
+    transform: scale(.985) !important;
+}
+
+.tg-admin-option:focus-visible {
+    outline: 2px solid #ffb000 !important;
+    outline-offset: 3px !important;
+}
+
+.tg-admin-avatar {
+    flex: 0 0 42px !important;
+    width: 42px !important;
+    height: 42px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 12px !important;
+    background: rgba(255,176,0,.12) !important;
+    font-size: 19px !important;
+}
+
+.tg-admin-info {
+    min-width: 0 !important;
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+}
+
+.tg-admin-info strong {
+    color: #fff !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+.tg-admin-info span {
+    color: #ffb000 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.tg-admin-info small {
+    color: #8e8e8e !important;
+    font-size: 11px !important;
+}
+
+.tg-admin-arrow {
+    flex: 0 0 auto !important;
+    color: #ffb000 !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    opacity: .75 !important;
+}
+
+@media (max-width: 600px) {
+    .tg-admin-chooser {
+        padding: 14px !important;
+    }
+
+    .tg-admin-dialog {
+        width: 100% !important;
+        padding: 27px 17px 18px !important;
+        border-radius: 20px !important;
+        max-height: calc(100vh - 28px) !important;
+    }
+
+    .tg-admin-dialog h3 {
+        font-size: 22px !important;
+    }
+
+    .tg-admin-subtitle {
+        font-size: 12px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .tg-admin-option {
+        min-height: 70px !important;
+        padding: 11px 12px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tg-admin-chooser,
+    .tg-admin-dialog,
+    .tg-admin-option,
+    .tg-admin-close {
+        transition: none !important;
+    }
+}
