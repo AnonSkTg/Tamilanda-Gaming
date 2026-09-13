@@ -489,7 +489,179 @@
             .id-grid { grid-template-columns: 1fr; gap: 16px; }
         }
 
-    </style>
+    
+        /* ==========================================
+           OFFICIAL ADMIN CONTACT CHOOSER
+           ========================================== */
+
+        .admin-contact-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: rgba(0,0,0,.78);
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-contact-overlay.show {
+            display: flex;
+        }
+
+        .admin-contact-modal {
+            width: min(460px, 94vw);
+            padding: 22px;
+            border-radius: 18px;
+            background: #111;
+            border: 1px solid rgba(255,176,0,.20);
+            box-shadow: 0 28px 80px rgba(0,0,0,.55);
+            animation: adminModalIn .25s ease;
+        }
+
+        @keyframes adminModalIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .admin-contact-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .admin-contact-head h3 {
+            margin: 0;
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.35;
+            font-weight: 900;
+        }
+
+        .admin-contact-head p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 10px;
+            line-height: 1.55;
+        }
+
+        .admin-contact-close {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            background: #181818;
+            color: #ddd;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .admin-contact-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .admin-contact-btn {
+            width: 100%;
+            min-height: 62px;
+            padding: 10px 13px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: #171717;
+            color: #fff;
+            text-align: left;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .admin-contact-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,176,0,.25);
+            background: #1b1b1b;
+        }
+
+        .admin-contact-icon {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255,176,0,.09);
+            color: #ffb000;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .admin-contact-copy {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .admin-contact-copy strong {
+            display: block;
+            color: #f1f1f1;
+            font-size: 11px;
+            line-height: 1.35;
+        }
+
+        .admin-contact-copy span {
+            display: block;
+            margin-top: 3px;
+            color: #777;
+            font-size: 9px;
+            line-height: 1.4;
+        }
+
+        .admin-contact-arrow {
+            color: #ffb000;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .admin-contact-safe-note {
+            margin-top: 14px;
+            padding: 11px 12px;
+            border-radius: 10px;
+            background: rgba(255,176,0,.05);
+            border: 1px solid rgba(255,176,0,.13);
+            color: #9d8952;
+            font-size: 9px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .admin-contact-modal {
+                animation: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .admin-contact-modal {
+                padding: 18px;
+            }
+
+            .admin-contact-btn {
+                min-height: 66px;
+            }
+        }
+
+</style>
 
 </head>
 
@@ -778,20 +950,119 @@
             Tell us your budget and requirements (EVO Guns, Old Elites, Vault level). Our admin team will find a custom account for you!
         </p>
 
-        <a
-            href="https://wa.me/919786267475?text=Hi%20Tamilanda%20Gaming%2C%20I%20am%20looking%20for%20a%20custom%20Free%20Fire%20ID%20with%20my%20specific%20requirements."
-            target="_blank"
-            class="request-btn">
-
+        <button
+            type="button"
+            class="request-btn admin-choice-trigger"
+            data-contact-type="custom">
             💬 REQUEST CUSTOM ID ON WHATSAPP
-
-        </a>
+        </button>
 
     </section>
 
 
 </main>
 
+
+
+<!-- ==========================================
+     OFFICIAL ADMIN CONTACT CHOOSER
+     ========================================== -->
+
+<div
+    class="admin-contact-overlay"
+    id="adminContactOverlay"
+    aria-hidden="true">
+
+    <div
+        class="admin-contact-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="adminContactTitle">
+
+        <div class="admin-contact-head">
+
+            <div>
+                <h3 id="adminContactTitle">
+                    CHOOSE AN OFFICIAL ADMIN
+                </h3>
+
+                <p>
+                    Contact only these official Tamilanda Gaming numbers.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="admin-contact-close"
+                id="adminContactClose"
+                aria-label="Close">
+                ×
+            </button>
+
+        </div>
+
+        <div class="admin-contact-list">
+
+            <button
+                type="button"
+                class="admin-contact-btn"
+                data-admin-number="919786267475">
+
+                <span class="admin-contact-icon">
+                    1
+                </span>
+
+                <span class="admin-contact-copy">
+                    <strong>
+                        Admin 1 — @Visualize
+                    </strong>
+
+                    <span>
+                        +91 97862 67475
+                    </span>
+                </span>
+
+                <span class="admin-contact-arrow">
+                    ↗
+                </span>
+
+            </button>
+
+            <button
+                type="button"
+                class="admin-contact-btn"
+                data-admin-number="919363063571">
+
+                <span class="admin-contact-icon">
+                    2
+                </span>
+
+                <span class="admin-contact-copy">
+                    <strong>
+                        Admin 2
+                    </strong>
+
+                    <span>
+                        +91 93630 63571
+                    </span>
+                </span>
+
+                <span class="admin-contact-arrow">
+                    ↗
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="admin-contact-safe-note">
+            🔐 These are the only official Tamilanda Gaming Admin contacts.
+            Verify the number before making any payment.
+        </div>
+
+    </div>
+
+</div>
 
 <footer>
 
@@ -947,107 +1218,29 @@ document.addEventListener(
 
         function resolveImageURL(image, id) {
             if (!image) return "";
+            const value = String(image).trim();
 
-            const value =
-                String(image).trim();
-
-            if (!value) return "";
-
-            if (
-                value.startsWith("http://") ||
-                value.startsWith("https://")
-            ) {
+            if (value.startsWith("http://") || value.startsWith("https://")) {
                 return value;
             }
-
-            /*
-             * Dynamically uploaded assets are stored in GitHub.
-             * Use raw.githubusercontent.com for "assets/..." paths
-             * so newly uploaded images do not depend on GitHub Pages
-             * deployment/cache timing.
-             */
-            if (value.startsWith("assets/")) {
-                return (
-                    "https://raw.githubusercontent.com/" +
-                    "AnonSkTg/Tamilanda-Gaming/main/" +
-                    value
-                );
-            }
-
             if (value.startsWith("/")) {
                 return GITHUB_PAGES + value;
             }
-
-            return (
-                `${GITHUB_PAGES}/assets/ids/` +
-                `${encodeURIComponent(id)}/${value}`
-            );
+            if (value.startsWith("assets/")) {
+                return GITHUB_PAGES + "/" + value;
+            }
+            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/${value}`;
         }
 
         function getImageURL(item) {
-
-            const id =
-                String(
-                    item.id ||
-                    item.idNumber ||
-                    item.number ||
-                    ""
-                ).trim();
-
+            const id = String(item.id || item.idNumber || item.number || "").trim();
             if (!id) return "";
 
-            /*
-             * Priority:
-             *
-             * 1. Normal ID image
-             * 2. Showcase image
-             * 3. Conventional 01.jpg path
-             *
-             * This is important because an ID may have only the
-             * showcase image uploaded.
-             */
-
-            if (
-                Array.isArray(item.images) &&
-                item.images.length > 0
-            ) {
-
-                const normalImage =
-                    resolveImageURL(
-                        item.images[0],
-                        id
-                    );
-
-                if (normalImage) {
-                    return normalImage;
-                }
-
+            if (Array.isArray(item.images) && item.images.length > 0) {
+                return resolveImageURL(item.images[0], id);
             }
 
-            const showcaseImage =
-                item.showcaseImage ||
-                item.showcase_image ||
-                item.heroImage ||
-                "";
-
-            if (showcaseImage) {
-
-                const showcaseURL =
-                    resolveImageURL(
-                        showcaseImage,
-                        id
-                    );
-
-                if (showcaseURL) {
-                    return showcaseURL;
-                }
-
-            }
-
-            return (
-                `${GITHUB_PAGES}/assets/ids/` +
-                `${encodeURIComponent(id)}/01.jpg`
-            );
+            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
         }
 
         function getTags(item) {
@@ -1167,9 +1360,16 @@ document.addEventListener(
                         ${isSold ? "VIEW SOLD ID →" : "VIEW ID DETAILS →"}
                     </a>
                     ${!isSold ? `
-                    <a href="https://wa.me/919786267475?text=${encodeURIComponent(`Hi Tamilanda Gaming, I want to buy ${name} (${formatPrice(price)}). ID: ${id}`)}" target="_blank" class="quick-buy-whatsapp-btn" onclick="event.stopPropagation()">
+                    <button
+                        type="button"
+                        class="quick-buy-whatsapp-btn admin-choice-trigger"
+                        data-contact-type="buy"
+                        data-id="${escapeHTML(id)}"
+                        data-name="${escapeHTML(name)}"
+                        data-price="${escapeHTML(formatPrice(price))}"
+                        onclick="event.stopPropagation()">
                         💬 BUY VIA WHATSAPP
-                    </a>` : ''}
+                    </button>` : ''}
                 </div>
             `;
 
@@ -1323,6 +1523,173 @@ document.addEventListener(
 
 </script>
 
+
+
+<script>
+(function () {
+
+    const overlay =
+        document.getElementById("adminContactOverlay");
+
+    const closeButton =
+        document.getElementById("adminContactClose");
+
+    const grid =
+        document.getElementById("idGrid");
+
+    let currentContext = {
+        type: "buy",
+        id: "",
+        name: "",
+        price: ""
+    };
+
+    function buildMessage() {
+
+        if (currentContext.type === "custom") {
+            return [
+                "Hi Tamilanda Gaming,",
+                "",
+                "I am looking for a custom Free Fire ID.",
+                "Please help me find a suitable account for my requirements."
+            ].join("\n");
+        }
+
+        return [
+            "Hi Tamilanda Gaming,",
+            "",
+            `I want to buy ${currentContext.name || "this Free Fire ID"}.`,
+            `Price: ${currentContext.price || "Price on Request"}`,
+            `ID: ${currentContext.id || "-"}`
+        ].join("\n");
+    }
+
+    function openChooser(context) {
+
+        if (!overlay) return;
+
+        currentContext = {
+            type: context?.type || "buy",
+            id: context?.id || "",
+            name: context?.name || "",
+            price: context?.price || ""
+        };
+
+        overlay.classList.add("show");
+        overlay.setAttribute("aria-hidden", "false");
+
+        if (closeButton) {
+            closeButton.focus();
+        }
+    }
+
+    function closeChooser() {
+
+        if (!overlay) return;
+
+        overlay.classList.remove("show");
+        overlay.setAttribute("aria-hidden", "true");
+    }
+
+    document
+        .querySelectorAll(".admin-contact-btn")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const number =
+                    String(button.dataset.adminNumber || "")
+                        .replace(/[^\d]/g, "");
+
+                if (!number) return;
+
+                const url =
+                    `https://wa.me/${number}?text=${encodeURIComponent(buildMessage())}`;
+
+                window.open(
+                    url,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+                closeChooser();
+            });
+        });
+
+    document
+        .querySelectorAll(".admin-choice-trigger")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                openChooser({
+                    type: button.dataset.contactType || "buy",
+                    id: button.dataset.id || "",
+                    name: button.dataset.name || "",
+                    price: button.dataset.price || ""
+                });
+            });
+        });
+
+    if (grid) {
+
+        grid.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(".admin-choice-trigger");
+
+                if (!button) return;
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                openChooser({
+                    type: button.dataset.contactType || "buy",
+                    id: button.dataset.id || "",
+                    name: button.dataset.name || "",
+                    price: button.dataset.price || ""
+                });
+            }
+        );
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener(
+            "click",
+            closeChooser
+        );
+    }
+
+    if (overlay) {
+
+        overlay.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === overlay) {
+                    closeChooser();
+                }
+            }
+        );
+    }
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+                closeChooser();
+            }
+        }
+    );
+
+})();
+</script>
 
 </body>
 
