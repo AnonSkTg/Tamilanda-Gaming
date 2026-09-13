@@ -9,55 +9,11 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <!-- =================================================
-         GOOGLE / BROWSER BRANDING
-         ================================================= -->
-
-    <link
-        rel="icon"
-        type="image/png"
-        href="/assets/ic_launcher.png">
-
-    <link
-        rel="apple-touch-icon"
-        href="/assets/ic_launcher.png">
-
-    <meta
-        name="theme-color"
-        content="#080808">
-
-    <link
-        rel="canonical"
-        href="https://tamilandagaming.store/">
-
     <meta
         name="description"
         content="Tamilanda Gaming - Buy and sell Free Fire accounts.">
 
     <title>Tamilanda Gaming</title>
-
-    <!-- =================================================
-         GOOGLE SITE NAME + ORGANIZATION STRUCTURED DATA
-         ================================================= -->
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Tamilanda Gaming",
-      "url": "https://tamilandagaming.store/"
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Tamilanda Gaming",
-      "url": "https://tamilandagaming.store/",
-      "logo": "https://tamilandagaming.store/assets/ic_launcher.png"
-    }
-    </script>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -489,51 +445,11 @@
 
         .hero-slider .slider-card {
 
-            /*
-             * IMPORTANT:
-             * The slider card must fill the .hero-slider.
-             * Without an explicit height, the child showcase
-             * has no reliable containing height for height:100%.
-             * That makes the dynamic image area collapse/paint
-             * incorrectly even though the data and slide exist.
-             */
-            width:100%;
-            height:100%;
-            min-height:0;
-            position:relative;
-
             transition:
                 border-color 0.35s ease,
                 box-shadow 0.35s ease,
                 transform 0.35s ease;
 
-        }
-
-        /*
-         * Make the dynamic image layer fill the complete card.
-         */
-        #showcaseImages{
-            position:absolute;
-            inset:0;
-            width:100%;
-            height:100%;
-            z-index:1;
-        }
-
-        /*
-         * The site-wide stylesheet uses content-visibility:auto
-         * on images. The hero showcase is an absolutely positioned,
-         * animated image layer, so explicitly keep it paintable.
-         */
-        .showcase-image{
-            content-visibility:visible !important;
-            visibility:visible;
-        }
-
-        .showcase-image.active{
-            opacity:1 !important;
-            visibility:visible;
-            z-index:2;
         }
 
 
@@ -928,7 +844,132 @@
 
         }
 
-    </style>
+    
+/* =========================================================
+   HOMEPAGE PREMIUM POLISH
+========================================================= */
+
+.hero-slider,
+.hero-slider .slider-card,
+#dynamicShowcase{
+    min-height:0;
+}
+
+.hero-slider .slider-card{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+
+#dynamicShowcase{
+    isolation:isolate;
+    touch-action:pan-y;
+}
+
+#showcaseImages{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+#showcaseImages .showcase-image{
+    will-change:opacity,transform;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+#sliderDots{
+    z-index:20;
+}
+
+#sliderDots .dot{
+    border:0;
+    cursor:pointer;
+    touch-action:manipulation;
+}
+
+.dynamic-showcase:focus-visible{
+    outline:2px solid rgba(255,255,255,.75);
+    outline-offset:-4px;
+}
+
+.proof-empty-state,
+.review-empty-state{
+    min-height:130px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:22px;
+    opacity:.62;
+    border:1px dashed rgba(255,255,255,.12);
+    border-radius:14px;
+}
+
+@media(max-width:700px){
+
+    .hero-slider{
+        width:100%;
+    }
+
+    .hero-slider .slider-card{
+        min-height:390px;
+    }
+
+    #dynamicShowcase{
+        min-height:390px;
+    }
+
+    .showcase-info{
+        max-width:92%;
+    }
+
+    .showcase-info h2{
+        font-size:clamp(23px,7vw,34px);
+    }
+
+    #sliderDots{
+        bottom:14px;
+    }
+
+    .proof-empty-state,
+    .review-empty-state{
+        min-height:110px;
+        font-size:13px;
+    }
+}
+
+@media(max-width:430px){
+
+    .hero-slider .slider-card,
+    #dynamicShowcase{
+        min-height:350px;
+    }
+
+    .showcase-info{
+        left:14px;
+        right:14px;
+        bottom:22px;
+    }
+
+    .showcase-info h2{
+        font-size:24px;
+    }
+
+    .showcase-info .showcase-price{
+        font-size:18px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    #showcaseImages .showcase-image{
+        transition:none!important;
+    }
+}
+
+</style>
 
 </head>
 
@@ -2071,138 +2112,212 @@
 
                 async function loadShowcase() {
 
-                    try {
+                    /*
+                     * Primary source: Worker API.
+                     * Fallback: GitHub Pages data/ids.json.
+                     * This prevents the homepage showcase from becoming
+                     * blank when the Worker is temporarily unavailable.
+                     */
 
-                        const response =
-                            await fetch(
-                                `${API_BASE}/api/ids`,
+                    let ids = null;
+
+                    try {
+                        const response = await fetch(
+                            `${API_BASE}/api/ids`,
+                            {
+                                cache: "no-store"
+                            }
+                        );
+
+                        if (response.ok) {
+                            const payload = await response.json();
+
+                            if (Array.isArray(payload)) {
+                                ids = payload;
+                            } else if (Array.isArray(payload?.ids)) {
+                                ids = payload.ids;
+                            } else if (Array.isArray(payload?.data)) {
+                                ids = payload.data;
+                            }
+                        }
+                    } catch (error) {
+                        console.warn(
+                            "Worker showcase API unavailable. Trying static fallback."
+                        );
+                    }
+
+                    if (!Array.isArray(ids)) {
+                        try {
+                            const fallbackResponse = await fetch(
+                                `${GITHUB_BASE}/data/ids.json`,
                                 {
                                     cache: "no-store"
                                 }
                             );
 
+                            if (fallbackResponse.ok) {
+                                const fallbackPayload =
+                                    await fallbackResponse.json();
 
-                        if (!response.ok) {
-
-                            throw new Error(
-                                "Failed to load IDs"
-                            );
-
-                        }
-
-
-                        const ids =
-                            await response.json();
-
-
-                        if (
-                            !Array.isArray(ids) ||
-                            ids.length === 0
-                        ) {
-
-                            showPlaceholder();
-
-                            return;
-
-                        }
-
-
-                        /*
-                         * Only use IDs that have a valid ID value.
-                         */
-
-                        const validIDs =
-                            ids.filter(
-                                function (item) {
-
-                                    return (
-                                        item &&
-                                        item.id
-                                    );
-
+                                if (Array.isArray(fallbackPayload)) {
+                                    ids = fallbackPayload;
+                                } else if (
+                                    Array.isArray(fallbackPayload?.ids)
+                                ) {
+                                    ids = fallbackPayload.ids;
+                                } else if (
+                                    Array.isArray(fallbackPayload?.data)
+                                ) {
+                                    ids = fallbackPayload.data;
                                 }
+                            }
+                        } catch (fallbackError) {
+                            console.warn(
+                                "Static showcase fallback unavailable."
                             );
-
-
-                        if (
-                            validIDs.length === 0
-                        ) {
-
-                            showPlaceholder();
-
-                            return;
-
                         }
-
-                        const showcaseIDs = validIDs.filter(item => {
-                            const showcaseEnabled = item.showcase === true || String(item.showcase || "").toLowerCase() === "yes";
-                            const sold = String(item.status || "").toLowerCase() === "sold";
-                            return showcaseEnabled && !sold;
-                        });
-
-                        createShowcase(showcaseIDs);
-
-
-                    } catch (error) {
-
-                        console.error(
-                            "Showcase error:",
-                            error
-                        );
-
-                        showPlaceholder();
-
                     }
 
+                    if (!Array.isArray(ids) || ids.length === 0) {
+                        showPlaceholder();
+                        return;
+                    }
+
+                    const validIDs = ids.filter((item) => {
+                        if (!item || item.id === undefined || item.id === null) {
+                            return false;
+                        }
+
+                        const status =
+                            String(item.status || "")
+                                .trim()
+                                .toLowerCase();
+
+                        /*
+                         * Showcase must never advertise an ID that is
+                         * already marked sold.
+                         */
+                        const isSold =
+                            status === "sold" ||
+                            status === "soldout" ||
+                            status === "sold-out";
+
+                        return !isSold;
+                    });
+
+                    const showcaseIDs = validIDs.filter((item) => {
+                        const value =
+                            String(item.showcase ?? "")
+                                .trim()
+                                .toLowerCase();
+
+                        return (
+                            item.showcase === true ||
+                            item.showcase === 1 ||
+                            value === "yes" ||
+                            value === "true" ||
+                            value === "1" ||
+                            value === "on"
+                        );
+                    });
+
+                    createShowcase(showcaseIDs);
                 }
 
 
                 /* =================================================
-                   CREATE SHOWCASE (2 SEC AUTO SLIDE + CLICK REDIRECT)
+                   CREATE SHOWCASE
+                   1 ID = 1 SLIDE
                    ================================================= */
 
                 function createShowcase(ids) {
+
                     imagesContainer.innerHTML = "";
                     dotsContainer.innerHTML = "";
 
                     let currentIndex = 0;
                     const slides = [];
 
-                    ids.forEach(function (item) {
+                    ids.forEach((item) => {
+
                         const id = String(item.id);
                         let url = "";
 
                         if (item.showcaseImage) {
-                            url = resolveImageURL(item.showcaseImage, id);
-                        } else if (Array.isArray(item.images) && item.images[0]) {
-                            url = resolveImageURL(item.images[0], id);
+                            url = resolveImageURL(
+                                item.showcaseImage,
+                                id
+                            );
+                        } else if (
+                            Array.isArray(item.images) &&
+                            item.images.length &&
+                            item.images[0]
+                        ) {
+                            url = resolveImageURL(
+                                item.images[0],
+                                id
+                            );
                         } else {
-                            url = `${GITHUB_BASE}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
+                            url =
+                                `${GITHUB_BASE}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
                         }
 
                         if (!url) return;
 
-                        const image = document.createElement("img");
-                        image.className = "showcase-image";
+                        const image =
+                            document.createElement("img");
+
+                        image.className =
+                            "showcase-image";
+
                         image.src = url;
-                        image.alt = item.name || `Free Fire ID ${id}`;
-                        image.loading = slides.length === 0 ? "eager" : "lazy";
+
+                        image.alt =
+                            item.name ||
+                            `Free Fire ID ${id}`;
+
+                        image.loading =
+                            slides.length === 0
+                                ? "eager"
+                                : "lazy";
+
+                        const slide = {
+                            item,
+                            image
+                        };
 
                         image.onerror = function () {
-                            const failedIndex = slides.findIndex(slide => slide.image === image);
+
+                            const failedIndex =
+                                slides.indexOf(slide);
+
                             if (failedIndex >= 0) {
-                                slides.splice(failedIndex, 1);
+                                slides.splice(
+                                    failedIndex,
+                                    1
+                                );
                             }
+
                             image.remove();
-                            if (!slides.length) showPlaceholder();
-                            else {
-                                currentIndex = Math.min(currentIndex, slides.length - 1);
-                                showSlide(currentIndex);
+
+                            if (!slides.length) {
+                                showPlaceholder();
+                                return;
                             }
+
+                            if (
+                                currentIndex >=
+                                slides.length
+                            ) {
+                                currentIndex =
+                                    slides.length - 1;
+                            }
+
+                            renderSlide(currentIndex);
                         };
 
                         imagesContainer.appendChild(image);
-                        slides.push({ item, image });
+                        slides.push(slide);
                     });
 
                     if (!slides.length) {
@@ -2210,79 +2325,182 @@
                         return;
                     }
 
-                    slides.forEach(function (_, index) {
-                        const dot = document.createElement("span");
-                        dot.className = "dot" + (index === 0 ? " active" : "");
-                        dot.addEventListener("click", function (event) {
-                            event.stopPropagation();
-                            currentIndex = index;
-                            showSlide(currentIndex);
-                            resetAutoSlide();
-                        });
+                    slides.forEach((slide, index) => {
+
+                        const dot =
+                            document.createElement("button");
+
+                        dot.type = "button";
+                        dot.className =
+                            "dot" +
+                            (index === 0
+                                ? " active"
+                                : "");
+
+                        dot.setAttribute(
+                            "aria-label",
+                            `Showcase ${index + 1}`
+                        );
+
+                        dot.addEventListener(
+                            "click",
+                            (event) => {
+
+                                event.stopPropagation();
+
+                                currentIndex = index;
+
+                                renderSlide(
+                                    currentIndex
+                                );
+
+                                resetAutoSlide();
+                            }
+                        );
+
                         dotsContainer.appendChild(dot);
                     });
 
-                    const maxDots = slides.length;
                     placeholder.style.display = "none";
-                    showSlide(0);
 
-                    let autoSlide = setInterval(function () {
-                        if (slides.length > 1) {
-                            currentIndex = (currentIndex + 1) % slides.length;
-                            showSlide(currentIndex);
+                    renderSlide(0);
+
+                    let autoSlide = null;
+
+                    function startAutoSlide() {
+
+                        clearInterval(autoSlide);
+
+                        if (slides.length <= 1) {
+                            autoSlide = null;
+                            return;
                         }
-                    }, 2000);
+
+                        autoSlide = setInterval(
+                            () => {
+
+                                currentIndex =
+                                    (currentIndex + 1) %
+                                    slides.length;
+
+                                renderSlide(
+                                    currentIndex
+                                );
+                            },
+                            3500
+                        );
+                    }
 
                     function resetAutoSlide() {
-                        clearInterval(autoSlide);
-                        autoSlide = setInterval(function () {
-                            if (slides.length > 1) {
-                                currentIndex = (currentIndex + 1) % slides.length;
-                                showSlide(currentIndex);
-                            }
-                        }, 2000);
+                        startAutoSlide();
                     }
 
-                    showcase.addEventListener("mouseenter", function () {
-                        clearInterval(autoSlide);
-                    }, { once: true });
-
-                    showcase.addEventListener("mouseleave", function () {
-                        resetAutoSlide();
-                    }, { once: true });
-
-                    showcase.addEventListener("click", function () {
-                        const selected = slides[currentIndex];
-                        if (selected?.item?.id) {
-                            window.location.href = `id-details.html?id=${encodeURIComponent(selected.item.id)}`;
+                    /*
+                     * Pause on hover, resume on leave.
+                     * No { once:true } so it works repeatedly.
+                     */
+                    showcase.addEventListener(
+                        "mouseenter",
+                        () => {
+                            clearInterval(autoSlide);
                         }
-                    });
+                    );
 
-                    function showSlide(index) {
-                        if (!slides[index]) return;
+                    showcase.addEventListener(
+                        "mouseleave",
+                        () => {
+                            startAutoSlide();
+                        }
+                    );
+
+                    /*
+                     * Touch devices do not have mouseenter/mouseleave.
+                     * Tapping the showcase opens the selected ID.
+                     */
+                    showcase.addEventListener(
+                        "click",
+                        () => {
+
+                            const selected =
+                                slides[currentIndex];
+
+                            if (
+                                selected?.item?.id
+                            ) {
+                                window.location.href =
+                                    `id-details.html?id=${encodeURIComponent(
+                                        selected.item.id
+                                    )}`;
+                            }
+                        }
+                    );
+
+                    function renderSlide(index) {
+
+                        if (!slides[index]) {
+                            return;
+                        }
+
                         currentIndex = index;
 
-                        slides.forEach(function (slide, slideIndex) {
-                            slide.image.classList.toggle("active", slideIndex === index);
-                        });
+                        slides.forEach(
+                            (slide, slideIndex) => {
 
-                        const dots = dotsContainer.querySelectorAll(".dot");
-                        dots.forEach(function (dot, dotIndex) {
-                            dot.classList.toggle("active", dotIndex === index);
-                        });
+                                slide.image.classList.toggle(
+                                    "active",
+                                    slideIndex === index
+                                );
+                            }
+                        );
 
-                        const item = slides[index].item;
-                        const category = item.category || item.badge || "FREE FIRE ID";
+                        const dots =
+                            dotsContainer.querySelectorAll(
+                                ".dot"
+                            );
 
-                        categoryElement.textContent = String(category).toUpperCase();
-                        nameElement.textContent = item.name || `ID #${item.id}`;
-                        priceElement.textContent = formatPrice(item.price);
+                        dots.forEach(
+                            (dot, dotIndex) => {
 
-                        info.classList.remove("visible");
-                        setTimeout(function () {
-                            info.classList.add("visible");
-                        }, 100);
+                                dot.classList.toggle(
+                                    "active",
+                                    dotIndex === index
+                                );
+                            }
+                        );
+
+                        const item =
+                            slides[index].item;
+
+                        const category =
+                            item.category ||
+                            item.badge ||
+                            "FREE FIRE ID";
+
+                        categoryElement.textContent =
+                            String(category).toUpperCase();
+
+                        nameElement.textContent =
+                            item.name ||
+                            `ID #${item.id}`;
+
+                        priceElement.textContent =
+                            formatPrice(item.price);
+
+                        info.classList.remove(
+                            "visible"
+                        );
+
+                        window.setTimeout(
+                            () => {
+                                info.classList.add(
+                                    "visible"
+                                );
+                            },
+                            80
+                        );
                     }
+
+                    startAutoSlide();
                 }
 
                 /* =================================================
