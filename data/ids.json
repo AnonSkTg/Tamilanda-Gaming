@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "001",
+    "name": "Gold",
+    "price": 55000,
+    "level": 87,
+    "prime": "8",
+    "vault": "700",
+    "category": "high",
+    "badge": "",
+    "popular": 100,
+    "status": "available",
+    "showcase": "yes",
+    "images": [],
+    "description": "YES",
+    "tags": [],
+    "popularScore": 100,
+    "showcaseImage": ""
+  }
+]
