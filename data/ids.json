@@ -11,7 +11,11 @@
     "popular": 100,
     "status": "available",
     "showcase": "yes",
-    "images": [],
+    "images": [
+      "assets/ids/001/01.jpg",
+      "assets/ids/001/02.jpg",
+      "assets/ids/001/03.jpg"
+    ],
     "description": "YES",
     "tags": [],
     "popularScore": 100,
