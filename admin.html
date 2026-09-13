@@ -1301,6 +1301,79 @@ button:disabled{
     border:1px solid rgba(255,255,255,.10);
 }
 
+
+/* =========================================================
+   SELL REQUEST ACTIONS — CONTACT + DELETE FIX
+========================================================= */
+
+.sell-request-actions{
+    display:grid !important;
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:8px !important;
+    margin-top:14px !important;
+}
+
+.sell-request-actions a,
+.sell-request-actions button{
+    width:100% !important;
+    min-width:0 !important;
+    min-height:38px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    text-decoration:none !important;
+    white-space:nowrap !important;
+    box-sizing:border-box !important;
+}
+
+.contact-seller-btn{
+    background:rgba(50,200,100,.08) !important;
+    color:#65d98a !important;
+    border:1px solid rgba(50,200,100,.20) !important;
+    text-decoration:none !important;
+}
+
+.contact-seller-btn:hover{
+    background:rgba(50,200,100,.15) !important;
+    border-color:rgba(50,200,100,.38) !important;
+    color:#8af0a8 !important;
+}
+
+.delete-seller-btn{
+    background:rgba(255,55,55,.08) !important;
+    color:#ff7777 !important;
+    border:1px solid rgba(255,55,55,.20) !important;
+}
+
+.delete-seller-btn:hover{
+    background:rgba(255,55,55,.15) !important;
+    border-color:rgba(255,55,55,.40) !important;
+    color:#ff9a9a !important;
+}
+
+.view-seller-btn{
+    background:rgba(255,255,255,.06) !important;
+    color:#ddd !important;
+    border:1px solid rgba(255,255,255,.10) !important;
+}
+
+.view-seller-btn:hover{
+    background:rgba(255,255,255,.10) !important;
+    border-color:rgba(255,255,255,.18) !important;
+}
+
+@media(max-width:650px){
+    .sell-request-actions{
+        grid-template-columns:1fr !important;
+    }
+
+    .sell-request-actions a,
+    .sell-request-actions button{
+        min-height:42px !important;
+    }
+}
+
 .sell-request-lightbox{
     position:fixed;
     inset:0;
@@ -1462,390 +1535,6 @@ button:disabled{
         text-align:right;
     }
 
-}
-
-
-/* =========================================================
-   TAMILANDA GAMING ADMIN
-   PREMIUM MOBILE / UX ENHANCEMENT
-========================================================= */
-
-html{
-    scroll-behavior:smooth;
-    -webkit-text-size-adjust:100%;
-}
-
-body{
-    overflow-x:hidden;
-    -webkit-tap-highlight-color:transparent;
-}
-
-button,
-input,
-select,
-textarea{
-    -webkit-appearance:none;
-}
-
-button{
-    touch-action:manipulation;
-    transition:
-        transform .18s ease,
-        opacity .18s ease,
-        border-color .22s ease,
-        box-shadow .22s ease;
-}
-
-button:hover:not(:disabled){
-    transform:translateY(-1px);
-}
-
-button:active:not(:disabled){
-    transform:translateY(0) scale(.985);
-}
-
-.admin-card{
-    position:relative;
-    overflow:hidden;
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.20),
-        inset 0 1px 0 rgba(255,255,255,.025);
-    transition:
-        transform .25s ease,
-        border-color .25s ease,
-        box-shadow .25s ease;
-}
-
-.admin-card::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,176,0,.025),
-            transparent 35%
-        );
-}
-
-.admin-card:hover{
-    border-color:rgba(255,176,0,.14);
-    transform:translateY(-2px);
-    box-shadow:
-        0 18px 45px rgba(0,0,0,.26),
-        inset 0 1px 0 rgba(255,255,255,.03);
-}
-
-.admin-header{
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    box-shadow:0 8px 30px rgba(0,0,0,.18);
-}
-
-input,
-select,
-textarea{
-    transition:
-        border-color .2s ease,
-        box-shadow .2s ease,
-        background .2s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-    box-shadow:
-        0 0 0 3px rgba(255,176,0,.08);
-    background:#191919;
-}
-
-.saved-item,
-.sell-request-card,
-.image-box,
-.showcase-image-box,
-.review-upload-box{
-    transition:
-        transform .22s ease,
-        border-color .22s ease,
-        box-shadow .22s ease;
-}
-
-.saved-item:hover,
-.sell-request-card:hover,
-.image-box:hover{
-    box-shadow:0 10px 25px rgba(0,0,0,.18);
-}
-
-.review-upload-btn{
-    box-shadow:
-        0 8px 20px rgba(255,176,0,.08);
-}
-
-.review-upload-btn:hover{
-    box-shadow:
-        0 12px 26px rgba(255,176,0,.13);
-}
-
-.sell-request-lightbox,
-#sellRequestLightbox{
-    z-index:9999;
-}
-
-/* Better scrollbar */
-*{
-    scrollbar-width:thin;
-    scrollbar-color:#333 #090909;
-}
-
-*::-webkit-scrollbar{
-    width:7px;
-    height:7px;
-}
-
-*::-webkit-scrollbar-track{
-    background:#090909;
-}
-
-*::-webkit-scrollbar-thumb{
-    background:#333;
-    border-radius:20px;
-}
-
-*::-webkit-scrollbar-thumb:hover{
-    background:#555;
-}
-
-/* =========================================================
-   MOBILE ADMIN
-========================================================= */
-
-@media(max-width:700px){
-
-    .admin-header{
-        padding:13px 4%;
-    }
-
-    .admin-brand{
-        gap:9px;
-        min-width:0;
-    }
-
-    .admin-brand img{
-        width:39px;
-        height:39px;
-    }
-
-    .admin-brand strong{
-        font-size:14px;
-    }
-
-    .admin-brand span{
-        font-size:8px;
-        letter-spacing:1.5px;
-    }
-
-    .admin-title{
-        display:none;
-    }
-
-    .admin-container{
-        width:94%;
-        margin:25px auto 55px;
-    }
-
-    .page-heading{
-        margin-bottom:22px;
-    }
-
-    .page-heading h1{
-        font-size:clamp(30px,10vw,44px);
-    }
-
-    .page-heading p{
-        font-size:12px;
-    }
-
-    .admin-card{
-        padding:17px;
-        margin-bottom:14px;
-        border-radius:15px;
-    }
-
-    .card-title{
-        font-size:10px;
-        letter-spacing:1.6px;
-        margin-bottom:15px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-        gap:12px;
-    }
-
-    .image-grid{
-        grid-template-columns:1fr 1fr;
-        gap:9px;
-    }
-
-    .image-box{
-        padding:11px;
-    }
-
-    .saved-search{
-        flex-wrap:wrap;
-        align-items:stretch;
-    }
-
-    .saved-search input{
-        width:100%;
-        flex-basis:100%;
-    }
-
-    .saved-search .small-btn{
-        flex:1;
-    }
-
-    .saved-search-count{
-        align-self:center;
-        margin-left:auto;
-    }
-
-    .saved-item{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:11px;
-        padding:13px;
-    }
-
-    .saved-actions{
-        width:100%;
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .saved-actions button{
-        width:100%;
-        padding:0 8px;
-    }
-
-    .button-row{
-        display:grid;
-        grid-template-columns:1fr;
-        gap:9px;
-    }
-
-    .button-row button{
-        width:100%;
-    }
-
-    textarea{
-        min-height:150px;
-    }
-
-    .review-preview-box img{
-        max-height:330px;
-    }
-
-    .showcase-preview{
-        max-height:210px;
-    }
-
-    .sell-request-toolbar{
-        gap:8px;
-    }
-
-    .sell-request-toolbar .sell-request-refresh{
-        flex:1;
-    }
-
-    .sell-request-toolbar .saved-search-count{
-        width:100%;
-        margin-left:0;
-    }
-
-    .sell-request-lightbox-content,
-    #sellRequestLightbox .sell-request-lightbox-content{
-        width:94%;
-        max-height:88vh;
-    }
-
-    .sell-request-lightbox-content img,
-    #sellRequestLightbox img{
-        max-height:78vh;
-    }
-}
-
-@media(max-width:430px){
-
-    .admin-container{
-        width:95%;
-        margin-top:20px;
-    }
-
-    .admin-card{
-        padding:14px;
-        border-radius:13px;
-    }
-
-    .image-grid{
-        grid-template-columns:1fr;
-    }
-
-    input,
-    select{
-        min-height:47px;
-        font-size:13px;
-    }
-
-    textarea{
-        font-size:13px;
-    }
-
-    .saved-actions{
-        grid-template-columns:1fr;
-    }
-
-    .saved-actions button{
-        min-height:42px;
-    }
-
-    .review-upload-box{
-        padding:13px;
-    }
-
-    .review-upload-btn{
-        min-height:50px;
-    }
-
-    .page-heading h1{
-        line-height:1.05;
-    }
-}
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion:reduce){
-
-    html{
-        scroll-behavior:auto;
-    }
-
-    *,
-    *::before,
-    *::after{
-        transition-duration:.01ms!important;
-        animation-duration:.01ms!important;
-        animation-iteration-count:1!important;
-    }
-
-    .admin-card:hover,
-    .saved-item:hover,
-    .sell-request-card:hover{
-        transform:none;
-    }
 }
 
 </style>
@@ -2651,7 +2340,6 @@ textarea:focus{
     style="margin-top:16px;">
 
 <button
-    type="button"
     class="save-btn"
     id="saveReviewBtn">
 
@@ -2661,7 +2349,6 @@ textarea:focus{
 
 
 <button
-    type="button"
     class="clear-btn"
     id="clearReviewBtn">
 
@@ -6415,6 +6102,96 @@ function sellerRequestWhatsAppURL(
 }
 
 
+
+async function deleteSellRequest(
+    requestId,
+    sellerName,
+    card
+){
+
+    if(!requestId){
+        alert("Request ID is missing.");
+        return;
+    }
+
+    const confirmed =
+        confirm(
+            "Delete this sell request?\n\n" +
+            "Seller: " +
+            (sellerName || "Unknown") +
+            "\nRequest ID: " +
+            requestId +
+            "\n\nThis cannot be undone."
+        );
+
+    if(!confirmed){
+        return;
+    }
+
+    const deleteButton =
+        card
+            ? card.querySelector(".delete-seller-btn")
+            : null;
+
+    if(deleteButton){
+        deleteButton.disabled = true;
+        deleteButton.dataset.originalText =
+            deleteButton.innerHTML;
+        deleteButton.innerHTML =
+            "⏳ DELETING...";
+    }
+
+    try{
+
+        await apiRequest(
+            "/api/sell-requests/" +
+            encodeURIComponent(requestId),
+            {
+                method:"DELETE"
+            }
+        );
+
+        allSellRequests =
+            allSellRequests.filter(
+                function(request){
+                    return String(
+                        request?.id || ""
+                    ) !== String(
+                        requestId
+                    );
+                }
+            );
+
+        renderSellRequests(
+            allSellRequests
+        );
+
+        alert(
+            "✓ Sell request deleted successfully."
+        );
+
+    }catch(error){
+
+        if(deleteButton){
+            deleteButton.disabled = false;
+            deleteButton.innerHTML =
+                deleteButton.dataset.originalText ||
+                "🗑 DELETE";
+        }
+
+        alert(
+            "Failed to delete sell request.\n\n" +
+            (
+                error?.message ||
+                "Unknown error"
+            )
+        );
+
+    }
+
+}
+
+
 function renderSellRequests(
     requests
 ){
@@ -6724,13 +6501,33 @@ function renderSellRequests(
                                         )
                                     )}"
                                     target="_blank"
-                                    rel="noopener noreferrer">
+                                    rel="noopener noreferrer"
+                                    title="Open WhatsApp with seller">
 
                                     💬 CONTACT SELLER
                                 </a>
                             `
-                            : ""
+                            : `
+                                <button
+                                    type="button"
+                                    class="small-btn contact-seller-btn"
+                                    disabled
+                                    title="Seller phone number not available">
+
+                                    💬 NO PHONE
+                                </button>
+                            `
                     }
+
+                    <button
+                        type="button"
+                        class="small-btn delete-seller-btn"
+                        data-request-id="${escapeHTML(
+                            request.id || ""
+                        )}">
+
+                        🗑 DELETE
+                    </button>
 
                     <button
                         type="button"
@@ -6826,6 +6623,28 @@ function renderSellRequests(
                             formatSellerRequestDetails(
                                 request
                             )
+                        );
+
+                    }
+                );
+
+            }
+
+            const deleteButton =
+                card.querySelector(
+                    ".delete-seller-btn"
+                );
+
+            if(deleteButton){
+
+                deleteButton.addEventListener(
+                    "click",
+                    function(){
+
+                        deleteSellRequest(
+                            request.id,
+                            sellerName,
+                            card
                         );
 
                     }
