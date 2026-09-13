@@ -5,25 +5,19 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Tamilanda Gaming ID Details">
+    <meta name="description"
+          content="Tamilanda Gaming - Browse premium Free Fire IDs, rare collections and high-level accounts.">
 
-    <title>ID Details | Tamilanda Gaming</title>
+    <title>Buy Your ID | Tamilanda Gaming</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <style>
 
-        /* =====================================================
-           ID DETAILS PAGE
-           ===================================================== */
-
-        .details-page {
+        .buy-page {
             min-height: 100vh;
             padding: 55px 6% 100px;
 
@@ -36,1882 +30,638 @@
                 #080808;
         }
 
-
-        /* =====================================================
-           LOADING / ERROR
-           ===================================================== */
-
-        .details-loading {
-            max-width: 1250px;
-            margin: 100px auto;
-
+        .buy-heading {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
+        }
 
+        .buy-heading .eyebrow {
+            margin-bottom: 12px;
+        }
+
+        .buy-heading h1 {
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 0.95;
+            letter-spacing: -2px;
+            font-weight: 900;
+        }
+
+        .buy-heading h1 span {
+            color: #ffb000;
+        }
+
+        .buy-heading p {
+            max-width: 600px;
+            margin: 18px auto 0;
             color: #777;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .catalog-toolbar {
+            max-width: 1250px;
+            margin: 50px auto 28px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            gap: 15px;
+            padding: 15px;
+
+            background: #101010;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+        }
+
+        .filter-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
             font-size: 13px;
             font-weight: 800;
-
-            letter-spacing: 1px;
         }
 
-        .details-error {
-            max-width: 1250px;
-            margin: 100px auto;
-            padding: 35px;
-
-            text-align: center;
-
-            background: #101010;
-
-            border: 1px solid
-                rgba(255,255,255,0.07);
-
-            border-radius: 20px;
-
-            color: #aaa;
-        }
-
-        .details-error strong {
-            display: block;
-
-            margin-bottom: 10px;
-
+        .filter-title span {
             color: #ffb000;
-
             font-size: 20px;
         }
 
+        .catalog-search-box {
+            flex: 1;
+            min-width: 240px;
+        }
 
-        /* =====================================================
-           BACK BUTTON
-           ===================================================== */
+        .catalog-search-box input {
+            width: 100%;
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 9px;
+            background: #171717;
+            color: #fff;
+            outline: none;
+            font-size: 12px;
+            font-weight: 700;
+            transition: border-color 0.2s ease;
+        }
 
-        .back-button {
-            display: inline-flex;
+        .catalog-search-box input:focus {
+            border-color: #ffb000;
+        }
 
+        .sort-box {
+            display: flex;
             align-items: center;
+            gap: 10px;
+        }
 
-            gap: 8px;
+        .sort-box label {
+            color: #666;
+            font-size: 11px;
+            font-weight: 700;
+        }
 
-            margin-bottom: 30px;
+        .sort-box select {
+            min-width: 180px;
 
-            color: #888;
+            padding: 11px 14px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 9px;
+
+            background: #171717;
+            color: #fff;
+
+            outline: none;
 
             font-size: 12px;
+            font-weight: 700;
+        }
+
+        .sort-box select:focus {
+            border-color: #ffb000;
+        }
+
+        .category-filters {
+            max-width: 1250px;
+            margin: 0 auto 45px;
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-btn {
+            padding: 11px 17px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 10px;
+
+            background: #101010;
+            color: #999;
+
+            cursor: pointer;
+
+            font-size: 11px;
             font-weight: 800;
+            letter-spacing: 0.3px;
 
             transition: 0.2s ease;
         }
 
-        .back-button:hover {
-            color: #ffb000;
+        .category-btn:hover {
+            color: #fff;
+            border-color: rgba(255,176,0,0.4);
         }
 
+        .category-btn.active {
+            color: #080808;
+            background: #ffb000;
+            border-color: #ffb000;
+        }
 
-        /* =====================================================
-           DETAILS HERO
-           ===================================================== */
-
-        .details-header {
+        .id-grid {
             max-width: 1250px;
-
-            margin: 0 auto 35px;
-        }
-
-        .details-label {
-            color: #ffb000;
-
-            font-size: 11px;
-            font-weight: 900;
-
-            letter-spacing: 3px;
-
-            margin-bottom: 12px;
-        }
-
-        .details-header h1 {
-            font-size: clamp(38px, 6vw, 68px);
-
-            line-height: 0.95;
-
-            letter-spacing: -2px;
-
-            font-weight: 900;
-
-            max-width: 100%;
-        }
-
-        .details-header h1 span {
-            color: #ffb000;
-        }
-
-        .details-subtitle {
-            margin-top: 15px;
-
-            color: #777;
-
-            font-size: 14px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =====================================================
-           MAIN DETAILS GRID
-           ===================================================== */
-
-        .details-container {
-            max-width: 1250px;
-
             margin: 0 auto;
 
             display: grid;
 
             grid-template-columns:
-                1.15fr
-                0.85fr;
+                repeat(3, minmax(0,1fr));
 
-            gap: 25px;
-
-            align-items: start;
+            gap: 20px;
         }
 
+        .id-card {
+            overflow: hidden;
 
-        /* =====================================================
-           IMAGE GALLERY
-           ===================================================== */
+            border-radius: 18px;
 
-        .gallery-box {
             background: #101010;
 
-            border: 1px solid
+            border:
+                1px solid
                 rgba(255,255,255,0.07);
 
-            border-radius: 20px;
-
-            padding: 18px;
-
-            overflow: hidden;
-        }
-
-        .main-gallery-image {
-            width: 100%;
-
-            min-height: 320px;
-
-            max-height: 720px;
-
-            border-radius: 14px;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #191919,
-                    #0b0b0b
-                );
-
-            position: relative;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-        }
-
-
-        .main-gallery-image img {
-            width: 100%;
-
-            height: auto;
-
-            max-width: 100%;
-
-            max-height: 720px;
-
-            object-fit: contain;
-
-            display: block;
-
-            border-radius: 10px;
-
-            transition: opacity 0.3s ease;
-        }
-
-
-        .gallery-placeholder {
-            width: 100%;
-
-            min-height: 320px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            color: #333;
-
-            font-size: 14px;
-
-            font-weight: 900;
-
-            letter-spacing: 3px;
-        }
-
-
-        /* =====================================================
-           GALLERY THUMBNAILS
-           ===================================================== */
-
-        .gallery-thumbnails {
-            margin-top: 14px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(6, 1fr);
-
-            gap: 9px;
-        }
-
-        .gallery-thumb {
-            width: 100%;
-
-            aspect-ratio: 1 / 1;
-
-            border-radius: 9px;
-
-            overflow: hidden;
-
-            border: 1px solid
-                rgba(255,255,255,0.08);
-
-            background: #151515;
-
-            cursor: pointer;
-
             transition:
-                border-color 0.2s ease,
-                transform 0.2s ease;
-
-            padding: 0;
+                transform 0.22s ease,
+                border-color 0.22s ease,
+                box-shadow 0.22s ease,
+                opacity 0.22s ease;
+            contain: content;
+            position: relative;
         }
 
-        .gallery-thumb:hover {
-            transform: translateY(-2px);
+        .id-card:hover {
+            transform: translateY(-5px);
 
             border-color:
-                rgba(255,176,0,0.5);
-        }
-
-        .gallery-thumb.active {
-            border-color: #ffb000;
+                rgba(255,176,0,0.35);
 
             box-shadow:
-                0 0 0 1px
-                rgba(255,176,0,0.20);
+                0 20px 50px
+                rgba(0,0,0,0.35);
         }
 
-        .gallery-thumb img {
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-        }
-
-
-        /* =====================================================
-           INFO CARD
-           ===================================================== */
-
-        .details-info {
-            background: #101010;
-
-            border: 1px solid
-                rgba(255,255,255,0.07);
-
-            border-radius: 20px;
-
-            padding: 28px;
-
-            height: fit-content;
-        }
-
-
-        .info-top {
-            display: flex;
-
-            align-items: flex-start;
-
-            justify-content: space-between;
-
-            gap: 15px;
-        }
-
-        .info-category {
-            color: #ffb000;
-
-            font-size: 10px;
-
-            font-weight: 900;
-
-            letter-spacing: 1.5px;
-        }
-
-        .info-title {
-            margin-top: 7px;
-
-            font-size: 25px;
-
-            font-weight: 900;
-        }
-
-        .info-price {
-            color: #ffb000;
-
-            font-size: 27px;
-
-            font-weight: 900;
-
-            white-space: nowrap;
-        }
-
-
-        /* =====================================================
-           STATS
-           ===================================================== */
-
-        .details-stats {
-            margin-top: 25px;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 8px;
-        }
-
-        .detail-stat {
-            padding: 14px 8px;
-
-            text-align: center;
-
-            border-radius: 10px;
-
-            background: #171717;
-
-            border: 1px solid
-                rgba(255,255,255,0.04);
-        }
-
-        .detail-stat small {
-            display: block;
-
-            color: #666;
-
-            font-size: 8px;
-
-            font-weight: 800;
-
-            text-transform: uppercase;
-        }
-
-        .detail-stat strong {
-            display: block;
-
-            margin-top: 5px;
-
-            color: #eee;
-
-            font-size: 15px;
-        }
-
-
-        /* =====================================================
-           TAGS
-           ===================================================== */
-
-        .detail-tags {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 7px;
-
-            margin-top: 20px;
-        }
-
-        .detail-tag {
-            padding: 7px 10px;
-
-            border-radius: 7px;
-
-            background:
-                rgba(255,176,0,0.08);
-
-            color: #c89425;
-
-            font-size: 9px;
-
-            font-weight: 800;
-        }
-
-
-        /* =====================================================
-           BUY BUTTON
-           ===================================================== */
-
-        .buy-now-button {
-            width: 100%;
-
-            min-height: 55px;
-
-            margin-top: 25px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 10px;
-
-            border: 0;
-
-            border-radius: 11px;
-
-            background: #ffb000;
-
-            color: #080808;
-
-            font-size: 13px;
-
-            font-weight: 900;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 12px 35px
-                rgba(255,176,0,0.18);
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        .buy-now-button:hover {
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 18px 45px
-                rgba(255,176,0,0.30);
-        }
-
-
-        /* =====================================================
-           SOCIAL LINKS
-           ===================================================== */
-
-        .social-links {
-            margin-top: 12px;
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 10px;
-        }
-
-        .social-button {
-            min-height: 46px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 9px;
-
-            border: 1px solid
-                rgba(255,255,255,0.09);
-
-            background: #151515;
-
-            color: #ddd;
-
-            font-size: 10px;
-
-            font-weight: 900;
-
-            transition: 0.2s ease;
-        }
-
-        .social-button:hover {
-            border-color: #ffb000;
-
-            color: #ffb000;
-        }
-
-
-        /* =====================================================
-           DESCRIPTION
-           ===================================================== */
-
-        .description-section {
-            max-width: 1250px;
-
-            margin: 35px auto 0;
-
-            padding: 30px;
-
-            background: #101010;
-
-            border: 1px solid
-                rgba(255,255,255,0.07);
-
-            border-radius: 20px;
-        }
-
-        .description-heading {
-            color: #ffb000;
-
-            font-size: 11px;
-
-            font-weight: 900;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 20px;
-        }
-
-        .description-title {
-            font-size: 27px;
-
-            font-weight: 900;
-
-            margin-bottom: 18px;
-        }
-
-        .feature-list {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 12px 25px;
-        }
-
-        .feature-item {
-            color: #d0d0d0;
-
-            font-size: 13px;
-
-            line-height: 1.6;
-
-            padding: 10px 0;
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.05);
-
-            white-space: pre-wrap;
-        }
-
-        .feature-item::before {
-            content: "💥";
-
-            margin-right: 9px;
-        }
-
-        .no-description {
-            color: #666;
-
-            font-size: 13px;
-
-            line-height: 1.7;
-        }
-
-
-        /* =====================================================
-           NOTICE
-           ===================================================== */
-
-        .details-notice {
-            max-width: 1250px;
-
-            margin: 20px auto 0;
-
-            padding: 18px 20px;
-
-            border-radius: 12px;
-
-            background:
-                rgba(255,176,0,0.05);
-
-            border: 1px solid
-                rgba(255,176,0,0.12);
-
-            color: #999;
-
-            font-size: 11px;
-
-            line-height: 1.7;
-        }
-
-        .details-notice strong {
-            color: #ffb000;
-        }
-
-
-        /* =====================================================
-           AVAILABILITY STATUS
-           ===================================================== */
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 10px;
-            padding: 7px 10px;
-            border-radius: 7px;
-            font-size: 9px;
-            font-weight: 900;
-            letter-spacing: 0.5px;
-        }
-
-        .status-badge.available {
-            background: rgba(46,204,113,0.10);
-            color: #35d47a;
-            border: 1px solid rgba(46,204,113,0.20);
-        }
-
-        .status-badge.sold {
-            background: rgba(214,0,0,0.10);
-            color: #ff4b4b;
-            border: 1px solid rgba(214,0,0,0.22);
-        }
-
-        .buy-now-button.sold {
-            background: #2a2a2a;
-            color: #777;
-            border: 1px solid rgba(255,255,255,0.08);
-            cursor: not-allowed;
-            box-shadow: none;
-            pointer-events: none;
-        }
-
-        .buy-now-button.sold:hover {
-            transform: none;
-            box-shadow: none;
-        }
-
-        .details-info.sold {
+        .id-card.sold {
             border-color: rgba(214,0,0,0.20);
         }
 
-        .details-info.sold .info-price {
+        .id-card.sold:hover {
+            border-color: rgba(214,0,0,0.45);
+            box-shadow: 0 20px 50px rgba(120,0,0,0.16);
+        }
+
+        .id-card.sold .id-image img {
+            filter: saturate(0.65);
+        }
+
+        .id-card.sold .id-price {
             color: #888;
         }
 
-
-        /* =====================================================
-           MOBILE
-           ===================================================== */
-
-        @media (max-width: 850px) {
-
-            .details-container {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery-box {
-                padding: 12px;
-            }
-
-            .details-info {
-                padding: 22px;
-            }
-
-            .main-gallery-image {
-                min-height: 250px;
-
-                max-height: 600px;
-            }
-
-            .main-gallery-image img {
-                max-height: 600px;
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .details-page {
-                padding: 40px 5% 80px;
-            }
-
-            .details-header h1 {
-                font-size: 43px;
-            }
-
-            .main-gallery-image {
-                min-height: 220px;
-
-                max-height: 500px;
-
-                border-radius: 12px;
-            }
-
-            .main-gallery-image img {
-                max-height: 500px;
-            }
-
-            .gallery-thumbnails {
-                grid-template-columns:
-                    repeat(6, 1fr);
-
-                gap: 6px;
-            }
-
-            .info-title {
-                font-size: 20px;
-            }
-
-            .info-price {
-                font-size: 22px;
-            }
-
-            .details-stats {
-                gap: 6px;
-            }
-
-            .detail-stat {
-                padding: 12px 5px;
-            }
-
-            .detail-stat strong {
-                font-size: 13px;
-            }
-
-            .description-section {
-                padding: 22px;
-            }
-
-            .feature-list {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-
-        /* =====================================================
-           MOBILE + SMOOTH UX ENHANCEMENT
-           ===================================================== */
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        #detailsContent {
-            animation: detailContentIn 0.55s ease both;
-        }
-
-        @keyframes detailContentIn {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .main-gallery-image img {
-            animation: galleryImageIn 0.42s ease both;
-            transform-origin: center;
-        }
-
-        @keyframes galleryImageIn {
-            from {
-                opacity: 0;
-                transform: scale(0.985);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .gallery-thumb {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        .buy-now-button,
-        .social-button,
-        .back-button {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-
-        @media (max-width: 850px) {
-
-            .details-container {
-                gap: 18px;
-            }
-
-            .details-header {
-                margin-bottom: 22px;
-            }
-
-            .details-header h1 {
-                overflow-wrap: anywhere;
-            }
-
-            .gallery-box,
-            .details-info,
-            .description-section,
-            .details-notice {
-                box-shadow:
-                    0 12px 35px
-                    rgba(0,0,0,0.16);
-            }
-
-        }
-
-        @media (max-width: 600px) {
-
-            .details-page {
-                padding:
-                    20px
-                    14px
-                    calc(70px + env(safe-area-inset-bottom));
-            }
-
-            .back-button {
-                min-height: 42px;
-                margin-bottom: 18px;
-                padding: 9px 12px;
-                border-radius: 10px;
-                background: rgba(255,255,255,0.035);
-                border: 1px solid rgba(255,255,255,0.06);
-                width: fit-content;
-                transition:
-                    transform 0.2s ease,
-                    border-color 0.2s ease,
-                    color 0.2s ease,
-                    background 0.2s ease;
-            }
-
-            .back-button:active {
-                transform: scale(0.98);
-            }
-
-            .details-header {
-                margin-bottom: 18px;
-            }
-
-            .details-label {
-                font-size: 9px;
-                letter-spacing: 2.2px;
-                margin-bottom: 8px;
-            }
-
-            .details-header h1 {
-                font-size: clamp(30px, 10vw, 42px);
-                line-height: 0.98;
-                letter-spacing: -1.2px;
-            }
-
-            .details-subtitle {
-                margin-top: 10px;
-                font-size: 12px;
-                line-height: 1.6;
-            }
-
-            .details-container {
-                display: flex;
-                flex-direction: column;
-                gap: 14px;
-            }
-
-            .gallery-box {
-                width: 100%;
-                padding: 9px;
-                border-radius: 16px;
-            }
-
-            .main-gallery-image {
-                width: 100%;
-                height: min(112vw, 560px);
-                min-height: 0;
-                max-height: none;
-                border-radius: 11px;
-            }
-
-            .main-gallery-image img {
-                width: 100%;
-                height: 100%;
-                max-width: 100%;
-                max-height: 100%;
-                object-fit: contain;
-                border-radius: 9px;
-            }
-
-            .gallery-thumbnails {
-                display: flex;
-                gap: 8px;
-                margin-top: 9px;
-                padding:
-                    1px 1px 4px;
-                overflow-x: auto;
-                overflow-y: hidden;
-                scroll-snap-type: x proximity;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-            }
-
-            .gallery-thumbnails::-webkit-scrollbar {
-                display: none;
-            }
-
-            .gallery-thumb {
-                flex: 0 0 62px;
-                width: 62px;
-                height: 62px;
-                aspect-ratio: 1 / 1;
-                border-radius: 9px;
-                scroll-snap-align: start;
-            }
-
-            .details-info {
-                width: 100%;
-                padding: 17px;
-                border-radius: 16px;
-            }
-
-            .info-top {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 7px;
-            }
-
-            .info-title {
-                margin-top: 4px;
-                font-size: clamp(20px, 6vw, 25px);
-                line-height: 1.12;
-                overflow-wrap: anywhere;
-            }
-
-            .info-price {
-                width: 100%;
-                font-size: 23px;
-                line-height: 1;
-                margin-top: 2px;
-            }
-
-            .status-badge {
-                margin-top: 8px;
-            }
-
-            .details-stats {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-                gap: 7px;
-                margin-top: 18px;
-            }
-
-            .detail-stat {
-                min-width: 0;
-                padding: 11px 5px;
-                border-radius: 9px;
-            }
-
-            .detail-stat small {
-                font-size: 7px;
-            }
-
-            .detail-stat strong {
-                font-size: 12px;
-                overflow-wrap: anywhere;
-            }
-
-            .detail-tags {
-                gap: 6px;
-                margin-top: 14px;
-            }
-
-            .detail-tag {
-                padding: 6px 8px;
-                font-size: 8px;
-            }
-
-            .buy-now-button {
-                min-height: 53px;
-                margin-top: 18px;
-                border-radius: 10px;
-                font-size: 12px;
-            }
-
-            .social-links {
-                grid-template-columns: 1fr;
-                gap: 8px;
-                margin-top: 9px;
-            }
-
-            .social-button {
-                min-height: 45px;
-                border-radius: 9px;
-            }
-
-            .description-section {
-                margin-top: 14px;
-                padding: 18px;
-                border-radius: 16px;
-            }
-
-            .description-heading {
-                font-size: 9px;
-                letter-spacing: 1.8px;
-                margin-bottom: 13px;
-            }
-
-            .description-title {
-                font-size: 21px;
-                line-height: 1.15;
-                margin-bottom: 12px;
-            }
-
-            .feature-list {
-                gap: 6px;
-            }
-
-            .feature-item {
-                font-size: 12px;
-                line-height: 1.55;
-                padding: 8px 0;
-            }
-
-            .feature-item::before {
-                margin-right: 7px;
-            }
-
-            .details-notice {
-                margin-top: 12px;
-                padding: 14px 15px;
-                border-radius: 12px;
-                font-size: 10px;
-                line-height: 1.65;
-            }
-
-            .details-loading,
-            .details-error {
-                margin:
-                    60px
-                    auto;
-                width: 100%;
-            }
-
-            .details-error {
-                padding: 24px 18px;
-            }
-        }
-
-        @media (max-width: 380px) {
-
-            .details-page {
-                padding-left: 11px;
-                padding-right: 11px;
-            }
-
-            .main-gallery-image {
-                height: min(116vw, 500px);
-            }
-
-            .gallery-thumb {
-                flex-basis: 57px;
-                width: 57px;
-                height: 57px;
-            }
-
-            .details-info {
-                padding: 14px;
-            }
-
-            .info-title {
-                font-size: 19px;
-            }
-
-            .info-price {
-                font-size: 21px;
-            }
-
-            .detail-stat {
-                padding:
-                    10px
-                    3px;
-            }
-
-            .description-section {
-                padding: 16px;
-            }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            #detailsContent,
-            .main-gallery-image img {
-                animation: none !important;
-            }
-
-            .gallery-thumb,
-            .buy-now-button,
-            .social-button,
-            .back-button {
-                transition: none !important;
-            }
-
-        }
-
-
-        /* =====================================================
-           PREMIUM RESPONSIVE + 3D MOTION SYSTEM
-           ===================================================== */
-
-        :root {
-            --tg-gold: #ffb000;
-            --tg-bg: #080808;
-            --tg-card: #101010;
-            --tg-border: rgba(255,255,255,0.075);
-            --tg-shadow: 0 25px 70px rgba(0,0,0,0.32);
-            --tg-ease: cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        body {
-            background: #080808;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-        }
-
-        .details-page {
+        .id-image {
             position: relative;
-            isolation: isolate;
-            padding-top: clamp(28px, 5vw, 55px);
-            padding-bottom:
-                max(
-                    80px,
-                    calc(80px + env(safe-area-inset-bottom))
-                );
-            overflow: clip;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            background: linear-gradient(145deg, #191919, #0c0c0c);
         }
 
-        .details-page::before,
-        .details-page::after {
-            content: "";
+        .id-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.35s ease, filter 0.3s ease;
+        }
+
+        .id-card:hover .id-image img {
+            transform: scale(1.035);
+        }
+
+        .id-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .id-badge {
             position: absolute;
-            pointer-events: none;
-            z-index: -1;
-            border-radius: 999px;
-            filter: blur(70px);
-            opacity: .13;
-            will-change: transform;
-        }
-
-        .details-page::before {
-            width: 320px;
-            height: 320px;
-            top: 3%;
-            left: -170px;
+            top: 12px;
+            left: 12px;
+            padding: 7px 10px;
+            border-radius: 7px;
             background: #ffb000;
-            animation: ambientOrbOne 14s ease-in-out infinite;
+            color: #080808;
+            font-size: 9px;
+            font-weight: 900;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
-        .details-page::after {
-            width: 260px;
-            height: 260px;
-            top: 42%;
-            right: -150px;
-            background: #ff8a00;
-            animation: ambientOrbTwo 17s ease-in-out infinite;
+        .popular-badge {
+            position: absolute;
+            top: 12px;
+            right: 48px;
+            padding: 7px 10px;
+            border-radius: 7px;
+            background: rgba(0,0,0,0.75);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 900;
+            backdrop-filter: blur(8px);
+            z-index: 2;
         }
 
-        @keyframes ambientOrbOne {
-            0%, 100% { transform: translate3d(0,0,0) scale(1); }
-            50% { transform: translate3d(75px,45px,0) scale(1.12); }
+        .sold-badge {
+            position: absolute;
+            top: 12px;
+            right: 48px;
+            padding: 7px 10px;
+            border-radius: 7px;
+            background: #d60000;
+            color: #fff;
+            font-size: 9px;
+            font-weight: 900;
+            z-index: 4;
+            box-shadow: 0 5px 20px rgba(214,0,0,0.28);
         }
 
-        @keyframes ambientOrbTwo {
-            0%, 100% { transform: translate3d(0,0,0) scale(1); }
-            50% { transform: translate3d(-55px,-35px,0) scale(1.1); }
+        .id-content {
+            padding: 18px;
         }
 
-        .details-header {
-            position: relative;
-            transform: translateZ(0);
+        .id-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
         }
 
-        .details-label {
+        .id-title {
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+        .id-price {
+            color: #ffb000;
+            font-size: 18px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .id-stats {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 7px;
+        }
+
+        .stat {
+            padding: 10px 7px;
+            border-radius: 8px;
+            background: #171717;
+            text-align: center;
+        }
+
+        .stat small {
+            display: block;
+            color: #666;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .stat strong {
+            display: block;
+            margin-top: 4px;
+            color: #ddd;
+            font-size: 11px;
+        }
+
+        .id-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 13px;
+        }
+
+        .tag {
+            padding: 5px 8px;
+            border-radius: 6px;
+            background: rgba(255,176,0,0.07);
+            color: #b88922;
+            font-size: 8px;
+            font-weight: 800;
+        }
+
+        .view-id-btn {
+            width: 100%;
+            margin-top: 16px;
+            min-height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: #181818;
+            border: 1px solid rgba(255,255,255,0.09);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .view-id-btn:hover {
+            background: #ffb000;
+            color: #080808;
+            border-color: #ffb000;
+        }
+
+        .request-banner {
+            max-width: 1250px;
+            margin: 60px auto 0;
+            padding: 35px;
+            background: radial-gradient(circle at center, rgba(255,176,0,0.12), transparent 70%), #101010;
+            border: 1px solid rgba(255,176,0,0.2);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .request-banner h3 {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .request-banner h3 span {
+            color: #ffb000;
+        }
+
+        .request-banner p {
+            color: #777;
+            font-size: 12px;
+            margin: 8px auto 20px;
+            max-width: 500px;
+        }
+
+        .request-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 9px;
-            border-radius: 8px;
-            background: rgba(255,176,0,.06);
-            border: 1px solid rgba(255,176,0,.12);
-            box-shadow: 0 10px 35px rgba(0,0,0,.12);
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 10px;
+            background: #ffb000;
+            color: #080808;
+            font-size: 12px;
+            font-weight: 900;
+            transition: transform 0.2s ease;
         }
 
-        .details-header h1 {
-            text-wrap: balance;
-        }
-
-        .details-subtitle {
-            max-width: 700px;
-        }
-
-        .details-container {
-            perspective: 1400px;
-            perspective-origin: center top;
-        }
-
-        .premium-tilt {
-            --rx: 0deg;
-            --ry: 0deg;
-            --lift: 0px;
-            --scale: 1;
-            transform:
-                perspective(1400px)
-                rotateX(var(--rx))
-                rotateY(var(--ry))
-                translateY(var(--lift))
-                scale(var(--scale));
-            transform-style: preserve-3d;
-            will-change: transform;
-            transition:
-                transform .65s var(--tg-ease),
-                box-shadow .65s var(--tg-ease),
-                border-color .45s ease;
-        }
-
-        .gallery-box {
-            position: relative;
-            transform-style: preserve-3d;
-            box-shadow: var(--tg-shadow);
-            border-color: var(--tg-border);
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,.028),
-                    rgba(255,255,255,.008)
-                ),
-                #101010;
-            transition:
-                transform .65s var(--tg-ease),
-                box-shadow .65s var(--tg-ease),
-                border-color .35s ease;
-        }
-
-        .gallery-box::before {
-            content: "";
-            position: absolute;
-            inset: 1px;
-            border-radius: inherit;
-            pointer-events: none;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.06),
-                    transparent 28%,
-                    transparent 70%,
-                    rgba(255,176,0,.035)
-                );
-            z-index: 3;
-        }
-
-        .main-gallery-image {
-            box-shadow:
-                inset 0 0 0 1px rgba(255,255,255,.035),
-                0 20px 50px rgba(0,0,0,.24);
-        }
-
-        .main-gallery-image::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background:
-                linear-gradient(
-                    115deg,
-                    transparent 20%,
-                    rgba(255,255,255,.055) 48%,
-                    transparent 70%
-                );
-            transform: translateX(-120%);
-            animation: galleryShine 7s var(--tg-ease) infinite;
-            mix-blend-mode: screen;
-        }
-
-        @keyframes galleryShine {
-            0%, 62% { transform: translateX(-120%); }
-            78%, 100% { transform: translateX(120%); }
-        }
-
-        .main-gallery-image img {
-            transform-origin: center;
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            image-rendering: auto;
-            transition:
-                opacity .38s ease,
-                transform .8s var(--tg-ease),
-                filter .45s ease;
-        }
-
-        .main-gallery-image img:hover {
-            transform: scale(1.018);
-        }
-
-        .gallery-thumb {
-            position: relative;
-            transform: translateZ(0);
-            transition:
-                transform .3s var(--tg-ease),
-                border-color .25s ease,
-                box-shadow .3s ease,
-                opacity .25s ease;
-        }
-
-        .gallery-thumb::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,.10),
-                    transparent 42%
-                );
-            opacity: 0;
-            transition: opacity .25s ease;
-        }
-
-        .gallery-thumb:hover::after,
-        .gallery-thumb.active::after {
-            opacity: 1;
-        }
-
-        .gallery-thumb.active {
-            transform: translateY(-2px) scale(1.025);
-        }
-
-        .details-info {
-            position: relative;
-            overflow: hidden;
-            box-shadow: var(--tg-shadow);
-            transform-style: preserve-3d;
-            transition:
-                transform .65s var(--tg-ease),
-                box-shadow .65s var(--tg-ease),
-                border-color .35s ease;
-        }
-
-        .details-info::before {
-            content: "";
-            position: absolute;
-            width: 170px;
-            height: 170px;
-            top: -90px;
-            right: -60px;
-            border-radius: 50%;
-            background: rgba(255,176,0,.055);
-            filter: blur(8px);
-            pointer-events: none;
-        }
-
-        .info-top,
-        .details-stats,
-        .detail-tags,
-        .buy-now-button,
-        .social-links {
-            transform: translateZ(22px);
-        }
-
-        .detail-stat {
-            transition:
-                transform .3s var(--tg-ease),
-                border-color .25s ease,
-                background .25s ease;
-        }
-
-        .detail-stat:hover {
-            transform: translateY(-3px);
-            border-color: rgba(255,176,0,.18);
-            background: #191919;
-        }
-
-        .buy-now-button {
-            position: relative;
-            overflow: hidden;
-            transition:
-                transform .3s var(--tg-ease),
-                box-shadow .35s ease,
-                filter .25s ease;
-        }
-
-        .buy-now-button::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(
-                    105deg,
-                    transparent 25%,
-                    rgba(255,255,255,.24) 48%,
-                    transparent 70%
-                );
-            transform: translateX(-120%);
-            transition: transform .75s var(--tg-ease);
-        }
-
-        .buy-now-button:hover::before {
-            transform: translateX(120%);
-        }
-
-        .buy-now-button:active {
-            transform: scale(.985);
-        }
-
-        .social-button {
-            transition:
-                transform .3s var(--tg-ease),
-                border-color .25s ease,
-                background .25s ease,
-                color .25s ease;
-        }
-
-        .social-button:active {
-            transform: scale(.985);
-        }
-
-        .description-section,
-        .details-notice {
-            box-shadow:
-                0 22px 55px rgba(0,0,0,.22);
-            transition:
-                transform .5s var(--tg-ease),
-                border-color .3s ease,
-                box-shadow .5s var(--tg-ease);
-        }
-
-        .description-section:hover,
-        .details-notice:hover {
+        .request-btn:hover {
             transform: translateY(-2px);
-            box-shadow:
-                0 28px 70px rgba(0,0,0,.28);
         }
 
-        .feature-item {
-            transition:
-                transform .3s var(--tg-ease),
-                color .25s ease,
-                border-color .25s ease;
+        .empty-state {
+            max-width: 600px;
+            margin: 70px auto;
+            padding: 55px 25px;
+            text-align: center;
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 18px;
+            background: #0d0d0d;
         }
 
-        .feature-item:hover {
-            transform: translateX(4px);
-            color: #eee;
+        .empty-state div { font-size: 35px; margin-bottom: 15px; }
+        .empty-state h2 { font-size: 20px; }
+        .empty-state p { margin-top: 8px; color: #666; font-size: 12px; }
+
+        .loading-state {
+            max-width: 600px;
+            margin: 70px auto;
+            padding: 40px 25px;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
         }
 
-        .detail-reveal {
-            opacity: 0;
-            transform: translateY(22px);
-            transition:
-                opacity .75s var(--tg-ease),
-                transform .75s var(--tg-ease);
-        }
-
-        .detail-reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .image-enter {
-            animation:
-                imageEnter .5s var(--tg-ease) both;
-        }
-
-        @keyframes imageEnter {
-            from {
-                opacity: 0;
-                transform: scale(.975);
-                filter: blur(4px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
-        }
-
-        @media (hover: hover) and (pointer: fine) {
-
-            .gallery-box:hover,
-            .details-info:hover {
-                --lift: -5px;
-                --scale: 1.006;
-                border-color: rgba(255,176,0,.16);
-            }
-
-            .gallery-box:hover {
-                box-shadow:
-                    0 34px 85px rgba(0,0,0,.38);
-            }
-
-            .details-info:hover {
-                box-shadow:
-                    0 32px 78px rgba(0,0,0,.34);
-            }
-
-        }
-
-        @media (max-width: 850px) {
-
-            .details-page {
-                padding-left: max(18px, 4vw);
-                padding-right: max(18px, 4vw);
-            }
-
-            .details-header,
-            .details-container {
-                width: 100%;
-            }
-
-            .details-container {
-                perspective: none;
-            }
-
-            .premium-tilt {
-                transform: translateZ(0);
-            }
-
-            .gallery-box,
-            .details-info {
-                box-shadow:
-                    0 18px 45px rgba(0,0,0,.22);
-            }
-
-            .description-section,
-            .details-notice {
-                transform: none !important;
-            }
-
+        @media (max-width: 1000px) {
+            .id-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
         }
 
         @media (max-width: 600px) {
-
-            .details-page {
-                padding-top: 18px;
-                padding-left:
-                    max(
-                        12px,
-                        calc(12px + env(safe-area-inset-left))
-                    );
-                padding-right:
-                    max(
-                        12px,
-                        calc(12px + env(safe-area-inset-right))
-                    );
-            }
-
-            .details-page::before {
-                width: 220px;
-                height: 220px;
-                top: 10%;
-                left: -130px;
-                filter: blur(55px);
-                opacity: .10;
-            }
-
-            .details-page::after {
-                width: 190px;
-                height: 190px;
-                top: 48%;
-                right: -120px;
-                filter: blur(50px);
-                opacity: .08;
-            }
-
-            .back-button {
-                margin-bottom: 14px;
-                min-height: 40px;
-            }
-
-            .details-header {
-                margin-bottom: 14px;
-            }
-
-            .details-label {
-                padding: 5px 8px;
-                font-size: 8px;
-                letter-spacing: 1.8px;
-            }
-
-            .details-header h1 {
-                font-size:
-                    clamp(
-                        30px,
-                        9.5vw,
-                        43px
-                    );
-                line-height: .98;
-                letter-spacing: -1px;
-                margin-top: 2px;
-            }
-
-            .details-subtitle {
-                font-size: 11px;
-                line-height: 1.58;
-                margin-top: 9px;
-            }
-
-            .details-container {
-                gap: 12px;
-            }
-
-            .gallery-box {
-                padding: 7px;
-                border-radius: 14px;
-            }
-
-            .main-gallery-image {
-                height:
-                    clamp(
-                        310px,
-                        98vw,
-                        470px
-                    );
-                min-height: 0;
-                max-height: none;
-                border-radius: 10px;
-            }
-
-            .main-gallery-image img {
-                max-height: 100%;
-            }
-
-            .gallery-thumbnails {
-                gap: 7px;
-                margin-top: 7px;
-                padding-bottom: 3px;
-            }
-
-            .gallery-thumb {
-                flex-basis: clamp(56px, 16vw, 66px);
-                width: clamp(56px, 16vw, 66px);
-                height: clamp(56px, 16vw, 66px);
-                border-radius: 8px;
-            }
-
-            .details-info {
-                padding:
-                    clamp(15px, 4.2vw, 18px);
-                border-radius: 14px;
-            }
-
-            .info-title {
-                font-size:
-                    clamp(
-                        19px,
-                        5.8vw,
-                        24px
-                    );
-                line-height: 1.08;
-            }
-
-            .info-price {
-                font-size:
-                    clamp(
-                        21px,
-                        6.6vw,
-                        25px
-                    );
-            }
-
-            .details-stats {
-                margin-top: 15px;
-                gap: 5px;
-            }
-
-            .detail-stat {
-                padding:
-                    10px 4px;
-                border-radius: 8px;
-            }
-
-            .detail-stat small {
-                font-size: 6.5px;
-            }
-
-            .detail-stat strong {
-                font-size: 11.5px;
-            }
-
-            .detail-tags {
-                gap: 5px;
-                margin-top: 12px;
-            }
-
-            .detail-tag {
-                padding: 5px 7px;
-                font-size: 7.5px;
-            }
-
-            .buy-now-button {
-                min-height: 51px;
-                margin-top: 16px;
-                border-radius: 9px;
-                font-size: 11.5px;
-            }
-
-            .social-links {
-                gap: 7px;
-                margin-top: 8px;
-            }
-
-            .social-button {
-                min-height: 43px;
-                font-size: 9px;
-            }
-
-            .description-section {
-                margin-top: 12px;
-                padding:
-                    clamp(16px, 4.5vw, 19px);
-                border-radius: 14px;
-            }
-
-            .description-title {
-                font-size:
-                    clamp(
-                        20px,
-                        6vw,
-                        23px
-                    );
-            }
-
-            .feature-item {
-                font-size: 11.5px;
-                line-height: 1.52;
-                padding: 7px 0;
-            }
-
-            .details-notice {
-                margin-top: 10px;
-                padding: 13px 14px;
-                border-radius: 11px;
-                font-size: 9.5px;
-            }
-
+            .buy-page { padding: 42px 5% 80px; }
+            .buy-heading h1 { font-size: 43px; }
+            .catalog-toolbar { flex-direction: column; align-items: stretch; }
+            .sort-box { width: 100%; flex-direction: column; align-items: stretch; }
+            .sort-box select { width: 100%; }
+            .category-filters { gap: 7px; margin-bottom: 30px; }
+            .category-btn { padding: 10px 12px; font-size: 9px; }
+            .id-grid { grid-template-columns: 1fr; gap: 16px; }
         }
 
-        @media (max-width: 380px) {
+    
+        /* ==========================================
+           OFFICIAL ADMIN CONTACT CHOOSER
+           ========================================== */
 
-            .details-header h1 {
-                font-size: 29px;
+        .admin-contact-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: rgba(0,0,0,.78);
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-contact-overlay.show {
+            display: flex;
+        }
+
+        .admin-contact-modal {
+            width: min(460px, 94vw);
+            padding: 22px;
+            border-radius: 18px;
+            background: #111;
+            border: 1px solid rgba(255,176,0,.20);
+            box-shadow: 0 28px 80px rgba(0,0,0,.55);
+            animation: adminModalIn .25s ease;
+        }
+
+        @keyframes adminModalIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.98);
             }
-
-            .details-subtitle {
-                font-size: 10.5px;
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
             }
+        }
 
-            .main-gallery-image {
-                height: 330px;
-            }
+        .admin-contact-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
 
-            .gallery-thumb {
-                flex-basis: 54px;
-                width: 54px;
-                height: 54px;
-            }
+        .admin-contact-head h3 {
+            margin: 0;
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.35;
+            font-weight: 900;
+        }
 
-            .details-info {
-                padding: 13px;
-            }
+        .admin-contact-head p {
+            margin: 5px 0 0;
+            color: #777;
+            font-size: 10px;
+            line-height: 1.55;
+        }
 
-            .info-title {
-                font-size: 18px;
-            }
+        .admin-contact-close {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 50%;
+            background: #181818;
+            color: #ddd;
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-            .info-price {
-                font-size: 20px;
-            }
+        .admin-contact-list {
+            display: grid;
+            gap: 10px;
+        }
 
-            .detail-stat strong {
-                font-size: 11px;
-            }
+        .admin-contact-btn {
+            width: 100%;
+            min-height: 62px;
+            padding: 10px 13px;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.08);
+            background: #171717;
+            color: #fff;
+            text-align: left;
+            cursor: pointer;
+            transition: .2s ease;
+        }
 
-            .description-section {
-                padding: 15px;
-            }
+        .admin-contact-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255,176,0,.25);
+            background: #1b1b1b;
+        }
 
+        .admin-contact-icon {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255,176,0,.09);
+            color: #ffb000;
+            font-size: 15px;
+            font-weight: 900;
+        }
+
+        .admin-contact-copy {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .admin-contact-copy strong {
+            display: block;
+            color: #f1f1f1;
+            font-size: 11px;
+            line-height: 1.35;
+        }
+
+        .admin-contact-copy span {
+            display: block;
+            margin-top: 3px;
+            color: #777;
+            font-size: 9px;
+            line-height: 1.4;
+        }
+
+        .admin-contact-arrow {
+            color: #ffb000;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .admin-contact-safe-note {
+            margin-top: 14px;
+            padding: 11px 12px;
+            border-radius: 10px;
+            background: rgba(255,176,0,.05);
+            border: 1px solid rgba(255,176,0,.13);
+            color: #9d8952;
+            font-size: 9px;
+            line-height: 1.6;
+            text-align: center;
         }
 
         @media (prefers-reduced-motion: reduce) {
-
-            .details-page::before,
-            .details-page::after,
-            .main-gallery-image::after {
-                animation: none !important;
+            .admin-contact-modal {
+                animation: none;
             }
-
-            .premium-tilt,
-            .gallery-box,
-            .details-info,
-            .description-section,
-            .details-notice,
-            .detail-stat,
-            .gallery-thumb,
-            .buy-now-button,
-            .social-button {
-                transition: none !important;
-                transform: none !important;
-            }
-
-            .detail-reveal,
-            .detail-reveal.is-visible,
-            .image-enter {
-                animation: none !important;
-                transition: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
         }
 
-    </style>
+        @media (max-width: 700px) {
+            .admin-contact-modal {
+                padding: 18px;
+            }
+
+            .admin-contact-btn {
+                min-height: 66px;
+            }
+        }
+
+</style>
 
 </head>
 
@@ -1919,1230 +669,1027 @@
 <body>
 
 
-    <!-- =====================================================
-         HEADER
-         ===================================================== -->
+<header class="top-header">
 
-    <header class="top-header">
+    <a href="index.html" class="brand">
 
-        <a
-            href="index.html"
-            class="brand">
+        <img
+            src="assets/ic_launcher.png"
+            alt="Tamilanda Gaming Logo"
+            class="brand-logo">
 
-            <img
-                src="assets/ic_launcher.png"
-                alt="Tamilanda Gaming"
-                class="brand-logo">
+        <div class="brand-text">
 
-            <div class="brand-text">
+            <strong>
+                TAMILANDA
+            </strong>
 
-                <strong>
-                    TAMILANDA
-                </strong>
+            <span>
+                GAMING
+            </span>
 
-                <span>
-                    GAMING
-                </span>
+        </div>
 
-            </div>
+    </a>
 
+
+    <nav class="main-nav">
+
+        <a href="index.html">
+            HOME
         </a>
 
+        <a href="sell.html">
+            SELL YOUR ID
+        </a>
 
-        <nav class="main-nav">
+        <a href="buy.html" class="active">
+            BUY YOUR ID
+        </a>
 
-            <a href="index.html">
-                HOME
-            </a>
+        <a href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e" target="_blank" rel="noopener noreferrer" class="nav-channel-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.003l-1.416 5.171 5.292-1.388c1.458.796 3.097 1.215 4.776 1.216h.005c5.505 0 9.988-4.478 9.989-9.984 0-2.667-1.037-5.175-2.923-7.062a9.924 9.924 0 0 0-7.065-2.94zm0 18.232h-.004a8.28 8.28 0 0 1-4.22-1.163l-.303-.18-3.137.822.836-3.056-.198-.315a8.283 8.28 0 0 1-1.272-4.341c.001-4.568 3.72-8.283 8.293-8.283 2.213 0 4.292.863 5.856 2.43 1.564 1.567 2.424 3.648 2.424 5.861 0 4.569-3.719 8.285-8.275 8.285zm4.542-6.208c-.249-.125-1.472-.727-1.7-.822-.228-.095-.394-.142-.56.142-.166.284-.643.822-.788.989-.145.167-.29.188-.539.063-.249-.125-1.052-.388-2.003-1.237-.74-.66-1.24-1.475-1.385-1.724-.145-.249-.015-.384.109-.508.112-.112.249-.29.373-.435.125-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.56-1.349-.768-1.848-.203-.487-.41-.421-.56-.429-.143-.008-.308-.008-.473-.008-.166 0-.435.062-.663.311-.228.249-.871.851-.871 2.076 0 1.225.892 2.408 1.016 2.574.125.166 1.756 2.681 4.254 3.76 2.498 1.079 2.498.719 2.955.677.457-.042 1.472-.602 1.679-1.183.208-.581.208-1.079.145-1.183-.062-.104-.228-.166-.477-.291z"/></svg>
+            CHANNEL
+        </a>
 
-            <a href="sell.html">
-                SELL YOUR ID
-            </a>
+    </nav>
 
-            <a
-                href="buy.html"
-                class="active">
 
-                BUY YOUR ID
+    <button
+        class="menu-button"
+        aria-label="Open Menu">
 
-            </a>
+        ☰
 
-            <a href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e" target="_blank" rel="noopener noreferrer" class="nav-channel-btn">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.763.459 3.486 1.332 5.003l-1.416 5.171 5.292-1.388c1.458.796 3.097 1.215 4.776 1.216h.005c5.505 0 9.988-4.478 9.989-9.984 0-2.667-1.037-5.175-2.923-7.062a9.924 9.924 0 0 0-7.065-2.94zm0 18.232h-.004a8.28 8.28 0 0 1-4.22-1.163l-.303-.18-3.137.822.836-3.056-.198-.315a8.283 8.28 0 0 1-1.272-4.341c.001-4.568 3.72-8.283 8.293-8.283 2.213 0 4.292.863 5.856 2.43 1.564 1.567 2.424 3.648 2.424 5.861 0 4.569-3.719 8.285-8.275 8.285zm4.542-6.208c-.249-.125-1.472-.727-1.7-.822-.228-.095-.394-.142-.56.142-.166.284-.643.822-.788.989-.145.167-.29.188-.539.063-.249-.125-1.052-.388-2.003-1.237-.74-.66-1.24-1.475-1.385-1.724-.145-.249-.015-.384.109-.508.112-.112.249-.29.373-.435.125-.145.166-.249.249-.415.083-.166.042-.311-.021-.435-.062-.125-.56-1.349-.768-1.848-.203-.487-.41-.421-.56-.429-.143-.008-.308-.008-.473-.008-.166 0-.435.062-.663.311-.228.249-.871.851-.871 2.076 0 1.225.892 2.408 1.016 2.574.125.166 1.756 2.681 4.254 3.76 2.498 1.079 2.498.719 2.955.677.457-.042 1.472-.602 1.679-1.183.208-.581.208-1.079.145-1.183-.062-.104-.228-.166-.477-.291z"/></svg>
-                CHANNEL
-            </a>
+    </button>
 
-        </nav>
+</header>
 
+
+<aside class="side-menu">
+
+    <button
+        class="close-menu"
+        aria-label="Close Menu">
+
+        ×
+
+    </button>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="about.html">
+        About
+    </a>
+
+    <a href="contact.html">
+        Contact Us
+    </a>
+
+    <a href="terms.html">
+        Terms & Conditions
+    </a>
+
+</aside>
+
+
+<main class="buy-page">
+
+
+    <section class="buy-heading">
+
+        <p class="eyebrow">
+            TAMILANDA GAMING
+        </p>
+
+        <h1>
+            BUY YOUR
+            <span>
+                DREAM IDS
+            </span>
+            NOW
+        </h1>
+
+        <p>
+            Explore premium Free Fire accounts,
+            rare collections, high-level IDs
+            and exclusive accounts.
+        </p>
+
+    </section>
+
+
+    <section class="catalog-toolbar">
+
+        <div class="filter-title">
+
+            <span>
+                ⚡
+            </span>
+
+            FILTER IDS
+
+        </div>
+
+        <div class="catalog-search-box">
+            <input
+                type="search"
+                id="catalogSearch"
+                aria-label="Search catalog IDs"
+                placeholder="🔍 Search ID#, level, vault, or name..."
+                autocomplete="off">
+        </div>
+
+
+        <div class="sort-box">
+
+            <label for="sort">
+                SORT BY
+            </label>
+
+            <select id="sort">
+
+                <option value="default">
+                    Featured
+                </option>
+
+                <option value="high-price">
+                    Price High to Low
+                </option>
+
+                <option value="low-price">
+                    Price Low to High
+                </option>
+
+                <option value="popular">
+                    Popular IDs 🔥
+                </option>
+
+                <option value="high-level">
+                    Level High to Low
+                </option>
+
+                <option value="low-level">
+                    Level Low to High
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+
+    <section class="category-filters">
 
         <button
-            class="menu-button"
-            aria-label="Open Menu">
+            class="category-btn active"
+            data-filter="all">
 
-            ☰
+            ALL IDS
 
         </button>
 
-    </header>
-
-
-    <!-- =====================================================
-         SIDE MENU
-         ===================================================== -->
-
-    <aside class="side-menu">
-
         <button
-            class="close-menu"
-            aria-label="Close Menu">
+            class="category-btn"
+            data-filter="favorites">
 
-            ×
+            ❤️ MY FAVORITES
 
         </button>
+
+        <button
+            class="category-btn"
+            data-filter="golden">
+
+            GOLDEN ELITES
+
+        </button>
+
+        <button
+            class="category-btn"
+            data-filter="high">
+
+            HIGH LEVEL
+
+        </button>
+
+        <button
+            class="category-btn"
+            data-filter="starter">
+
+            STARTER IDS
+
+        </button>
+
+        <button
+            class="category-btn"
+            data-filter="mid">
+
+            MID RANGE IDS
+
+        </button>
+
+        <button
+            class="category-btn"
+            data-filter="hot">
+
+            HOT IDS 🔥
+
+        </button>
+
+    </section>
+
+
+    <section
+        class="id-grid"
+        id="idGrid">
+
+        <div
+            class="loading-state"
+            id="loadingState">
+
+            Loading IDs...
+
+        </div>
+
+    </section>
+
+
+    <div
+        class="empty-state"
+        id="emptyState"
+        style="display:none;">
+
+        <div>
+            🔍
+        </div>
+
+        <h2>
+            No IDs Found
+        </h2>
+
+        <p>
+            Try searching another keyword or clearing your filters.
+        </p>
+
+    </div>
+
+
+    <!-- CUSTOM ORDER BANNER -->
+
+    <section class="request-banner">
+
+        <h3>
+            CAN'T FIND YOUR <span>DREAM ID?</span>
+        </h3>
+
+        <p>
+            Tell us your budget and requirements (EVO Guns, Old Elites, Vault level). Our admin team will find a custom account for you!
+        </p>
+
+        <button
+            type="button"
+            class="request-btn admin-choice-trigger"
+            data-contact-type="custom">
+            💬 REQUEST CUSTOM ID ON WHATSAPP
+        </button>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ==========================================
+     OFFICIAL ADMIN CONTACT CHOOSER
+     ========================================== -->
+
+<div
+    class="admin-contact-overlay"
+    id="adminContactOverlay"
+    aria-hidden="true">
+
+    <div
+        class="admin-contact-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="adminContactTitle">
+
+        <div class="admin-contact-head">
+
+            <div>
+                <h3 id="adminContactTitle">
+                    CHOOSE AN OFFICIAL ADMIN
+                </h3>
+
+                <p>
+                    Contact only these official Tamilanda Gaming numbers.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="admin-contact-close"
+                id="adminContactClose"
+                aria-label="Close">
+                ×
+            </button>
+
+        </div>
+
+        <div class="admin-contact-list">
+
+            <button
+                type="button"
+                class="admin-contact-btn"
+                data-admin-number="919786267475">
+
+                <span class="admin-contact-icon">
+                    1
+                </span>
+
+                <span class="admin-contact-copy">
+                    <strong>
+                        Admin 1 — @Visualize
+                    </strong>
+
+                    <span>
+                        +91 97862 67475
+                    </span>
+                </span>
+
+                <span class="admin-contact-arrow">
+                    ↗
+                </span>
+
+            </button>
+
+            <button
+                type="button"
+                class="admin-contact-btn"
+                data-admin-number="919363063571">
+
+                <span class="admin-contact-icon">
+                    2
+                </span>
+
+                <span class="admin-contact-copy">
+                    <strong>
+                        Admin 2
+                    </strong>
+
+                    <span>
+                        +91 93630 63571
+                    </span>
+                </span>
+
+                <span class="admin-contact-arrow">
+                    ↗
+                </span>
+
+            </button>
+
+        </div>
+
+        <div class="admin-contact-safe-note">
+            🔐 These are the only official Tamilanda Gaming Admin contacts.
+            Verify the number before making any payment.
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <div class="footer-brand">
+
+        <img
+            src="assets/ic_launcher.png"
+            alt="Tamilanda Gaming">
+
+        <div>
+
+            <strong>
+                TAMILANDA GAMING
+            </strong>
+
+            <p>
+                Free Fire ID Marketplace
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-links">
 
         <a href="index.html">
             Home
         </a>
 
-        <a href="about.html">
-            About
+        <a href="sell.html">
+            Sell Your ID
+        </a>
+
+        <a href="buy.html">
+            Buy Your ID
         </a>
 
         <a href="contact.html">
-            Contact Us
+            Contact
         </a>
 
         <a href="terms.html">
-            Terms & Conditions
+            Terms
         </a>
 
-    </aside>
+    </div>
 
 
-    <!-- =====================================================
-         PAGE
-         ===================================================== -->
+    <p class="copyright">
 
-    <main class="details-page">
+        ©
+        <span id="current-year"></span>
 
+        Tamilanda Gaming.
+        All rights reserved.
 
-        <a
-            href="buy.html"
-            class="back-button">
+    </p>
 
-            ← BACK TO BUY IDS
+</footer>
 
-        </a>
 
+<script src="app.js"></script>
 
-        <!-- Loading -->
 
-        <div
-            id="loading"
-            class="details-loading">
+<script>
 
-            LOADING ID DETAILS...
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
 
-        </div>
+        const WORKER_URL =
+            "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
 
+        const GITHUB_PAGES =
+            "https://anonsktg.github.io/Tamilanda-Gaming";
 
-        <!-- Error -->
+        const grid =
+            document.getElementById("idGrid");
 
-        <div
-            id="errorBox"
-            class="details-error"
-            style="display:none;">
+        const emptyState =
+            document.getElementById("emptyState");
 
-            <strong>
-                ID NOT FOUND
-            </strong>
+        const loadingState =
+            document.getElementById("loadingState");
 
-            This account could not be found.
+        const sort =
+            document.getElementById("sort");
 
-            <br><br>
+        const searchInput =
+            document.getElementById("catalogSearch");
 
-            <a
-                href="buy.html"
-                class="back-button">
-
-                ← BACK TO BUY IDS
-
-            </a>
-
-        </div>
-
-
-        <!-- =================================================
-             DYNAMIC CONTENT
-             ================================================= -->
-
-        <div
-            id="detailsContent"
-            style="display:none;">
-
-
-            <!-- =================================================
-                 HEADER
-                 ================================================= -->
-
-            <section class="details-header">
-
-                <div class="details-label">
-                    TAMILANDA GAMING • ID DETAILS
-                </div>
-
-                <h1 id="pageHeading">
-
-                    <span>
-                        FREE FIRE
-                    </span>
-
-                    ID
-
-                </h1>
-
-                <p
-                    class="details-subtitle"
-                    id="pageSubtitle">
-
-                    Explore the complete account details,
-                    collections and exclusive items.
-
-                </p>
-
-            </section>
-
-
-            <!-- =================================================
-                 MAIN DETAILS
-                 ================================================= -->
-
-            <section class="details-container">
-
-
-                <!-- =================================================
-                     IMAGE GALLERY
-                     ================================================= -->
-
-                <div class="gallery-box">
-
-                    <div
-                        class="main-gallery-image"
-                        id="mainImage">
-
-                        <div class="gallery-placeholder">
-                            ID IMAGE
-                        </div>
-
-                    </div>
-
-
-                    <div
-                        class="gallery-thumbnails"
-                        id="thumbnails">
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     ACCOUNT INFORMATION
-                     ================================================= -->
-
-                <div class="details-info">
-
-
-                    <div class="info-top">
-
-                        <div>
-
-                            <div
-                                class="info-category"
-                                id="infoCategory">
-
-                                -
-
-                            </div>
-
-                            <div
-                                class="info-title"
-                                id="infoTitle">
-
-                                -
-
-                            </div>
-
-                            <div
-                                class="status-badge available"
-                                id="statusBadge">
-
-                                🟢 AVAILABLE
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="info-price"
-                            id="infoPrice">
-
-                            -
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- Stats -->
-
-                    <div class="details-stats">
-
-
-                        <div class="detail-stat">
-
-                            <small>
-                                Account Level
-                            </small>
-
-                            <strong id="level">
-                                -
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-stat">
-
-                            <small>
-                                Prime Level
-                            </small>
-
-                            <strong id="prime">
-                                -
-                            </strong>
-
-                        </div>
-
-
-                        <div class="detail-stat">
-
-                            <small>
-                                Vault
-                            </small>
-
-                            <strong id="vault">
-                                -
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <!-- Tags -->
-
-                    <div
-                        class="detail-tags"
-                        id="tags">
-                    </div>
-
-
-                    <!-- Buy -->
-
-                    <a
-                        href="#"
-                        class="buy-now-button"
-                        id="buyButton"
-                        target="_blank">
-
-                        BUY THIS ID
-                        →
-
-                    </a>
-
-
-                    <!-- Social & Share -->
-
-                    <div class="social-links">
-
-                        <button
-                            type="button"
-                            id="shareButton"
-                            class="social-button"
-                            style="cursor:pointer; width:100%; grid-column: 1 / -1;">
-
-                            📲 SHARE THIS ID ON WHATSAPP
-
-                        </button>
-
-                        <a
-                            href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="social-button">
-
-                            📱 WHATSAPP CHANNEL
-
-                        </a>
-
-
-                        <a
-                            href="https://youtube.com/@tamilanda_gaming_15"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="social-button">
-
-                            ▶️ YOUTUBE
-
-                        </a>
-
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 DESCRIPTION
-                 ================================================= -->
-
-            <section class="description-section">
-
-                <div class="description-heading">
-                    ACCOUNT DESCRIPTION
-                </div>
-
-                <h2 class="description-title">
-                    🔥 Account Features
-                </h2>
-
-
-                <div
-                    class="feature-list"
-                    id="featureList">
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 NOTICE
-                 ================================================= -->
-
-            <div class="details-notice">
-
-                <strong>
-                    ⚡ Interested in this ID?
-                </strong>
-
-                Click <strong>BUY THIS ID</strong>
-                to contact Tamilanda Gaming on WhatsApp.
-                Availability and final price will be confirmed
-                before purchase.
-
-            </div>
-
-
-        </div>
-
-    </main>
-
-
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-    <footer>
-
-        <div class="footer-brand">
-
-            <img
-                src="assets/ic_launcher.png"
-                alt="Tamilanda Gaming">
-
-            <div>
-
-                <strong>
-                    TAMILANDA GAMING
-                </strong>
-
-                <p>
-                    Free Fire ID Marketplace
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="sell.html">
-                Sell Your ID
-            </a>
-
-            <a href="buy.html">
-                Buy Your ID
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-            <a href="terms.html">
-                Terms
-            </a>
-
-        </div>
-
-
-        <p class="copyright">
-
-            © <span id="current-year"></span>
-            Tamilanda Gaming.
-            All rights reserved.
-
-        </p>
-
-    </footer>
-
-
-    <!-- =====================================================
-         APP JS
-         ===================================================== -->
-
-    <script src="app.js"></script>
-
-
-    <!-- =====================================================
-         DYNAMIC ID DETAILS JS
-         ===================================================== -->
-
-    <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            async function () {
-
-                const API_BASE =
-                    "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
-
-                const GITHUB_BASE =
-                    "https://anonsktg.github.io/Tamilanda-Gaming";
-
-                const WHATSAPP_NUMBER =
-                    "919786267475";
-
-
-                const loading =
-                    document.getElementById("loading");
-
-                const errorBox =
-                    document.getElementById("errorBox");
-
-                const detailsContent =
-                    document.getElementById("detailsContent");
-
-                const mainImage =
-                    document.getElementById("mainImage");
-
-                const thumbnails =
-                    document.getElementById("thumbnails");
-
-                const featureList =
-                    document.getElementById("featureList");
-
-
-                /* =================================================
-                   GET ID FROM URL
-                   ================================================= */
-
-                const params = new URLSearchParams(window.location.search);
-                const id = params.get("id");
-
-                if (!id) {
-                    loading.style.display = "none";
-                    errorBox.style.display = "block";
-                    return;
-                }
-
-                /* =================================================
-                   FETCH ID DATA
-                   ================================================= */
-
-                try {
-
-                    const response = await fetch(`${API_BASE}/api/ids/${encodeURIComponent(id)}`);
-
-                    if (!response.ok) {
-                        throw new Error("ID not found");
-                    }
-
-                    const data = await response.json();
-
-                    const name = data.name || `Free Fire ID #${id}`;
-                    const price = formatPrice(data.price);
-                    const level = data.level || "-";
-                    const prime = data.prime || "-";
-                    const vault = data.vault || "-";
-                    const category = data.category || "FREE FIRE ID";
-                    const badge = data.badge || "";
-                    const status = String(data.status || "available").toLowerCase().trim();
-                    const isSold = status === "sold";
-
-                    document.title = `${name} | Tamilanda Gaming`;
-
-                    const pageHeading = document.getElementById("pageHeading");
-                    pageHeading.innerHTML = `<span>${escapeHTML(category.toString().toUpperCase())}</span><br>${escapeHTML(name)}`;
-
-                    document.getElementById("pageSubtitle").textContent =
-                        `Explore the complete account details, collections and exclusive items of ${name}.`;
-
-                    document.getElementById("infoCategory").textContent = category.toString().toUpperCase();
-                    document.getElementById("infoTitle").textContent = name;
-                    document.getElementById("infoPrice").textContent = price;
-
-                    const statusBadge = document.getElementById("statusBadge");
-                    const detailsInfo = document.querySelector(".details-info");
-
-                    if (statusBadge) {
-                        statusBadge.className = "status-badge " + (isSold ? "sold" : "available");
-                        statusBadge.textContent = isSold ? "🔴 SOLD" : "🟢 AVAILABLE";
-                    }
-
-                    if (detailsInfo) {
-                        detailsInfo.classList.toggle("sold", isSold);
-                    }
-
-                    document.getElementById("level").textContent = level;
-                    document.getElementById("prime").textContent = prime;
-                    document.getElementById("vault").textContent = vault;
-
-                    renderTags(data, category, badge);
-                    renderGallery(data, id, name);
-                    renderDescription(data.description);
-
-                    const buyButton = document.getElementById("buyButton");
-
-                    if (isSold) {
-                        buyButton.removeAttribute("href");
-                        buyButton.removeAttribute("target");
-                        buyButton.classList.add("sold");
-                        buyButton.textContent = "🔴 SOLD";
-                        buyButton.setAttribute("aria-disabled", "true");
-                    } else {
-                        const message = `Hi Tamilanda Gaming, I am interested in ${name} - ${price}. ID: ${id}`;
-                        const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-                        buyButton.href = whatsappURL;
-                        buyButton.target = "_blank";
-                        buyButton.classList.remove("sold");
-                        buyButton.textContent = "BUY THIS ID →";
-                        buyButton.removeAttribute("aria-disabled");
-                    }
-
-                    const shareButton = document.getElementById("shareButton");
-                    if (shareButton) {
-                        shareButton.addEventListener("click", () => {
-                            const shareText = `Check out this ${name} (${price}) on Tamilanda Gaming:\n${window.location.href}`;
-                            window.open(`https://wa.me/?text=${encodeURIComponent(shareText)}`, "_blank");
-                        });
-                    }
-
-                    loading.style.display = "none";
-                    detailsContent.style.display = "block";
-
-                } catch (error) {
-                    console.error("ID Details Error:", error);
-                    loading.style.display = "none";
-                    errorBox.style.display = "block";
-                }
-
-                /* =================================================
-                   FORMAT PRICE
-                   ================================================= */
-
-                function formatPrice(value) {
-                    if (value === null || value === undefined || value === "") {
-                        return "Price on Request";
-                    }
-
-                    const number = Number(String(value).replace(/[^0-9.]/g, ""));
-
-                    if (Number.isNaN(number) || number === 0) {
-                        return String(value);
-                    }
-
-                    if (number >= 100000) {
-                        const lakh = number / 100000;
-                        return `₹${lakh.toFixed(lakh % 1 === 0 ? 0 : 1).replace(".0", "")}L`;
-                    }
-
-                    if (number >= 1000) {
-                        const thousand = number / 1000;
-                        return `₹${thousand.toFixed(thousand % 1 === 0 ? 0 : 1).replace(".0", "")}K`;
-                    }
-
-                    return `₹${number.toLocaleString("en-IN")}`;
-                }
-
-                /* =================================================
-                   RENDER TAGS
-                   ================================================= */
-
-                function renderTags(data, category, badge) {
-                    const tagContainer = document.getElementById("tags");
-                    tagContainer.innerHTML = "";
-
-                    let tags = [];
-
-                    if (Array.isArray(data.tags)) {
-                        tags = data.tags.map(item => String(item).trim()).filter(Boolean);
-                    } else if (typeof data.tags === "string") {
-                        tags = data.tags.split(",").map(item => item.trim()).filter(Boolean);
-                    }
-
-                    if (category && !tags.includes(category)) {
-                        tags.unshift(category);
-                    }
-
-                    if (badge && !tags.includes(badge)) {
-                        tags.push(badge);
-                    }
-
-                    if (Number(data.popularScore ?? data.popular ?? 0) >= 90) {
-                        tags.push("POPULAR 🔥");
-                    }
-
-                    tags = [...new Set(tags)];
-
-                    tags.forEach(function (tag) {
-                        const span = document.createElement("span");
-                        span.className = "detail-tag";
-                        span.textContent = String(tag).toUpperCase();
-                        tagContainer.appendChild(span);
-                    });
-                }
-
-                /* =================================================
-                   RENDER GALLERY
-                   ================================================= */
-
-                function renderGallery(data, id, name) {
-                    thumbnails.innerHTML = "";
-                    mainImage.innerHTML = `<div class="gallery-placeholder">ID IMAGE</div>`;
-
-                    let images = [];
-
-                    if (Array.isArray(data.images) && data.images.length > 0) {
-                        images = data.images
-                            .filter(Boolean)
-                            .map(image => resolveImageURL(image, id))
-                            .filter(Boolean);
-                    }
-
-                    /*
-                     * Some IDs currently have a showcase image but do not yet
-                     * have the normal images[] array populated. Use that image
-                     * as the first gallery image so the same ID looks identical
-                     * whether opened from Showcase or Buy Your ID.
-                     */
-                    if (images.length === 0 && data.showcaseImage) {
-                        const showcaseURL =
-                            resolveImageURL(
-                                data.showcaseImage,
-                                id
-                            );
-
-                        if (showcaseURL) {
-                            images.push(showcaseURL);
-                        }
-                    }
-
-                    /*
-                     * Then try the conventional 01.jpg - 06.jpg paths.
-                     * Invalid paths are removed automatically by onerror.
-                     */
-                    if (images.length === 0) {
-                        for (let i = 1; i <= 6; i++) {
-                            const number =
-                                String(i).padStart(2, "0");
-
-                            images.push(
-                                `${GITHUB_BASE}/assets/ids/` +
-                                `${encodeURIComponent(id)}/${number}.jpg`
-                            );
-                        }
-                    }
-
-                    let firstLoaded = false;
-
-                    images.forEach(function (imageURL, index) {
-                        const button = document.createElement("button");
-                        button.type = "button";
-                        button.className = "gallery-thumb";
-
-                        const img = document.createElement("img");
-                        img.src = imageURL;
-                        img.alt = `${name} Image ${index + 1}`;
-                        img.loading = "lazy";
-
-                        img.onerror = function () {
-                            button.remove();
-                        };
-
-                        img.onload = function () {
-                            if (!firstLoaded) {
-                                firstLoaded = true;
-                                setMainImage(imageURL, name);
-                                button.classList.add("active");
-                            }
-                        };
-
-                        button.appendChild(img);
-
-                        button.addEventListener("click", function () {
-                            document.querySelectorAll(".gallery-thumb").forEach(item => item.classList.remove("active"));
-                            button.classList.add("active");
-                            setMainImage(imageURL, name);
-                        });
-
-                        thumbnails.appendChild(button);
-                    });
-                }
-
-                /* =================================================
-                   SET MAIN IMAGE
-                   ================================================= */
-
-                function setMainImage(imageURL, name) {
-                    mainImage.innerHTML = "";
-                    const img = document.createElement("img");
-                    img.src = imageURL;
-                    img.alt = name;
-
-                    img.onerror = function () {
-                        mainImage.innerHTML = `<div class="gallery-placeholder">ID IMAGE</div>`;
-                    };
-
-                    mainImage.appendChild(img);
-                }
-
-                /* =================================================
-                   RESOLVE IMAGE URL
-                   ================================================= */
-
-                function resolveImageURL(image, id) {
-
-                    const value =
-                        String(
-                            image || ""
-                        ).trim();
-
-                    if (!value) {
-                        return "";
-                    }
-
-                    if (
-                        value.startsWith("http://") ||
-                        value.startsWith("https://")
-                    ) {
-                        return value;
-                    }
-
-                    /*
-                     * Uploaded "assets/..." files should use the raw GitHub
-                     * origin so newly committed binary files do not depend
-                     * on GitHub Pages deployment timing.
-                     */
-                    if (
-                        value.startsWith("assets/")
-                    ) {
-                        return (
-                            "https://raw.githubusercontent.com/" +
-                            "AnonSkTg/Tamilanda-Gaming/main/" +
-                            value
-                        );
-                    }
-
-                    if (
-                        value.startsWith("/")
-                    ) {
-                        return (
-                            `${GITHUB_BASE}${value}`
-                        );
-                    }
-
-                    return (
-                        `${GITHUB_BASE}/assets/ids/` +
-                        `${encodeURIComponent(id)}/${value}`
-                    );
-                }
-
-                /* =================================================
-                   DESCRIPTION
-                   ================================================= */
-
-                function renderDescription(description) {
-                    featureList.innerHTML = "";
-
-                    if (description === null || description === undefined) {
-                        showNoDescription();
-                        return;
-                    }
-
-                    const text = String(description).trim();
-
-                    if (!text) {
-                        showNoDescription();
-                        return;
-                    }
-
-                    const lines = text.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
-
-                    if (lines.length === 0) {
-                        showNoDescription();
-                        return;
-                    }
-
-                    lines.forEach(function (line) {
-                        const item = document.createElement("div");
-                        item.className = "feature-item";
-                        item.textContent = line;
-                        featureList.appendChild(item);
-                    });
-                }
-
-                function showNoDescription() {
-                    featureList.innerHTML = `<div class="no-description">No description has been added for this ID yet.</div>`;
-                }
-
-                function escapeHTML(value) {
-                    return String(value)
-                        .replace(/&/g, "&amp;")
-                        .replace(/</g, "&lt;")
-                        .replace(/>/g, "&gt;")
-                        .replace(/"/g, "&quot;")
-                        .replace(/'/g, "&#039;");
-                }
-
-            }
-        );
-
-    </script>
-
-
-
-    <script>
-    (() => {
-
-        const reduceMotion =
-            window.matchMedia(
-                "(prefers-reduced-motion: reduce)"
-            ).matches;
-
-        if (!reduceMotion) {
-
-            /*
-             * Subtle pointer-based 3D tilt on desktop.
-             * Disabled on touch screens to keep mobile natural.
-             */
-            const tiltTargets =
-                document.querySelectorAll(
-                    ".gallery-box, .details-info"
-                );
-
-            const supportsHover =
-                window.matchMedia(
-                    "(hover: hover) and (pointer: fine)"
-                ).matches;
-
-            if (supportsHover) {
-
-                tiltTargets.forEach(
-                    function (element) {
-
-                        element.classList.add(
-                            "premium-tilt"
-                        );
-
-                        element.addEventListener(
-                            "pointermove",
-                            function (event) {
-
-                                const rect =
-                                    element.getBoundingClientRect();
-
-                                const x =
-                                    (event.clientX - rect.left) /
-                                    rect.width;
-
-                                const y =
-                                    (event.clientY - rect.top) /
-                                    rect.height;
-
-                                const rotateY =
-                                    (x - 0.5) * 4.2;
-
-                                const rotateX =
-                                    (0.5 - y) * 3.4;
-
-                                element.style.setProperty(
-                                    "--rx",
-                                    rotateX.toFixed(2) + "deg"
-                                );
-
-                                element.style.setProperty(
-                                    "--ry",
-                                    rotateY.toFixed(2) + "deg"
-                                );
-
-                                element.style.setProperty(
-                                    "--lift",
-                                    "-5px"
-                                );
-
-                            },
-                            { passive: true }
-                        );
-
-                        element.addEventListener(
-                            "pointerleave",
-                            function () {
-
-                                element.style.setProperty(
-                                    "--rx",
-                                    "0deg"
-                                );
-
-                                element.style.setProperty(
-                                    "--ry",
-                                    "0deg"
-                                );
-
-                                element.style.setProperty(
-                                    "--lift",
-                                    "0px"
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
-            }
-
-            /*
-             * Staggered reveal for the main content blocks.
-             */
-            const revealTargets =
-                document.querySelectorAll(
-                    ".details-container > *, " +
-                    ".description-section, " +
-                    ".details-notice"
-                );
-
-            revealTargets.forEach(
-                function (element, index) {
-
-                    element.classList.add(
-                        "detail-reveal"
-                    );
-
-                    element.style.transitionDelay =
-                        Math.min(
-                            index * 70,
-                            260
-                        ) + "ms";
-
-                }
+        const buttons =
+            document.querySelectorAll(
+                ".category-btn"
             );
 
-            if (
-                "IntersectionObserver" in window
-            ) {
+        let allIDs = [];
+        let currentFilter = "all";
+        let searchTerm = "";
 
-                const observer =
-                    new IntersectionObserver(
-                        function (entries, obs) {
+        /* =========================================
+           FORMAT PRICE
+           ========================================= */
 
-                            entries.forEach(
-                                function (entry) {
-
-                                    if (
-                                        entry.isIntersecting
-                                    ) {
-
-                                        entry.target.classList.add(
-                                            "is-visible"
-                                        );
-
-                                        obs.unobserve(
-                                            entry.target
-                                        );
-
-                                    }
-
-                                }
-                            );
-
-                        },
-                        {
-                            threshold: 0.08,
-                            rootMargin: "0px 0px -30px 0px"
-                        }
-                    );
-
-                revealTargets.forEach(
-                    function (element) {
-                        observer.observe(element);
-                    }
-                );
-
-            } else {
-
-                revealTargets.forEach(
-                    function (element) {
-                        element.classList.add(
-                            "is-visible"
-                        );
-                    }
-                );
-
+        function formatPrice(value) {
+            if (value === null || value === undefined || value === "") {
+                return "Price on Request";
             }
 
-            /*
-             * Smooth main-gallery image entrance whenever the
-             * existing page script swaps the image.
-             */
-            const mainImage =
-                document.getElementById(
-                    "mainImage"
-                );
+            const number = Number(String(value).replace(/[^0-9.]/g, ""));
 
-            if (mainImage) {
-
-                const imageObserver =
-                    new MutationObserver(
-                        function () {
-
-                            const image =
-                                mainImage.querySelector(
-                                    "img"
-                                );
-
-                            if (!image) {
-                                return;
-                            }
-
-                            image.classList.remove(
-                                "image-enter"
-                            );
-
-                            requestAnimationFrame(
-                                function () {
-
-                                    image.classList.add(
-                                        "image-enter"
-                                    );
-
-                                }
-                            );
-
-                            image.decoding =
-                                "async";
-
-                        }
-                    );
-
-                imageObserver.observe(
-                    mainImage,
-                    {
-                        childList: true,
-                        subtree: true
-                    }
-                );
-
+            if (Number.isNaN(number) || number === 0) {
+                return String(value);
             }
 
-            /*
-             * Soft press feedback on touch buttons.
-             */
-            document.addEventListener(
-                "touchstart",
-                function (event) {
+            if (number >= 100000) {
+                const lakh = number / 100000;
+                return `₹${lakh.toFixed(lakh % 1 === 0 ? 0 : 1).replace(".0", "")}L`;
+            }
 
-                    const target =
-                        event.target.closest(
-                            ".buy-now-button, " +
-                            ".social-button, " +
-                            ".gallery-thumb, " +
-                            ".back-button"
-                        );
+            if (number >= 1000) {
+                const thousand = number / 1000;
+                return `₹${thousand.toFixed(thousand % 1 === 0 ? 0 : 1).replace(".0", "")}K`;
+            }
 
-                    if (target) {
-                        target.style.transform =
-                            "scale(.985)";
-                    }
-
-                },
-                { passive: true }
-            );
-
-            const clearPress =
-                function () {
-
-                    document
-                    .querySelectorAll(
-                        ".buy-now-button, " +
-                        ".social-button, " +
-                        ".gallery-thumb, " +
-                        ".back-button"
-                    )
-                    .forEach(
-                        function (element) {
-
-                            if (
-                                !element.matches(
-                                    ":hover"
-                                ) ||
-                                !supportsHover
-                            ) {
-
-                                element.style.transform =
-                                    "";
-
-                            }
-
-                        }
-                    );
-
-                };
-
-            document.addEventListener(
-                "touchend",
-                clearPress,
-                { passive: true }
-            );
-
-            document.addEventListener(
-                "touchcancel",
-                clearPress,
-                { passive: true }
-            );
-
+            return `₹${number.toLocaleString("en-IN")}`;
         }
 
-    })();
-    </script>
+        /* =========================================
+           CATEGORY RESOLVER
+           ========================================= */
+
+        function getCategory(item) {
+            if (!item) return "all";
+
+            const categoryText = String(item.category || "").toLowerCase().trim();
+            const badgeText = String(item.badge || "").toLowerCase().trim();
+            const tagsText = Array.isArray(item.tags)
+                ? item.tags.join(" ").toLowerCase()
+                : String(item.tags || "").toLowerCase();
+
+            const combined = `${categoryText} ${badgeText} ${tagsText}`;
+
+            if (combined.includes("gold")) return "golden";
+            if (combined.includes("high")) return "high";
+            if (combined.includes("starter")) return "starter";
+            if (combined.includes("mid")) return "mid";
+            if (combined.includes("hot")) return "hot";
+
+            return categoryText || "all";
+        }
+
+        function resolveImageURL(image, id) {
+            if (!image) return "";
+            const value = String(image).trim();
+
+            if (value.startsWith("http://") || value.startsWith("https://")) {
+                return value;
+            }
+            if (value.startsWith("/")) {
+                return GITHUB_PAGES + value;
+            }
+            if (value.startsWith("assets/")) {
+                return GITHUB_PAGES + "/" + value;
+            }
+            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/${value}`;
+        }
+
+        function getImageURL(item) {
+            const id = String(item.id || item.idNumber || item.number || "").trim();
+            if (!id) return "";
+
+            if (Array.isArray(item.images) && item.images.length > 0) {
+                return resolveImageURL(item.images[0], id);
+            }
+
+            return `${GITHUB_PAGES}/assets/ids/${encodeURIComponent(id)}/01.jpg`;
+        }
+
+        function getTags(item) {
+            if (Array.isArray(item.tags)) return item.tags;
+            if (typeof item.tags === "string") {
+                return item.tags.split(",").map(tag => tag.trim()).filter(Boolean);
+            }
+            return [];
+        }
+
+        function getStatus(item) {
+            return String(item.status || "available").toLowerCase().trim();
+        }
+
+        /* =========================================
+           CREATE CARD
+           ========================================= */
+
+        function createCard(item) {
+            const id = String(item.id || item.idNumber || item.number || "");
+            const name = item.name || ("ID #" + id);
+            const price = item.price;
+            const level = item.level || "-";
+            const prime = item.prime || "-";
+            const vault = item.vault || "-";
+            const category = getCategory(item);
+
+            const badge = item.badge || (
+                category === "golden" ? "GOLDEN ELITE" :
+                category === "high" ? "HIGH LEVEL" :
+                category === "starter" ? "STARTER" :
+                category === "mid" ? "MID RANGE" :
+                category === "hot" ? "HOT ID 🔥" : "FREE FIRE ID"
+            );
+
+            const popular = Number(item.popularScore ?? item.popular ?? 0);
+            const status = getStatus(item);
+            const isSold = status === "sold";
+            const tags = getTags(item);
+            const isFav = window.TamilandaWishlist ? window.TamilandaWishlist.has(id) : false;
+
+            const card = document.createElement("article");
+            card.className = "id-card" + (isSold ? " sold" : "");
+            card.dataset.id = id;
+
+            const imageURL = getImageURL(item);
+
+            let tagsHTML = "";
+            tags.forEach(function (tag) {
+                tagsHTML += `<span class="tag">${escapeHTML(tag)}</span>`;
+            });
+
+            if (!tagsHTML) {
+                tagsHTML = `<span class="tag">PREMIUM</span>`;
+            }
+
+            const popularHTML = popular > 0 && !isSold
+                ? `<span class="popular-badge">🔥 POPULAR</span>`
+                : "";
+
+            const soldHTML = isSold
+                ? `<span class="sold-badge">🔴 SOLD</span>`
+                : "";
+
+            const imageHTML = imageURL
+                ? `<img
+                    src="${imageURL}"
+                    alt="${escapeHTML(name)}"
+                    loading="lazy"
+                    onerror="
+                        this.style.display='none';
+                        this.nextElementSibling.style.display='flex';
+                    "
+                   >
+                   <div class="id-image-placeholder" style="display:none;">
+                       ID IMAGE
+                   </div>`
+                : `<div class="id-image-placeholder">ID IMAGE</div>`;
+
+            card.innerHTML = `
+                <button type="button" class="fav-btn ${isFav ? 'active' : ''}" data-id="${id}" aria-label="Favorite ID">
+                    ❤️
+                </button>
+                <div class="id-image">
+                    ${imageHTML}
+                    <span class="id-badge">${escapeHTML(badge)}</span>
+                    ${popularHTML}
+                    ${soldHTML}
+                </div>
+
+                <div class="id-content">
+                    <div class="id-title-row">
+                        <h2 class="id-title">${escapeHTML(name)}</h2>
+                        <div class="id-price">${formatPrice(price)}</div>
+                    </div>
+
+                    <div class="id-stats">
+                        <div class="stat">
+                            <small>Level</small>
+                            <strong>${escapeHTML(String(level))}</strong>
+                        </div>
+                        <div class="stat">
+                            <small>Prime</small>
+                            <strong>${escapeHTML(String(prime))}</strong>
+                        </div>
+                        <div class="stat">
+                            <small>Vault</small>
+                            <strong>${escapeHTML(String(vault))}</strong>
+                        </div>
+                    </div>
+
+                    <div class="id-tags">
+                        ${tagsHTML}
+                    </div>
+
+                    <a href="id-details.html?id=${encodeURIComponent(id)}" class="view-id-btn">
+                        ${isSold ? "VIEW SOLD ID →" : "VIEW ID DETAILS →"}
+                    </a>
+                    ${!isSold ? `
+                    <button
+                        type="button"
+                        class="quick-buy-whatsapp-btn admin-choice-trigger"
+                        data-contact-type="buy"
+                        data-id="${escapeHTML(id)}"
+                        data-name="${escapeHTML(name)}"
+                        data-price="${escapeHTML(formatPrice(price))}"
+                        onclick="event.stopPropagation()">
+                        💬 BUY VIA WHATSAPP
+                    </button>` : ''}
+                </div>
+            `;
+
+            const favBtn = card.querySelector(".fav-btn");
+            if (favBtn) {
+                favBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    if (window.TamilandaWishlist) {
+                        const active = window.TamilandaWishlist.toggle(id);
+                        favBtn.classList.toggle("active", active);
+                        if (currentFilter === "favorites") {
+                            render();
+                        }
+                    }
+                });
+            }
+
+            return card;
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        /* =========================================
+           RENDER
+           ========================================= */
+
+        function render() {
+            grid.innerHTML = "";
+            let filtered = [...allIDs];
+
+            if (currentFilter === "favorites") {
+                filtered = filtered.filter(item => window.TamilandaWishlist && window.TamilandaWishlist.has(item.id));
+            } else if (currentFilter !== "all") {
+                filtered = filtered.filter(item => getCategory(item) === currentFilter);
+            }
+
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase().trim();
+                filtered = filtered.filter(item => {
+                    const idStr = String(item.id || "").toLowerCase();
+                    const nameStr = String(item.name || "").toLowerCase();
+                    const catStr = String(item.category || "").toLowerCase();
+                    const descStr = String(item.description || "").toLowerCase();
+                    return idStr.includes(term) || nameStr.includes(term) || catStr.includes(term) || descStr.includes(term);
+                });
+            }
+
+            const sortValue = sort.value;
+
+            if (sortValue === "high-price") {
+                filtered.sort((a,b) => Number(b.price || 0) - Number(a.price || 0));
+            } else if (sortValue === "low-price") {
+                filtered.sort((a,b) => Number(a.price || 0) - Number(b.price || 0));
+            } else if (sortValue === "popular") {
+                filtered.sort((a,b) => Number(b.popularScore ?? b.popular ?? 0) - Number(a.popularScore ?? a.popular ?? 0));
+            } else if (sortValue === "high-level") {
+                filtered.sort((a,b) => Number(b.level || 0) - Number(a.level || 0));
+            } else if (sortValue === "low-level") {
+                filtered.sort((a,b) => Number(a.level || 0) - Number(b.level || 0));
+            }
+
+            if (filtered.length === 0) {
+                emptyState.style.display = "block";
+                return;
+            }
+
+            emptyState.style.display = "none";
+
+            const fragment = document.createDocumentFragment();
+            filtered.forEach(function (item) {
+                fragment.appendChild(createCard(item));
+            });
+
+            grid.appendChild(fragment);
+        }
+
+        /* =========================================
+           LOAD IDs
+           ========================================= */
+
+        async function loadIDs() {
+            try {
+                if (loadingState) {
+                    loadingState.remove();
+                }
+
+                const response = await fetch(`${WORKER_URL}/api/ids`, {
+                    method: "GET",
+                    cache: "no-store"
+                });
+
+                if (!response.ok) {
+                    throw new Error("API Error " + response.status);
+                }
+
+                const data = await response.json();
+
+                if (!Array.isArray(data)) {
+                    throw new Error("Invalid ID data");
+                }
+
+                allIDs = data;
+                render();
+
+            } catch (error) {
+                console.error("Failed to load IDs:", error);
+                grid.innerHTML = `
+                    <div class="loading-state">
+                        Failed to load IDs. <br><br>
+                        Please try again later.
+                    </div>
+                `;
+            }
+        }
+
+        /* =========================================
+           LISTENERS
+           ========================================= */
+
+        buttons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                buttons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+                currentFilter = button.dataset.filter;
+                render();
+            });
+        });
+
+        sort.addEventListener("change", function () {
+            render();
+        });
+
+        if (searchInput) {
+            searchInput.addEventListener("input", function (e) {
+                searchTerm = e.target.value;
+                render();
+            });
+        }
+
+        await loadIDs();
+
+    }
+);
+
+</script>
+
+
+
+<script>
+(function () {
+
+    const overlay =
+        document.getElementById("adminContactOverlay");
+
+    const closeButton =
+        document.getElementById("adminContactClose");
+
+    const grid =
+        document.getElementById("idGrid");
+
+    let currentContext = {
+        type: "buy",
+        id: "",
+        name: "",
+        price: ""
+    };
+
+    function buildMessage() {
+
+        if (currentContext.type === "custom") {
+            return [
+                "Hi Tamilanda Gaming,",
+                "",
+                "I am looking for a custom Free Fire ID.",
+                "Please help me find a suitable account for my requirements."
+            ].join("\n");
+        }
+
+        return [
+            "Hi Tamilanda Gaming,",
+            "",
+            `I want to buy ${currentContext.name || "this Free Fire ID"}.`,
+            `Price: ${currentContext.price || "Price on Request"}`,
+            `ID: ${currentContext.id || "-"}`
+        ].join("\n");
+    }
+
+    function openChooser(context) {
+
+        if (!overlay) return;
+
+        currentContext = {
+            type: context?.type || "buy",
+            id: context?.id || "",
+            name: context?.name || "",
+            price: context?.price || ""
+        };
+
+        overlay.classList.add("show");
+        overlay.setAttribute("aria-hidden", "false");
+
+        if (closeButton) {
+            closeButton.focus();
+        }
+    }
+
+    function closeChooser() {
+
+        if (!overlay) return;
+
+        overlay.classList.remove("show");
+        overlay.setAttribute("aria-hidden", "true");
+    }
+
+    document
+        .querySelectorAll(".admin-contact-btn")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                const number =
+                    String(button.dataset.adminNumber || "")
+                        .replace(/[^\d]/g, "");
+
+                if (!number) return;
+
+                const url =
+                    `https://wa.me/${number}?text=${encodeURIComponent(buildMessage())}`;
+
+                window.open(
+                    url,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+                closeChooser();
+            });
+        });
+
+    document
+        .querySelectorAll(".admin-choice-trigger")
+        .forEach(function (button) {
+
+            button.addEventListener("click", function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                openChooser({
+                    type: button.dataset.contactType || "buy",
+                    id: button.dataset.id || "",
+                    name: button.dataset.name || "",
+                    price: button.dataset.price || ""
+                });
+            });
+        });
+
+    if (grid) {
+
+        grid.addEventListener(
+            "click",
+            function (event) {
+
+                const button =
+                    event.target.closest(".admin-choice-trigger");
+
+                if (!button) return;
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                openChooser({
+                    type: button.dataset.contactType || "buy",
+                    id: button.dataset.id || "",
+                    name: button.dataset.name || "",
+                    price: button.dataset.price || ""
+                });
+            }
+        );
+    }
+
+    if (closeButton) {
+        closeButton.addEventListener(
+            "click",
+            closeChooser
+        );
+    }
+
+    if (overlay) {
+
+        overlay.addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === overlay) {
+                    closeChooser();
+                }
+            }
+        );
+    }
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+                closeChooser();
+            }
+        }
+    );
+
+})();
+</script>
 
 </body>
 
