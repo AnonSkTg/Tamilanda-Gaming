@@ -1379,6 +1379,347 @@ button:disabled{
     }
 }
 
+
+/* =========================================================
+   SELL REQUESTS — COLLAPSIBLE FOLDER VIEW
+========================================================= */
+
+.sell-request-card{
+    overflow:hidden;
+}
+
+.sell-request-summary{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:inherit;
+    padding:0;
+    text-align:left;
+    cursor:pointer;
+}
+
+.sell-request-summary-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+}
+
+.sell-request-folder{
+    width:44px;
+    height:38px;
+    flex:0 0 44px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,176,0,.08);
+    border:1px solid rgba(255,176,0,.16);
+    color:#ffb000;
+    font-size:19px;
+    transition:transform .25s ease, background .25s ease;
+}
+
+.sell-request-card.open .sell-request-folder{
+    transform:rotate(-5deg) scale(1.04);
+    background:rgba(255,176,0,.13);
+}
+
+.sell-request-summary-main{
+    min-width:0;
+    flex:1;
+}
+
+.sell-request-summary-main strong{
+    display:block;
+    color:#f3f3f3;
+    font-size:14px;
+    line-height:1.35;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.sell-request-summary-main span{
+    display:block;
+    margin-top:3px;
+    color:#666;
+    font-size:9px;
+    line-height:1.5;
+}
+
+.sell-request-summary-meta{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.sell-request-image-count{
+    padding:5px 8px;
+    border-radius:7px;
+    background:#111;
+    border:1px solid rgba(255,255,255,.07);
+    color:#aaa;
+    font-size:8px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.sell-request-chevron{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    background:#111;
+    border:1px solid rgba(255,255,255,.07);
+    transition:transform .25s ease, color .25s ease;
+}
+
+.sell-request-card.open .sell-request-chevron{
+    transform:rotate(180deg);
+    color:#ffb000;
+}
+
+.sell-request-collapse-tools{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-left:auto;
+}
+
+.sell-request-delete-btn{
+    flex:0 0 auto !important;
+    min-width:90px;
+    background:rgba(255,74,74,.07) !important;
+    color:#ff7777 !important;
+    border:1px solid rgba(255,74,74,.16) !important;
+}
+
+.sell-request-delete-btn:hover{
+    background:rgba(255,74,74,.13) !important;
+    border-color:rgba(255,74,74,.30) !important;
+}
+
+.sell-request-body{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .32s cubic-bezier(.22,1,.36,1);
+}
+
+.sell-request-card.open .sell-request-body{
+    grid-template-rows:1fr;
+}
+
+.sell-request-body-inner{
+    min-height:0;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(-5px);
+    transition:
+        opacity .25s ease,
+        transform .32s cubic-bezier(.22,1,.36,1);
+}
+
+.sell-request-card.open .sell-request-body-inner{
+    opacity:1;
+    transform:none;
+    padding-top:16px;
+}
+
+.sell-request-images{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+}
+
+.sell-request-file{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    border-radius:10px;
+    background:#111;
+    border:1px solid rgba(255,255,255,.07);
+    cursor:pointer;
+    transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease;
+    text-align:left;
+}
+
+.sell-request-file:hover{
+    transform:translateY(-1px);
+    border-color:rgba(255,176,0,.24);
+    background:#141414;
+}
+
+.sell-request-file-thumb{
+    width:52px;
+    height:52px;
+    flex:0 0 52px;
+    overflow:hidden;
+    border-radius:8px;
+    background:#0b0b0b;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.sell-request-file-thumb img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+.sell-request-file-info{
+    min-width:0;
+    flex:1;
+}
+
+.sell-request-file-info strong{
+    display:block;
+    color:#ddd;
+    font-size:10px;
+    line-height:1.35;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.sell-request-file-info span{
+    display:block;
+    margin-top:4px;
+    color:#666;
+    font-size:8px;
+}
+
+.sell-request-file-open{
+    flex:0 0 auto;
+    color:#ffb000;
+    font-size:9px;
+    font-weight:900;
+}
+
+.sell-request-open-all{
+    width:100%;
+    margin-top:10px;
+}
+
+.sell-request-detail-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    margin-top:14px;
+}
+
+.sell-request-delete-confirm{
+    position:fixed;
+    inset:0;
+    z-index:600;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.82);
+    backdrop-filter:blur(8px);
+}
+
+.sell-request-delete-confirm.show{
+    display:flex;
+}
+
+.sell-request-delete-dialog{
+    width:min(420px,94vw);
+    padding:20px;
+    border-radius:16px;
+    background:#151515;
+    border:1px solid rgba(255,74,74,.16);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+}
+
+.sell-request-delete-dialog h3{
+    margin:0;
+    font-size:15px;
+    color:#fff;
+}
+
+.sell-request-delete-dialog p{
+    margin:9px 0 0;
+    color:#888;
+    font-size:10px;
+    line-height:1.6;
+}
+
+.sell-request-delete-dialog-actions{
+    display:flex;
+    gap:8px;
+    margin-top:16px;
+}
+
+.sell-request-delete-dialog-actions button{
+    flex:1;
+}
+
+.sell-request-cancel-btn{
+    background:#111;
+    color:#ddd;
+    border:1px solid rgba(255,255,255,.09);
+}
+
+.sell-request-confirm-btn{
+    background:rgba(255,74,74,.10);
+    color:#ff7777;
+    border:1px solid rgba(255,74,74,.18);
+}
+
+@media(max-width:650px){
+
+    .sell-request-summary-row{
+        align-items:flex-start;
+    }
+
+    .sell-request-summary-meta{
+        gap:5px;
+    }
+
+    .sell-request-summary-meta .sell-request-status{
+        display:none;
+    }
+
+    .sell-request-delete-btn{
+        min-width:0;
+        padding:8px 10px;
+    }
+
+    .sell-request-detail-grid{
+        grid-template-columns:1fr;
+    }
+
+    .sell-request-images{
+        grid-template-columns:1fr;
+    }
+
+    .sell-request-file{
+        padding:9px;
+    }
+
+    .sell-request-file-thumb{
+        width:48px;
+        height:48px;
+        flex-basis:48px;
+    }
+
+    .sell-request-collapse-tools{
+        gap:5px;
+    }
+}
+
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -2413,6 +2754,52 @@ button:disabled{
 
 </div>
 
+<!-- =====================================================
+     SELL REQUEST DELETE CONFIRM
+===================================================== -->
+
+<div
+    class="sell-request-delete-confirm"
+    id="sellRequestDeleteConfirm"
+    onclick="closeSellRequestDeleteConfirm()">
+
+    <div
+        class="sell-request-delete-dialog"
+        onclick="event.stopPropagation()">
+
+        <h3>
+            Delete this seller request?
+        </h3>
+
+        <p id="sellRequestDeleteMessage">
+            This will permanently remove the request from the seller request database.
+        </p>
+
+        <div class="sell-request-delete-dialog-actions">
+
+            <button
+                type="button"
+                class="small-btn sell-request-cancel-btn"
+                onclick="closeSellRequestDeleteConfirm()">
+
+                CANCEL
+
+            </button>
+
+            <button
+                type="button"
+                class="small-btn sell-request-confirm-btn"
+                id="confirmSellRequestDeleteBtn">
+
+                DELETE REQUEST
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </main>
 
@@ -2444,6 +2831,8 @@ let reviewSearchTerm = "";
 let allSellRequests = [];
 
 let sellRequestSearchTerm = "";
+
+let pendingSellRequestDeleteId = null;
 
 
 /* =========================================================
@@ -6029,6 +6418,40 @@ function sellerRequestWhatsAppURL(
 }
 
 
+function getSellerRequestImageName(imageIndex, image){
+
+    const names = [
+        "Profile Screenshot",
+        "Gun Gallery",
+        "Hair Collection",
+        "Mask Collection",
+        "Total Vault",
+        "Rare Item"
+    ];
+
+    const fallback =
+        names[imageIndex] ||
+        `Screenshot ${imageIndex + 1}`;
+
+    if(
+        image &&
+        typeof image === "object"
+    ){
+
+        return String(
+            image.name ||
+            image.title ||
+            image.filename ||
+            fallback
+        );
+
+    }
+
+    return fallback;
+
+}
+
+
 function renderSellRequests(
     requests
 ){
@@ -6072,12 +6495,15 @@ function renderSellRequests(
                         request.id,
                         request.sellerName,
                         request.sellerPhone,
+                        request.phone,
+                        request.whatsapp,
                         request.accountLevel,
                         request.primeLevel,
                         request.vaultCollection,
                         request.goldenElite,
                         request.expectedPrice,
-                        request.sellerNote
+                        request.sellerNote,
+                        request.note
                     ]
                     .map(
                         function(value){
@@ -6100,8 +6526,7 @@ function renderSellRequests(
         count.textContent =
             filtered.length +
             (
-                filtered.length ===
-                1
+                filtered.length === 1
                     ? " Request"
                     : " Requests"
             );
@@ -6153,6 +6578,12 @@ function renderSellRequests(
                     "pending"
                 ).toUpperCase();
 
+            const requestId =
+                String(
+                    request.id ||
+                    ("request-" + (index + 1))
+                );
+
             const created =
                 request.createdAt
                     ? formatSellerRequestDate(
@@ -6167,6 +6598,15 @@ function renderSellRequests(
                     ? request.images
                     : [];
 
+            const whatsappHref =
+                sellerPhone !==
+                "Not provided"
+                    ? sellerRequestWhatsAppURL(
+                        sellerPhone,
+                        sellerName
+                    )
+                    : "#";
+
             const imageHTML =
                 images.length
                     ? images.map(
@@ -6177,25 +6617,65 @@ function renderSellRequests(
                                     image
                                 );
 
+                            const imageName =
+                                getSellerRequestImageName(
+                                    imageIndex,
+                                    image
+                                );
+
                             if(!src){
-                                return "";
+
+                                return `
+                                    <div class="sell-request-file">
+                                        <div class="sell-request-file-thumb">
+                                            <span style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:18px;">📄</span>
+                                        </div>
+                                        <div class="sell-request-file-info">
+                                            <strong>
+                                                ${escapeHTML(imageName)}
+                                            </strong>
+                                            <span>
+                                                File unavailable
+                                            </span>
+                                        </div>
+                                    </div>
+                                `;
+
                             }
 
                             return `
-                                <div
-                                    class="sell-request-image"
+                                <button
+                                    type="button"
+                                    class="sell-request-file"
                                     data-image-src="${escapeHTML(src)}"
-                                    data-image-alt="${escapeHTML(sellerName + " screenshot " + (imageIndex + 1))}">
+                                    data-image-alt="${escapeHTML(imageName)}">
 
-                                    <span class="image-number">
-                                        ${imageIndex + 1}
+                                    <div class="sell-request-file-thumb">
+
+                                        <img
+                                            src="${escapeHTML(src)}"
+                                            alt="${escapeHTML(imageName)}"
+                                            loading="lazy">
+
+                                    </div>
+
+                                    <div class="sell-request-file-info">
+
+                                        <strong>
+                                            ${escapeHTML(imageName)}
+                                        </strong>
+
+                                        <span>
+                                            Click to open
+                                        </span>
+
+                                    </div>
+
+                                    <span class="sell-request-file-open">
+                                        OPEN ↗
                                     </span>
 
-                                    <img
-                                        src="${escapeHTML(src)}"
-                                        alt="${escapeHTML(sellerName + " seller screenshot " + (imageIndex + 1))}"
-                                        loading="lazy">
-                                </div>
+                                </button>
                             `;
 
                         }
@@ -6203,158 +6683,192 @@ function renderSellRequests(
                     : '<div class="sell-request-empty" style="grid-column:1/-1;">No screenshots attached to this request.</div>';
 
             card.innerHTML = `
-                <div class="sell-request-top">
+                <div class="sell-request-summary">
 
-                    <div class="sell-request-title">
-                        <strong>
-                            ${escapeHTML(sellerName)}
-                        </strong>
+                    <div class="sell-request-summary-row">
 
-                        <span>
-                            Request:
-                            ${escapeHTML(
-                                request.id ||
-                                ("#" + (index + 1))
-                            )}
-                            ·
-                            ${escapeHTML(created)}
-                        </span>
-                    </div>
+                        <div class="sell-request-folder">
+                            📁
+                        </div>
 
-                    <span class="sell-request-status">
-                        ${escapeHTML(status)}
-                    </span>
+                        <div class="sell-request-summary-main">
 
-                </div>
+                            <strong>
+                                ${escapeHTML(sellerName)}
+                            </strong>
 
-                <div class="sell-request-grid">
+                            <span>
+                                ${escapeHTML(requestId)}
+                                ·
+                                ${escapeHTML(created)}
+                            </span>
 
-                    <div class="sell-request-field">
-                        <small>WhatsApp / Phone</small>
-                        <strong>
-                            ${escapeHTML(sellerPhone)}
-                        </strong>
-                    </div>
+                        </div>
 
-                    <div class="sell-request-field">
-                        <small>Account Level</small>
-                        <strong>
-                            ${escapeHTML(
-                                request.accountLevel ||
-                                "Not provided"
-                            )}
-                        </strong>
-                    </div>
+                        <div class="sell-request-summary-meta">
 
-                    <div class="sell-request-field">
-                        <small>Prime Level</small>
-                        <strong>
-                            ${escapeHTML(
-                                request.primeLevel ||
-                                "Not provided"
-                            )}
-                        </strong>
-                    </div>
+                            <span class="sell-request-status">
+                                ${escapeHTML(status)}
+                            </span>
 
-                    <div class="sell-request-field">
-                        <small>Vault Collection</small>
-                        <strong>
-                            ${escapeHTML(
-                                request.vaultCollection ||
-                                "Not provided"
-                            )}
-                        </strong>
-                    </div>
+                            <span class="sell-request-image-count">
+                                📷 ${images.length}
+                            </span>
 
-                    <div class="sell-request-field">
-                        <small>Golden Elite</small>
-                        <strong>
-                            ${escapeHTML(
-                                request.goldenElite ||
-                                "Not provided"
-                            )}
-                        </strong>
-                    </div>
+                            <span class="sell-request-chevron">
+                                ▼
+                            </span>
 
-                    <div class="sell-request-field">
-                        <small>Expected Price</small>
-                        <strong>
-                            ${escapeHTML(
-                                request.expectedPrice ||
-                                "Not provided"
-                            )}
-                        </strong>
+                        </div>
+
                     </div>
 
                 </div>
 
-                ${
-                    request.sellerNote ||
-                    request.note
-                        ? `
-                            <div class="sell-request-note">
-                                <small>Seller Note</small>
-                                <p>
-                                    ${escapeHTML(
-                                        request.sellerNote ||
-                                        request.note
-                                    )}
-                                </p>
+                <div class="sell-request-body">
+
+                    <div class="sell-request-body-inner">
+
+                        <div class="sell-request-detail-grid">
+
+                            <div class="sell-request-field">
+                                <small>WhatsApp / Phone</small>
+                                <strong>
+                                    ${escapeHTML(sellerPhone)}
+                                </strong>
                             </div>
-                        `
-                        : ""
-                }
 
-                <div class="sell-request-images-title">
-                    <strong>
-                        SELLER SCREENSHOTS
-                    </strong>
+                            <div class="sell-request-field">
+                                <small>Account Level</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        request.accountLevel ||
+                                        "Not provided"
+                                    )}
+                                </strong>
+                            </div>
 
-                    <span>
-                        ${images.length} image${
-                            images.length === 1
-                                ? ""
-                                : "s"
+                            <div class="sell-request-field">
+                                <small>Prime Level</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        request.primeLevel ||
+                                        "Not provided"
+                                    )}
+                                </strong>
+                            </div>
+
+                            <div class="sell-request-field">
+                                <small>Vault Collection</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        request.vaultCollection ||
+                                        "Not provided"
+                                    )}
+                                </strong>
+                            </div>
+
+                            <div class="sell-request-field">
+                                <small>Golden Elite</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        request.goldenElite ||
+                                        "Not provided"
+                                    )}
+                                </strong>
+                            </div>
+
+                            <div class="sell-request-field">
+                                <small>Expected Price</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        request.expectedPrice ||
+                                        "Not provided"
+                                    )}
+                                </strong>
+                            </div>
+
+                        </div>
+
+                        ${
+                            request.sellerNote ||
+                            request.note
+                                ? `
+                                    <div class="sell-request-note">
+
+                                        <small>
+                                            Seller Note
+                                        </small>
+
+                                        <p>
+                                            ${escapeHTML(
+                                                request.sellerNote ||
+                                                request.note
+                                            )}
+                                        </p>
+
+                                    </div>
+                                `
+                                : ""
                         }
-                    </span>
-                </div>
 
-                <div class="sell-request-images">
-                    ${imageHTML}
-                </div>
+                        <div class="sell-request-images-title">
 
-                <div class="sell-request-actions">
+                            <strong>
+                                ACCOUNT SCREENSHOTS
+                            </strong>
 
-                    ${
-                        sellerPhone !==
-                        "Not provided"
-                            ? `
-                                <a
-                                    class="small-btn contact-seller-btn"
-                                    href="${escapeHTML(
-                                        sellerRequestWhatsAppURL(
-                                            sellerPhone,
-                                            sellerName
-                                        )
-                                    )}"
-                                    target="_blank"
-                                    rel="noopener noreferrer">
+                            <span>
+                                ${images.length} image${
+                                    images.length === 1
+                                        ? ""
+                                        : "s"
+                                }
+                            </span>
 
-                                    💬 CONTACT SELLER
-                                </a>
-                            `
-                            : ""
-                    }
+                        </div>
 
-                    <button
-                        type="button"
-                        class="small-btn view-seller-btn"
-                        data-request-id="${escapeHTML(
-                            request.id || ""
-                        )}">
+                        <div class="sell-request-images">
+                            ${imageHTML}
+                        </div>
 
-                        📋 VIEW DETAILS
-                    </button>
+                        <div class="sell-request-actions">
+
+                            ${
+                                sellerPhone !==
+                                "Not provided"
+                                    ? `
+                                        <a
+                                            class="small-btn contact-seller-btn"
+                                            href="${escapeHTML(
+                                                whatsappHref
+                                            )}"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+
+                                            💬 CONTACT SELLER
+                                        </a>
+                                    `
+                                    : ""
+                            }
+
+                            <button
+                                type="button"
+                                class="small-btn view-seller-btn">
+
+                                📋 VIEW DETAILS
+                            </button>
+
+                            <button
+                                type="button"
+                                class="small-btn sell-request-delete-btn">
+
+                                🗑 DELETE
+                            </button>
+
+                        </div>
+
+                    </div>
 
                 </div>
             `;
@@ -6363,22 +6877,42 @@ function renderSellRequests(
                 card
             );
 
+            const summary =
+                card.querySelector(
+                    ".sell-request-summary"
+                );
+
+            if(summary){
+
+                summary.addEventListener(
+                    "click",
+                    function(){
+
+                        card.classList.toggle(
+                            "open"
+                        );
+
+                    }
+                );
+
+            }
+
             card
                 .querySelectorAll(
-                    ".sell-request-image"
+                    ".sell-request-file"
                 )
                 .forEach(
-                    function(imageBox){
+                    function(fileButton){
 
-                        imageBox.addEventListener(
+                        fileButton.addEventListener(
                             "click",
                             function(){
 
                                 const src =
-                                    imageBox.dataset.imageSrc;
+                                    fileButton.dataset.imageSrc;
 
                                 const alt =
-                                    imageBox.dataset.imageAlt ||
+                                    fileButton.dataset.imageAlt ||
                                     "Seller Screenshot Preview";
 
                                 openSellRequestLightbox(
@@ -6389,38 +6923,24 @@ function renderSellRequests(
                             }
                         );
 
-                    }
-                );
+                        const img =
+                            fileButton.querySelector(
+                                "img"
+                            );
 
-            card
-                .querySelectorAll(
-                    "img"
-                )
-                .forEach(
-                    function(img){
+                        if(img){
 
-                        img.addEventListener(
-                            "error",
-                            function(){
+                            img.addEventListener(
+                                "error",
+                                function(){
 
-                                const parent =
-                                    img.parentElement;
+                                    img.style.display =
+                                        "none";
 
-                                if(!parent){
-                                    return;
                                 }
+                            );
 
-                                parent.innerHTML =
-                                    '<div class="image-error">Image could not be loaded.</div>' +
-                                    (
-                                        parent.querySelector(
-                                            ".image-number"
-                                        )?.outerHTML ||
-                                        ""
-                                    );
-
-                            }
-                        );
+                        }
 
                     }
                 );
@@ -6447,10 +6967,184 @@ function renderSellRequests(
 
             }
 
+            const deleteButton =
+                card.querySelector(
+                    ".sell-request-delete-btn"
+                );
+
+            if(deleteButton){
+
+                deleteButton.addEventListener(
+                    "click",
+                    function(){
+
+                        openSellRequestDeleteConfirm(
+                            request
+                        );
+
+                    }
+                );
+
+            }
+
         }
     );
 
 }
+
+
+function openSellRequestDeleteConfirm(
+    request
+){
+
+    const modal =
+        document.getElementById(
+            "sellRequestDeleteConfirm"
+        );
+
+    const message =
+        document.getElementById(
+            "sellRequestDeleteMessage"
+        );
+
+    const confirmButton =
+        document.getElementById(
+            "confirmSellRequestDeleteBtn"
+        );
+
+    if(!modal){
+        return;
+    }
+
+    pendingSellRequestDeleteId =
+        request &&
+        request.id
+            ? String(request.id)
+            : null;
+
+    if(message){
+
+        message.textContent =
+            `Delete seller "${request.sellerName || request.name || "Unknown Seller"}" (${pendingSellRequestDeleteId || "unknown request"})? This permanently removes the request from the seller request database.`;
+
+    }
+
+    if(confirmButton){
+
+        confirmButton.disabled =
+            false;
+
+        confirmButton.textContent =
+            "DELETE REQUEST";
+
+    }
+
+    modal.classList.add(
+        "show"
+    );
+
+}
+
+
+function closeSellRequestDeleteConfirm(){
+
+    const modal =
+        document.getElementById(
+            "sellRequestDeleteConfirm"
+        );
+
+    pendingSellRequestDeleteId =
+        null;
+
+    if(modal){
+
+        modal.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+async function deleteSellRequest(){
+
+    const requestId =
+        pendingSellRequestDeleteId;
+
+    if(!requestId){
+        return;
+    }
+
+    const confirmButton =
+        document.getElementById(
+            "confirmSellRequestDeleteBtn"
+        );
+
+    if(confirmButton){
+
+        confirmButton.disabled =
+            true;
+
+        confirmButton.textContent =
+            "DELETING...";
+
+    }
+
+    try{
+
+        await apiRequest(
+            "/api/sell-requests/" +
+            encodeURIComponent(
+                requestId
+            ),
+            {
+                method:"DELETE"
+            }
+        );
+
+        allSellRequests =
+            allSellRequests.filter(
+                function(request){
+
+                    return String(
+                        request &&
+                        request.id
+                            ? request.id
+                            : ""
+                    ) !== requestId;
+
+                }
+            );
+
+        closeSellRequestDeleteConfirm();
+
+        renderSellRequests(
+            allSellRequests
+        );
+
+    }catch(error){
+
+        if(confirmButton){
+
+            confirmButton.disabled =
+                false;
+
+            confirmButton.textContent =
+                "DELETE REQUEST";
+
+        }
+
+        alert(
+            "Delete failed:\n\n" +
+            error.message
+        );
+
+    }
+
+}
+
+
 
 
 function formatSellerRequestDate(
@@ -6710,6 +7404,19 @@ document
     function(){
 
         loadSellRequests();
+
+    }
+);
+
+document
+.getElementById(
+    "confirmSellRequestDeleteBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        deleteSellRequest();
 
     }
 );
