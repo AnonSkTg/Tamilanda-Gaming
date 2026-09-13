@@ -258,4 +258,491 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }, true);
 
+
+    /* =================================================
+       PREMIUM INTERACTION LAYER
+       Subtle 3D + Scroll Reveal + Touch Polish
+       ================================================= */
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    const finePointer =
+        window.matchMedia(
+            "(hover: hover) and (pointer: fine)"
+        ).matches;
+
+    /* -------------------------------------------------
+       HEADER SCROLL DEPTH
+       ------------------------------------------------- */
+
+    const header =
+        document.querySelector(".top-header");
+
+    if (header) {
+
+        const updateHeader =
+            () => {
+
+                header.classList.toggle(
+                    "tg-scrolled",
+                    window.scrollY > 12
+                );
+
+            };
+
+        updateHeader();
+
+        window.addEventListener(
+            "scroll",
+            updateHeader,
+            {
+                passive: true
+            }
+        );
+
+    }
+
+    if (!reduceMotion) {
+
+        /* -------------------------------------------------
+           3D CARD TILT
+           ------------------------------------------------- */
+
+        const tiltSelector = [
+            ".quick-card",
+            ".step-card",
+            ".why-card",
+            ".proof-card",
+            ".review-card",
+            ".id-card",
+            ".faq-item"
+        ].join(",");
+
+        const tiltCards =
+            document.querySelectorAll(
+                tiltSelector
+            );
+
+        if (finePointer) {
+
+            tiltCards.forEach(
+                (card) => {
+
+                    card.style.setProperty(
+                        "--tg-rx",
+                        "0deg"
+                    );
+
+                    card.style.setProperty(
+                        "--tg-ry",
+                        "0deg"
+                    );
+
+                    card.addEventListener(
+                        "pointermove",
+                        (event) => {
+
+                            const rect =
+                                card.getBoundingClientRect();
+
+                            if (
+                                !rect.width ||
+                                !rect.height
+                            ) {
+                                return;
+                            }
+
+                            const x =
+                                (event.clientX - rect.left) /
+                                rect.width;
+
+                            const y =
+                                (event.clientY - rect.top) /
+                                rect.height;
+
+                            const rotateY =
+                                (x - .5) * 3.8;
+
+                            const rotateX =
+                                (.5 - y) * 3.0;
+
+                            card.style.transform =
+                                `perspective(900px)
+                                 rotateX(${rotateX.toFixed(2)}deg)
+                                 rotateY(${rotateY.toFixed(2)}deg)
+                                 translateY(-3px)
+                                 scale(1.008)`;
+
+                            card.style.zIndex =
+                                "5";
+
+                        },
+                        {
+                            passive: true
+                        }
+                    );
+
+                    card.addEventListener(
+                        "pointerleave",
+                        () => {
+
+                            card.style.transform =
+                                "";
+
+                            card.style.zIndex =
+                                "";
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+
+        /* -------------------------------------------------
+           SCROLL REVEAL
+           ------------------------------------------------- */
+
+        const revealSelector = [
+            ".quick-card",
+            ".step-card",
+            ".why-card",
+            ".proof-card",
+            ".review-card",
+            ".faq-item",
+            ".quick-section",
+            ".trust-section",
+            ".middleman-section",
+            ".proofs-section",
+            ".why-section",
+            ".reviews-section",
+            ".faq-section",
+            ".bottom-cta",
+            ".request-banner",
+            ".catalog-toolbar",
+            ".category-filters",
+            ".id-card",
+            ".description-section",
+            ".details-notice"
+        ].join(",");
+
+        const revealElements =
+            document.querySelectorAll(
+                revealSelector
+            );
+
+        /*
+         * Only add reveal to elements already on the page.
+         * Never hide dynamic content before it exists.
+         */
+        revealElements.forEach(
+            (element, index) => {
+
+                element.classList.add(
+                    "tg-reveal"
+                );
+
+                element.style.setProperty(
+                    "--tg-delay",
+                    Math.min(
+                        index * 45,
+                        320
+                    ) + "ms"
+                );
+
+            }
+        );
+
+        if (
+            "IntersectionObserver" in window
+        ) {
+
+            const observer =
+                new IntersectionObserver(
+                    (entries, instance) => {
+
+                        entries.forEach(
+                            (entry) => {
+
+                                if (
+                                    entry.isIntersecting
+                                ) {
+
+                                    entry.target.classList.add(
+                                        "tg-visible"
+                                    );
+
+                                    instance.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    },
+                    {
+                        threshold: .08,
+                        rootMargin:
+                            "0px 0px -35px 0px"
+                    }
+                );
+
+            revealElements.forEach(
+                (element) => {
+
+                    observer.observe(
+                        element
+                    );
+
+                }
+            );
+
+        } else {
+
+            revealElements.forEach(
+                (element) => {
+
+                    element.classList.add(
+                        "tg-visible"
+                    );
+
+                }
+            );
+
+        }
+
+        /* -------------------------------------------------
+           DYNAMIC CONTENT REVEAL
+           ------------------------------------------------- */
+
+        if (
+            "MutationObserver" in window
+        ) {
+
+            const dynamicObserver =
+                new MutationObserver(
+                    (mutations) => {
+
+                        mutations.forEach(
+                            (mutation) => {
+
+                                mutation.addedNodes.forEach(
+                                    (node) => {
+
+                                        if (
+                                            node.nodeType !== 1
+                                        ) {
+                                            return;
+                                        }
+
+                                        const matches =
+                                            node.matches?.(
+                                                revealSelector
+                                            );
+
+                                        const children =
+                                            node.querySelectorAll?.(
+                                                revealSelector
+                                            ) || [];
+
+                                        if (
+                                            matches
+                                        ) {
+
+                                            node.classList.add(
+                                                "tg-reveal"
+                                            );
+
+                                            requestAnimationFrame(
+                                                () => {
+
+                                                    node.classList.add(
+                                                        "tg-visible"
+                                                    );
+
+                                                }
+                                            );
+
+                                        }
+
+                                        children.forEach(
+                                            (element) => {
+
+                                                element.classList.add(
+                                                    "tg-visible"
+                                                );
+
+                                            }
+                                        );
+
+                                    }
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            dynamicObserver.observe(
+                document.body,
+                {
+                    childList: true,
+                    subtree: true
+                }
+            );
+
+        }
+
+        /* -------------------------------------------------
+           IMAGE LOAD POLISH
+           ------------------------------------------------- */
+
+        document
+        .querySelectorAll(
+            "img"
+        )
+        .forEach(
+            (image) => {
+
+                if (image.complete) {
+                    image.classList.add(
+                        "tg-image-ready"
+                    );
+                }
+
+                image.addEventListener(
+                    "load",
+                    () => {
+
+                        image.classList.add(
+                            "tg-image-ready"
+                        );
+
+                    },
+                    {
+                        once: true
+                    }
+                );
+
+            }
+        );
+
+        /* -------------------------------------------------
+           TOUCH PRESS FEEDBACK
+           ------------------------------------------------- */
+
+        const touchSelector = [
+            "button",
+            ".primary-button",
+            ".secondary-button",
+            ".request-btn",
+            ".view-id-btn",
+            ".quick-buy-whatsapp-btn",
+            ".buy-now-button",
+            ".social-button",
+            ".gallery-thumb",
+            ".category-btn"
+        ].join(",");
+
+        document.addEventListener(
+            "pointerdown",
+            (event) => {
+
+                if (
+                    event.pointerType !== "touch"
+                ) {
+                    return;
+                }
+
+                const element =
+                    event.target.closest(
+                        touchSelector
+                    );
+
+                if (!element) {
+                    return;
+                }
+
+                element.classList.add(
+                    "tg-touch-active"
+                );
+
+            },
+            {
+                passive: true
+            }
+        );
+
+        const clearTouch =
+            (event) => {
+
+                if (
+                    event.pointerType !== "touch"
+                ) {
+                    return;
+                }
+
+                document
+                .querySelectorAll(
+                    ".tg-touch-active"
+                )
+                .forEach(
+                    (element) => {
+
+                        element.classList.remove(
+                            "tg-touch-active"
+                        );
+
+                    }
+                );
+
+            };
+
+        document.addEventListener(
+            "pointerup",
+            clearTouch,
+            {
+                passive: true
+            }
+        );
+
+        document.addEventListener(
+            "pointercancel",
+            clearTouch,
+            {
+                passive: true
+            }
+        );
+
+    }
+
+    /* -------------------------------------------------
+       REDUCE MOTION: KEEP CONTENT ALWAYS VISIBLE
+       ------------------------------------------------- */
+
+    if (reduceMotion) {
+
+        document
+        .querySelectorAll(
+            ".tg-reveal"
+        )
+        .forEach(
+            (element) => {
+
+                element.classList.add(
+                    "tg-visible"
+                );
+
+            }
+        );
+
+    }
+
 });
