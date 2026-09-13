@@ -2,36 +2,23 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Contact Tamilanda Gaming for Free Fire ID support.">
+    <meta name="description" content="Contact Tamilanda Gaming for Free Fire ID support.">
 
     <title>Contact Us | Tamilanda Gaming</title>
 
     <link rel="stylesheet" href="styles.css">
 
     <style>
-
         .contact-page {
             min-height: 100vh;
             padding: 60px 6% 100px;
-
             background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(255,176,0,0.10),
-                    transparent 35%
-                ),
+                radial-gradient(circle at 50% 0%, rgba(255,176,0,0.10), transparent 35%),
                 #080808;
         }
-
 
         .contact-hero {
             max-width: 800px;
@@ -39,672 +26,676 @@
             text-align: center;
         }
 
-
         .contact-hero h1 {
             margin-top: 10px;
-
-            font-size:
-                clamp(42px, 7vw, 72px);
-
+            font-size: clamp(42px, 7vw, 72px);
             line-height: 0.95;
-
             letter-spacing: -2px;
-
             font-weight: 900;
         }
-
 
         .contact-hero h1 span {
             color: #ffb000;
         }
 
-
         .contact-hero p {
             max-width: 600px;
-
             margin: 18px auto 0;
-
             color: #777;
-
             font-size: 14px;
-
             line-height: 1.8;
         }
 
-
         .contact-grid {
             max-width: 1050px;
-
             margin: 65px auto 0;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
 
-
         .contact-card {
             padding: 28px;
-
             border-radius: 17px;
-
             background: #101010;
-
-            border: 1px solid
-                rgba(255,255,255,0.07);
-
+            border: 1px solid rgba(255,255,255,0.07);
             transition: 0.25s ease;
         }
 
-
         .contact-card:hover {
             transform: translateY(-5px);
-
-            border-color:
-                rgba(255,176,0,0.3);
+            border-color: rgba(255,176,0,0.3);
         }
-
 
         .contact-icon {
             width: 55px;
             height: 55px;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             border-radius: 14px;
-
-            background:
-                rgba(255,176,0,0.08);
-
+            background: rgba(255,176,0,0.08);
             font-size: 27px;
-
             margin-bottom: 20px;
         }
-
 
         .contact-card h2 {
             font-size: 19px;
         }
 
-
         .contact-card p {
             margin-top: 9px;
-
             color: #666;
-
             font-size: 12px;
-
             line-height: 1.7;
         }
 
-
         .contact-button {
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
-
             gap: 10px;
-
             margin-top: 20px;
-
             min-height: 45px;
-
             padding: 0 18px;
-
             border-radius: 9px;
-
             background: #ffb000;
-
             color: #080808;
-
             font-size: 11px;
-
             font-weight: 900;
-
+            text-decoration: none;
+            border: 0;
+            cursor: pointer;
             transition: 0.2s ease;
         }
 
-
         .contact-button:hover {
             transform: translateY(-3px);
-
-            box-shadow:
-                0 10px 25px
-                rgba(255,176,0,0.2);
+            box-shadow: 0 10px 25px rgba(255,176,0,0.2);
         }
-
 
         .contact-button.secondary {
             background: #181818;
-
             color: #fff;
-
-            border: 1px solid
-                rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.10);
         }
-
 
         .contact-button.secondary:hover {
             color: #ffb000;
-
             border-color: #ffb000;
-
             box-shadow: none;
         }
 
+        .admin-contact-trigger {
+            width: 100%;
+        }
 
         .support-box {
             max-width: 1050px;
-
             margin: 18px auto 0;
-
             padding: 30px;
-
             text-align: center;
-
             border-radius: 17px;
-
             background:
-                radial-gradient(
-                    circle at center,
-                    rgba(255,176,0,0.10),
-                    transparent 65%
-                ),
+                radial-gradient(circle at center, rgba(255,176,0,0.10), transparent 65%),
                 #101010;
-
-            border: 1px solid
-                rgba(255,176,0,0.13);
+            border: 1px solid rgba(255,176,0,0.13);
         }
-
 
         .support-box h2 {
             font-size: 25px;
         }
 
-
         .support-box h2 span {
             color: #ffb000;
         }
 
-
         .support-box p {
             max-width: 600px;
-
             margin: 10px auto 22px;
-
             color: #777;
-
             font-size: 12px;
-
             line-height: 1.7;
         }
 
-
         .social-links {
             display: flex;
-
             justify-content: center;
-
             flex-wrap: wrap;
-
             gap: 10px;
         }
 
+        /* OFFICIAL ADMIN CHOOSER */
+        .admin-contact-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.72);
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-contact-overlay.show {
+            display: flex;
+            animation: adminFadeIn 0.2s ease;
+        }
+
+        .admin-contact-modal {
+            width: min(460px, 100%);
+            padding: 24px;
+            border-radius: 20px;
+            background: #111;
+            border: 1px solid rgba(255,176,0,0.18);
+            box-shadow: 0 25px 80px rgba(0,0,0,0.55);
+            transform: translateY(8px) scale(.98);
+            animation: adminModalIn 0.22s ease forwards;
+        }
+
+        .admin-contact-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .admin-contact-head h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .admin-contact-head p {
+            margin: 6px 0 0;
+            color: #777;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .admin-contact-close {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 auto;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 9px;
+            background: #181818;
+            color: #aaa;
+            font-size: 21px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .admin-contact-close:hover {
+            color: #fff;
+            border-color: rgba(255,176,0,0.3);
+        }
+
+        .admin-contact-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .admin-contact-btn {
+            width: 100%;
+            min-height: 68px;
+            padding: 11px 13px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 13px;
+            background: #171717;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .admin-contact-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,176,0,0.3);
+            background: #1b1b1b;
+        }
+
+        .admin-contact-icon {
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(255,176,0,0.10);
+            color: #ffb000;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .admin-contact-copy {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .admin-contact-copy strong {
+            display: block;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        .admin-contact-copy span {
+            display: block;
+            margin-top: 3px;
+            color: #777;
+            font-size: 10px;
+        }
+
+        .admin-contact-arrow {
+            color: #ffb000;
+            font-size: 13px;
+            font-weight: 900;
+        }
+
+        .admin-contact-safe-note {
+            margin-top: 14px;
+            padding: 11px 12px;
+            border-radius: 10px;
+            background: rgba(255,176,0,0.05);
+            border: 1px solid rgba(255,176,0,0.13);
+            color: #9d8952;
+            font-size: 9px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        @keyframes adminFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes adminModalIn {
+            to {
+                transform: translateY(0) scale(1);
+            }
+        }
 
         @media (max-width: 700px) {
-
             .contact-page {
                 padding: 45px 5% 80px;
             }
 
-
             .contact-grid {
                 grid-template-columns: 1fr;
+                margin-top: 45px;
             }
-
 
             .contact-hero h1 {
                 font-size: 45px;
             }
 
-
             .social-links {
                 flex-direction: column;
             }
-
 
             .social-links .contact-button {
                 width: 100%;
             }
 
+            .admin-contact-modal {
+                padding: 18px;
+                border-radius: 16px;
+            }
+
+            .admin-contact-btn {
+                min-height: 66px;
+            }
         }
-
     </style>
-
 </head>
-
 
 <body>
 
-
     <!-- HEADER -->
-
     <header class="top-header">
-
-        <a
-            href="index.html"
-            class="brand">
-
-            <img
-                src="assets/ic_launcher.png"
-                alt="Tamilanda Gaming Logo"
-                class="brand-logo">
+        <a href="index.html" class="brand">
+            <img src="assets/ic_launcher.png" alt="Tamilanda Gaming Logo" class="brand-logo">
 
             <div class="brand-text">
-
-                <strong>
-                    TAMILANDA
-                </strong>
-
-                <span>
-                    GAMING
-                </span>
-
+                <strong>TAMILANDA</strong>
+                <span>GAMING</span>
             </div>
-
         </a>
-
 
         <nav class="main-nav">
-
-            <a href="index.html">
-                HOME
-            </a>
-
-            <a href="sell.html">
-                SELL YOUR ID
-            </a>
-
-            <a href="buy.html">
-                BUY YOUR ID
-            </a>
-
+            <a href="index.html">HOME</a>
+            <a href="sell.html">SELL YOUR ID</a>
+            <a href="buy.html">BUY YOUR ID</a>
         </nav>
 
-
-        <button
-            class="menu-button"
-            aria-label="Open Menu">
-
-            ☰
-
-        </button>
-
+        <button class="menu-button" aria-label="Open Menu">☰</button>
     </header>
 
-
-
     <!-- SIDE MENU -->
-
     <aside class="side-menu">
+        <button class="close-menu" aria-label="Close Menu">×</button>
 
-        <button
-            class="close-menu"
-            aria-label="Close Menu">
-
-            ×
-
-        </button>
-
-
-        <a href="index.html">
-            Home
-        </a>
-
-
-        <a href="about.html">
-            About
-        </a>
-
-
-        <a href="contact.html">
-            Contact Us
-        </a>
-
-
-        <a href="terms.html">
-            Terms & Conditions
-        </a>
-
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="terms.html">Terms & Conditions</a>
     </aside>
 
-
-
     <!-- CONTACT PAGE -->
-
     <main class="contact-page">
 
-
         <section class="contact-hero">
-
-            <p class="eyebrow">
-                GET IN TOUCH
-            </p>
-
+            <p class="eyebrow">GET IN TOUCH</p>
 
             <h1>
                 CONTACT
                 <span>US</span>
             </h1>
 
-
             <p>
-
                 Need help with an ID, buying an account,
                 selling your account or anything related
                 to Tamilanda Gaming?
-
                 We're here to help.
-
             </p>
-
         </section>
 
-
-
         <!-- CONTACT CARDS -->
-
         <section class="contact-grid">
 
-
-            <!-- WhatsApp -->
-
+            <!-- WhatsApp Support -->
             <article class="contact-card">
+                <div class="contact-icon">💬</div>
 
-                <div class="contact-icon">
-                    💬
-                </div>
-
-
-                <h2>
-                    WhatsApp Support
-                </h2>
-
+                <h2>WhatsApp Support</h2>
 
                 <p>
-
                     For buying, selling and account
                     related enquiries, contact our team
                     directly on WhatsApp.
-
                 </p>
 
-
-                <a
-                    href="https://wa.me/919786267475"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-button">
-
-                    CHAT ON WHATSAPP
-                    →
-
-                </a>
-
+                <button
+                    type="button"
+                    class="contact-button admin-contact-trigger"
+                    data-contact-type="support">
+                    CHAT ON WHATSAPP →
+                </button>
             </article>
 
-
-
             <!-- WhatsApp Channel -->
-
             <article class="contact-card">
+                <div class="contact-icon">📢</div>
 
-                <div class="contact-icon">
-                    📢
-                </div>
-
-
-                <h2>
-                    WhatsApp Channel
-                </h2>
-
+                <h2>WhatsApp Channel</h2>
 
                 <p>
-
                     Follow our WhatsApp Channel for
                     new ID listings, updates and
                     Tamilanda Gaming announcements.
-
                 </p>
-
 
                 <a
                     href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="contact-button secondary">
-
-                    JOIN CHANNEL
-                    →
-
+                    JOIN CHANNEL →
                 </a>
-
             </article>
 
-
-
             <!-- YouTube -->
-
             <article class="contact-card">
+                <div class="contact-icon">▶️</div>
 
-                <div class="contact-icon">
-                    ▶️
-                </div>
-
-
-                <h2>
-                    YouTube Channel
-                </h2>
-
+                <h2>YouTube Channel</h2>
 
                 <p>
-
                     Follow Tamilanda Gaming on YouTube
                     for gaming content, updates and
                     more.
-
                 </p>
-
 
                 <a
                     href="https://youtube.com/@tamilanda_gaming_15?si=Y9UmkrcBoWe0_R4r"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="contact-button secondary">
-
-                    VISIT YOUTUBE
-                    →
-
+                    VISIT YOUTUBE →
                 </a>
-
             </article>
 
-
-
             <!-- Sell -->
-
             <article class="contact-card">
+                <div class="contact-icon">💰</div>
 
-                <div class="contact-icon">
-                    💰
-                </div>
-
-
-                <h2>
-                    Want To Sell Your ID?
-                </h2>
-
+                <h2>Want To Sell Your ID?</h2>
 
                 <p>
-
                     Submit your account details and
                     screenshots through our seller
                     form.
-
                 </p>
-
 
                 <a
                     href="sell.html"
                     class="contact-button">
-
-                    SELL YOUR ID
-                    →
-
+                    SELL YOUR ID →
                 </a>
-
             </article>
-
 
         </section>
 
-
-
         <!-- SUPPORT CTA -->
-
         <section class="support-box">
 
             <p class="section-label">
                 TAMILANDA GAMING SUPPORT
             </p>
 
-
             <h2>
                 HAVE A QUESTION?
                 <span>LET'S TALK.</span>
             </h2>
 
-
             <p>
-
                 For the fastest response, contact us
                 directly through WhatsApp.
-
             </p>
-
 
             <div class="social-links">
 
-                <a
-                    href="https://wa.me/919786267475"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="contact-button">
-
+                <button
+                    type="button"
+                    class="contact-button admin-contact-trigger"
+                    data-contact-type="support">
                     💬 WHATSAPP SUPPORT
-
-                </a>
-
+                </button>
 
                 <a
                     href="https://whatsapp.com/channel/0029Vad2AB94NViiWPfEcm2e"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="contact-button secondary">
-
                     📢 WHATSAPP CHANNEL
-
                 </a>
-
 
                 <a
                     href="https://youtube.com/@tamilanda_gaming_15?si=Y9UmkrcBoWe0_R4r"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="contact-button secondary">
-
                     ▶️ YOUTUBE
-
                 </a>
 
             </div>
-
         </section>
-
 
     </main>
 
+    <!-- OFFICIAL ADMIN CHOOSER -->
+    <div
+        class="admin-contact-overlay"
+        id="adminContactOverlay"
+        aria-hidden="true">
 
+        <div
+            class="admin-contact-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="adminContactTitle">
 
-    <!-- FOOTER -->
+            <div class="admin-contact-head">
+                <div>
+                    <h3 id="adminContactTitle">
+                        CHOOSE AN OFFICIAL ADMIN
+                    </h3>
 
-    <footer>
+                    <p>
+                        Select an official Tamilanda Gaming Admin to continue.
+                    </p>
+                </div>
 
-        <div class="footer-brand">
+                <button
+                    type="button"
+                    class="admin-contact-close"
+                    id="adminContactClose"
+                    aria-label="Close">
+                    ×
+                </button>
+            </div>
 
-            <img
-                src="assets/ic_launcher.png"
-                alt="Tamilanda Gaming">
+            <div class="admin-contact-list">
 
-            <div>
+                <button
+                    type="button"
+                    class="admin-contact-btn"
+                    data-admin-number="919786267475">
 
-                <strong>
-                    TAMILANDA GAMING
-                </strong>
+                    <span class="admin-contact-icon">1</span>
 
-                <p>
-                    Free Fire ID Marketplace
-                </p>
+                    <span class="admin-contact-copy">
+                        <strong>Admin 1 — @Visualize</strong>
+                        <span>+91 97862 67475</span>
+                    </span>
+
+                    <span class="admin-contact-arrow">↗</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="admin-contact-btn"
+                    data-admin-number="919363063571">
+
+                    <span class="admin-contact-icon">2</span>
+
+                    <span class="admin-contact-copy">
+                        <strong>Admin 2</strong>
+                        <span>+91 93630 63571</span>
+                    </span>
+
+                    <span class="admin-contact-arrow">↗</span>
+                </button>
 
             </div>
 
+            <div class="admin-contact-safe-note">
+                🔐 These are the only official Tamilanda Gaming Admin contacts.
+                Verify the number before making any payment.
+            </div>
         </div>
+    </div>
 
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">
+            <img src="assets/ic_launcher.png" alt="Tamilanda Gaming">
+
+            <div>
+                <strong>TAMILANDA GAMING</strong>
+                <p>Free Fire ID Marketplace</p>
+            </div>
+        </div>
 
         <div class="footer-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="sell.html">
-                Sell Your ID
-            </a>
-
-            <a href="buy.html">
-                Buy Your ID
-            </a>
-
-            <a href="about.html">
-                About
-            </a>
-
-            <a href="terms.html">
-                Terms
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="sell.html">Sell Your ID</a>
+            <a href="buy.html">Buy Your ID</a>
+            <a href="about.html">About</a>
+            <a href="terms.html">Terms</a>
         </div>
 
-
         <p class="copyright">
-
             © <span id="current-year"></span>
             Tamilanda Gaming. All rights reserved.
-
         </p>
-
     </footer>
-
 
     <script src="app.js"></script>
 
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const overlay = document.getElementById("adminContactOverlay");
+            const closeButton = document.getElementById("adminContactClose");
+            const triggers = document.querySelectorAll(".admin-contact-trigger");
+            const adminButtons = document.querySelectorAll(".admin-contact-btn");
 
+            function openChooser() {
+                overlay.classList.add("show");
+                overlay.setAttribute("aria-hidden", "false");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeChooser() {
+                overlay.classList.remove("show");
+                overlay.setAttribute("aria-hidden", "true");
+                document.body.style.overflow = "";
+            }
+
+            triggers.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    openChooser();
+                });
+            });
+
+            adminButtons.forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const number = button.getAttribute("data-admin-number");
+
+                    const message =
+                        "Hi Tamilanda Gaming, I need support regarding your Free Fire ID marketplace.";
+
+                    const url =
+                        "https://wa.me/" +
+                        number +
+                        "?text=" +
+                        encodeURIComponent(message);
+
+                    window.open(url, "_blank", "noopener,noreferrer");
+                });
+            });
+
+            closeButton.addEventListener("click", closeChooser);
+
+            overlay.addEventListener("click", function (event) {
+                if (event.target === overlay) {
+                    closeChooser();
+                }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeChooser();
+                }
+            });
+        });
+    </script>
+
+</body>
 </html>
