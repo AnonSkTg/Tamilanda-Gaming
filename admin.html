@@ -1058,6 +1058,327 @@ button:disabled{
     line-height:1.5;
 }
 
+
+/* =========================================================
+   SELL REQUESTS
+========================================================= */
+
+.sell-request-toolbar{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.sell-request-toolbar input{
+    flex:1;
+}
+
+.sell-request-refresh{
+    min-height:45px;
+    padding:0 16px;
+    background:rgba(255,176,0,.10);
+    color:#ffb000;
+    border:1px solid rgba(255,176,0,.22);
+}
+
+.sell-request-list{
+    display:grid;
+    gap:14px;
+}
+
+.sell-request-empty{
+    padding:28px 18px;
+    border:1px dashed rgba(255,255,255,.09);
+    border-radius:14px;
+    text-align:center;
+    color:#666;
+    background:#111;
+    font-size:11px;
+    line-height:1.7;
+}
+
+.sell-request-card{
+    background:#151515;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:16px;
+    transition:
+        border-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.sell-request-card:hover{
+    border-color:rgba(255,176,0,.22);
+    transform:translateY(-2px);
+    box-shadow:0 16px 40px rgba(0,0,0,.18);
+}
+
+.sell-request-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:14px;
+}
+
+.sell-request-title{
+    min-width:0;
+}
+
+.sell-request-title strong{
+    display:block;
+    font-size:15px;
+    line-height:1.35;
+    word-break:break-word;
+}
+
+.sell-request-title span{
+    display:block;
+    margin-top:5px;
+    color:#777;
+    font-size:10px;
+    line-height:1.5;
+    word-break:break-word;
+}
+
+.sell-request-status{
+    flex-shrink:0;
+    padding:6px 9px;
+    border-radius:8px;
+    border:1px solid rgba(255,176,0,.20);
+    background:rgba(255,176,0,.08);
+    color:#ffb000;
+    font-size:8px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.sell-request-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin-top:14px;
+}
+
+.sell-request-field{
+    padding:10px 11px;
+    background:#111;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:10px;
+}
+
+.sell-request-field small{
+    display:block;
+    color:#666;
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+
+.sell-request-field strong{
+    display:block;
+    margin-top:5px;
+    color:#ddd;
+    font-size:11px;
+    line-height:1.5;
+    word-break:break-word;
+}
+
+.sell-request-note{
+    margin-top:10px;
+    padding:11px 12px;
+    border-left:2px solid rgba(255,176,0,.38);
+    background:#111;
+    border-radius:0 10px 10px 0;
+}
+
+.sell-request-note small{
+    color:#666;
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+}
+
+.sell-request-note p{
+    margin-top:5px;
+    color:#bbb;
+    font-size:11px;
+    line-height:1.6;
+    white-space:pre-wrap;
+    word-break:break-word;
+}
+
+.sell-request-images-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-top:16px;
+    margin-bottom:9px;
+}
+
+.sell-request-images-title strong{
+    font-size:10px;
+    color:#aaa;
+    letter-spacing:1px;
+}
+
+.sell-request-images-title span{
+    color:#666;
+    font-size:9px;
+}
+
+.sell-request-images{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:9px;
+}
+
+.sell-request-image{
+    position:relative;
+    overflow:hidden;
+    min-height:130px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.sell-request-image img{
+    width:100%;
+    height:160px;
+    display:block;
+    object-fit:cover;
+    background:#0b0b0b;
+}
+
+.sell-request-image .image-number{
+    position:absolute;
+    top:7px;
+    left:7px;
+    padding:4px 6px;
+    border-radius:6px;
+    background:rgba(0,0,0,.70);
+    color:#fff;
+    font-size:8px;
+    font-weight:900;
+}
+
+.sell-request-image .image-error{
+    min-height:160px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    text-align:center;
+    color:#555;
+    font-size:9px;
+}
+
+.sell-request-actions{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+}
+
+.sell-request-actions a,
+.sell-request-actions button{
+    flex:1;
+}
+
+.contact-seller-btn{
+    background:rgba(50,200,100,.08);
+    color:#65d98a;
+    border:1px solid rgba(50,200,100,.16);
+}
+
+.view-seller-btn{
+    background:rgba(255,255,255,.06);
+    color:#ddd;
+    border:1px solid rgba(255,255,255,.10);
+}
+
+.sell-request-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:500;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.90);
+    backdrop-filter:blur(10px);
+}
+
+.sell-request-lightbox.show{
+    display:flex;
+}
+
+.sell-request-lightbox-content{
+    width:min(1100px,96vw);
+    max-height:92vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.sell-request-lightbox-content img{
+    max-width:100%;
+    max-height:88vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:12px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+
+.sell-request-lightbox-close{
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.12);
+    background:#171717;
+    color:#fff;
+    font-size:23px;
+    line-height:1;
+    cursor:pointer;
+}
+
+@media(max-width:650px){
+
+    .sell-request-toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .sell-request-images{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .sell-request-grid{
+        grid-template-columns:1fr;
+    }
+
+    .sell-request-top{
+        flex-direction:column;
+    }
+
+    .sell-request-status{
+        align-self:flex-start;
+    }
+
+    .sell-request-actions{
+        flex-direction:column;
+    }
+}
+
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -1139,295 +1460,6 @@ button:disabled{
     .saved-search-count{
 
         text-align:right;
-    }
-
-}
-
-
-/* =====================================================
-   ADMIN PREMIUM RESPONSIVE / 3D ENHANCEMENT
-   ===================================================== */
-
-html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-}
-
-body {
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-.admin-container {
-    perspective: 1400px;
-}
-
-.admin-card {
-    position: relative;
-    transform-style: preserve-3d;
-    transition:
-        transform .55s cubic-bezier(.22,1,.36,1),
-        box-shadow .55s cubic-bezier(.22,1,.36,1),
-        border-color .3s ease;
-    will-change: transform;
-    overflow: hidden;
-}
-
-.admin-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.04),
-            transparent 31%,
-            transparent 70%,
-            rgba(255,176,0,.018)
-        );
-}
-
-.admin-card > * {
-    position: relative;
-    z-index: 1;
-    transform: translateZ(10px);
-}
-
-.admin-card:focus-within {
-    border-color: rgba(255,176,0,.26);
-    box-shadow: 0 24px 60px rgba(0,0,0,.28);
-    transform: translateY(-2px);
-}
-
-.field input,
-.field select,
-.field textarea,
-.saved-search input {
-    transition:
-        border-color .25s ease,
-        box-shadow .25s ease,
-        background .25s ease,
-        transform .25s ease;
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus,
-.saved-search input:focus {
-    background: #191919;
-    box-shadow:
-        0 0 0 3px rgba(255,176,0,.06),
-        0 10px 28px rgba(0,0,0,.18);
-    transform: translateY(-1px);
-}
-
-button {
-    transition:
-        transform .3s cubic-bezier(.22,1,.36,1),
-        box-shadow .3s ease,
-        border-color .25s ease,
-        background .25s ease,
-        filter .25s ease;
-}
-
-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-}
-
-button:active:not(:disabled) {
-    transform: translateY(0) scale(.985);
-}
-
-.image-box {
-    transition:
-        border-color .3s ease,
-        background .3s ease,
-        transform .35s cubic-bezier(.22,1,.36,1);
-}
-
-.image-box:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255,176,0,.25);
-    background: #101010;
-}
-
-.saved-item {
-    transition:
-        border-color .3s ease,
-        transform .4s cubic-bezier(.22,1,.36,1),
-        box-shadow .4s ease;
-}
-
-.saved-item:hover {
-    box-shadow: 0 18px 45px rgba(0,0,0,.24);
-}
-
-.login-box {
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 30px 90px rgba(0,0,0,.35);
-}
-
-.login-box::before {
-    content: "";
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    top: -150px;
-    right: -120px;
-    border-radius: 50%;
-    background: rgba(255,176,0,.055);
-    filter: blur(12px);
-    animation: adminAmbient 12s ease-in-out infinite;
-}
-
-@keyframes adminAmbient {
-    0%,100% { transform: translate3d(0,0,0) scale(1); }
-    50% { transform: translate3d(-35px,30px,0) scale(1.08); }
-}
-
-.review-upload-box,
-.review-card {
-    transition:
-        transform .45s cubic-bezier(.22,1,.36,1),
-        box-shadow .45s ease,
-        border-color .3s ease;
-}
-
-@media (max-width: 650px) {
-
-    .admin-container {
-        width: 94%;
-        margin-top: 22px;
-        margin-bottom: 55px;
-    }
-
-    .page-heading {
-        margin-bottom: 20px;
-    }
-
-    h1 {
-        font-size: clamp(31px, 11vw, 46px);
-    }
-
-    .page-heading p {
-        font-size: 11px;
-        line-height: 1.65;
-    }
-
-    .admin-card {
-        padding: 15px;
-        margin-bottom: 14px;
-        border-radius: 15px;
-    }
-
-    .card-title {
-        margin-bottom: 15px;
-        font-size: 10px;
-        letter-spacing: 1.6px;
-    }
-
-    .form-grid {
-        gap: 12px;
-    }
-
-    input,
-    select {
-        min-height: 47px;
-        font-size: 12px;
-    }
-
-    textarea {
-        min-height: 155px;
-        font-size: 12px;
-    }
-
-    .image-grid {
-        gap: 9px;
-    }
-
-    .image-box {
-        padding: 12px;
-    }
-
-    .button-row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 9px;
-    }
-
-    .button-row button {
-        width: 100%;
-    }
-
-    .saved-search {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-    }
-
-    .saved-search-count {
-        text-align: right;
-        font-size: 10px;
-    }
-
-    .saved-item {
-        padding: 13px;
-        border-radius: 11px;
-    }
-
-    .saved-actions {
-        gap: 7px;
-    }
-
-    .small-btn {
-        min-height: 40px;
-    }
-
-    .login-box {
-        padding: 23px;
-        border-radius: 17px;
-    }
-
-}
-
-@media (max-width: 380px) {
-
-    .admin-container {
-        width: 95%;
-    }
-
-    .admin-card {
-        padding: 13px;
-    }
-
-    h1 {
-        font-size: 30px;
-    }
-
-    label {
-        font-size: 9px;
-    }
-
-    input,
-    select,
-    textarea {
-        font-size: 11px;
-    }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
     }
 
 }
@@ -2305,6 +2337,83 @@ button:active:not(:disabled) {
 </section>
 
 
+
+<!-- =====================================================
+     08 SELL REQUESTS
+===================================================== -->
+
+<section class="admin-card">
+
+<div class="card-title">
+    08 — SELL REQUESTS
+</div>
+
+<div class="saved-search sell-request-toolbar">
+
+<input
+    type="search"
+    id="sellRequestSearch"
+    placeholder="🔍 Search seller name, phone or level..."
+    autocomplete="off">
+
+<button
+    type="button"
+    class="small-btn sell-request-refresh"
+    id="refreshSellRequestsBtn">
+    ↻ REFRESH
+</button>
+
+<div
+    class="saved-search-count"
+    id="sellRequestCount">
+    0 Requests
+</div>
+
+</div>
+
+<div
+    class="sell-request-list"
+    id="sellRequestList">
+
+    <div class="sell-request-empty">
+        Loading seller requests...
+    </div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+     SELL REQUEST IMAGE LIGHTBOX
+===================================================== -->
+
+<div
+    class="sell-request-lightbox"
+    id="sellRequestLightbox"
+    onclick="closeSellRequestLightbox()">
+
+    <div
+        class="sell-request-lightbox-content"
+        onclick="event.stopPropagation()">
+
+        <button
+            type="button"
+            class="sell-request-lightbox-close"
+            onclick="closeSellRequestLightbox()"
+            aria-label="Close image preview">
+            ×
+        </button>
+
+        <img
+            id="sellRequestLightboxImg"
+            src=""
+            alt="Seller Screenshot Preview">
+
+    </div>
+
+</div>
+
+
 </main>
 
 </div>
@@ -2331,6 +2440,10 @@ let savedSearchTerm = "";
 let allReviews = [];
 
 let reviewSearchTerm = "";
+
+let allSellRequests = [];
+
+let sellRequestSearchTerm = "";
 
 
 /* =========================================================
@@ -2529,6 +2642,8 @@ async function(){
         await loadIDs();
 
         await loadReviews();
+
+        await loadSellRequests();
 
 
     }catch(error){
@@ -5694,6 +5809,949 @@ function escapeHTML(
 }
 
 
+
+/* =========================================================
+   SELL REQUESTS
+========================================================= */
+
+async function loadSellRequests(){
+
+    const list =
+        document.getElementById(
+            "sellRequestList"
+        );
+
+    const count =
+        document.getElementById(
+            "sellRequestCount"
+        );
+
+    if(!list){
+        return;
+    }
+
+    list.innerHTML =
+        '<div class="sell-request-empty">Loading seller requests...</div>';
+
+    try{
+
+        const result =
+            await apiRequest(
+                "/api/sell-requests"
+            );
+
+        const requests =
+            Array.isArray(result)
+                ? result
+                : (
+                    result.requests ||
+                    result.data ||
+                    []
+                );
+
+        allSellRequests =
+            Array.isArray(requests)
+                ? requests
+                : [];
+
+        renderSellRequests(
+            allSellRequests
+        );
+
+    }catch(error){
+
+        allSellRequests =
+            [];
+
+        if(count){
+            count.textContent =
+                "0 Requests";
+        }
+
+        list.innerHTML =
+            '<div class="sell-request-empty">' +
+            '<strong>Failed to load seller requests.</strong>' +
+            '<br><br>' +
+            escapeHTML(
+                error.message
+            ) +
+            '</div>';
+
+    }
+
+}
+
+
+function getSellerRequestImageValue(
+    image
+){
+
+    if(!image){
+        return "";
+    }
+
+    if(
+        typeof image ===
+        "object"
+    ){
+
+        return String(
+            image.data ||
+            image.image ||
+            image.imageData ||
+            image.url ||
+            image.path ||
+            ""
+        ).trim();
+
+    }
+
+    return String(
+        image
+    ).trim();
+
+}
+
+
+function resolveSellerRequestImage(
+    image
+){
+
+    const value =
+        getSellerRequestImageValue(
+            image
+        );
+
+    if(!value){
+        return "";
+    }
+
+    if(
+        value.startsWith(
+            "data:image/"
+        )
+    ){
+
+        return value;
+
+    }
+
+    if(
+        value.startsWith(
+            "http://"
+        ) ||
+        value.startsWith(
+            "https://"
+        )
+    ){
+
+        return value;
+
+    }
+
+    const github =
+        "https://anonsktg.github.io/Tamilanda-Gaming";
+
+    if(
+        value.startsWith("/")
+    ){
+
+        return (
+            github +
+            value
+        );
+
+    }
+
+    if(
+        value.startsWith(
+            "assets/"
+        )
+    ){
+
+        return (
+            github +
+            "/" +
+            value
+        );
+
+    }
+
+    return value;
+
+}
+
+
+function sellerRequestWhatsAppURL(
+    phone,
+    sellerName
+){
+
+    let digits =
+        String(
+            phone || ""
+        ).replace(
+            /[^\d]/g,
+            ""
+        );
+
+    if(
+        digits.length === 10
+    ){
+
+        digits =
+            "91" +
+            digits;
+
+    }
+
+    if(!digits){
+        return "#";
+    }
+
+    const text =
+        "Hi " +
+        String(
+            sellerName ||
+            "Seller"
+        ) +
+        ", Tamilanda Gaming Admin here regarding your Free Fire ID submission.";
+
+    return (
+        "https://wa.me/" +
+        digits +
+        "?text=" +
+        encodeURIComponent(
+            text
+        )
+    );
+
+}
+
+
+function renderSellRequests(
+    requests
+){
+
+    const list =
+        document.getElementById(
+            "sellRequestList"
+        );
+
+    const count =
+        document.getElementById(
+            "sellRequestCount"
+        );
+
+    if(!list){
+        return;
+    }
+
+    const term =
+        String(
+            sellRequestSearchTerm ||
+            ""
+        )
+        .toLowerCase()
+        .trim();
+
+    const filtered =
+        requests.filter(
+            function(request){
+
+                if(!request){
+                    return false;
+                }
+
+                if(!term){
+                    return true;
+                }
+
+                const haystack =
+                    [
+                        request.id,
+                        request.sellerName,
+                        request.sellerPhone,
+                        request.accountLevel,
+                        request.primeLevel,
+                        request.vaultCollection,
+                        request.goldenElite,
+                        request.expectedPrice,
+                        request.sellerNote
+                    ]
+                    .map(
+                        function(value){
+                            return String(
+                                value || ""
+                            ).toLowerCase();
+                        }
+                    )
+                    .join(" ");
+
+                return haystack.includes(
+                    term
+                );
+
+            }
+        );
+
+    if(count){
+
+        count.textContent =
+            filtered.length +
+            (
+                filtered.length ===
+                1
+                    ? " Request"
+                    : " Requests"
+            );
+
+    }
+
+    if(!filtered.length){
+
+        list.innerHTML =
+            '<div class="sell-request-empty">' +
+            (
+                requests.length
+                    ? "No seller requests match your search."
+                    : "No seller requests submitted yet."
+            ) +
+            '</div>';
+
+        return;
+
+    }
+
+    list.innerHTML = "";
+
+    filtered.forEach(
+        function(request,index){
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+            card.className =
+                "sell-request-card";
+
+            const sellerName =
+                request.sellerName ||
+                request.name ||
+                "Unknown Seller";
+
+            const sellerPhone =
+                request.sellerPhone ||
+                request.phone ||
+                request.whatsapp ||
+                "Not provided";
+
+            const status =
+                String(
+                    request.status ||
+                    "pending"
+                ).toUpperCase();
+
+            const created =
+                request.createdAt
+                    ? formatSellerRequestDate(
+                        request.createdAt
+                    )
+                    : "Date unavailable";
+
+            const images =
+                Array.isArray(
+                    request.images
+                )
+                    ? request.images
+                    : [];
+
+            const imageHTML =
+                images.length
+                    ? images.map(
+                        function(image,imageIndex){
+
+                            const src =
+                                resolveSellerRequestImage(
+                                    image
+                                );
+
+                            if(!src){
+                                return "";
+                            }
+
+                            return `
+                                <div
+                                    class="sell-request-image"
+                                    data-image-src="${escapeHTML(src)}"
+                                    data-image-alt="${escapeHTML(sellerName + " screenshot " + (imageIndex + 1))}">
+
+                                    <span class="image-number">
+                                        ${imageIndex + 1}
+                                    </span>
+
+                                    <img
+                                        src="${escapeHTML(src)}"
+                                        alt="${escapeHTML(sellerName + " seller screenshot " + (imageIndex + 1))}"
+                                        loading="lazy">
+                                </div>
+                            `;
+
+                        }
+                    ).join("")
+                    : '<div class="sell-request-empty" style="grid-column:1/-1;">No screenshots attached to this request.</div>';
+
+            card.innerHTML = `
+                <div class="sell-request-top">
+
+                    <div class="sell-request-title">
+                        <strong>
+                            ${escapeHTML(sellerName)}
+                        </strong>
+
+                        <span>
+                            Request:
+                            ${escapeHTML(
+                                request.id ||
+                                ("#" + (index + 1))
+                            )}
+                            ·
+                            ${escapeHTML(created)}
+                        </span>
+                    </div>
+
+                    <span class="sell-request-status">
+                        ${escapeHTML(status)}
+                    </span>
+
+                </div>
+
+                <div class="sell-request-grid">
+
+                    <div class="sell-request-field">
+                        <small>WhatsApp / Phone</small>
+                        <strong>
+                            ${escapeHTML(sellerPhone)}
+                        </strong>
+                    </div>
+
+                    <div class="sell-request-field">
+                        <small>Account Level</small>
+                        <strong>
+                            ${escapeHTML(
+                                request.accountLevel ||
+                                "Not provided"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="sell-request-field">
+                        <small>Prime Level</small>
+                        <strong>
+                            ${escapeHTML(
+                                request.primeLevel ||
+                                "Not provided"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="sell-request-field">
+                        <small>Vault Collection</small>
+                        <strong>
+                            ${escapeHTML(
+                                request.vaultCollection ||
+                                "Not provided"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="sell-request-field">
+                        <small>Golden Elite</small>
+                        <strong>
+                            ${escapeHTML(
+                                request.goldenElite ||
+                                "Not provided"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="sell-request-field">
+                        <small>Expected Price</small>
+                        <strong>
+                            ${escapeHTML(
+                                request.expectedPrice ||
+                                "Not provided"
+                            )}
+                        </strong>
+                    </div>
+
+                </div>
+
+                ${
+                    request.sellerNote ||
+                    request.note
+                        ? `
+                            <div class="sell-request-note">
+                                <small>Seller Note</small>
+                                <p>
+                                    ${escapeHTML(
+                                        request.sellerNote ||
+                                        request.note
+                                    )}
+                                </p>
+                            </div>
+                        `
+                        : ""
+                }
+
+                <div class="sell-request-images-title">
+                    <strong>
+                        SELLER SCREENSHOTS
+                    </strong>
+
+                    <span>
+                        ${images.length} image${
+                            images.length === 1
+                                ? ""
+                                : "s"
+                        }
+                    </span>
+                </div>
+
+                <div class="sell-request-images">
+                    ${imageHTML}
+                </div>
+
+                <div class="sell-request-actions">
+
+                    ${
+                        sellerPhone !==
+                        "Not provided"
+                            ? `
+                                <a
+                                    class="small-btn contact-seller-btn"
+                                    href="${escapeHTML(
+                                        sellerRequestWhatsAppURL(
+                                            sellerPhone,
+                                            sellerName
+                                        )
+                                    )}"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+
+                                    💬 CONTACT SELLER
+                                </a>
+                            `
+                            : ""
+                    }
+
+                    <button
+                        type="button"
+                        class="small-btn view-seller-btn"
+                        data-request-id="${escapeHTML(
+                            request.id || ""
+                        )}">
+
+                        📋 VIEW DETAILS
+                    </button>
+
+                </div>
+            `;
+
+            list.appendChild(
+                card
+            );
+
+            card
+                .querySelectorAll(
+                    ".sell-request-image"
+                )
+                .forEach(
+                    function(imageBox){
+
+                        imageBox.addEventListener(
+                            "click",
+                            function(){
+
+                                const src =
+                                    imageBox.dataset.imageSrc;
+
+                                const alt =
+                                    imageBox.dataset.imageAlt ||
+                                    "Seller Screenshot Preview";
+
+                                openSellRequestLightbox(
+                                    src,
+                                    alt
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            card
+                .querySelectorAll(
+                    "img"
+                )
+                .forEach(
+                    function(img){
+
+                        img.addEventListener(
+                            "error",
+                            function(){
+
+                                const parent =
+                                    img.parentElement;
+
+                                if(!parent){
+                                    return;
+                                }
+
+                                parent.innerHTML =
+                                    '<div class="image-error">Image could not be loaded.</div>' +
+                                    (
+                                        parent.querySelector(
+                                            ".image-number"
+                                        )?.outerHTML ||
+                                        ""
+                                    );
+
+                            }
+                        );
+
+                    }
+                );
+
+            const detailsButton =
+                card.querySelector(
+                    ".view-seller-btn"
+                );
+
+            if(detailsButton){
+
+                detailsButton.addEventListener(
+                    "click",
+                    function(){
+
+                        alert(
+                            formatSellerRequestDetails(
+                                request
+                            )
+                        );
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+function formatSellerRequestDate(
+    value
+){
+
+    try{
+
+        const date =
+            new Date(
+                value
+            );
+
+        if(
+            Number.isNaN(
+                date.getTime()
+            )
+        ){
+
+            return String(
+                value
+            );
+
+        }
+
+        return date.toLocaleString(
+            "en-IN",
+            {
+                day:"2-digit",
+                month:"short",
+                year:"numeric",
+                hour:"2-digit",
+                minute:"2-digit"
+            }
+        );
+
+    }catch(error){
+
+        return String(
+            value
+        );
+
+    }
+
+}
+
+
+function formatSellerRequestDetails(
+    request
+){
+
+    const lines = [];
+
+    lines.push(
+        "SELL REQUEST DETAILS"
+    );
+
+    lines.push(
+        "--------------------"
+    );
+
+    lines.push(
+        "Seller: " +
+        (
+            request.sellerName ||
+            request.name ||
+            "Unknown"
+        )
+    );
+
+    lines.push(
+        "Phone / WhatsApp: " +
+        (
+            request.sellerPhone ||
+            request.phone ||
+            request.whatsapp ||
+            "Not provided"
+        )
+    );
+
+    lines.push(
+        "Account Level: " +
+        (
+            request.accountLevel ||
+            "Not provided"
+        )
+    );
+
+    lines.push(
+        "Prime Level: " +
+        (
+            request.primeLevel ||
+            "Not provided"
+        )
+    );
+
+    lines.push(
+        "Vault Collection: " +
+        (
+            request.vaultCollection ||
+            "Not provided"
+        )
+    );
+
+    lines.push(
+        "Golden Elite: " +
+        (
+            request.goldenElite ||
+            "Not provided"
+        )
+    );
+
+    lines.push(
+        "Expected Price: " +
+        (
+            request.expectedPrice ||
+            "Not provided"
+        )
+    );
+
+    lines.push(
+        "Status: " +
+        (
+            request.status ||
+            "pending"
+        )
+    );
+
+    lines.push(
+        "Submitted: " +
+        (
+            request.createdAt
+                ? formatSellerRequestDate(
+                    request.createdAt
+                )
+                : "Not provided"
+        )
+    );
+
+    lines.push(
+        ""
+    );
+
+    lines.push(
+        "Seller Note:"
+    );
+
+    lines.push(
+        request.sellerNote ||
+        request.note ||
+        "No note"
+    );
+
+    lines.push(
+        ""
+    );
+
+    lines.push(
+        "Screenshots: " +
+        (
+            Array.isArray(
+                request.images
+            )
+                ? request.images.length
+                : 0
+        )
+    );
+
+    return lines.join(
+        "\n"
+    );
+
+}
+
+
+function openSellRequestLightbox(
+    src,
+    alt
+){
+
+    const box =
+        document.getElementById(
+            "sellRequestLightbox"
+        );
+
+    const img =
+        document.getElementById(
+            "sellRequestLightboxImg"
+        );
+
+    if(
+        !box ||
+        !img ||
+        !src
+    ){
+
+        return;
+
+    }
+
+    img.src =
+        src;
+
+    img.alt =
+        alt ||
+        "Seller Screenshot Preview";
+
+    box.classList.add(
+        "show"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeSellRequestLightbox(){
+
+    const box =
+        document.getElementById(
+            "sellRequestLightbox"
+        );
+
+    const img =
+        document.getElementById(
+            "sellRequestLightboxImg"
+        );
+
+    if(box){
+
+        box.classList.remove(
+            "show"
+        );
+
+    }
+
+    if(img){
+
+        img.src =
+            "";
+
+    }
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+document
+.getElementById(
+    "refreshSellRequestsBtn"
+)
+.addEventListener(
+    "click",
+    function(){
+
+        loadSellRequests();
+
+    }
+);
+
+
+document
+.getElementById(
+    "sellRequestSearch"
+)
+.addEventListener(
+    "input",
+    function(event){
+
+        sellRequestSearchTerm =
+            event.target.value;
+
+        renderSellRequests(
+            allSellRequests
+        );
+
+    }
+);
+
+
+document
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "Escape"
+        ){
+
+            closeSellRequestLightbox();
+
+        }
+
+    }
+);
+
+
 /* =========================================================
    RESTORE SESSION
 ========================================================= */
@@ -5726,87 +6784,10 @@ if(savedKey){
 
     loadReviews();
 
+    loadSellRequests();
+
 }
 
-</script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function(){
-
-    const reduceMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-    const finePointer =
-        window.matchMedia(
-            "(hover: hover) and (pointer: fine)"
-        ).matches;
-
-    if (reduceMotion || !finePointer) {
-        return;
-    }
-
-    document
-    .querySelectorAll(
-        ".admin-card, .saved-item, .login-box"
-    )
-    .forEach(function(card){
-
-        card.addEventListener(
-            "pointermove",
-            function(event){
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                if (
-                    !rect.width ||
-                    !rect.height
-                ) {
-                    return;
-                }
-
-                const x =
-                    (event.clientX - rect.left) /
-                    rect.width;
-
-                const y =
-                    (event.clientY - rect.top) /
-                    rect.height;
-
-                const ry =
-                    (x - .5) * 2.8;
-
-                const rx =
-                    (.5 - y) * 2.2;
-
-                card.style.transform =
-                    `perspective(1100px)
-                     rotateX(${rx.toFixed(2)}deg)
-                     rotateY(${ry.toFixed(2)}deg)
-                     translateY(-2px)`;
-
-            },
-            {
-                passive: true
-            }
-        );
-
-        card.addEventListener(
-            "pointerleave",
-            function(){
-
-                card.style.transform =
-                    "";
-
-            }
-        );
-
-    });
-
-});
 </script>
 
 </body>
