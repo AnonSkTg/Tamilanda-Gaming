@@ -377,6 +377,176 @@
 
         }
 
+    
+        /* ==========================================
+           OFFICIAL ADMIN CHOOSER
+           ========================================== */
+
+        .admin-chooser-modal{
+            position:fixed;
+            inset:0;
+            z-index:9999;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding:20px;
+            opacity:0;
+            visibility:hidden;
+            transition:opacity .18s ease, visibility .18s ease;
+        }
+
+        .admin-chooser-modal.show{
+            opacity:1;
+            visibility:visible;
+        }
+
+        .admin-chooser-backdrop{
+            position:absolute;
+            inset:0;
+            background:rgba(0,0,0,.78);
+            backdrop-filter:blur(8px);
+        }
+
+        .admin-chooser-box{
+            position:relative;
+            width:min(430px, 100%);
+            padding:30px 24px 24px;
+            border:1px solid rgba(255,255,255,.12);
+            border-radius:22px;
+            background:linear-gradient(145deg, #151515, #0a0a0a);
+            box-shadow:0 25px 80px rgba(0,0,0,.55);
+            transform:translateY(14px) scale(.97);
+            transition:transform .18s ease;
+        }
+
+        .admin-chooser-modal.show .admin-chooser-box{
+            transform:translateY(0) scale(1);
+        }
+
+        .admin-chooser-close{
+            position:absolute;
+            top:12px;
+            right:14px;
+            width:38px;
+            height:38px;
+            border:0;
+            border-radius:50%;
+            background:rgba(255,255,255,.08);
+            color:#fff;
+            font-size:24px;
+            line-height:1;
+            cursor:pointer;
+        }
+
+        .admin-chooser-eyebrow{
+            margin:0 0 7px;
+            font-size:11px;
+            font-weight:800;
+            letter-spacing:2px;
+            opacity:.65;
+        }
+
+        .admin-chooser-box h3{
+            margin:0;
+            font-size:25px;
+            line-height:1.15;
+            letter-spacing:.5px;
+        }
+
+        .admin-chooser-box h3 span{
+            opacity:.55;
+        }
+
+        .admin-chooser-subtitle{
+            margin:10px 0 20px;
+            font-size:13px;
+            line-height:1.55;
+            opacity:.68;
+        }
+
+        .admin-chooser-list{
+            display:grid;
+            gap:10px;
+        }
+
+        .admin-choice{
+            width:100%;
+            display:flex;
+            align-items:center;
+            gap:13px;
+            padding:15px;
+            border:1px solid rgba(255,255,255,.1);
+            border-radius:15px;
+            background:rgba(255,255,255,.045);
+            color:#fff;
+            text-align:left;
+            cursor:pointer;
+            transition:transform .18s ease, border-color .18s ease, background .18s ease;
+        }
+
+        .admin-choice:hover{
+            transform:translateY(-2px);
+            border-color:rgba(255,255,255,.22);
+            background:rgba(255,255,255,.08);
+        }
+
+        .admin-choice:active{
+            transform:scale(.985);
+        }
+
+        .admin-choice-icon{
+            width:42px;
+            height:42px;
+            flex:0 0 42px;
+            display:grid;
+            place-items:center;
+            border-radius:12px;
+            background:rgba(255,255,255,.09);
+            font-size:20px;
+        }
+
+        .admin-choice-text{
+            min-width:0;
+            display:flex;
+            flex:1;
+            flex-direction:column;
+            gap:4px;
+        }
+
+        .admin-choice-text strong{
+            font-size:14px;
+            line-height:1.2;
+        }
+
+        .admin-choice-text small{
+            font-size:12px;
+            opacity:.62;
+        }
+
+        .admin-choice-arrow{
+            font-size:20px;
+            opacity:.55;
+        }
+
+        @media(max-width:480px){
+            .admin-chooser-modal{
+                padding:14px;
+            }
+
+            .admin-chooser-box{
+                padding:27px 17px 17px;
+                border-radius:18px;
+            }
+
+            .admin-chooser-box h3{
+                font-size:22px;
+            }
+
+            .admin-choice{
+                padding:13px;
+            }
+        }
+
     </style>
 
 </head>
@@ -879,7 +1049,7 @@
                     target="_blank"
                     rel="noopener noreferrer">
 
-                    💬 CONTACT ADMIN ON WHATSAPP
+                    💬 CHOOSE ADMIN ON WHATSAPP
 
                 </a>
 
@@ -963,8 +1133,20 @@
                 const API_BASE =
                     "https://long-glade-ef77.tamilandaoffcyt.workers.dev";
 
-                const ADMIN_WHATSAPP =
-                    "919786267475";
+                const ADMIN_CONTACTS = [
+                    {
+                        name: "Admin 1",
+                        handle: "@Visualize",
+                        phone: "+91 97862 67475",
+                        wa: "919786267475"
+                    },
+                    {
+                        name: "Admin 2",
+                        handle: "",
+                        phone: "+91 93630 63571",
+                        wa: "919363063571"
+                    }
+                ];
 
                 const form =
                     document.getElementById(
@@ -1000,7 +1182,8 @@
 
                 function buildWhatsAppURL(
                     payload,
-                    requestId
+                    requestId,
+                    admin
                 ){
 
                     const message = [
@@ -1021,12 +1204,134 @@
 
                     return (
                         "https://wa.me/" +
-                        ADMIN_WHATSAPP +
+                        admin.wa +
                         "?text=" +
-                        encodeURIComponent(
-                            message
-                        )
+                        encodeURIComponent(message)
                     );
+
+                }
+
+                function openAdminChooser(
+                    payload,
+                    requestId
+                ){
+
+                    const existing =
+                        document.getElementById(
+                            "adminChooserModal"
+                        );
+
+                    if(existing){
+                        existing.remove();
+                    }
+
+                    const modal =
+                        document.createElement("div");
+
+                    modal.id =
+                        "adminChooserModal";
+
+                    modal.className =
+                        "admin-chooser-modal";
+
+                    modal.innerHTML = `
+                        <div class="admin-chooser-backdrop"></div>
+
+                        <div class="admin-chooser-box" role="dialog" aria-modal="true" aria-labelledby="adminChooserTitle">
+
+                            <button
+                                type="button"
+                                class="admin-chooser-close"
+                                aria-label="Close">
+                                ×
+                            </button>
+
+                            <p class="admin-chooser-eyebrow">
+                                TAMILANDA GAMING
+                            </p>
+
+                            <h3 id="adminChooserTitle">
+                                CHOOSE <span>ADMIN</span>
+                            </h3>
+
+                            <p class="admin-chooser-subtitle">
+                                Your sell request is already submitted.
+                                Choose an official admin to continue on WhatsApp.
+                            </p>
+
+                            <div class="admin-chooser-list">
+                                ${ADMIN_CONTACTS.map((admin, index) => `
+                                    <button
+                                        type="button"
+                                        class="admin-choice"
+                                        data-admin-index="${index}">
+                                        <span class="admin-choice-icon">💬</span>
+                                        <span class="admin-choice-text">
+                                            <strong>${admin.name}${admin.handle ? ` — ${admin.handle}` : ""}</strong>
+                                            <small>${admin.phone}</small>
+                                        </span>
+                                        <span class="admin-choice-arrow">→</span>
+                                    </button>
+                                `).join("")}
+                            </div>
+
+                        </div>
+                    `;
+
+                    document.body.appendChild(modal);
+
+                    function closeModal(){
+                        modal.classList.remove("show");
+
+                        setTimeout(function(){
+                            modal.remove();
+                        }, 180);
+                    }
+
+                    modal.querySelector(".admin-chooser-backdrop")
+                        .addEventListener("click", closeModal);
+
+                    modal.querySelector(".admin-chooser-close")
+                        .addEventListener("click", closeModal);
+
+                    modal.querySelectorAll(".admin-choice")
+                        .forEach(function(button){
+
+                            button.addEventListener(
+                                "click",
+                                function(){
+
+                                    const index =
+                                        Number(
+                                            button.dataset.adminIndex
+                                        );
+
+                                    const admin =
+                                        ADMIN_CONTACTS[index];
+
+                                    const url =
+                                        buildWhatsAppURL(
+                                            payload,
+                                            requestId,
+                                            admin
+                                        );
+
+                                    window.open(
+                                        url,
+                                        "_blank",
+                                        "noopener,noreferrer"
+                                    );
+
+                                    closeModal();
+
+                                }
+                            );
+
+                        });
+
+                    requestAnimationFrame(function(){
+                        modal.classList.add("show");
+                    });
 
                 }
 
@@ -1475,14 +1780,23 @@
                             if(whatsappFollowup){
 
                                 whatsappFollowup.href =
-                                    buildWhatsAppURL(
-                                        payload,
-                                        requestId
-                                    );
+                                    "#";
 
                                 whatsappFollowup.classList.add(
                                     "show"
                                 );
+
+                                whatsappFollowup.onclick =
+                                    function(event){
+
+                                        event.preventDefault();
+
+                                        openAdminChooser(
+                                            payload,
+                                            requestId
+                                        );
+
+                                    };
 
                             }
 
