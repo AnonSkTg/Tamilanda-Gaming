@@ -1143,6 +1143,295 @@ button:disabled{
 
 }
 
+
+/* =====================================================
+   ADMIN PREMIUM RESPONSIVE / 3D ENHANCEMENT
+   ===================================================== */
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.admin-container {
+    perspective: 1400px;
+}
+
+.admin-card {
+    position: relative;
+    transform-style: preserve-3d;
+    transition:
+        transform .55s cubic-bezier(.22,1,.36,1),
+        box-shadow .55s cubic-bezier(.22,1,.36,1),
+        border-color .3s ease;
+    will-change: transform;
+    overflow: hidden;
+}
+
+.admin-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.04),
+            transparent 31%,
+            transparent 70%,
+            rgba(255,176,0,.018)
+        );
+}
+
+.admin-card > * {
+    position: relative;
+    z-index: 1;
+    transform: translateZ(10px);
+}
+
+.admin-card:focus-within {
+    border-color: rgba(255,176,0,.26);
+    box-shadow: 0 24px 60px rgba(0,0,0,.28);
+    transform: translateY(-2px);
+}
+
+.field input,
+.field select,
+.field textarea,
+.saved-search input {
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        background .25s ease,
+        transform .25s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.saved-search input:focus {
+    background: #191919;
+    box-shadow:
+        0 0 0 3px rgba(255,176,0,.06),
+        0 10px 28px rgba(0,0,0,.18);
+    transform: translateY(-1px);
+}
+
+button {
+    transition:
+        transform .3s cubic-bezier(.22,1,.36,1),
+        box-shadow .3s ease,
+        border-color .25s ease,
+        background .25s ease,
+        filter .25s ease;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(0) scale(.985);
+}
+
+.image-box {
+    transition:
+        border-color .3s ease,
+        background .3s ease,
+        transform .35s cubic-bezier(.22,1,.36,1);
+}
+
+.image-box:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,176,0,.25);
+    background: #101010;
+}
+
+.saved-item {
+    transition:
+        border-color .3s ease,
+        transform .4s cubic-bezier(.22,1,.36,1),
+        box-shadow .4s ease;
+}
+
+.saved-item:hover {
+    box-shadow: 0 18px 45px rgba(0,0,0,.24);
+}
+
+.login-box {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 90px rgba(0,0,0,.35);
+}
+
+.login-box::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -150px;
+    right: -120px;
+    border-radius: 50%;
+    background: rgba(255,176,0,.055);
+    filter: blur(12px);
+    animation: adminAmbient 12s ease-in-out infinite;
+}
+
+@keyframes adminAmbient {
+    0%,100% { transform: translate3d(0,0,0) scale(1); }
+    50% { transform: translate3d(-35px,30px,0) scale(1.08); }
+}
+
+.review-upload-box,
+.review-card {
+    transition:
+        transform .45s cubic-bezier(.22,1,.36,1),
+        box-shadow .45s ease,
+        border-color .3s ease;
+}
+
+@media (max-width: 650px) {
+
+    .admin-container {
+        width: 94%;
+        margin-top: 22px;
+        margin-bottom: 55px;
+    }
+
+    .page-heading {
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: clamp(31px, 11vw, 46px);
+    }
+
+    .page-heading p {
+        font-size: 11px;
+        line-height: 1.65;
+    }
+
+    .admin-card {
+        padding: 15px;
+        margin-bottom: 14px;
+        border-radius: 15px;
+    }
+
+    .card-title {
+        margin-bottom: 15px;
+        font-size: 10px;
+        letter-spacing: 1.6px;
+    }
+
+    .form-grid {
+        gap: 12px;
+    }
+
+    input,
+    select {
+        min-height: 47px;
+        font-size: 12px;
+    }
+
+    textarea {
+        min-height: 155px;
+        font-size: 12px;
+    }
+
+    .image-grid {
+        gap: 9px;
+    }
+
+    .image-box {
+        padding: 12px;
+    }
+
+    .button-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .button-row button {
+        width: 100%;
+    }
+
+    .saved-search {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .saved-search-count {
+        text-align: right;
+        font-size: 10px;
+    }
+
+    .saved-item {
+        padding: 13px;
+        border-radius: 11px;
+    }
+
+    .saved-actions {
+        gap: 7px;
+    }
+
+    .small-btn {
+        min-height: 40px;
+    }
+
+    .login-box {
+        padding: 23px;
+        border-radius: 17px;
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .admin-container {
+        width: 95%;
+    }
+
+    .admin-card {
+        padding: 13px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    label {
+        font-size: 9px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 11px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+}
+
 </style>
 
 </head>
@@ -5439,6 +5728,85 @@ if(savedKey){
 
 }
 
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+    const finePointer =
+        window.matchMedia(
+            "(hover: hover) and (pointer: fine)"
+        ).matches;
+
+    if (reduceMotion || !finePointer) {
+        return;
+    }
+
+    document
+    .querySelectorAll(
+        ".admin-card, .saved-item, .login-box"
+    )
+    .forEach(function(card){
+
+        card.addEventListener(
+            "pointermove",
+            function(event){
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                if (
+                    !rect.width ||
+                    !rect.height
+                ) {
+                    return;
+                }
+
+                const x =
+                    (event.clientX - rect.left) /
+                    rect.width;
+
+                const y =
+                    (event.clientY - rect.top) /
+                    rect.height;
+
+                const ry =
+                    (x - .5) * 2.8;
+
+                const rx =
+                    (.5 - y) * 2.2;
+
+                card.style.transform =
+                    `perspective(1100px)
+                     rotateX(${rx.toFixed(2)}deg)
+                     rotateY(${ry.toFixed(2)}deg)
+                     translateY(-2px)`;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+        card.addEventListener(
+            "pointerleave",
+            function(){
+
+                card.style.transform =
+                    "";
+
+            }
+        );
+
+    });
+
+});
 </script>
 
 </body>
